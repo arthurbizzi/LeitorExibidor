@@ -7,9 +7,11 @@
 #include <string.h>
 
 /* Defines */
+/* Controle do Programa */
 #define SUCESSO 0
 #define ERRO_ARQUIVO -1
 #define ERRO_EXECUCAO -2
+/* Tags Válidos */
 #define CONSTANT_Class 7
 #define CONSTANT_Fieldref 9
 #define CONSTANT_Methodref 10
@@ -21,6 +23,20 @@
 #define CONSTANT_Double 6
 #define CONSTANT_NameAndType 12
 #define CONSTANT_Utf8 1
+/* Flags */
+#define ACC_PUBLIC 0x0001
+#define ACC_PRIVATE 0x0002
+#define ACC_PROTECTED 0x0004
+#define ACC_STATIC 0x0008
+#define ACC_FINAL 0x0010
+#define ACC_SYNCHRONIZED 0x0020
+#define ACC_SUPER 0x0020
+#define ACC_VOLATILE 0x0040
+#define ACC_TRANSIENT 0x0080
+#define ACC_NATIVE 0x0100
+#define ACC_INTERFACE 0x0200
+#define ACC_ABSTRACT 0x0400
+#define ACC_STRICT 0x0800
 
 /* Typedefs */
 typedef u1 unsigned char;
@@ -129,6 +145,78 @@ typedef struct methodinfo {
     u2              attributes_count;
     attribute_info  attributes[attributes_count];
 } method_info;
-/* Prototipos */
+
+typedef struct codeattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              max_stack;
+    u2              max_locals;
+    u4              code_length;
+    u1              code[code_length];
+    u2              exception_table_length;
+    {
+        u2          start_pc;
+        u2          end_pc;
+        u2          handler_pc;
+        u2          catch_type;
+                    } exception_table[exception_table_length];
+    u2              attributes_count;
+    attribute_info  attributes[attributes_count];
+} code_attribute;
+
+typedef struct deprecatedattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+} Deprecated_attribute;
+
+typedef struct exceptionsattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              number_of_exceptions;
+    u2              exception_index_table[number_of_exceptions];
+} Exceptions_attributes;
+
+typedef struct innerclasses {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              number_of_classes;
+    {
+        u2          inner_class_info_index;
+        u2          outer_class_info_index;
+        u2          inner_name_index;
+        u2          inner_class_access_flags;
+    } classes[number_of_classes];
+} Inner_classes;
+
+typedef struct linenumbertableattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              line_number_table_length;
+    {
+        u2          start_pc;
+        u2          line_number;
+    } line_number_table[line_number_table_length];
+} LineNumberTable_attribute;
+
+typedef struct localvariabletableattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              local_variable_table_length;
+    {
+        u2          start_pc;
+        u2          length;
+        u2          name_index;
+        u2          descriptor_index;
+        u2          index;
+    } local_variable_table[local_variable_table_length];
+}
+
+typedef struct sourcefileattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              sourcefile_index;
+} SourceFile_attribute;
+
+/* Protótipos */
 
 #endif
