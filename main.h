@@ -12,6 +12,7 @@
 #define SUCESSO 0
 #define ERRO_ARQUIVO -1
 #define ERRO_EXECUCAO -2
+#define ERRO_MAGIC -3
 /* Tags Válidos */
 #define CONSTANT_Class 7
 #define CONSTANT_Fieldref 9
@@ -219,6 +220,9 @@ typedef struct sourcefileattribute {
 } SourceFile_attribute;
 
 /* Protótipos */
-int carrega_informacao_geral(FILE *origem);
+int carrega_header(FILE *arquivo, ClassFile *classe);
+u1 le_u1(FILE *arquivo);
+u2 le_u2(FILE *arquivo);
+u4 le_u4(FILE *arquivo);
 
 #endif
