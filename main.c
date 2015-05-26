@@ -43,4 +43,11 @@ int main(int argc, char **argv) {
         printf("ERRO: arquivo %s nao existe!\n");
         return ERRO_ARQUIVO;
     }
+
+    return SUCESSO;
+}
+
+int carrega_informacao_geral(FILE *origem) {
+
+    return SUCESSO;
 }
