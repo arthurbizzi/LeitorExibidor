@@ -117,7 +117,7 @@ typedef struct methodinfo {
     u2              name_index;
     u2              descriptor_index;
     u2              attributes_count;
-    attribute_info  *attributes; // attributes_count
+    attribute_info  *attributes; // [attributes_count]
 } method_info;
 
 typedef struct fieldinfo {
@@ -162,7 +162,7 @@ typedef struct codeattribute {
         u2          catch_type;
                     } *exception_table; // [exception_table_length]
     u2              attributes_count;
-    attribute_info  *attributes; // attributes_count
+    attribute_info  *attributes; // [attributes_count]
 } code_attribute;
 
 typedef struct deprecatedattribute {
@@ -186,7 +186,7 @@ typedef struct innerclasses {
         u2          outer_class_info_index;
         u2          inner_name_index;
         u2          inner_class_access_flags;
-    } *classes; // number_of_classes
+    } *classes; // [number_of_classes]
 } Inner_classes;
 
 typedef struct linenumbertableattribute {
@@ -196,7 +196,7 @@ typedef struct linenumbertableattribute {
     struct {
         u2          start_pc;
         u2          line_number;
-    } *line_number_table; // line_number_table_length
+    } *line_number_table; // [line_number_table_length]
 } LineNumberTable_attribute;
 
 typedef struct localvariabletableattribute {
@@ -209,7 +209,7 @@ typedef struct localvariabletableattribute {
         u2          name_index;
         u2          descriptor_index;
         u2          index;
-    } *local_variable_table; // local_variable_table_length
+    } *local_variable_table; // [local_variable_table_length]
 } LocalVariableTable_attribute;
 
 typedef struct sourcefileattribute {
@@ -219,5 +219,6 @@ typedef struct sourcefileattribute {
 } SourceFile_attribute;
 
 /* Protótipos */
+int carrega_informacao_geral(FILE *origem);
 
 #endif
