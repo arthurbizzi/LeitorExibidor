@@ -61,35 +61,11 @@
 #define ACC_STRICT 0x0800
 
 /* Typedefs */
-typedef u1 unsigned char;
-typedef u2 unsigned short;
-typedef u4 unsigned int;
+typedef unsigned char u1;
+typedef unsigned short u2;
+typedef unsigned int u4;
 
 /* Estruturas */
-typedef struct classfile {
-    u4              magic;
-    u2              minor_version;
-    u2              major_version;
-    u2              constant_pool_count;
-    cp_info         constaqnt_pool[constant_pool_count - 1];
-    u2              access_flags;
-    u2              this_class;
-    u2              super_class;
-    u2              interfaces_count;
-    u2              interfaces[interfaces_count];
-    u2              fields_count;
-    field_info      fields[fields_count];
-    u2              methods_count;
-    method_info     methods[methods_count];
-    u2              attributes_count;
-    attribute_info  attributes[attributes_count];
-} ClassFile;
-
-typedef struct cpinfo {
-    u1              tag;
-    u1              info[];
-} cp_info;
-
 typedef struct constantclassinfo {
     u1              tag;
     u2              name_index;
@@ -110,7 +86,7 @@ typedef struct constantnameandtypeinfo {
 typedef struct constantutf8info {
     u1              tag;
     u2              length;
-    u1              bytes[length];
+    u1              *bytes; // [length]
 } CONSTANT_Utf8_info;
 
 typedef struct constantmethodrefinfo {
@@ -146,18 +122,15 @@ typedef struct constantlonginfo {
     u4              low_bytes;
 } CONSTANT_Long_info;
 
-typedef struct fieldinfo {
-    u2              access_flags;
-    u2              name_index;
-    u2              descriptor_index;
-    u2              attributes_count;
-    attribute_info  attributes[attribute_count];
-} field_info;
+typedef struct cpinfo {
+    u1              tag;
+    u1              *info;
+} cp_info;
 
 typedef struct attributeinfo {
     u2              attribute_name_index;
     u4              attribute_length;
-    u1              info[attribute_length];
+    u1              *info; // [attribute_length]
 } attribute_info;
 
 typedef struct methodinfo {
@@ -165,8 +138,35 @@ typedef struct methodinfo {
     u2              name_index;
     u2              descriptor_index;
     u2              attributes_count;
-    attribute_info  attributes[attributes_count];
+    attribute_info  *attributes; // attributes_count
 } method_info;
+
+typedef struct fieldinfo {
+    u2              access_flags;
+    u2              name_index;
+    u2              descriptor_index;
+    u2              attributes_count;
+    attribute_info  *attributes; // [attribute_count]
+} field_info;
+
+typedef struct classfile {
+    u4              magic;
+    u2              minor_version;
+    u2              major_version;
+    u2              constant_pool_count;
+    cp_info         *constant_pool; // [constant_pool_count - 1]
+    u2              access_flags;
+    u2              this_class;
+    u2              super_class;
+    u2              interfaces_count;
+    u2              *interfaces; // [interfaces_count]
+    u2              fields_count;
+    field_info      *fields; // [fields_count]
+    u2              methods_count;
+    method_info     *methods;
+    u2              attributes_count;
+    attribute_info  *attributes; // [attributes_count]
+} ClassFile;
 
 typedef struct codeattribute {
     u2              attribute_name_index;
@@ -174,16 +174,16 @@ typedef struct codeattribute {
     u2              max_stack;
     u2              max_locals;
     u4              code_length;
-    u1              code[code_length];
+    u1              *code; // [code_length]
     u2              exception_table_length;
-    {
+    struct {
         u2          start_pc;
         u2          end_pc;
         u2          handler_pc;
         u2          catch_type;
-                    } exception_table[exception_table_length];
+                    } *exception_table; // [exception_table_length]
     u2              attributes_count;
-    attribute_info  attributes[attributes_count];
+    attribute_info  *attributes; // attributes_count
 } code_attribute;
 
 typedef struct deprecatedattribute {
@@ -195,43 +195,43 @@ typedef struct exceptionsattribute {
     u2              attribute_name_index;
     u4              attribute_length;
     u2              number_of_exceptions;
-    u2              exception_index_table[number_of_exceptions];
+    u2              *exception_index_table; // [number_of_exceptions]
 } Exceptions_attributes;
 
 typedef struct innerclasses {
     u2              attribute_name_index;
     u4              attribute_length;
     u2              number_of_classes;
-    {
+    struct {
         u2          inner_class_info_index;
         u2          outer_class_info_index;
         u2          inner_name_index;
         u2          inner_class_access_flags;
-    } classes[number_of_classes];
+    } *classes; // number_of_classes
 } Inner_classes;
 
 typedef struct linenumbertableattribute {
     u2              attribute_name_index;
     u4              attribute_length;
     u2              line_number_table_length;
-    {
+    struct {
         u2          start_pc;
         u2          line_number;
-    } line_number_table[line_number_table_length];
+    } *line_number_table; // line_number_table_length
 } LineNumberTable_attribute;
 
 typedef struct localvariabletableattribute {
     u2              attribute_name_index;
     u4              attribute_length;
     u2              local_variable_table_length;
-    {
+    struct {
         u2          start_pc;
         u2          length;
         u2          name_index;
         u2          descriptor_index;
         u2          index;
-    } local_variable_table[local_variable_table_length];
-}
+    } *local_variable_table; // local_variable_table_length
+} LocalVariableTable_attribute;
 
 typedef struct sourcefileattribute {
     u2              attribute_name_index;
@@ -240,6 +240,5 @@ typedef struct sourcefileattribute {
 } SourceFile_attribute;
 
 /* Protótipos */
-int ler_arquivo(const char *nome_arquivo);
 
 #endif

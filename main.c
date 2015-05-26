@@ -22,9 +22,10 @@
 #include "main.h"
 
 int main(int argc, char **argv) {
+    FILE *arq_class;
     char nome_arquivo[21];
 
-    printf("LEITOR E EXIBIDOR DE ARQUIVO EM FORMATO .CLASS\n");
+    printf("LEITOR E EXIBIDOR DE ARQUIVOS EM FORMATO .CLASS\n");
     switch(argc) {
         case 0:
             printf("Digite o nome do arquivo a ser lido, com extensao:\n");
@@ -38,17 +39,8 @@ int main(int argc, char **argv) {
             printf("Digite o nome do arquivo a ser lido, com extensao:\n");
             scanf("%s", nome_arquivo);
     }
-
-    return ler_arquivo(nome_arquivo);
-}
-
-int ler_arquivo(const char *nome_arquivo) {
-    FILE *arquivo;
-
-    if(!(arquivo = fopen(nome_arquivo, "rb"))) {
-        printf("ERRO: arquivo %s nao existe!\n", nome_arquivo);
+    if(!(arq_class = fopen(nome_arquivo, "rb"))) {
+        printf("ERRO: arquivo %s nao existe!\n");
         return ERRO_ARQUIVO;
     }
-
-    return SUCESSO;
 }
