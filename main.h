@@ -1,25 +1,3 @@
-/***********************************************************************
-*    Trabalho da Disciplina Software Básico, 2015-1
-*    Alunos: Bruno Ribeiro das Virgens (11/0111141)
-*            Guilherme de Sousa Castro (11/0148746)
-*            Kelvin William Moreira Lima (11/0159560)
-*
-*    Compilar com o comando:
-*    gcc main.c -o leitorexibidor.exe
-*
-*    Chamadas possíveis:
-*    (1) leitorexibidor.exe <arquivo>
-*        <arquivo> deve possuir a extensão (.class).
-*    (2) leitorexibidor.exe
-*        o nome do arquivo a ser lido será pedido pelo programa.
-***********************************************************************/
-/**
-* @file main.h
-* @author Bruno, Guilherme, Kelvin
-* @brief Arquivo contendo as interfaces, constantes e estruturas do Leitor e Exibidor de arquivos no formato
-*        .class
-*/
-
 #ifndef MAIN_H
 #define MAIN_H
 

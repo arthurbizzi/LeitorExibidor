@@ -1,26 +1,19 @@
-/***********************************************************************
+/*
 *    Trabalho da Disciplina Software Básico, 2015-1
 *    Alunos: Bruno Ribeiro das Virgens (11/0111141)
-*            Guilherme de Sousa Castro (11/0148746)
 *            Kelvin William Moreira Lima (11/0159560)
+*            Guilherme
 *
 *    Compilar com o comando:
 *    gcc main.c -o leitorexibidor.exe
 *
-*    Chamadas possíveis:
-*    (1) leitorexibidor.exe <arquivo>
-*        <arquivo> deve possuir a extensão (.class).
-*    (2) leitorexibidor.exe
-*        o nome do arquivo a ser lido será pedido pelo programa.
-***********************************************************************/
-/**
-* @file main.c
-* @author Bruno, Guilherme, Kelvin
-* @brief Arquivo principal da implementação do Leitor e Exibidor de arquivos no formato .class
+*    Chamar com o comando:
+*    leitorexibidor.exe
 */
 
 #include "main.h"
 
+<<<<<<< HEAD
 int main(int argc, char **argv) {
     FILE *arq_class;
     char nome_arquivo[21];
@@ -50,4 +43,8 @@ int main(int argc, char **argv) {
 int carrega_informacao_geral(FILE *origem) {
 
     return SUCESSO;
+=======
+int main() {
+    printf("LEITOR E EXIBIDOR DE ARQUIVO EM FORMATO .CLASS\n");
+>>>>>>> origin/master
 }
