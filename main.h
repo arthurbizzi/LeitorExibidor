@@ -27,15 +27,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
 
 /* Defines */
 /* Controle do Programa */
-#define MAGIC_NUMBER 0xCAFEBABE
 #define SUCESSO 0
 #define ERRO_ARQUIVO -1
 #define ERRO_EXECUCAO -2
-#define ERRO_MAGIC -3
 /* Tags Válidos */
 #define CONSTANT_Class 7
 #define CONSTANT_Fieldref 9
@@ -64,9 +61,9 @@
 #define ACC_STRICT 0x0800
 
 /* Typedefs */
-typedef uint8_t u1;
-typedef uint16_t u2;
-typedef uint32_t u4;
+typedef unsigned char u1;
+typedef unsigned short u2;
+typedef unsigned int u4;
 
 /* Estruturas */
 typedef struct constantclassinfo {
@@ -243,6 +240,5 @@ typedef struct sourcefileattribute {
 } SourceFile_attribute;
 
 /* Protótipos */
-int carrega_informacao_geral(FILE *origem);
 
 #endif
