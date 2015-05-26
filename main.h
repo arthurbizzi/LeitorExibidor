@@ -5,9 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <stdint.h>
 /* Defines */
 /* Controle do Programa */
+#define MAGIC_NUMBER 0xCAFEBABE
 #define SUCESSO 0
 #define ERRO_ARQUIVO -1
 #define ERRO_EXECUCAO -2
@@ -39,9 +40,9 @@
 #define ACC_STRICT 0x0800
 
 /* Typedefs */
-typedef unsigned char u1;
-typedef unsigned short u2;
-typedef unsigned int u4;
+typedef uint8_t u1;
+typedef uint16_t u2;
+typedef uint32_t u4;
 
 /* Estruturas */
 typedef struct constantclassinfo {

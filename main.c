@@ -13,7 +13,6 @@
 
 #include "main.h"
 
-<<<<<<< HEAD
 int main(int argc, char **argv) {
     FILE *arq_class;
     char nome_arquivo[21];
@@ -33,7 +32,7 @@ int main(int argc, char **argv) {
             scanf("%s", nome_arquivo);
     }
     if(!(arq_class = fopen(nome_arquivo, "rb"))) {
-        printf("ERRO: arquivo %s nao existe!\n");
+        printf("ERRO: arquivo %s nao existe!\n", nome_arquivo);
         return ERRO_ARQUIVO;
     }
 
@@ -43,8 +42,4 @@ int main(int argc, char **argv) {
 int carrega_informacao_geral(FILE *origem) {
 
     return SUCESSO;
-=======
-int main() {
-    printf("LEITOR E EXIBIDOR DE ARQUIVO EM FORMATO .CLASS\n");
->>>>>>> origin/master
 }
