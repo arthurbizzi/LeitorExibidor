@@ -9,10 +9,12 @@
 /* Defines */
 /* Controle do Programa */
 #define MAGIC_NUMBER 0xCAFEBABE
+#define VERSION 46
 #define SUCESSO 0
 #define ERRO_ARQUIVO -1
 #define ERRO_EXECUCAO -2
 #define ERRO_MAGIC -3
+#define ERRO_VERSION -4
 /* Tags Válidos */
 #define CONSTANT_Class 7
 #define CONSTANT_Fieldref 9
@@ -101,6 +103,12 @@ typedef struct constantlonginfo {
     u4              high_bytes;
     u4              low_bytes;
 } CONSTANT_Long_info;
+
+typedef struct constantdoubleinfo {
+    u1              tag;
+    u4              high_bytes;
+    u4              low_bytes;
+} CONSTANT_Double_info;
 
 typedef struct cpinfo {
     u1              tag;
