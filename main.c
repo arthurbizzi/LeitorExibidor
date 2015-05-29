@@ -189,23 +189,23 @@ void carrega_flagseclasses(FILE *arquivo, ClassFile *classe) {
 
 void carrega_interfaces(FILE *arquivo, ClassFile *classe) {
     classe->interfaces_count = le_u2(arquivo);
-    classe->interfaces = (u2 *) malloc(classes->interfaces_count * sizeof(u2));
+    classe->interfaces = (u2 *) malloc(classe->interfaces_count * sizeof(u2));
 
-    for(int i = 0; i < classes->interfaces_count; i++)
+    for(int i = 0; i < classe->interfaces_count; i++)
         classe->interfaces[i] = le_u2(arquivo);
 }
 
 void carrega_fields(FILE *arquivo, ClassFile *classe) {
     classe->fields_count = le_u2(arquivo);
-    classe->fields = (u2) malloc(classes->fields_count * sizeof(u2));
+    classe->fields = (field_info *) malloc(classe->fields_count * sizeof(field_info));
 
-    for(int i = 0; i < classes->fields_count; i++) {
-        classe->fields.access_flags = le_u2(arquivo);
-        classe->fields.name_index = le_u2(arquivo);
-        classe->fields.descriptor_index = le_u2(arquivo);
-        classe->fields.attributes_count = le_u2(arquivo);
-        classe->fields.attributes = (attribute_info *) malloc(classe->fields.attributes_count * sizeof(attribute_info));
-        for(int j = 0; j < classe->fields.attributes_count; j++) {
+    for(int i = 0; i < classe->fields_count; i++) {
+        classe->fields->access_flags = le_u2(arquivo);
+        classe->fields->name_index = le_u2(arquivo);
+        classe->fields->descriptor_index = le_u2(arquivo);
+        classe->fields->attributes_count = le_u2(arquivo);
+        classe->fields->attributes = (attribute_info *) malloc(classe->fields->attributes_count * sizeof(attribute_info));
+        for(int j = 0; j < classe->fields->attributes_count; j++) {
             // fuck.
         }
     }
