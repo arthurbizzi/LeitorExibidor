@@ -7,8 +7,13 @@
 *    Compilar com o comando:
 *    gcc -std=c99 main.c -o leitorexibidor.exe
 *
-*    Chamar com o comando:
+*    Chamar com um dos comandos:
 *    leitorexibidor.exe
+*       Tanto o arquivo da classe quanto o arquivo do relatorio serao pedidos ao usuario
+*    leitorexibidor.exe <arquivo da classe>
+*       Nao sera gerado o arquivo do relatorio (somente impressao na tela)
+*    leitorexibidor.exe <arquivo da classe> <arquivo do relatorio>
+*       Esta chamada gerará relatório em arquivo e na tela.
 */
 
 /**
@@ -22,7 +27,8 @@
 int main(int argc, char **argv) {
     FILE *arq_classe;
     ClassFile *classe = (ClassFile *) malloc(sizeof(ClassFile));
-    char nome_arquivo[21];
+    char nome_arquivo[21], nome_relatorio[21];
+    char opcao;
     int header;
 
     printf("LEITOR E EXIBIDOR DE ARQUIVOS EM FORMATO .CLASS\n");
@@ -30,19 +36,39 @@ int main(int argc, char **argv) {
         case 1:
             printf("Digite o nome do arquivo a ser lido, com extensao:\n");
             scanf("%s", nome_arquivo);
+            printf("Deseja gerar relatorio em um arquivo texto? (s/n)\n");
+            scanf("%c", &opcao);
+            if(opcao == 's' || opcao == 'S') { /* Upper ou lower case */
+                printf("Digite o nome do arquivo a ser gerado, com extensao:\n");
+                scanf("%s", nome_relatorio);
+                opcao = 's'; /* Garante lower case, para simplificar comparacao mais a frente */
+            }
             break;
         case 2:
             strcpy(nome_arquivo, argv[1]);
+            opcao = 'n';
+            break;
+        case 3:
+            strcpy(nome_arquivo, argv[1]);
+            strcpy(nome_relatorio, argv[2]);
+            opcao = 's';
             break;
         default:
-            printf("CHAMADA COM NUMERO INCOMPATIVEL DE ARGUMENTOS.\n");
             printf("Digite o nome do arquivo a ser lido, com extensao:\n");
             scanf("%s", nome_arquivo);
+            printf("Deseja gerar relatorio em um arquivo texto? (s/n)\n");
+            scanf("%c", &opcao);
+            if(opcao == 's' || opcao == 'S') { /* Upper ou lower case */
+                printf("Digite o nome do arquivo a ser gerado, com extensao:\n");
+                scanf("%s", nome_relatorio);
+                opcao = 's'; /* Garante lower case, para simplificar comparacao mais a frente */
+            }
     }
     if(!(arq_classe = fopen(nome_arquivo, "rb"))) {
         printf("ERRO: arquivo \"%s\" nao existe.\n", nome_arquivo);
         return ERRO_ARQUIVO;
     }
+    /* Carregamento do Magic Number e da versao, juntamente com suas verificacoes */
     header = carrega_header(arq_classe, classe);
     if(header == ERRO_MAGIC) {
         printf("ERRO: magic number invalido.\n");
@@ -51,6 +77,12 @@ int main(int argc, char **argv) {
         printf("ERRO: versao invalida.\n");
         return ERRO_VERSION;
     }
+    /* Carregamento dos demais itens */
+    carrega_constantpool(arq_classe, classe);
+    carrega_flagseclasses(arq_classe, classe);
+    carrega_fields(arq_classe, classe);
+    carrega_methods(arq_classe, classe);
+    carrega_attributes(arq_classe, classe);
 
     return SUCESSO;
 }
@@ -156,17 +188,33 @@ void carrega_flagseclasses(FILE *arquivo, ClassFile *classe) {
 }
 
 void carrega_interfaces(FILE *arquivo, ClassFile *classe) {
+    classe->interfaces_count = le_u2(arquivo);
+    classe->interfaces = (u2 *) malloc(classes->interfaces_count * sizeof(u2));
 
+    for(int i = 0; i < classes->interfaces_count; i++)
+        classe->interfaces[i] = le_u2(arquivo);
 }
 
 void carrega_fields(FILE *arquivo, ClassFile *classe) {
+    classe->fields_count = le_u2(arquivo);
+    classe->fields = (u2) malloc(classes->fields_count * sizeof(u2));
 
+    for(int i = 0; i < classes->fields_count; i++) {
+        classe->fields.access_flags = le_u2(arquivo);
+        classe->fields.name_index = le_u2(arquivo);
+        classe->fields.descriptor_index = le_u2(arquivo);
+        classe->fields.attributes_count = le_u2(arquivo);
+        classe->fields.attributes = (attribute_info *) malloc(classe->fields.attributes_count * sizeof(attribute_info));
+        for(int j = 0; j < classe->fields.attributes_count; j++) {
+            // fuck.
+        }
+    }
 }
 
 void carrega_methods(FILE *arquivo, ClassFile *classe) {
 
 }
 
-void carrega_atributos(FILE *arquivo, ClassFile *classe) {
+void carrega_attributes(FILE *arquivo, ClassFile *classe) {
 
 }

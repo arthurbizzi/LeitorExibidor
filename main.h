@@ -249,6 +249,6 @@ void carrega_flagseclasses(FILE *arquivo, ClassFile *classe);
 void carrega_interfaces(FILE *arquivo, ClassFile *classe);
 void carrega_fields(FILE *arquivo, ClassFile *classe);
 void carrega_methods(FILE *arquivo, ClassFile *classe);
-void carrega_atributos(FILE *arquivo, ClassFile *classe);
+void carrega_attributes(FILE *arquivo, ClassFile *classe);
 
 #endif
