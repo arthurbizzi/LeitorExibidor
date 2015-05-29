@@ -66,71 +66,60 @@ int carrega_header(FILE *arquivo, ClassFile *classe) {
     classe->constant_pool_count = le_u2(arquivo);
     classe->constant_pool = (cp_info *)malloc(sizeof(cp_info)*(classe->constant_pool_count-1));
     for (int i=0;i<(classe->constant_pool_count-1);i++){
-        classe->constant_pool[i]->tag = le_u1(arquivo);
-        switch (classe->constant_pool[i]->tag){
+        classe->constant_pool[i].tag = le_u1(arquivo);
+        switch (classe->constant_pool[i].tag){
             case CONSTANT_Class:
-                classe->constant_pool[i]->info = (CONSTANT_Class_info *)malloc(sizeof(CONSTANT_Class_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->name_index = le_u2(arquivo);
+                classe->constant_pool[i].info.Class.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Class.name_index = le_u2(arquivo);
             break;
             case CONSTANT_Fieldref:
-                classe->constant_pool[i]->info = (CONSTANT_Fieldref_info *)malloc(sizeof(CONSTANT_Fieldref_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->class_index = le_u2(arquivo);
-                classe->constant_pool[i]->info->name_and_type_index = le_u2(arquivo);
+                classe->constant_pool[i].info.Fieldref.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Fieldref.class_index = le_u2(arquivo);
+                classe->constant_pool[i].info.Fieldref.name_and_type_index = le_u2(arquivo);
             break;
             case CONSTANT_Methodref:
-                classe->constant_pool[i]->info = (CONSTANT_Methodref_info *)malloc(sizeof(CONSTANT_Methodref_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->class_index = le_u2(arquivo);
-                classe->constant_pool[i]->info->name_and_type_index = le_u2(arquivo);
+                classe->constant_pool[i].info.Methodref.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Methodref.class_index = le_u2(arquivo);
+                classe->constant_pool[i].info.Methodref.name_and_type_index = le_u2(arquivo);
             break;
             case CONSTANT_InterfaceMethodref:
-                classe->constant_pool[i]->info = (CONSTANT_InterfaceMethodref_info *)malloc(sizeof(CONSTANT_InterfaceMethodref_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->class_index = le_u2(arquivo);
-                classe->constant_pool[i]->info->name_and_type_index = le_u2(arquivo);
+                classe->constant_pool[i].info.InterfaceMethodref.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.InterfaceMethodref.class_index = le_u2(arquivo);
+                classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index = le_u2(arquivo);
             break;
             case CONSTANT_String:
-                classe->constant_pool[i]->info = (CONSTANT_String_info *)malloc(sizeof(CONSTANT_String_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->string_index = le_u2(arquivo);
+                classe->constant_pool[i].info.String.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.String.string_index = le_u2(arquivo);
             break;
             case CONSTANT_Integer:
-                classe->constant_pool[i]->info = (CONSTANT_Integer_info *)malloc(sizeof(CONSTANT_Integer_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->bytes = le_u4(arquivo);
+                classe->constant_pool[i].info.Integer.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Integer.bytes = le_u4(arquivo);
             break;
             case CONSTANT_Float:
-                classe->constant_pool[i]->info = (CONSTANT_Float_info *)malloc(sizeof(CONSTANT_Float_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->bytes = le_u4(arquivo);
+                classe->constant_pool[i].info.Float.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Float.bytes = le_u4(arquivo);
             break;
             case CONSTANT_Long:
-                classe->constant_pool[i]->info = (CONSTANT_Long_info *)malloc(sizeof(CONSTANT_Long_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->high_bytes = le_u4(arquivo);
-                classe->constant_pool[i]->info->low_bytes = le_u4(arquivo);
+                classe->constant_pool[i].info.Long.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Long.high_bytes = le_u4(arquivo);
+                classe->constant_pool[i].info.Long.low_bytes = le_u4(arquivo);
             break;
             case CONSTANT_Double:
-                classe->constant_pool[i]->info = (CONSTANT_Double_info *)malloc(sizeof(CONSTANT_Double_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->high_bytes = le_u4(arquivo);
-                classe->constant_pool[i]->info->low_bytes = le_u4(arquivo);
+                classe->constant_pool[i].info.Double.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Double.high_bytes = le_u4(arquivo);
+                classe->constant_pool[i].info.Double.low_bytes = le_u4(arquivo);
             break;
             case CONSTANT_NameAndType:
-                classe->constant_pool[i]->info = (CONSTANT_NameAndType_info *)malloc(sizeof(CONSTANT_NameAndType_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->name_index = le_u2(arquivo);
-                classe->constant_pool[i]->info->descriptor_index = le_u2(arquivo);
+                classe->constant_pool[i].info.NameAndType.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.NameAndType.name_index = le_u2(arquivo);
+                classe->constant_pool[i].info.NameAndType.descriptor_index = le_u2(arquivo);
             break;
             case CONSTANT_Utf8:
-                classe->constant_pool[i]->info = (CONSTANT_Utf8_info *)malloc(sizeof(CONSTANT_Utf8_info));
-                classe->constant_pool[i]->info->tag = le_u1(arquivo);
-                classe->constant_pool[i]->info->lenght = le_u2(arquivo);
-                classe->constant_pool[i]->info->bytes = (u1 *)malloc(sizeof(u1)*classe->constant_pool[i]->info->lenght);
-                for (int j=0;j<classe->constant_pool[i]->info->lenght;j++)
-                    classe->constant_pool[i]->info->bytes[j] = le_u1(arquivo);
+                classe->constant_pool[i].info.Utf8.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Utf8.length = le_u2(arquivo);
+                classe->constant_pool[i].info.Utf8.bytes = (u1 *)malloc(sizeof(u1)*classe->constant_pool[i].info.Utf8.length);
+                for (int j=0;j<classe->constant_pool[i].info.Utf8.length;j++)
+                    classe->constant_pool[i].info.Utf8.bytes[j] = le_u1(arquivo);
             break;
         }
     }
