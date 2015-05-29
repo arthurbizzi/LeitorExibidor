@@ -5,7 +5,7 @@
 *            Kelvin William Moreira Lima (11/0159560)
 *
 *    Compilar com o comando:
-*    gcc main.c -o leitorexibidor.exe
+*    gcc -std=c99 main.c -o leitorexibidor.exe
 *
 *    Chamar com o comando:
 *    leitorexibidor.exe
@@ -55,78 +55,6 @@ int main(int argc, char **argv) {
     return SUCESSO;
 }
 
-int carrega_header(FILE *arquivo, ClassFile *classe) {
-    classe->magic = le_u4(arquivo);
-    if(classe->magic != MAGIC_NUMBER)
-        return ERRO_MAGIC;
-    classe->minor_version = le_u2(arquivo);
-    classe->major_version = le_u2(arquivo);
-    if(classe->major_version != VERSION)
-        return ERRO_VERSION;
-    classe->constant_pool_count = le_u2(arquivo);
-    classe->constant_pool = (cp_info *)malloc(sizeof(cp_info)*(classe->constant_pool_count-1));
-    for (int i=0;i<(classe->constant_pool_count-1);i++){
-        classe->constant_pool[i].tag = le_u1(arquivo);
-        switch (classe->constant_pool[i].tag){
-            case CONSTANT_Class:
-                classe->constant_pool[i].info.Class.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.Class.name_index = le_u2(arquivo);
-            break;
-            case CONSTANT_Fieldref:
-                classe->constant_pool[i].info.Fieldref.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.Fieldref.class_index = le_u2(arquivo);
-                classe->constant_pool[i].info.Fieldref.name_and_type_index = le_u2(arquivo);
-            break;
-            case CONSTANT_Methodref:
-                classe->constant_pool[i].info.Methodref.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.Methodref.class_index = le_u2(arquivo);
-                classe->constant_pool[i].info.Methodref.name_and_type_index = le_u2(arquivo);
-            break;
-            case CONSTANT_InterfaceMethodref:
-                classe->constant_pool[i].info.InterfaceMethodref.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.InterfaceMethodref.class_index = le_u2(arquivo);
-                classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index = le_u2(arquivo);
-            break;
-            case CONSTANT_String:
-                classe->constant_pool[i].info.String.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.String.string_index = le_u2(arquivo);
-            break;
-            case CONSTANT_Integer:
-                classe->constant_pool[i].info.Integer.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.Integer.bytes = le_u4(arquivo);
-            break;
-            case CONSTANT_Float:
-                classe->constant_pool[i].info.Float.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.Float.bytes = le_u4(arquivo);
-            break;
-            case CONSTANT_Long:
-                classe->constant_pool[i].info.Long.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.Long.high_bytes = le_u4(arquivo);
-                classe->constant_pool[i].info.Long.low_bytes = le_u4(arquivo);
-            break;
-            case CONSTANT_Double:
-                classe->constant_pool[i].info.Double.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.Double.high_bytes = le_u4(arquivo);
-                classe->constant_pool[i].info.Double.low_bytes = le_u4(arquivo);
-            break;
-            case CONSTANT_NameAndType:
-                classe->constant_pool[i].info.NameAndType.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.NameAndType.name_index = le_u2(arquivo);
-                classe->constant_pool[i].info.NameAndType.descriptor_index = le_u2(arquivo);
-            break;
-            case CONSTANT_Utf8:
-                classe->constant_pool[i].info.Utf8.tag = classe->constant_pool[i].tag;
-                classe->constant_pool[i].info.Utf8.length = le_u2(arquivo);
-                classe->constant_pool[i].info.Utf8.bytes = (u1 *)malloc(sizeof(u1)*classe->constant_pool[i].info.Utf8.length);
-                for (int j=0;j<classe->constant_pool[i].info.Utf8.length;j++)
-                    classe->constant_pool[i].info.Utf8.bytes[j] = le_u1(arquivo);
-            break;
-        }
-    }
-
-    return SUCESSO;
-}
-
 u1 le_u1(FILE *arquivo) {
     u1 valor;
     valor = (getc(arquivo));
@@ -143,4 +71,102 @@ u4 le_u4(FILE *arquivo) {
     u4 valor;
     valor = (getc(arquivo)<<24|getc(arquivo)<<16|getc(arquivo)<<8|getc(arquivo));
     return valor;
+}
+
+int carrega_header(FILE *arquivo, ClassFile *classe) {
+    classe->magic = le_u4(arquivo);
+    if(classe->magic != MAGIC_NUMBER)
+        return ERRO_MAGIC;
+    classe->minor_version = le_u2(arquivo);
+    classe->major_version = le_u2(arquivo);
+    if(classe->major_version != VERSION)
+        return ERRO_VERSION;
+
+    return SUCESSO;
+}
+
+void carrega_constantpool(FILE *arquivo, ClassFile *classe) {
+    classe->constant_pool_count = le_u2(arquivo);
+    classe->constant_pool = (cp_info *) malloc(sizeof(cp_info)*(classe->constant_pool_count-1));
+    for (int i=0;i<(classe->constant_pool_count-1);i++){
+        classe->constant_pool[i].tag = le_u1(arquivo);
+        switch (classe->constant_pool[i].tag){
+            case CONSTANT_Class:
+                classe->constant_pool[i].info.Class.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Class.name_index = le_u2(arquivo);
+                break;
+            case CONSTANT_Fieldref:
+                classe->constant_pool[i].info.Fieldref.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Fieldref.class_index = le_u2(arquivo);
+                classe->constant_pool[i].info.Fieldref.name_and_type_index = le_u2(arquivo);
+                break;
+            case CONSTANT_Methodref:
+                classe->constant_pool[i].info.Methodref.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Methodref.class_index = le_u2(arquivo);
+                classe->constant_pool[i].info.Methodref.name_and_type_index = le_u2(arquivo);
+                break;
+            case CONSTANT_InterfaceMethodref:
+                classe->constant_pool[i].info.InterfaceMethodref.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.InterfaceMethodref.class_index = le_u2(arquivo);
+                classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index = le_u2(arquivo);
+                break;
+            case CONSTANT_String:
+                classe->constant_pool[i].info.String.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.String.string_index = le_u2(arquivo);
+                break;
+            case CONSTANT_Integer:
+                classe->constant_pool[i].info.Integer.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Integer.bytes = le_u4(arquivo);
+                break;
+            case CONSTANT_Float:
+                classe->constant_pool[i].info.Float.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Float.bytes = le_u4(arquivo);
+                break;
+            case CONSTANT_Long:
+                classe->constant_pool[i].info.Long.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Long.high_bytes = le_u4(arquivo);
+                classe->constant_pool[i].info.Long.low_bytes = le_u4(arquivo);
+                break;
+            case CONSTANT_Double:
+                classe->constant_pool[i].info.Double.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Double.high_bytes = le_u4(arquivo);
+                classe->constant_pool[i].info.Double.low_bytes = le_u4(arquivo);
+                break;
+            case CONSTANT_NameAndType:
+                classe->constant_pool[i].info.NameAndType.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.NameAndType.name_index = le_u2(arquivo);
+                classe->constant_pool[i].info.NameAndType.descriptor_index = le_u2(arquivo);
+                break;
+            case CONSTANT_Utf8:
+                classe->constant_pool[i].info.Utf8.tag = classe->constant_pool[i].tag;
+                classe->constant_pool[i].info.Utf8.length = le_u2(arquivo);
+                classe->constant_pool[i].info.Utf8.bytes = (u1 *) malloc(sizeof(u1)*classe->constant_pool[i].info.Utf8.length);
+                for (int j=0;j<classe->constant_pool[i].info.Utf8.length;j++)
+                    classe->constant_pool[i].info.Utf8.bytes[j] = le_u1(arquivo);
+                break;
+        }
+    }
+
+}
+
+void carrega_flagseclasses(FILE *arquivo, ClassFile *classe) {
+    classe->access_flags = le_u2(arquivo);
+    classe->this_class = le_u2(arquivo);
+    classe->super_class = le_u2(arquivo);
+}
+
+void carrega_interfaces(FILE *arquivo, ClassFile *classe) {
+
+}
+
+void carrega_fields(FILE *arquivo, ClassFile *classe) {
+
+}
+
+void carrega_methods(FILE *arquivo, ClassFile *classe) {
+
+}
+
+void carrega_atributos(FILE *arquivo, ClassFile *classe) {
+
 }

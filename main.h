@@ -240,9 +240,15 @@ typedef struct sourcefileattribute {
 } SourceFile_attribute;
 
 /* Protótipos */
-int carrega_header(FILE *arquivo, ClassFile *classe);
 u1 le_u1(FILE *arquivo);
 u2 le_u2(FILE *arquivo);
 u4 le_u4(FILE *arquivo);
+int carrega_header(FILE *arquivo, ClassFile *classe);
+void carrega_constantpool(FILE *arquivo, ClassFile *classe);
+void carrega_flagseclasses(FILE *arquivo, ClassFile *classe);
+void carrega_interfaces(FILE *arquivo, ClassFile *classe);
+void carrega_fields(FILE *arquivo, ClassFile *classe);
+void carrega_methods(FILE *arquivo, ClassFile *classe);
+void carrega_atributos(FILE *arquivo, ClassFile *classe);
 
 #endif
