@@ -110,6 +110,81 @@ typedef struct constantdoubleinfo {
     u4              low_bytes;
 } CONSTANT_Double_info;
 
+typedef struct codeattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              max_stack;
+    u2              max_locals;
+    u4              code_length;
+    u1              *code; // tamanho: code_length
+    u2              exception_table_length;
+    struct {
+        u2          start_pc;
+        u2          end_pc;
+        u2          handler_pc;
+        u2          catch_type;
+                    } *exception_table; // tamanho: exception_table_length
+    u2              attributes_count;
+    //attribute_info  *attributes; // tamanho: attributes_count
+} ATTR_Code;
+
+typedef struct constantvalueattribute {
+    u2              constantvalue_index;
+} ATTR_Constantvalue;
+
+typedef struct deprecatedattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+} ATTR_Deprecated;
+
+typedef struct exceptionsattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              number_of_exceptions;
+    u2              *exception_index_table; // tamanho: number_of_exceptions
+} ATTR_Exception;
+
+typedef struct innerclasses {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              number_of_classes;
+    struct {
+        u2          inner_class_info_index;
+        u2          outer_class_info_index;
+        u2          inner_name_index;
+        u2          inner_class_access_flags;
+    } *classes; // tamanho: number_of_classes
+} ATTR_Innerclasses;
+
+typedef struct linenumbertableattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              line_number_table_length;
+    struct {
+        u2          start_pc;
+        u2          line_number;
+    } *line_number_table; // tamanho: line_number_table_length
+} ATTR_Linenumbertable;
+
+typedef struct localvariabletableattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              local_variable_table_length;
+    struct {
+        u2          start_pc;
+        u2          length;
+        u2          name_index;
+        u2          descriptor_index;
+        u2          index;
+    } *local_variable_table; // tamanho: local_variable_table_length
+} ATTR_Localvariabletable;
+
+typedef struct sourcefileattribute {
+    u2              attribute_name_index;
+    u4              attribute_length;
+    u2              sourcefile_index;
+} ATTR_Sourcefile;
+
 typedef struct cpinfo {
     u1              tag;
     union {
@@ -130,7 +205,16 @@ typedef struct cpinfo {
 typedef struct attributeinfo {
     u2              attribute_name_index;
     u4              attribute_length;
-    u1              *info; // tamanho: attribute_length
+    union {
+        ATTR_Constantvalue      ConstantValue;
+        ATTR_Code               CodeAttribute;
+        ATTR_Exception          Exception;
+        ATTR_Innerclasses       InnerClasses;
+        ATTR_Sourcefile         Sourcefile;
+        ATTR_Deprecated         Deprecated;
+        ATTR_Linenumbertable    LineNumberTable;
+        ATTR_Localvariabletable LocalVariableTable;
+    } info;
 } attribute_info;
 
 typedef struct methodinfo {
@@ -167,77 +251,6 @@ typedef struct classfile {
     u2              attributes_count;
     attribute_info  *attributes; // tamanho: attributes_count
 } ClassFile;
-
-typedef struct codeattribute {
-    u2              attribute_name_index;
-    u4              attribute_length;
-    u2              max_stack;
-    u2              max_locals;
-    u4              code_length;
-    u1              *code; // tamanho: code_length
-    u2              exception_table_length;
-    struct {
-        u2          start_pc;
-        u2          end_pc;
-        u2          handler_pc;
-        u2          catch_type;
-                    } *exception_table; // tamanho: exception_table_length
-    u2              attributes_count;
-    attribute_info  *attributes; // tamanho: attributes_count
-} code_attribute;
-
-typedef struct deprecatedattribute {
-    u2              attribute_name_index;
-    u4              attribute_length;
-} Deprecated_attribute;
-
-typedef struct exceptionsattribute {
-    u2              attribute_name_index;
-    u4              attribute_length;
-    u2              number_of_exceptions;
-    u2              *exception_index_table; // tamanho: number_of_exceptions
-} Exceptions_attributes;
-
-typedef struct innerclasses {
-    u2              attribute_name_index;
-    u4              attribute_length;
-    u2              number_of_classes;
-    struct {
-        u2          inner_class_info_index;
-        u2          outer_class_info_index;
-        u2          inner_name_index;
-        u2          inner_class_access_flags;
-    } *classes; // tamanho: number_of_classes
-} Inner_classes;
-
-typedef struct linenumbertableattribute {
-    u2              attribute_name_index;
-    u4              attribute_length;
-    u2              line_number_table_length;
-    struct {
-        u2          start_pc;
-        u2          line_number;
-    } *line_number_table; // tamanho: line_number_table_length
-} LineNumberTable_attribute;
-
-typedef struct localvariabletableattribute {
-    u2              attribute_name_index;
-    u4              attribute_length;
-    u2              local_variable_table_length;
-    struct {
-        u2          start_pc;
-        u2          length;
-        u2          name_index;
-        u2          descriptor_index;
-        u2          index;
-    } *local_variable_table; // tamanho: local_variable_table_length
-} LocalVariableTable_attribute;
-
-typedef struct sourcefileattribute {
-    u2              attribute_name_index;
-    u4              attribute_length;
-    u2              sourcefile_index;
-} SourceFile_attribute;
 
 /* Protótipos */
 u1 le_u1(FILE *arquivo);

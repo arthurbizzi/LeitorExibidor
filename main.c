@@ -118,11 +118,11 @@ int carrega_header(FILE *arquivo, ClassFile *classe) {
 }
 
 void carrega_constantpool(FILE *arquivo, ClassFile *classe) {
-    classe->constant_pool_count = le_u2(arquivo);
+    classe->constant_pool_count = le_u2(arquivo); /* Carrega o tamanho do Constant Pool */
     classe->constant_pool = (cp_info *) malloc(sizeof(cp_info)*(classe->constant_pool_count-1));
-    for (int i=0;i<(classe->constant_pool_count-1);i++){
-        classe->constant_pool[i].tag = le_u1(arquivo);
-        switch (classe->constant_pool[i].tag){
+    for (int i=0;i<(classe->constant_pool_count-1);i++){ /* Armazena os valores de cada elemento do constant pool */
+        classe->constant_pool[i].tag = le_u1(arquivo); /* Cada elemento possui um tag */
+        switch (classe->constant_pool[i].tag){ /* Existem respostas diferentes para cada tag */
             case CONSTANT_Class:
                 classe->constant_pool[i].info.Class.tag = classe->constant_pool[i].tag;
                 classe->constant_pool[i].info.Class.name_index = le_u2(arquivo);
@@ -196,6 +196,8 @@ void carrega_interfaces(FILE *arquivo, ClassFile *classe) {
 }
 
 void carrega_fields(FILE *arquivo, ClassFile *classe) {
+    char tipoAtributo[20]; /* Variavel para sintetizar o tipo do atributo */
+
     classe->fields_count = le_u2(arquivo);
     classe->fields = (field_info *) malloc(classe->fields_count * sizeof(field_info));
 
@@ -206,7 +208,36 @@ void carrega_fields(FILE *arquivo, ClassFile *classe) {
         classe->fields->attributes_count = le_u2(arquivo);
         classe->fields->attributes = (attribute_info *) malloc(classe->fields->attributes_count * sizeof(attribute_info));
         for(int j = 0; j < classe->fields->attributes_count; j++) {
-            // fuck.
+            classe->fields->attributes->attribute_name_index = le_u2(arquivo);
+            classe->fields->attributes->attribute_length = le_u4(arquivo);
+            strcpy(tipoAtributo, (char *) classe->constant_pool[classe->fields->name_index - 1].info.Utf8.bytes);
+            if(!strcmp(tipoAtributo, "ConstantValue")) {
+                classe->fields->attributes->info.ConstantValue.constantvalue_index = le_u2(arquivo);
+            }
+            else if(!strcmp(tipoAtributo, "Code")) {
+
+            }
+            else if(!strcmp(tipoAtributo, "Exceptions")) {
+
+            }
+            else if(!strcmp(tipoAtributo, "InnerClasses")) {
+
+            }
+            else if(!strcmp(tipoAtributo, "SourceFile")) {
+
+            }
+            else if(!strcmp(tipoAtributo, "Deprecated")) {
+
+            }
+            else if(!strcmp(tipoAtributo, "LineNumberTable")) {
+
+            }
+            else if(!strcmp(tipoAtributo, "LocalVariableTable")) {
+
+            }
+            else {
+
+            }
         }
     }
 }
