@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1432923265 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.c
+1432998330 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.c
 	"main.h"
 
-1432922550 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.h
+1432998208 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

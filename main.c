@@ -196,18 +196,22 @@ void carrega_interfaces(FILE *arquivo, ClassFile *classe) {
 }
 
 void carrega_fields(FILE *arquivo, ClassFile *classe) {
-    char tipoAtributo[20]; /* Variavel para sintetizar o tipo do atributo */
+    char tipoAtributo[20];
+    u2 fields_count;
 
     classe->fields_count = le_u2(arquivo);
-    classe->fields = (field_info *) malloc(classe->fields_count * sizeof(field_info));
+    fields_count = classe->fields_count;
+    classe->fields = (field_info *) malloc(fields_count * sizeof(field_info));
 
-    for(int i = 0; i < classe->fields_count; i++) {
+    for(int i = 0; i < fields_count; i++) {
+        u2 attributes_count;
         classe->fields->access_flags = le_u2(arquivo);
         classe->fields->name_index = le_u2(arquivo);
         classe->fields->descriptor_index = le_u2(arquivo);
         classe->fields->attributes_count = le_u2(arquivo);
-        classe->fields->attributes = (attribute_info *) malloc(classe->fields->attributes_count * sizeof(attribute_info));
-        for(int j = 0; j < classe->fields->attributes_count; j++) {
+        attributes_count = classe->fields->attributes_count;
+        classe->fields->attributes = (attribute_info *) malloc(attributes_count * sizeof(attribute_info));
+        for(int j = 0; j < attributes_count; j++) {
             classe->fields->attributes->attribute_name_index = le_u2(arquivo);
             classe->fields->attributes->attribute_length = le_u4(arquivo);
             strcpy(tipoAtributo, (char *) classe->constant_pool[classe->fields->name_index - 1].info.Utf8.bytes);
@@ -215,28 +219,53 @@ void carrega_fields(FILE *arquivo, ClassFile *classe) {
                 classe->fields->attributes->info.ConstantValue.constantvalue_index = le_u2(arquivo);
             }
             else if(!strcmp(tipoAtributo, "Code")) {
-
+                u4 code_length;
+                classe->fields->attributes->info.CodeAttribute.max_stack = le_u2(arquivo);
+                classe->fields->attributes->info.CodeAttribute.max_locals = le_u2(arquivo);
+                classe->fields->attributes->info.CodeAttribute.code_length = le_u4(arquivo);
+                code_length = classe->fields->attributes->info.CodeAttribute.code_length;
+                classe->fields->attributes->info.CodeAttribute.code = (u1 *) malloc(code_length * sizeof(u4));
+                for(int k = 0; k < code_length; k++) {
+                    classe->fields->attributes->info.CodeAttribute.code[k] = le_u1(arquivo);
+                }
+                u2 exception_table_length;
+                classe->fields->attributes->info.CodeAttribute.exception_table_length = le_u2(arquivo);
+                exception_table_length = classe->fields->attributes->info.CodeAttribute.exception_table_length;
+                classe->fields->attributes->info.CodeAttribute.exception_table = (struct exception_table *) malloc(exception_table_length * sizeof(struct exception_table));
+                for(int k = 0; k < exception_table_length; k++) {
+                    classe->fields->attributes->info.CodeAttribute.exception_table[i].start_pc = le_u2(arquivo);
+                    classe->fields->attributes->info.CodeAttribute.exception_table[i].end_pc = le_u2(arquivo);
+                    classe->fields->attributes->info.CodeAttribute.exception_table[i].handler_pc = le_u2(arquivo);
+                    classe->fields->attributes->info.CodeAttribute.exception_table[i].catch_type = le_u2(arquivo);
+                }
+                u2 attributes_count;
+                classe->fields->attributes->info.CodeAttribute.attributes_count = le_u2(arquivo);
+                attributes_count = classe->fields->attributes->info.CodeAttribute.attributes_count;
+                classe->fields->attributes->info.CodeAttribute.attributes = (attribute_info *) malloc(attributes_count * sizeof(attribute_info));
+                for(int k = 0; k < attributes_count; k++) {
+                    // Fuck
+                }
             }
             else if(!strcmp(tipoAtributo, "Exceptions")) {
-
+                // Fuck
             }
             else if(!strcmp(tipoAtributo, "InnerClasses")) {
-
+                // Fuck
             }
             else if(!strcmp(tipoAtributo, "SourceFile")) {
-
+                // Fuck
             }
             else if(!strcmp(tipoAtributo, "Deprecated")) {
-
+                // Fuck
             }
             else if(!strcmp(tipoAtributo, "LineNumberTable")) {
-
+                // Fuck
             }
             else if(!strcmp(tipoAtributo, "LocalVariableTable")) {
-
+                // Fuck
             }
             else {
-
+                // Fuck
             }
         }
     }

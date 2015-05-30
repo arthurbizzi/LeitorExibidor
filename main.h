@@ -118,7 +118,7 @@ typedef struct codeattribute {
     u4              code_length;
     u1              *code; // tamanho: code_length
     u2              exception_table_length;
-    struct {
+    struct exception_table {
         u2          start_pc;
         u2          end_pc;
         u2          handler_pc;
