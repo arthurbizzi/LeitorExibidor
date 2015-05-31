@@ -36,6 +36,7 @@ int main(int argc, char **argv) {
         case 1:
             printf("Digite o nome do arquivo a ser lido, com extensao:\n");
             scanf("%s", nome_arquivo);
+            getchar();
             printf("Deseja gerar relatorio em um arquivo texto? (s/n)\n");
             scanf("%c", &opcao);
             if(opcao == 's' || opcao == 'S') { /* Upper ou lower case */
@@ -80,9 +81,11 @@ int main(int argc, char **argv) {
     /* Carregamento dos demais itens */
     carrega_constantpool(arq_classe, classe);
     carrega_flagseclasses(arq_classe, classe);
+    carrega_interfaces(arq_classe, classe);
     carrega_fields(arq_classe, classe);
     carrega_methods(arq_classe, classe);
     carrega_attributes(arq_classe, classe);
+    imprime_general_information(classe);
 
     return SUCESSO;
 }
@@ -337,4 +340,20 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
             atributo->info.Default.data[i] = le_u1(arquivo);
         }
     }
+}
+
+void imprime_general_information(ClassFile *classe){
+    printf("\n");
+    printf(">>>GENERAL INFORMATION<<<\n");
+    printf("Minor version:      \t%d\n", classe->minor_version);
+    printf("Major version:      \t%d\n", classe->major_version);
+    printf("Constant pool count:\t%d\n", classe->constant_pool_count);
+    printf("Access flags:       \t0x%x\n", classe->access_flags);
+    printf("This class:         \tcp info #%d\n", classe->this_class);
+    printf("Super class:        \tcp info #%d\n", classe->super_class);
+    printf("Interfaces count:   \t%d\n", classe->interfaces_count);
+    printf("Fields count:       \t%d\n", classe->fields_count);
+    printf("Methods count:      \t%d\n", classe->methods_count);
+    printf("Attributes count:   \t%d\n", classe->attributes_count);
+    printf("\n");
 }
