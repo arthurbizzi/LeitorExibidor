@@ -448,12 +448,12 @@ void imprime_fields(ClassFile *classe) {
     printf(">>>FIELDS<<<\n");
     for (int i = 0; i < classe->fields_count; i++) {
         printf("\n");
-        printf("Access Flags:\t%d\n", classe->fields->access_flags);
-        printf("Name Index:\t%d\n", classe->fields->name_index);
-        printf("Descriptor Index:\t%d\n", classe->fields->descriptor_index);
-        printf("Attributes Count: \t%d\n", classe->fields->attributes_count);
-        for (int j = 0; j < classe->fields->attributes_count; j++)
-            imprime_attribute(&classe->fields->attributes[i], classe);
+        printf("Access Flags:\t%d\n", classe->fields[i].access_flags);
+        printf("Name Index:\t%d\n", classe->fields[i].name_index);
+        printf("Descriptor Index:\t%d\n", classe->fields[i].descriptor_index);
+        printf("Attributes Count: \t%d\n", classe->fields[i].attributes_count);
+        for (int j = 0; j < classe->fields[i].attributes_count; j++)
+            imprime_attribute(&classe->fields->attributes[j], classe);
     }
 }
 
@@ -479,7 +479,7 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
                 printf("%x", attributeInfo->info.CodeAttribute.code[i]);
             }
-            printf("Exception Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
+            printf("\nException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
             for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++) {
                 printf("Start PC: \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].start_pc);
                 printf("End PC: \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].end_pc);
