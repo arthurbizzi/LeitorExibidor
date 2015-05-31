@@ -1,0 +1,5 @@
+*.exe
+bin/Debug/LeitorExibidor.exe
+LeitorExibidor.depend
+obj/Debug/main.o
+obj/Release/main.o

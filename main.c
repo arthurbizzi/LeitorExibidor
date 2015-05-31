@@ -367,7 +367,7 @@ void imprime_general_information(ClassFile *classe){
 }
 
 void imprime_constant_pool(ClassFile *classe){
-    long l;
+    l1 l;
     printf("\n");
     printf(">>>CONSTANT POOL<<<\n");
     for (int i=0;i<(classe->constant_pool_count-1);i++){ /* Armazena os valores de cada elemento do constant pool */
@@ -406,7 +406,7 @@ void imprime_constant_pool(ClassFile *classe){
                 printf("\tFloat:               \t%f\n", classe->constant_pool[i].info.Float.bytes);
                 break;
             case CONSTANT_Long:
-                l = (long)classe->constant_pool[i].info.Long.high_bytes<<32;
+                l = (l1) classe->constant_pool[i].info.Long.high_bytes << 32;
                 l = l|classe->constant_pool[i].info.Long.low_bytes;
                 printf("[%d]CONSTANT_Long_info:\n", (i+1));
                 printf("\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Long.high_bytes);
@@ -416,7 +416,7 @@ void imprime_constant_pool(ClassFile *classe){
                 printf("[%d](large numeric continued)\n", (i+1));
                 break;
             case CONSTANT_Double:
-                l = (long)classe->constant_pool[i].info.Double.high_bytes<<32;
+                l = (l1) classe->constant_pool[i].info.Double.high_bytes << 32;
                 l = l|classe->constant_pool[i].info.Double.low_bytes;
                 printf("[%d]CONSTANT_Double_info:\n", (i+1));
                 printf("\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Double.high_bytes);
@@ -472,9 +472,9 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
             printf("Constant Value Index: \tCP INFO #%d", attributeInfo->info.ConstantValue.constantvalue_index);
         }
         else if (!strcmp(tipoAtributo, "Code")) {
-            printf('"Max Stack:\t%ld\n', attributeInfo->info.CodeAttribute.max_stack);
-            printf('"Max Locals:\t%ld\n', attributeInfo->info.CodeAttribute.max_locals);
-            printf('"Code Length:\t%ld\n', attributeInfo->info.CodeAttribute.code_length);
+            printf("Max Stack:\t%d\n", attributeInfo->info.CodeAttribute.max_stack);
+            printf("Max Locals:\t%d\n", attributeInfo->info.CodeAttribute.max_locals);
+            printf("Code Length:\t%d\n", attributeInfo->info.CodeAttribute.code_length);
             printf("Code:\t ");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
                 printf("%x", attributeInfo->info.CodeAttribute.code[i]);
