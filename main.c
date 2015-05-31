@@ -204,20 +204,38 @@ void carrega_fields(FILE *arquivo, ClassFile *classe) {
 
     for(int i = 0; i < fields_count; i++) {
         u2 attributes_count;
-        classe->fields->access_flags = le_u2(arquivo);
-        classe->fields->name_index = le_u2(arquivo);
-        classe->fields->descriptor_index = le_u2(arquivo);
-        classe->fields->attributes_count = le_u2(arquivo);
-        attributes_count = classe->fields->attributes_count;
-        classe->fields->attributes = (attribute_info *) malloc(attributes_count * sizeof(attribute_info));
+        classe->fields[i].access_flags = le_u2(arquivo);
+        classe->fields[i].name_index = le_u2(arquivo);
+        classe->fields[i].descriptor_index = le_u2(arquivo);
+        classe->fields[i].attributes_count = le_u2(arquivo);
+        attributes_count = classe->fields[i].attributes_count;
+        classe->fields[i].attributes = (attribute_info *) malloc(attributes_count * sizeof(attribute_info));
         for(int j = 0; j < attributes_count; j++) {
-            carrega_attribute(arquivo, classe, &(classe->fields->attributes[j]));
+            carrega_attribute(arquivo, classe, &(classe->fields[i].attributes[j]));
         }
     }
 }
 
 void carrega_methods(FILE *arquivo, ClassFile *classe) {
+    u2 methods_count;
 
+    classe->methods_count  = le_u2(arquivo);
+    methods_count = classe->methods_count;
+    classe->methods = (method_info *) malloc(methods_count * sizeof(method_info));
+
+    for(int i = 0; i < methods_count; i++) {
+        u2 attributes_count;
+        classe->methods[i].access_flags = le_u2(arquivo);
+        classe->methods[i].name_index = le_u2(arquivo);
+        classe->methods[i].descriptor_index = le_u2(arquivo);
+        classe->methods[i].attributes_count = le_u2(arquivo);
+        attributes_count = classe->methods[i].attributes_count;
+        classe->methods[i].attributes = (attribute_info *) malloc(attributes_count * sizeof(attribute_info));
+        for(int j = 0; j < attributes_count; j++) {
+            carrega_attribute(arquivo, classe, &(classe->methods[i].attributes[j]));
+        }
+
+    }
 }
 
 void carrega_attributes(FILE *arquivo, ClassFile *classe) {
