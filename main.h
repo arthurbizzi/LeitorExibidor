@@ -250,6 +250,6 @@ void carrega_interfaces(FILE *arquivo, ClassFile *classe);
 void carrega_fields(FILE *arquivo, ClassFile *classe);
 void carrega_methods(FILE *arquivo, ClassFile *classe);
 void carrega_attributes(FILE *arquivo, ClassFile *classe);
-void carrega_attribute(FILE *arquivo, ClassFile *classe, int op);
+void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atributo);
 
 #endif
