@@ -15,7 +15,7 @@
 #define ERRO_EXECUCAO -2
 #define ERRO_MAGIC -3
 #define ERRO_VERSION -4
-/* Tags Válidos */
+/* Tags Vï¿½lidos */
 #define CONSTANT_Class 7
 #define CONSTANT_Fieldref 9
 #define CONSTANT_Methodref 10
@@ -239,7 +239,7 @@ typedef struct classfile {
     attribute_info  *attributes; // tamanho: attributes_count
 } ClassFile;
 
-/* Protótipos */
+/* Protï¿½tipos */
 u1 le_u1(FILE *arquivo);
 u2 le_u2(FILE *arquivo);
 u4 le_u4(FILE *arquivo);
@@ -253,5 +253,13 @@ void carrega_attributes(FILE *arquivo, ClassFile *classe);
 void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atributo);
 void imprime_general_information(ClassFile *classe);
 void imprime_constant_pool(ClassFile *classe);
+
+void imprime_attributes(ClassFile *classe);
+
+void imprime_methods(ClassFile *classe);
+
+void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe);
+
+void imprime_fields(ClassFile *classe);
 
 #endif
