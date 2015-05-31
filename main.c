@@ -86,6 +86,7 @@ int main(int argc, char **argv) {
     carrega_methods(arq_classe, classe);
     carrega_attributes(arq_classe, classe);
     imprime_general_information(classe);
+    imprime_constant_pool(classe);
 
     return SUCESSO;
 }
@@ -161,11 +162,13 @@ void carrega_constantpool(FILE *arquivo, ClassFile *classe) {
                 classe->constant_pool[i].info.Long.tag = classe->constant_pool[i].tag;
                 classe->constant_pool[i].info.Long.high_bytes = le_u4(arquivo);
                 classe->constant_pool[i].info.Long.low_bytes = le_u4(arquivo);
+                i++;
                 break;
             case CONSTANT_Double:
                 classe->constant_pool[i].info.Double.tag = classe->constant_pool[i].tag;
                 classe->constant_pool[i].info.Double.high_bytes = le_u4(arquivo);
                 classe->constant_pool[i].info.Double.low_bytes = le_u4(arquivo);
+                i++;
                 break;
             case CONSTANT_NameAndType:
                 classe->constant_pool[i].info.NameAndType.tag = classe->constant_pool[i].tag;
@@ -355,5 +358,83 @@ void imprime_general_information(ClassFile *classe){
     printf("Fields count:       \t%d\n", classe->fields_count);
     printf("Methods count:      \t%d\n", classe->methods_count);
     printf("Attributes count:   \t%d\n", classe->attributes_count);
+    printf("\n");
+}
+
+void imprime_constant_pool(ClassFile *classe){
+    long l;
+    printf("\n");
+    printf(">>>CONSTANT POOL<<<\n");
+    for (int i=0;i<(classe->constant_pool_count-1);i++){ /* Armazena os valores de cada elemento do constant pool */
+        switch (classe->constant_pool[i].tag){ /* Existem respostas diferentes para cada tag */
+            case CONSTANT_Class:
+                printf("[%d]CONSTANT_Class_info:\n", (i+1));
+                printf("\tClass name:          \tcp info #%d\n", classe->constant_pool[i].info.Class.name_index);
+                break;
+            case CONSTANT_Fieldref:
+                printf("[%d]CONSTANT_Fieldref_info:\n", (i+1));
+                printf("\tClass name:          \tcp inf #%d\n", classe->constant_pool[i].info.Fieldref.class_index);
+                printf("\tName and type:       \tcp info #%d\n", classe->constant_pool[i].info.Fieldref.name_and_type_index);
+                break;
+            case CONSTANT_Methodref:
+                printf("[%d]CONSTANT_Methodref_info:\n", (i+1));
+                printf("\tClass name:          \tcp info #%d\n", classe->constant_pool[i].info.Methodref.class_index);
+                printf("\tName and type:       \tcp info #%d\n", classe->constant_pool[i].info.Methodref.name_and_type_index);
+                break;
+            case CONSTANT_InterfaceMethodref:
+                printf("[%d]CONSTANT_InterceMethodref_info:\n", (i+1));
+                printf("\tClass name:          \tcp info #%d\n", classe->constant_pool[i].info.InterfaceMethodref.class_index);
+                printf("\tName and type:       \tcp info #%d\n", classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index);
+                break;
+            case CONSTANT_String:
+                printf("[%d]CONSTANT_String_info:\n", (i+1));
+                printf("\tString:              \tcp info #%d\n", classe->constant_pool[i].info.String.string_index);
+                break;
+            case CONSTANT_Integer:
+                printf("[%d]CONSTANT_Integer_info:\n", (i+1));
+                printf("\tBytes:               \t0x%x\n", classe->constant_pool[i].info.Integer.bytes);
+                printf("\tInteger:             \t%d\n", classe->constant_pool[i].info.Integer.bytes);
+                break;
+            case CONSTANT_Float:
+                printf("[%d]CONSTANT_Float_info:\n", (i+1));
+                printf("\tBytes:               \t0x%x\n", classe->constant_pool[i].info.Float.bytes);
+                printf("\tFloat:               \t%f\n", classe->constant_pool[i].info.Float.bytes);
+                break;
+            case CONSTANT_Long:
+                l = (long)classe->constant_pool[i].info.Long.high_bytes<<32;
+                l = l|classe->constant_pool[i].info.Long.low_bytes;
+                printf("[%d]CONSTANT_Long_info:\n", (i+1));
+                printf("\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Long.high_bytes);
+                printf("\tLow bytes:           \t0x%x\n", classe->constant_pool[i].info.Long.low_bytes);
+                printf("\tLong:                \t%ld\n", l);
+                i++;
+                printf("[%d](large numeric continued)\n", (i+1));
+                break;
+            case CONSTANT_Double:
+                l = (long)classe->constant_pool[i].info.Double.high_bytes<<32;
+                l = l|classe->constant_pool[i].info.Double.low_bytes;
+                printf("[%d]CONSTANT_Double_info:\n", (i+1));
+                printf("\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Double.high_bytes);
+                printf("\tLow bytes:           \t0x%x\n", classe->constant_pool[i].info.Double.low_bytes);
+                printf("\tDouble:              \t%f\n", l);
+                i++;
+                printf("[%d](large numeric continued)\n", (i+1));
+                break;
+            case CONSTANT_NameAndType:
+                printf("[%d]CONSTANT_NameAndType_info:\n", (i+1));
+                printf("\tName:                \tcp info #%d\n", classe->constant_pool[i].info.NameAndType.name_index);
+                printf("\tDescriptor:          \tcp info #%d\n", classe->constant_pool[i].info.NameAndType.descriptor_index);
+                break;
+            case CONSTANT_Utf8:
+                printf("[%d]CONSTANT_Utf8_info:\n", (i+1));
+                printf("\tLength of byte array:\t%d\n", classe->constant_pool[i].info.Utf8.length);
+                printf("\tLength of string:    \t%d\n", classe->constant_pool[i].info.Utf8.length);
+                printf("\tString:              \t");
+                for (int j=0;j<classe->constant_pool[i].info.Utf8.length;j++)
+                    printf("%c", classe->constant_pool[i].info.Utf8.bytes[j]);
+                printf("\n");
+                break;
+        }
+    }
     printf("\n");
 }

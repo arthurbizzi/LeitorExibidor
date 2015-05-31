@@ -252,5 +252,6 @@ void carrega_methods(FILE *arquivo, ClassFile *classe);
 void carrega_attributes(FILE *arquivo, ClassFile *classe);
 void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atributo);
 void imprime_general_information(ClassFile *classe);
+void imprime_constant_pool(ClassFile *classe);
 
 #endif
