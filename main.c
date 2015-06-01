@@ -494,7 +494,7 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
         else if (!strcmp(tipoAtributo, "Exceptions")) {
             printf("Number of Exceptions:\t%d\n", attributeInfo->info.Exception.number_of_exceptions);
             for (int i = 0; i < attributeInfo->info.Exception.number_of_exceptions; i++) {
-                printf("Exception Index: \t%d\n", attributeInfo->info.Exception.exception_index_table[i]);
+                printf("Exception Index: \tCP INFO #%d\n", attributeInfo->info.Exception.exception_index_table[i]);
             }
         }
         else if (!strcmp(tipoAtributo, "InnerClasses")) {
@@ -506,12 +506,12 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
                        attributeInfo->info.InnerClasses.classes[i].outer_class_info_index);
                 printf("Inner Class Name Index: \tCP INFO #%d\n",
                        attributeInfo->info.InnerClasses.classes[i].inner_name_index);
-                printf("Inner Class Access Flags: \t#%d\n",
+                printf("Inner Class Access Flags: \t%d\n",
                        attributeInfo->info.InnerClasses.classes[i].inner_class_access_flags);
             }
         }
         else if (!strcmp(tipoAtributo, "SourceFile")) {
-            printf("Source File Index: \t%d\n", attributeInfo->info.Sourcefile.sourcefile_index);
+            printf("Source File Index: \tCP INFO #%d\n", attributeInfo->info.Sourcefile.sourcefile_index);
         }
         else if (!strcmp(tipoAtributo, "LineNumberTable")) {
             printf("Number of Lines: \t%d\n", attributeInfo->info.LineNumberTable.line_number_table_length);
@@ -550,7 +550,7 @@ void imprime_methods(ClassFile *classe) {
     for (int i = 0; i < classe->methods_count; i++) {
         printf("Access Flags: \t%d\n", classe->methods[i].access_flags);
         printf("Name Index: \tCP INFO #%d\n", classe->methods[i].name_index);
-        printf("Descriptor Index: \t%d\n", classe->methods[i].descriptor_index);
+        printf("Descriptor Index: \tCP INFO #%d\n", classe->methods[i].descriptor_index);
         printf("Attributes Count: \t%d\n", classe->methods[i].attributes_count);
         for (int j = 0; j < classe->methods[i].attributes_count; j++) {
             imprime_attribute(&(classe->methods[i].attributes[j]), classe);
