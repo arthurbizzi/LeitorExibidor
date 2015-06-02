@@ -257,14 +257,17 @@ void carrega_attributes(FILE *arquivo, ClassFile *classe) {
 }
 
 void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atributo) {
-    char tipoAtributo[20];
+    char *tipoAtributo;
     u4 attribute_length;
 
     atributo->attribute_name_index = le_u2(arquivo);
     atributo->attribute_length = le_u4(arquivo);
     attribute_length = atributo->attribute_length;
     u2 index = atributo->attribute_name_index - 1;
-    strcpy(tipoAtributo, (char *) classe->constant_pool[index].info.Utf8.bytes);
+    tipoAtributo = (char *)malloc(classe->constant_pool[index].info.Utf8.length * sizeof(char));
+    for (int l = 0; l < classe->constant_pool[index].info.Utf8.length; l++)
+        tipoAtributo[l] = classe->constant_pool[index].info.Utf8.bytes[l];
+
     if(!strcmp(tipoAtributo, "ConstantValue")) {
         atributo->info.ConstantValue.constantvalue_index = le_u2(arquivo);
     }
@@ -447,96 +450,108 @@ void imprime_constant_pool(ClassFile *classe){
 void imprime_fields(ClassFile *classe) {
     printf(">>>FIELDS<<<\n");
     for (int i = 0; i < classe->fields_count; i++) {
+        printf("[%d]", i);
+        for (int j = 0; j < classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.length;j++)
+            printf("%c", classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.bytes[j]);
         printf("\n");
-        printf("Access Flags:\t%d\n", classe->fields[i].access_flags);
-        printf("Name Index:\t%d\n", classe->fields[i].name_index);
-        printf("Descriptor Index:\t%d\n", classe->fields[i].descriptor_index);
-        printf("Attributes Count: \t%d\n", classe->fields[i].attributes_count);
-        for (int j = 0; j < classe->fields[i].attributes_count; j++)
-            imprime_attribute(&classe->fields->attributes[j], classe);
+        printf("\tAccess Flags:    \t%d\n", classe->fields[i].access_flags);
+        printf("\tName Index:      \t%d\n", classe->fields[i].name_index);
+        printf("\tDescriptor Index:\t%d\n", classe->fields[i].descriptor_index);
+        printf("\tAttributes Count:\t%d\n", classe->fields[i].attributes_count);
+        for (int j = 0; j < classe->fields[i].attributes_count; j++){
+            printf("\t[%d]", j);
+            for (int k = 0; k < classe->constant_pool[classe->fields[i].attributes[j].attribute_name_index - 1].info.Utf8.length; k++)
+                printf("%c", classe->constant_pool[classe->fields[i].attributes[j].attribute_name_index - 1].info.Utf8.bytes[k]);
+            printf("\n");
+            imprime_attribute(&classe->fields[i].attributes[j], classe);
+        }
     }
 }
 
 void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
-    printf("Name Index:\t%d\n", attributeInfo->attribute_name_index);
-    printf("Attribute Lenght:\t%d\n", attributeInfo->attribute_length);
-
-    char tipoAtributo[20];
-    printf("\nName Index:\t CP INFO #%d\n", attributeInfo->attribute_name_index);
-    printf("Attribute Length:\t%d\n", attributeInfo->attribute_length);
+    char *tipoAtributo;
     u2 index = attributeInfo->attribute_name_index - 1;
-    strcpy(tipoAtributo, (char *) classe->constant_pool[index].info.Utf8.bytes);
+    tipoAtributo = (char *)malloc(classe->constant_pool[index].info.Utf8.length * sizeof(char));
+    for (int l = 0; l < classe->constant_pool[index].info.Utf8.length; l++){
+        printf("%c", classe->constant_pool[index].info.Utf8.bytes[l]);
+        tipoAtributo[l] = classe->constant_pool[index].info.Utf8.bytes[l];
+    }
+    printf("\n");
+    printf("\t\tName Index:      \t%d\n", attributeInfo->attribute_name_index);
+    printf("\t\tAttribute Lenght:\t%d\n", attributeInfo->attribute_length);
+
     if (attributeInfo->attribute_length > 0) {
-        printf("Attribute Type:\t%s\n", tipoAtributo);
         if (!strcmp(tipoAtributo, "ConstantValue")) {
-            printf("Constant Value Index: \tCP INFO #%d", attributeInfo->info.ConstantValue.constantvalue_index);
+            printf("\t\tConstant Value Index: \tCP INFO #%d", attributeInfo->info.ConstantValue.constantvalue_index);
         }
         else if (!strcmp(tipoAtributo, "Code")) {
-            printf("Max Stack:\t%d\n", attributeInfo->info.CodeAttribute.max_stack);
-            printf("Max Locals:\t%d\n", attributeInfo->info.CodeAttribute.max_locals);
-            printf("Code Length:\t%d\n", attributeInfo->info.CodeAttribute.code_length);
-            printf("Code:\t ");
+            printf("\t\tMax Stack:          \t%d\n", attributeInfo->info.CodeAttribute.max_stack);
+            printf("\t\tMax Locals:         \t%d\n", attributeInfo->info.CodeAttribute.max_locals);
+            printf("\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
+            printf("\t\tCode:\t ");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
                 printf("%x", attributeInfo->info.CodeAttribute.code[i]);
             }
-            printf("\nException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
+            printf("\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
             for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++) {
-                printf("Start PC: \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].start_pc);
-                printf("End PC: \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].end_pc);
-                printf("Handler PC: \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].handler_pc);
-                printf("End PC: \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].catch_type);
+                printf("\t\tStart PC:  \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].start_pc);
+                printf("\t\tEnd PC:    \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].end_pc);
+                printf("\t\tHandler PC:\t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].handler_pc);
+                printf("\t\tEnd PC:    \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].catch_type);
             }
-            printf("Code Attributes Count:\t%d\n", attributeInfo->info.CodeAttribute.attributes_count);
+            printf("\t\tCode Attributes Count:\t%d\n", attributeInfo->info.CodeAttribute.attributes_count);
             for (int k = 0; k < attributeInfo->info.CodeAttribute.attributes_count; k++) {
+                printf("\t\t[%d]", k);
                 imprime_attribute(&(attributeInfo->info.CodeAttribute.attributes[k]), classe);
             }
         }
         else if (!strcmp(tipoAtributo, "Exceptions")) {
-            printf("Number of Exceptions:\t%d\n", attributeInfo->info.Exception.number_of_exceptions);
+            printf("\t\tNumber of Exceptions:\t%d\n", attributeInfo->info.Exception.number_of_exceptions);
             for (int i = 0; i < attributeInfo->info.Exception.number_of_exceptions; i++) {
-                printf("Exception Index: \tCP INFO #%d\n", attributeInfo->info.Exception.exception_index_table[i]);
+                printf("\t\tException Index:\tCP INFO #%d\n", attributeInfo->info.Exception.exception_index_table[i]);
             }
         }
         else if (!strcmp(tipoAtributo, "InnerClasses")) {
-            printf("Number of Classes:\t%d\n", attributeInfo->info.InnerClasses.number_of_classes);
+            printf("\t\tNumber of Classes:\t%d\n", attributeInfo->info.InnerClasses.number_of_classes);
             for (int i = 0; i < attributeInfo->info.InnerClasses.number_of_classes; i++) {
-                printf("Inner Class Index: \tCP INFO #%d\n",
+                printf("\t\tInner Class Index:       \tCP INFO #%d\n",
                        attributeInfo->info.InnerClasses.classes[i].inner_class_info_index);
-                printf("Outer Class Index: \tCP INFO #%d\n",
+                printf("\t\tOuter Class Index:       \tCP INFO #%d\n",
                        attributeInfo->info.InnerClasses.classes[i].outer_class_info_index);
-                printf("Inner Class Name Index: \tCP INFO #%d\n",
+                printf("\t\tInner Class Name Index:  \tCP INFO #%d\n",
                        attributeInfo->info.InnerClasses.classes[i].inner_name_index);
-                printf("Inner Class Access Flags: \t%d\n",
+                printf("\t\tInner Class Access Flags:\t%d\n",
                        attributeInfo->info.InnerClasses.classes[i].inner_class_access_flags);
             }
         }
         else if (!strcmp(tipoAtributo, "SourceFile")) {
-            printf("Source File Index: \tCP INFO #%d\n", attributeInfo->info.Sourcefile.sourcefile_index);
+            printf("\t\tSource File Index: \tCP INFO #%d\n", attributeInfo->info.Sourcefile.sourcefile_index);
         }
         else if (!strcmp(tipoAtributo, "LineNumberTable")) {
-            printf("Number of Lines: \t%d\n", attributeInfo->info.LineNumberTable.line_number_table_length);
+            printf("\t\tNumber of Lines:\t%d\n", attributeInfo->info.LineNumberTable.line_number_table_length);
             for (int i = 0; i < attributeInfo->info.LineNumberTable.line_number_table_length; i++) {
-                printf("Line Number: \t%d\n", attributeInfo->info.LineNumberTable.line_number_table[i].line_number);
-                printf("Start PC: \t%d\n", attributeInfo->info.LineNumberTable.line_number_table[i].start_pc);
+                printf("\t\tLine Number: \t%d\n", attributeInfo->info.LineNumberTable.line_number_table[i].line_number);
+                printf("\t\tStart PC:    \t%d\n", attributeInfo->info.LineNumberTable.line_number_table[i].start_pc);
             }
         }
         else if (!strcmp(tipoAtributo, "LocalVariableTable")) {
-            printf("Table Length: \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table_length);
+            printf("\t\tTable Length:    \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table_length);
             for (int i = 0; i < attributeInfo->info.LocalVariableTable.local_variable_table_length; i++) {
-                printf("Start PC: \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table[i].start_pc);
-                printf("Length: \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table[i].length);
-                printf("Name Index: \tCP INFO #%d\n",
+                printf("\t\tStart PC:        \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table[i].start_pc);
+                printf("\t\tLength:          \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table[i].length);
+                printf("\t\tName Index:      \tCP INFO #%d\n",
                        attributeInfo->info.LocalVariableTable.local_variable_table[i].name_index);
-                printf("Descriptor Index: \tCP INFO #%d\n",
+                printf("\t\tDescriptor Index:\tCP INFO #%d\n",
                        attributeInfo->info.LocalVariableTable.local_variable_table[i].start_pc);
-                printf("Index: \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table[i].index);
+                printf("\t\tIndex:           \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table[i].index);
             }
         }
         else {
-            printf("Default Data: \t");
+            printf("\t\tDefault Data: \t");
             for (int i = 0; i < attributeInfo->attribute_length; i++) {
                 printf("%x", attributeInfo->info.Default.data[i]);
             }
+            printf("\n");
         }
     }
 }
@@ -548,11 +563,16 @@ void imprime_methods(ClassFile *classe) {
     printf("Methods Count: \t%d\n", classe->methods_count);
 
     for (int i = 0; i < classe->methods_count; i++) {
-        printf("Access Flags: \t%d\n", classe->methods[i].access_flags);
-        printf("Name Index: \tCP INFO #%d\n", classe->methods[i].name_index);
-        printf("Descriptor Index: \tCP INFO #%d\n", classe->methods[i].descriptor_index);
-        printf("Attributes Count: \t%d\n", classe->methods[i].attributes_count);
+        printf("[%d]", i);
+        for (int j = 0; j < classe->constant_pool[classe->methods[i].name_index - 1].info.Utf8.length;j++)
+            printf("%c", classe->constant_pool[classe->methods[i].name_index - 1].info.Utf8.bytes[j]);
+        printf("\n");
+        printf("\tAccess Flags:    \t%d\n", classe->methods[i].access_flags);
+        printf("\tName Index:      \tCP INFO #%d\n", classe->methods[i].name_index);
+        printf("\tDescriptor Index:\tCP INFO #%d\n", classe->methods[i].descriptor_index);
+        printf("\tAttributes Count:\t%d\n", classe->methods[i].attributes_count);
         for (int j = 0; j < classe->methods[i].attributes_count; j++) {
+            printf("\t[%d]", j);
             imprime_attribute(&(classe->methods[i].attributes[j]), classe);
         }
     }
@@ -564,6 +584,7 @@ void imprime_attributes(ClassFile *classe) {
     printf("\n");
     printf("Attributes Count: \t%d\n", classe->attributes_count);
     for (int i = 0; i < classe->attributes_count; i++) {
+        printf("\t[%d]", i);
         imprime_attribute(&(classe->attributes[i]), classe);
     }
 }
