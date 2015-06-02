@@ -240,6 +240,11 @@ typedef struct classfile {
     attribute_info  *attributes; // tamanho: attributes_count
 } ClassFile;
 
+typedef struct instrucao {
+    char            mnemonico[21];
+    int             argumentos;
+} Instrucao;
+
 /* Prot�tipos */
 u1 le_u1(FILE *arquivo);
 u2 le_u2(FILE *arquivo);
@@ -252,15 +257,12 @@ void carrega_fields(FILE *arquivo, ClassFile *classe);
 void carrega_methods(FILE *arquivo, ClassFile *classe);
 void carrega_attributes(FILE *arquivo, ClassFile *classe);
 void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atributo);
+void carrega_instrucoes(Instrucao *mapa);
 void imprime_general_information(ClassFile *classe);
 void imprime_constant_pool(ClassFile *classe);
-
 void imprime_attributes(ClassFile *classe);
-
 void imprime_methods(ClassFile *classe);
-
 void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe);
-
 void imprime_fields(ClassFile *classe);
 
 #endif

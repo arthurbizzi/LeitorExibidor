@@ -90,6 +90,8 @@ int main(int argc, char **argv) {
     imprime_fields(classe);
     imprime_methods(classe);
     imprime_attributes(classe);
+
+    fclose(arq_classe);
     return SUCESSO;
 }
 
@@ -353,9 +355,23 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
     }
 }
 
+void carrega_instrucoes(Instrucao *mapa) {
+    FILE *arq_mapa = fopen("mapa.txt", "r");
+
+    if(!(arq_mapa = fopen("mapa.txt", "r"))) {
+        printf("ERRO: arquivo \"%s\" nao existe.\n", "mapa.txt");
+        exit(ERRO_ARQUIVO);
+    }
+
+    for(int i = 0; i < 0xCA; i++) {
+        fscanf(arq_mapa, "%s", mapa[i].mnemonico);
+    }
+    fclose(arq_mapa);
+}
+
 void imprime_general_information(ClassFile *classe){
     printf("\n");
-    printf(">>>GENERAL INFORMATION<<<\n");
+    printf(">>>General Information<<<\n");
     printf("Minor version:      \t%d\n", classe->minor_version);
     printf("Major version:      \t%d\n", classe->major_version);
     printf("Constant pool count:\t%d\n", classe->constant_pool_count);
@@ -372,7 +388,7 @@ void imprime_general_information(ClassFile *classe){
 void imprime_constant_pool(ClassFile *classe){
     l1 l;
     printf("\n");
-    printf(">>>CONSTANT POOL<<<\n");
+    printf(">>>Constant Pool<<<\n");
     for (int i=0;i<(classe->constant_pool_count-1);i++){ /* Armazena os valores de cada elemento do constant pool */
         switch (classe->constant_pool[i].tag){ /* Existem respostas diferentes para cada tag */
             case CONSTANT_Class:
@@ -448,7 +464,7 @@ void imprime_constant_pool(ClassFile *classe){
 }
 
 void imprime_fields(ClassFile *classe) {
-    printf(">>>FIELDS<<<\n");
+    printf(">>>Fields<<<\n");
     for (int i = 0; i < classe->fields_count; i++) {
         printf("[%d]", i);
         for (int j = 0; j < classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.length;j++)
@@ -490,7 +506,10 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
             printf("\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
             printf("\t\tCode:\t ");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
-                printf("%x", attributeInfo->info.CodeAttribute.code[i]);
+                Instrucao instrucoes[0xCA];
+                u1 opcode = attributeInfo->info.CodeAttribute.code[i];
+                carrega_instrucoes(instrucoes);
+                printf("OP: %x, INSTR: %s", opcode, instrucoes[opcode].mnemonico);
             }
             printf("\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
             for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++) {
@@ -588,3 +607,4 @@ void imprime_attributes(ClassFile *classe) {
         imprime_attribute(&(classe->attributes[i]), classe);
     }
 }
+
