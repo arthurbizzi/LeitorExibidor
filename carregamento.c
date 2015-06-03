@@ -1,6 +1,8 @@
-//
-// Created by kelvinec on 02/06/15.
-//
+/**
+* @file carregamento.c
+* @author Bruno, Guilherme, Kelvin
+* @brief Arquivo com as implementacoes de funcoes relacionadas ao carregamento do conteudo da classe de um arquivo.
+*/
 
 #include "carregamento.h"
 
@@ -265,18 +267,4 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
             atributo->info.Default.data[i] = le_u1(arquivo);
         }
     }
-}
-
-void carrega_instrucoes(Instrucao *mapa) {
-    FILE *arq_mapa = fopen("mapa.txt", "r");
-
-    if (!(arq_mapa = fopen("mapa.txt", "r"))) {
-        printf("ERRO: arquivo \"%s\" nao existe.\n", "mapa.txt");
-        exit(ERRO_ARQUIVO);
-    }
-
-    for (int i = 0; i < 0xCA; i++) {
-        fscanf(arq_mapa, "%s", mapa[i].mnemonico);
-    }
-    fclose(arq_mapa);
 }

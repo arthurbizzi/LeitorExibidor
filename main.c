@@ -1,11 +1,15 @@
-/*
-*    Trabalho da Disciplina Software B�sico, 2015-1
+/**
+* @file main.c
+* @author Bruno, Guilherme, Kelvin
+* @brief Arquivo principal da implementacao do Leitor e Exibidor de arquivos no formato .class.
+*
+*    Trabalho da Disciplina Software Basico, 2015-1
 *    Alunos: Bruno Ribeiro das Virgens (11/0111141)
 *            Guilherme de Sousa Castro (11/0148746)
 *            Kelvin William Moreira Lima (11/0159560)
 *
 *    Compilar com o comando:
-*    gcc -std=c99 main.c -o leitorexibidor.exe
+*    gcc -std=c99 main.c imprime.c carregamento.c -o leitorexibidor.exe
 *
 *    Chamar com um dos comandos:
 *    leitorexibidor.exe
@@ -14,12 +18,6 @@
 *       Nao sera gerado o arquivo do relatorio (somente impressao na tela)
 *    leitorexibidor.exe <arquivo da classe> <arquivo do relatorio>
 *       Esta chamada gerará relatório em arquivo e na tela.
-*/
-
-/**
-* @file main.c
-* @author Bruno, Guilherme, Kelvin
-* @brief Arquivo principal da implementacao do Leitor e Exibidor de arquivos no formato .class
 */
 
 #include "main.h"
@@ -104,6 +102,7 @@ int main(int argc, char **argv) {
         imprime_fields_file(classe, arquivo_saida);
         imprime_methods_file(classe, arquivo_saida);
         imprime_attributes_file(classe, arquivo_saida);
+        fclose(arquivo_saida);
     }
 
     fclose(arq_classe);

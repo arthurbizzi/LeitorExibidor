@@ -1,11 +1,13 @@
-//
-// Created by kelvinec on 02/06/15.
-//
-
-#include "main.h"
+/**
+* @file imprime.h
+* @author Bruno, Guilherme, Kelvin
+* @brief Arquivo com as definicoes de funcoes relacionadas a impressao do conteudo da classe em tela e em arquivo.
+*/
 
 #ifndef LEITOREXIBIDOR_IMPRIME_H
 #define LEITOREXIBIDOR_IMPRIME_H
+
+#include "main.h"
 
 //Imprime Stdout
 void imprime_general_information(ClassFile *classe);
@@ -33,5 +35,7 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
 
 void imprime_fields_file(ClassFile *classe, FILE *file);
 
+//Outros
+void carrega_instrucoes(Instrucao *mapa);
 
 #endif //LEITOREXIBIDOR_IMPRIME_H

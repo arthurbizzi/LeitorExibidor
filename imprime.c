@@ -1,9 +1,10 @@
-//
-// Created by kelvinec on 02/06/15.
-//
+/**
+* @file imprime.c
+* @author Bruno, Guilherme, Kelvin
+* @brief Arquivo com as implementacoes de funcoes relacionadas a impressao do conteudo da classe em tela e em arquivo.
+*/
 
 #include "imprime.h"
-
 
 void imprime_general_information(ClassFile *classe) {
     printf("\n");
@@ -514,4 +515,18 @@ void imprime_attributes_file(ClassFile *classe, FILE *file) {
         fprintf(file, "\t[%d]", i);
         imprime_attribute(&(classe->attributes[i]), classe);
     }
+}
+
+void carrega_instrucoes(Instrucao *mapa) {
+    FILE *arq_mapa = fopen("mapa.txt", "r");
+
+    if (!(arq_mapa = fopen("mapa.txt", "r"))) {
+        printf("ERRO: arquivo \"%s\" nao existe.\n", "mapa.txt");
+        exit(ERRO_ARQUIVO);
+    }
+
+    for (int i = 0; i < 0xCA; i++) {
+        fscanf(arq_mapa, "%s", mapa[i].mnemonico);
+    }
+    fclose(arq_mapa);
 }

@@ -1,3 +1,9 @@
+/**
+* @file main.h
+* @author Bruno, Guilherme, Kelvin
+* @brief Arquivo com as definicoes de constantes e estruturas do programa.
+*/
+
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -15,7 +21,7 @@
 #define ERRO_EXECUCAO -2
 #define ERRO_MAGIC -3
 #define ERRO_VERSION -4
-/* Tags V�lidos */
+/* Tags Validos */
 #define CONSTANT_Class 7
 #define CONSTANT_Fieldref 9
 #define CONSTANT_Methodref 10
@@ -245,4 +251,12 @@ typedef struct instrucao {
     int             argumentos;
 } Instrucao;
 
+/**
+*   @fn int main(int argc, char **argv)
+*   @brief Funcao que dirige a execucao do programa
+*   @param argc Quantidade de argumentos passados pela linha de comando
+*   @param argv Argumentos passados pela linha de comando
+*   @return Status de execução: SUCESSO, ERRO_MAGIC, ERRO_VERSION ou ERRO_ARQUIVO
+*/
+int main(int argc, char **argv);
 #endif
