@@ -1,0 +1,382 @@
+
+>>>General Information<<<
+Minor version:      	0
+Major version:      	46
+Constant pool count:	46
+Access flags:       	0x21
+This class:         	cp info #9
+Super class:        	cp info #10
+Interfaces count:   	0
+Fields count:       	2
+Methods count:      	6
+Attributes count:   	1
+
+
+>>>Constant Pool<<<
+[1]CONSTANT_Methodref_info:
+	Class name:          	cp info #10
+	Name and type:       	cp info #30
+[2]CONSTANT_Fieldref_info:
+	Class name:          	cp inf #9
+	Name and type:       	cp info #31
+[3]CONSTANT_Double_info:
+	High bytes:          	0x40026666
+	Low bytes:           	0x66666666
+	Double:              	2.300000
+[4](large numeric continued)
+[5]CONSTANT_Fieldref_info:
+	Class name:          	cp inf #9
+	Name and type:       	cp info #32
+[6]CONSTANT_Fieldref_info:
+	Class name:          	cp inf #33
+	Name and type:       	cp info #34
+[7]CONSTANT_String_info:
+	String:              	cp info #35
+[8]CONSTANT_Methodref_info:
+	Class name:          	cp info #36
+	Name and type:       	cp info #37
+[9]CONSTANT_Class_info:
+	Class name:          	cp info #38
+[10]CONSTANT_Class_info:
+	Class name:          	cp info #39
+[11]CONSTANT_Utf8_info:
+	Length of byte array:	9
+	Length of string:    	9
+	String:              	teste_int
+[12]CONSTANT_Utf8_info:
+	Length of byte array:	1
+	Length of string:    	1
+	String:              	I
+[13]CONSTANT_Utf8_info:
+	Length of byte array:	12
+	Length of string:    	12
+	String:              	teste_double
+[14]CONSTANT_Utf8_info:
+	Length of byte array:	1
+	Length of string:    	1
+	String:              	D
+[15]CONSTANT_Utf8_info:
+	Length of byte array:	6
+	Length of string:    	6
+	String:              	<init>
+[16]CONSTANT_Utf8_info:
+	Length of byte array:	3
+	Length of string:    	3
+	String:              	()V
+[17]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	Code
+[18]CONSTANT_Utf8_info:
+	Length of byte array:	15
+	Length of string:    	15
+	String:              	LineNumberTable
+[19]CONSTANT_Utf8_info:
+	Length of byte array:	7
+	Length of string:    	7
+	String:              	get_int
+[20]CONSTANT_Utf8_info:
+	Length of byte array:	3
+	Length of string:    	3
+	String:              	()I
+[21]CONSTANT_Utf8_info:
+	Length of byte array:	10
+	Length of string:    	10
+	String:              	get_double
+[22]CONSTANT_Utf8_info:
+	Length of byte array:	3
+	Length of string:    	3
+	String:              	()D
+[23]CONSTANT_Utf8_info:
+	Length of byte array:	7
+	Length of string:    	7
+	String:              	set_int
+[24]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	(I)V
+[25]CONSTANT_Utf8_info:
+	Length of byte array:	10
+	Length of string:    	10
+	String:              	set_double
+[26]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	(D)V
+[27]CONSTANT_Utf8_info:
+	Length of byte array:	5
+	Length of string:    	5
+	String:              	hello
+[28]CONSTANT_Utf8_info:
+	Length of byte array:	10
+	Length of string:    	10
+	String:              	SourceFile
+[29]CONSTANT_Utf8_info:
+	Length of byte array:	10
+	Length of string:    	10
+	String:              	Hello.java
+[30]CONSTANT_NameAndType_info:
+	Name:                	cp info #15
+	Descriptor:          	cp info #16
+[31]CONSTANT_NameAndType_info:
+	Name:                	cp info #11
+	Descriptor:          	cp info #12
+[32]CONSTANT_NameAndType_info:
+	Name:                	cp info #13
+	Descriptor:          	cp info #14
+[33]CONSTANT_Class_info:
+	Class name:          	cp info #40
+[34]CONSTANT_NameAndType_info:
+	Name:                	cp info #41
+	Descriptor:          	cp info #42
+[35]CONSTANT_Utf8_info:
+	Length of byte array:	6
+	Length of string:    	6
+	String:              	Hello!
+[36]CONSTANT_Class_info:
+	Class name:          	cp info #43
+[37]CONSTANT_NameAndType_info:
+	Name:                	cp info #44
+	Descriptor:          	cp info #45
+[38]CONSTANT_Utf8_info:
+	Length of byte array:	5
+	Length of string:    	5
+	String:              	Hello
+[39]CONSTANT_Utf8_info:
+	Length of byte array:	16
+	Length of string:    	16
+	String:              	java/lang/Object
+[40]CONSTANT_Utf8_info:
+	Length of byte array:	16
+	Length of string:    	16
+	String:              	java/lang/System
+[41]CONSTANT_Utf8_info:
+	Length of byte array:	3
+	Length of string:    	3
+	String:              	out
+[42]CONSTANT_Utf8_info:
+	Length of byte array:	21
+	Length of string:    	21
+	String:              	Ljava/io/PrintStream;
+[43]CONSTANT_Utf8_info:
+	Length of byte array:	19
+	Length of string:    	19
+	String:              	java/io/PrintStream
+[44]CONSTANT_Utf8_info:
+	Length of byte array:	7
+	Length of string:    	7
+	String:              	println
+[45]CONSTANT_Utf8_info:
+	Length of byte array:	21
+	Length of string:    	21
+	String:              	(Ljava/lang/String;)V
+
+>>>Fields<<<
+[0]teste_int
+	Access Flags:    	2
+	Name Index:      	11
+	Descriptor Index:	12
+	Attributes Count:	0
+[1]teste_double
+	Access Flags:    	2
+	Name Index:      	13
+	Descriptor Index:	14
+	Attributes Count:	0
+
+>>>Methods<<<
+
+Methods Count: 	6
+[0]<init>
+	Access Flags:    	1
+	Name Index:      	CP INFO #15
+	Descriptor Index:	CP INFO #16
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	17
+		Attribute Lenght:	53
+		Max Stack:          	3
+		Max Locals:         	1
+		Code Length:        	17
+		Code:	 
+					OP: 2a
+					OP: b7
+					OP: 0
+					OP: 1
+					OP: 2a
+					OP: 6
+					OP: b5
+					OP: 0
+					OP: 2
+					OP: 2a
+					OP: 14
+					OP: 0
+					OP: 3
+					OP: b5
+					OP: 0
+					OP: 5
+					OP: b1
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	18
+		Attribute Lenght:	18
+		Number of Lines:	4
+		Line Number: 	5
+		Start PC:    	0
+		Line Number: 	2
+		Start PC:    	4
+		Line Number: 	3
+		Start PC:    	9
+		Line Number: 	7
+		Start PC:    	16
+[1]get_int
+	Access Flags:    	1
+	Name Index:      	CP INFO #19
+	Descriptor Index:	CP INFO #20
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	17
+		Attribute Lenght:	29
+		Max Stack:          	1
+		Max Locals:         	1
+		Code Length:        	5
+		Code:	 
+					OP: 2a
+					OP: b4
+					OP: 0
+					OP: 2
+					OP: ac
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	18
+		Attribute Lenght:	6
+		Number of Lines:	1
+		Line Number: 	10
+		Start PC:    	0
+[2]get_double
+	Access Flags:    	1
+	Name Index:      	CP INFO #21
+	Descriptor Index:	CP INFO #22
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	17
+		Attribute Lenght:	29
+		Max Stack:          	2
+		Max Locals:         	1
+		Code Length:        	5
+		Code:	 
+					OP: 2a
+					OP: b4
+					OP: 0
+					OP: 5
+					OP: af
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	18
+		Attribute Lenght:	6
+		Number of Lines:	1
+		Line Number: 	14
+		Start PC:    	0
+[3]set_int
+	Access Flags:    	1
+	Name Index:      	CP INFO #23
+	Descriptor Index:	CP INFO #24
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	17
+		Attribute Lenght:	34
+		Max Stack:          	2
+		Max Locals:         	2
+		Code Length:        	6
+		Code:	 
+					OP: 2a
+					OP: 1b
+					OP: b5
+					OP: 0
+					OP: 2
+					OP: b1
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	18
+		Attribute Lenght:	10
+		Number of Lines:	2
+		Line Number: 	18
+		Start PC:    	0
+		Line Number: 	19
+		Start PC:    	5
+[4]set_double
+	Access Flags:    	1
+	Name Index:      	CP INFO #25
+	Descriptor Index:	CP INFO #26
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	17
+		Attribute Lenght:	34
+		Max Stack:          	3
+		Max Locals:         	3
+		Code Length:        	6
+		Code:	 
+					OP: 2a
+					OP: 27
+					OP: b5
+					OP: 0
+					OP: 5
+					OP: b1
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	18
+		Attribute Lenght:	10
+		Number of Lines:	2
+		Line Number: 	22
+		Start PC:    	0
+		Line Number: 	23
+		Start PC:    	5
+[5]hello
+	Access Flags:    	1
+	Name Index:      	CP INFO #27
+	Descriptor Index:	CP INFO #16
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	17
+		Attribute Lenght:	37
+		Max Stack:          	2
+		Max Locals:         	1
+		Code Length:        	9
+		Code:	 
+					OP: b2
+					OP: 0
+					OP: 6
+					OP: 12
+					OP: 7
+					OP: b6
+					OP: 0
+					OP: 8
+					OP: b1
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	18
+		Attribute Lenght:	10
+		Number of Lines:	2
+		Line Number: 	26
+		Start PC:    	0
+		Line Number: 	27
+		Start PC:    	8
+
+>>>Attributes<<<
+
+Attributes Count: 	1
+	[0]SourceFile
+		Name Index:      	28
+		Attribute Lenght:	2
+		Source File Index: 	CP INFO #29

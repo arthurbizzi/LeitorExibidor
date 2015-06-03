@@ -152,10 +152,11 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
             printf("\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
             printf("\t\tCode:\t \n");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
-                Instrucao instrucoes[0xCA];
+                //Instrucao instrucoes[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
-                carrega_instrucoes(instrucoes);
-                printf("\t\t\t\t\tOP: %x, INSTR: %s\n", opcode, instrucoes[opcode].mnemonico);
+                //carrega_instrucoes(instrucoes);
+                //printf("\t\t\t\t\tOP: %x, INSTR: %s\n", opcode, instrucoes[opcode].mnemonico);
+                printf("\t\t\t\t\tOP: %x\n", opcode);
             }
             printf("\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
             for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++) {
@@ -408,10 +409,11 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             fprintf(file, "\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
             fprintf(file, "\t\tCode:\t \n");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
-                Instrucao instrucoes[0xCA];
+                //Instrucao instrucoes[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
-                carrega_instrucoes(instrucoes);
-                fprintf(file, "\t\t\t\t\tOP: %x, INSTR: %s\n", opcode, instrucoes[opcode].mnemonico);
+                //carrega_instrucoes(instrucoes);
+                //fprintf(file, "\t\t\t\t\tOP: %x, INSTR: %s\n", opcode, instrucoes[opcode].mnemonico);
+                fprintf(file, "\t\t\t\t\tOP: %x\n", opcode);
             }
             fprintf(file, "\n\t\tException Table Length: \t%d\n",
                     attributeInfo->info.CodeAttribute.exception_table_length);
