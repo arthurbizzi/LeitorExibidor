@@ -258,11 +258,6 @@ void carrega_methods(FILE *arquivo, ClassFile *classe);
 void carrega_attributes(FILE *arquivo, ClassFile *classe);
 void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atributo);
 void carrega_instrucoes(Instrucao *mapa);
-void imprime_general_information(ClassFile *classe);
-void imprime_constant_pool(ClassFile *classe);
-void imprime_attributes(ClassFile *classe);
-void imprime_methods(ClassFile *classe);
-void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe);
-void imprime_fields(ClassFile *classe);
+
 
 #endif

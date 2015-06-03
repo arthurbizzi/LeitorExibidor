@@ -1,0 +1,8 @@
+//
+// Created by kelvinec on 02/06/15.
+//
+
+#ifndef LEITOREXIBIDOR_CARREGA_H
+#define LEITOREXIBIDOR_CARREGA_H
+
+#endif //LEITOREXIBIDOR_CARREGA_H
