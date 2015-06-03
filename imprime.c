@@ -5,6 +5,7 @@
 */
 
 #include "imprime.h"
+#include "carregamento.h"
 
 void imprime_general_information(ClassFile *classe) {
     printf("\n");
@@ -149,12 +150,12 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
             printf("\t\tMax Stack:          \t%d\n", attributeInfo->info.CodeAttribute.max_stack);
             printf("\t\tMax Locals:         \t%d\n", attributeInfo->info.CodeAttribute.max_locals);
             printf("\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
-            printf("\t\tCode:\t ");
+            printf("\t\tCode:\t \n");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
                 Instrucao instrucoes[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
                 carrega_instrucoes(instrucoes);
-                printf("OP: %x, INSTR: %s", opcode, instrucoes[opcode].mnemonico);
+                printf("\t\t\t\t\tOP: %x, INSTR: %s\n", opcode, instrucoes[opcode].mnemonico);
             }
             printf("\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
             for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++) {
@@ -379,7 +380,7 @@ void imprime_fields_file(ClassFile *classe, FILE *file) {
                 fprintf(file, "%c", classe->constant_pool[classe->fields[i].attributes[j].attribute_name_index -
                                                           1].info.Utf8.bytes[k]);
             fprintf(file, "\n");
-            imprime_attribute(&classe->fields[i].attributes[j], classe);
+            imprime_attribute_file(&classe->fields[i].attributes[j], classe, file);
         }
     }
 }
@@ -405,12 +406,12 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             fprintf(file, "\t\tMax Stack:          \t%d\n", attributeInfo->info.CodeAttribute.max_stack);
             fprintf(file, "\t\tMax Locals:         \t%d\n", attributeInfo->info.CodeAttribute.max_locals);
             fprintf(file, "\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
-            fprintf(file, "\t\tCode:\t ");
+            fprintf(file, "\t\tCode:\t \n");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
                 Instrucao instrucoes[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
                 carrega_instrucoes(instrucoes);
-                fprintf(file, "OP: %x, INSTR: %s", opcode, instrucoes[opcode].mnemonico);
+                fprintf(file, "\t\t\t\t\tOP: %x, INSTR: %s\n", opcode, instrucoes[opcode].mnemonico);
             }
             fprintf(file, "\n\t\tException Table Length: \t%d\n",
                     attributeInfo->info.CodeAttribute.exception_table_length);
@@ -423,7 +424,7 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             fprintf(file, "\t\tCode Attributes Count:\t%d\n", attributeInfo->info.CodeAttribute.attributes_count);
             for (int k = 0; k < attributeInfo->info.CodeAttribute.attributes_count; k++) {
                 fprintf(file, "\t\t[%d]", k);
-                imprime_attribute(&(attributeInfo->info.CodeAttribute.attributes[k]), classe);
+                imprime_attribute_file(&(attributeInfo->info.CodeAttribute.attributes[k]), classe, file);
             }
         }
         else if (!strcmp(tipoAtributo, "Exceptions")) {
@@ -501,7 +502,7 @@ void imprime_methods_file(ClassFile *classe, FILE *file) {
         fprintf(file, "\tAttributes Count:\t%d\n", classe->methods[i].attributes_count);
         for (int j = 0; j < classe->methods[i].attributes_count; j++) {
             fprintf(file, "\t[%d]", j);
-            imprime_attribute(&(classe->methods[i].attributes[j]), classe);
+            imprime_attribute_file(&(classe->methods[i].attributes[j]), classe, file);
         }
     }
 }
@@ -513,7 +514,7 @@ void imprime_attributes_file(ClassFile *classe, FILE *file) {
     fprintf(file, "Attributes Count: \t%d\n", classe->attributes_count);
     for (int i = 0; i < classe->attributes_count; i++) {
         fprintf(file, "\t[%d]", i);
-        imprime_attribute(&(classe->attributes[i]), classe);
+        imprime_attribute_file(&(classe->attributes[i]), classe, file);
     }
 }
 
