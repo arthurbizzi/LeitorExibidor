@@ -32,6 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-std=c99" />
 		</Compiler>
+		<Unit filename="carregamento.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="carregamento.h" />
+		<Unit filename="imprime.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="imprime.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -41,6 +49,15 @@
 			<envvars />
 			<debugger />
 			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

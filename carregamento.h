@@ -44,18 +44,61 @@ u4 le_u4(FILE *arquivo);
 */
 int carrega_header(FILE *arquivo, ClassFile *classe);
 
+/**
+*   @fn int carrega_constantpool(FILE *arquivo, ClassFile *classe)
+*   @brief Funcao que carrega o pool de constantes de uma classe.
+*   @param arquivo Ponteiro para arquivo onde a classe esta.
+*   @param classe Estrutura que contera a informacao da classe.
+*/
 void carrega_constantpool(FILE *arquivo, ClassFile *classe);
 
+/**
+*   @fn int carrega_flagseclasses(FILE *arquivo, ClassFile *classe)
+*   @brief Funcao que carrega flags e classes de uma classe.
+*   @param arquivo Ponteiro para arquivo onde a classe esta.
+*   @param classe Estrutura que contera a informacao da classe.
+*/
 void carrega_flagseclasses(FILE *arquivo, ClassFile *classe);
 
+/**
+*   @fn int carrega_interfaces(FILE *arquivo, ClassFile *classe)
+*   @brief Funcao que carrega as interfaces de uma classe.
+*   @param arquivo Ponteiro para arquivo onde a classe esta.
+*   @param classe Estrutura que contera a informacao da classe.
+*/
 void carrega_interfaces(FILE *arquivo, ClassFile *classe);
 
+/**
+*   @fn int carrega_fields(FILE *arquivo, ClassFile *classe)
+*   @brief Funcao que carrega os fields de uma classe.
+*   @param arquivo Ponteiro para arquivo onde a classe esta.
+*   @param classe Estrutura que contera a informacao da classe.
+*/
 void carrega_fields(FILE *arquivo, ClassFile *classe);
 
+/**
+*   @fn int carrega_methods(FILE *arquivo, ClassFile *classe)
+*   @brief Funcao que carrega os metodos de uma classe.
+*   @param arquivo Ponteiro para arquivo onde a classe esta.
+*   @param classe Estrutura que contera a informacao da classe.
+*/
 void carrega_methods(FILE *arquivo, ClassFile *classe);
 
+/**
+*   @fn int carrega_attributes(FILE *arquivo, ClassFile *classe)
+*   @brief Funcao que carrega os atributos de uma classe.
+*   @param arquivo Ponteiro para arquivo onde a classe esta.
+*   @param classe Estrutura que contera a informacao da classe.
+*/
 void carrega_attributes(FILE *arquivo, ClassFile *classe);
 
+/**
+*   @fn int carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atributo)
+*   @brief Funcao que carrega um unico atributo de uma classe.
+*   @param arquivo Ponteiro para arquivo onde a classe esta.
+*   @param classe Estrutura que contera a informacao da classe.
+*   @param atributo Estrutura que contem um atributo a ser carregado.
+*/
 void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atributo);
 
-#endif //LEITOREXIBIDOR_CARREGAMENTO_H
+#endif // LEITOREXIBIDOR_CARREGAMENTO_H

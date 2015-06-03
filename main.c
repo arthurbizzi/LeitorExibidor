@@ -10,6 +10,7 @@
 *
 *    Compilar com o comando:
 *    gcc -std=c99 main.c imprime.c carregamento.c -o leitorexibidor.exe
+*    Ou simplesmente com a IDE DevC++
 *
 *    Chamar com um dos comandos:
 *    leitorexibidor.exe
@@ -18,6 +19,8 @@
 *       Nao sera gerado o arquivo do relatorio (somente impressao na tela)
 *    leitorexibidor.exe <arquivo da classe> <arquivo do relatorio>
 *       Esta chamada gerará relatório em arquivo e na tela.
+*
+*    Observacao: o arquivo "mapa.txt" deve estar na pasta dos codigos-fonte.
 */
 
 #include "main.h"
