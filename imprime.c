@@ -5,7 +5,6 @@
 */
 
 #include "imprime.h"
-#include "carregamento.h"
 
 void imprime_general_information(ClassFile *classe) {
     char *nomeThisClass, *nomeSuperClass;
@@ -29,31 +28,52 @@ void imprime_general_information(ClassFile *classe) {
     printf("Methods count:      \t%d\n", classe->methods_count);
     printf("Attributes count:   \t%d\n", classe->attributes_count);
     printf("\n");
-    system("PAUSE");
+    //system("PAUSE");
 }
 
 void imprime_constant_pool(ClassFile *classe) {
     l1 l;
+    char *derreferencia = NULL, *derreferencia2 = NULL;
     printf("\n");
     printf(">>>Constant Pool<<<\n");
+    int index = 0;
     for (int i = 0;
          i < (classe->constant_pool_count - 1); i++) { /* Armazena os valores de cada elemento do constant pool */
         switch (classe->constant_pool[i].tag) { /* Existem respostas diferentes para cada tag */
             case CONSTANT_Class:
+                index = classe->constant_pool[i].info.Class.name_index - 1;
+                derreferencia = dereferencia(index, classe);
                 printf("[%d]CONSTANT_Class_info:\n", (i + 1));
-                printf("\tClass name:          \tcp info #%d\n", classe->constant_pool[i].info.Class.name_index);
+                printf("\tClass name:          \tcp info #%d ( %s )\n", classe->constant_pool[i].info.Class.name_index,
+                       derreferencia);
                 break;
             case CONSTANT_Fieldref:
+                index = classe->constant_pool[i].info.Fieldref.class_index - 1;
+                index = classe->constant_pool[index].info.Class.name_index - 1;
+                derreferencia = dereferencia(index, classe);
                 printf("[%d]CONSTANT_Fieldref_info:\n", (i + 1));
-                printf("\tClass name:          \tcp info #%d\n", classe->constant_pool[i].info.Fieldref.class_index);
-                printf("\tName and type:       \tcp info #%d\n",
-                       classe->constant_pool[i].info.Fieldref.name_and_type_index);
+                printf("\tClass name:          \tcp info #%d ( %s )\n",
+                       classe->constant_pool[i].info.Fieldref.class_index, derreferencia);
+                index = classe->constant_pool[i].info.Fieldref.name_and_type_index - 1;
+                derreferencia = dereferencia(classe->constant_pool[index].info.NameAndType.name_index - 1, classe);
+                derreferencia2 = dereferencia(classe->constant_pool[index].info.NameAndType.descriptor_index - 1,
+                                              classe);
+                printf("\tName and type:       \tcp info #%d  ( %s %s )\n",
+                       classe->constant_pool[i].info.Fieldref.name_and_type_index, derreferencia, derreferencia2);
                 break;
             case CONSTANT_Methodref:
+                index = classe->constant_pool[i].info.Fieldref.class_index - 1;
+                index = classe->constant_pool[index].info.Class.name_index - 1;
+                derreferencia = dereferencia(index, classe);
                 printf("[%d]CONSTANT_Methodref_info:\n", (i + 1));
-                printf("\tClass name:          \tcp info #%d\n", classe->constant_pool[i].info.Methodref.class_index);
-                printf("\tName and type:       \tcp info #%d\n",
-                       classe->constant_pool[i].info.Methodref.name_and_type_index);
+                printf("\tClass name:          \tcp info #%d ( %s )\n",
+                       classe->constant_pool[i].info.Methodref.class_index, derreferencia);
+                index = classe->constant_pool[i].info.Fieldref.name_and_type_index - 1;
+                derreferencia = dereferencia(classe->constant_pool[index].info.NameAndType.name_index - 1, classe);
+                derreferencia2 = dereferencia(classe->constant_pool[index].info.NameAndType.descriptor_index - 1,
+                                              classe);
+                printf("\tName and type:       \tcp info #%d ( %s %s)\n",
+                       classe->constant_pool[i].info.Methodref.name_and_type_index, derreferencia, derreferencia2);
                 break;
             case CONSTANT_InterfaceMethodref:
                 printf("[%d]CONSTANT_InterceMethodref_info:\n", (i + 1));
@@ -548,7 +568,6 @@ char* dereferencia(u2 index, ClassFile *classe) {
         nome[i] = classe->constant_pool[index].info.Utf8.bytes[i];
     }
     nome[++i] = '\0';
-    printf("%s", nome); // DEBUG
     return nome;
 }
 
