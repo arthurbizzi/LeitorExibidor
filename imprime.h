@@ -112,4 +112,21 @@ void imprime_fields_file(ClassFile *classe, FILE *file);
 */
 void carrega_instrucoes(Instrucao *mapa);
 
+/**
+*   @fn char* dereferencia(u2 index, ClassFile *classe)
+*   @brief Funcao que recupera o valor de uma string no pool de constantes.
+*   @param index Indice onde a string se encontra.
+*   @param classe Estrutura que contem a informacao da classe.
+*   @return Retorna uma string asciiz contendo o nome dereferenciado.
+*/
+char* dereferencia(u2 index, ClassFile *classe);
+
+/**
+*   @fn int verifica_match(ClassFile *classe, char *nome)
+*   @brief Funcao que verifica se o nome do arquivo e da classe batem.
+*   @param classe Estrutura que contem a informacao da classe.
+*   @param nome Nome do arquivo.
+*   @return Status de execução: SUCESSO, ERRO_MAGIC, ERRO_VERSION ou ERRO_ARQUIVO
+*/
+int verifica_match(ClassFile *classe, char *nome);
 #endif // LEITOREXIBIDOR_IMPRIME_H

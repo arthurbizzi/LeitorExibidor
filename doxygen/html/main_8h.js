@@ -56,6 +56,7 @@ var main_8h =
     [ "ERRO_ARQUIVO", "main_8h.html#a225e36d3f4453a8ec3e65d5a4539cc63", null ],
     [ "ERRO_EXECUCAO", "main_8h.html#ac8e0f523307e6470310d2cc47d874628", null ],
     [ "ERRO_MAGIC", "main_8h.html#a9b0f96dca3b8f73ede422e90967bf050", null ],
+    [ "ERRO_MATCHING", "main_8h.html#ab9e6dd45628ef40600fbafe14c4f83e1", null ],
     [ "ERRO_VERSION", "main_8h.html#a9776ba8c9ecc175abfb3cb49809e7054", null ],
     [ "MAGIC_NUMBER", "main_8h.html#a54061e5993a5517320d425f44408cc86", null ],
     [ "SUCESSO", "main_8h.html#a7d756aebcbd3d7c0bd83950a5b087139", null ],

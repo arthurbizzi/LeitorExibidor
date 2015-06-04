@@ -21,6 +21,7 @@
 #define ERRO_EXECUCAO -2
 #define ERRO_MAGIC -3
 #define ERRO_VERSION -4
+#define ERRO_MATCHING -5
 /* Tags Validos */
 #define CONSTANT_Class 7
 #define CONSTANT_Fieldref 9
@@ -247,8 +248,9 @@ typedef struct classfile {
 } ClassFile;
 
 typedef struct instrucao {
-    char            mnemonico[21];
-    int             argumentos;
+    char            mnemonico[20];
+    int             qtd_operandos;
+    int             *operandos;
 } Instrucao;
 
 /**

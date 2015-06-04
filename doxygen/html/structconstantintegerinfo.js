@@ -1,5 +1,5 @@
 var structconstantintegerinfo =
 [
-    [ "bytes", "structconstantintegerinfo.html#afc55208ec5cd292eca95e0eff2aec8c6", null ],
-    [ "tag", "structconstantintegerinfo.html#aeb7a6518daf113bc556d98c85f74a0c9", null ]
+    [ "bytes", "structconstantintegerinfo.html#a97a61703bfa9c32f2cfa2709825b67ee", null ],
+    [ "tag", "structconstantintegerinfo.html#a17726ed17c64ec8550633ebf17fd1a98", null ]
 ];

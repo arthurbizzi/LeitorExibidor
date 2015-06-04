@@ -1,5 +1,5 @@
 var structconstantstringinfo =
 [
-    [ "string_index", "structconstantstringinfo.html#a3e272e03a8ac559d041992a8e98430d1", null ],
-    [ "tag", "structconstantstringinfo.html#aefd08d7405042842fd3ff15024aa4b77", null ]
+    [ "string_index", "structconstantstringinfo.html#a983a5b138b680d917526211445dbcdbf", null ],
+    [ "tag", "structconstantstringinfo.html#a17726ed17c64ec8550633ebf17fd1a98", null ]
 ];

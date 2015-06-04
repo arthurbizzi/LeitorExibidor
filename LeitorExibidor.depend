@@ -1,10 +1,26 @@
 # depslib dependency file v1.0
-1433042165 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.c
+1433377346 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.c
 	"main.h"
+	"imprime.h"
+	"carregamento.h"
 
-1433042234 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.h
+1433376722 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
+
+1433297496 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\carregamento.c
+	"carregamento.h"
+
+1433299246 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\carregamento.h
+	<stdio.h>
+	"main.h"
+
+1433376606 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\imprime.h
+	"main.h"
+
+1433377297 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\imprime.c
+	"imprime.h"
+	"carregamento.h"
 

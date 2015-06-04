@@ -46,7 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -142,29 +142,34 @@ $(document).ready(function(){initNavTree('imprime_8h_source.html','');});
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">// Outros</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"></span><span class="keywordtype">void</span> <a class="code" href="imprime_8h.html#ae4f8a5f85274165378f0fa9bad9d53ca">carrega_instrucoes</a>(<a class="code" href="structinstrucao.html">Instrucao</a> *mapa);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif // LEITOREXIBIDOR_IMPRIME_H</span></div>
-<div class="ttc" id="imprime_8h_html_a824813174b977fa05c933e2df930c44b"><div class="ttname"><a href="imprime_8h.html#a824813174b977fa05c933e2df930c44b">imprime_fields_file</a></div><div class="ttdeci">void imprime_fields_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime os campos no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:365</div></div>
-<div class="ttc" id="imprime_8h_html_a106a7bd7db691aea74b8f1953c44be1a"><div class="ttname"><a href="imprime_8h.html#a106a7bd7db691aea74b8f1953c44be1a">imprime_methods</a></div><div class="ttdeci">void imprime_methods(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime os metodos na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:227</div></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="imprime_8h.html#a5b79b24988b1c6e52f71392cd047addf">dereferencia</a>(u2 index, <a class="code" href="structclassfile.html">ClassFile</a> *classe);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">int</span> <a class="code" href="imprime_8h.html#aac3451b338f67fcbc9f84d75563404c7">verifica_match</a>(<a class="code" href="structclassfile.html">ClassFile</a> *classe, <span class="keywordtype">char</span> *nome);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif // LEITOREXIBIDOR_IMPRIME_H</span></div>
+<div class="ttc" id="imprime_8h_html_a824813174b977fa05c933e2df930c44b"><div class="ttname"><a href="imprime_8h.html#a824813174b977fa05c933e2df930c44b">imprime_fields_file</a></div><div class="ttdeci">void imprime_fields_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime os campos no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:373</div></div>
+<div class="ttc" id="imprime_8h_html_aac3451b338f67fcbc9f84d75563404c7"><div class="ttname"><a href="imprime_8h.html#aac3451b338f67fcbc9f84d75563404c7">verifica_match</a></div><div class="ttdeci">int verifica_match(ClassFile *classe, char *nome)</div><div class="ttdoc">Funcao que verifica se o nome do arquivo e da classe batem. </div><div class="ttdef"><b>Definition:</b> imprime.c:555</div></div>
+<div class="ttc" id="imprime_8h_html_a106a7bd7db691aea74b8f1953c44be1a"><div class="ttname"><a href="imprime_8h.html#a106a7bd7db691aea74b8f1953c44be1a">imprime_methods</a></div><div class="ttdeci">void imprime_methods(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime os metodos na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:236</div></div>
 <div class="ttc" id="imprime_8h_html_ad6c3de4ab82963a7f909578021408af9"><div class="ttname"><a href="imprime_8h.html#ad6c3de4ab82963a7f909578021408af9">imprime_general_information</a></div><div class="ttdeci">void imprime_general_information(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime informacao geral (Versao, CP Count, entre outros) na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:10</div></div>
-<div class="ttc" id="imprime_8h_html_a15277fbfe7a7741905e84632c7f2e3d3"><div class="ttname"><a href="imprime_8h.html#a15277fbfe7a7741905e84632c7f2e3d3">imprime_attributes</a></div><div class="ttdeci">void imprime_attributes(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime os atributos na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:249</div></div>
+<div class="ttc" id="imprime_8h_html_a15277fbfe7a7741905e84632c7f2e3d3"><div class="ttname"><a href="imprime_8h.html#a15277fbfe7a7741905e84632c7f2e3d3">imprime_attributes</a></div><div class="ttdeci">void imprime_attributes(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime os atributos na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:258</div></div>
 <div class="ttc" id="main_8h_html"><div class="ttname"><a href="main_8h.html">main.h</a></div><div class="ttdoc">Arquivo com as definicoes de constantes e estruturas do programa. </div></div>
-<div class="ttc" id="imprime_8h_html_a45cf25a94735345dcde1c7229a781d15"><div class="ttname"><a href="imprime_8h.html#a45cf25a94735345dcde1c7229a781d15">imprime_constant_pool</a></div><div class="ttdeci">void imprime_constant_pool(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime o pool de constantes na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:26</div></div>
-<div class="ttc" id="imprime_8h_html_a90db8a67d48bb3b72f3d8991841e2aa4"><div class="ttname"><a href="imprime_8h.html#a90db8a67d48bb3b72f3d8991841e2aa4">imprime_general_information_file</a></div><div class="ttdeci">void imprime_general_information_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime informacao geral (Versao, CP Count, entre outros) no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:261</div></div>
-<div class="ttc" id="imprime_8h_html_af06ea41455bea7d452bedb59434c0dfb"><div class="ttname"><a href="imprime_8h.html#af06ea41455bea7d452bedb59434c0dfb">imprime_fields</a></div><div class="ttdeci">void imprime_fields(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime os campos na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:110</div></div>
-<div class="ttc" id="structattributeinfo_html"><div class="ttname"><a href="structattributeinfo.html">attributeinfo</a></div><div class="ttdef"><b>Definition:</b> main.h:199</div></div>
-<div class="ttc" id="imprime_8h_html_a99b207edc9463e99ee1607b0fc4c327e"><div class="ttname"><a href="imprime_8h.html#a99b207edc9463e99ee1607b0fc4c327e">imprime_attributes_file</a></div><div class="ttdeci">void imprime_attributes_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime os atributos no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:510</div></div>
-<div class="ttc" id="imprime_8h_html_a31f73cbf6d289ff97f9a1408ce733f30"><div class="ttname"><a href="imprime_8h.html#a31f73cbf6d289ff97f9a1408ce733f30">imprime_methods_file</a></div><div class="ttdeci">void imprime_methods_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime os metodos no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:488</div></div>
-<div class="ttc" id="imprime_8h_html_ae4f8a5f85274165378f0fa9bad9d53ca"><div class="ttname"><a href="imprime_8h.html#ae4f8a5f85274165378f0fa9bad9d53ca">carrega_instrucoes</a></div><div class="ttdeci">void carrega_instrucoes(Instrucao *mapa)</div><div class="ttdoc">Funcao que organiza um mapa com mnemonicos e argumentos de instrucoes. </div><div class="ttdef"><b>Definition:</b> imprime.c:521</div></div>
-<div class="ttc" id="structinstrucao_html"><div class="ttname"><a href="structinstrucao.html">instrucao</a></div><div class="ttdef"><b>Definition:</b> main.h:249</div></div>
-<div class="ttc" id="structclassfile_html"><div class="ttname"><a href="structclassfile.html">classfile</a></div><div class="ttdef"><b>Definition:</b> main.h:230</div></div>
-<div class="ttc" id="imprime_8h_html_a1e7acc3d8f536eeaf0ae0a6cedf26da2"><div class="ttname"><a href="imprime_8h.html#a1e7acc3d8f536eeaf0ae0a6cedf26da2">imprime_constant_pool_file</a></div><div class="ttdeci">void imprime_constant_pool_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime o pool de constantes no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:277</div></div>
+<div class="ttc" id="imprime_8h_html_a45cf25a94735345dcde1c7229a781d15"><div class="ttname"><a href="imprime_8h.html#a45cf25a94735345dcde1c7229a781d15">imprime_constant_pool</a></div><div class="ttdeci">void imprime_constant_pool(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime o pool de constantes na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:35</div></div>
+<div class="ttc" id="imprime_8h_html_a90db8a67d48bb3b72f3d8991841e2aa4"><div class="ttname"><a href="imprime_8h.html#a90db8a67d48bb3b72f3d8991841e2aa4">imprime_general_information_file</a></div><div class="ttdeci">void imprime_general_information_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime informacao geral (Versao, CP Count, entre outros) no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:270</div></div>
+<div class="ttc" id="imprime_8h_html_af06ea41455bea7d452bedb59434c0dfb"><div class="ttname"><a href="imprime_8h.html#af06ea41455bea7d452bedb59434c0dfb">imprime_fields</a></div><div class="ttdeci">void imprime_fields(ClassFile *classe)</div><div class="ttdoc">Funcao que imprime os campos na tela. </div><div class="ttdef"><b>Definition:</b> imprime.c:119</div></div>
+<div class="ttc" id="structattributeinfo_html"><div class="ttname"><a href="structattributeinfo.html">attributeinfo</a></div><div class="ttdef"><b>Definition:</b> main.h:200</div></div>
+<div class="ttc" id="imprime_8h_html_a99b207edc9463e99ee1607b0fc4c327e"><div class="ttname"><a href="imprime_8h.html#a99b207edc9463e99ee1607b0fc4c327e">imprime_attributes_file</a></div><div class="ttdeci">void imprime_attributes_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime os atributos no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:518</div></div>
+<div class="ttc" id="imprime_8h_html_a31f73cbf6d289ff97f9a1408ce733f30"><div class="ttname"><a href="imprime_8h.html#a31f73cbf6d289ff97f9a1408ce733f30">imprime_methods_file</a></div><div class="ttdeci">void imprime_methods_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime os metodos no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:496</div></div>
+<div class="ttc" id="imprime_8h_html_ae4f8a5f85274165378f0fa9bad9d53ca"><div class="ttname"><a href="imprime_8h.html#ae4f8a5f85274165378f0fa9bad9d53ca">carrega_instrucoes</a></div><div class="ttdeci">void carrega_instrucoes(Instrucao *mapa)</div><div class="ttdoc">Funcao que organiza um mapa com mnemonicos e argumentos de instrucoes. </div><div class="ttdef"><b>Definition:</b> imprime.c:529</div></div>
+<div class="ttc" id="imprime_8h_html_a5b79b24988b1c6e52f71392cd047addf"><div class="ttname"><a href="imprime_8h.html#a5b79b24988b1c6e52f71392cd047addf">dereferencia</a></div><div class="ttdeci">char * dereferencia(u2 index, ClassFile *classe)</div><div class="ttdoc">Funcao que recupera o valor de uma string no pool de constantes. </div><div class="ttdef"><b>Definition:</b> imprime.c:543</div></div>
+<div class="ttc" id="structinstrucao_html"><div class="ttname"><a href="structinstrucao.html">instrucao</a></div><div class="ttdef"><b>Definition:</b> main.h:250</div></div>
+<div class="ttc" id="structclassfile_html"><div class="ttname"><a href="structclassfile.html">classfile</a></div><div class="ttdef"><b>Definition:</b> main.h:231</div></div>
+<div class="ttc" id="imprime_8h_html_a1e7acc3d8f536eeaf0ae0a6cedf26da2"><div class="ttname"><a href="imprime_8h.html#a1e7acc3d8f536eeaf0ae0a6cedf26da2">imprime_constant_pool_file</a></div><div class="ttdeci">void imprime_constant_pool_file(ClassFile *classe, FILE *file)</div><div class="ttdoc">Funcao que imprime o pool de constantes no arquivo. </div><div class="ttdef"><b>Definition:</b> imprime.c:285</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="imprime_8h.html">imprime.h</a></li>
-    <li class="footer">Generated on Wed Jun 3 2015 00:10:23 for LeitorExibidor by
+    <li class="footer">Generated on Wed Jun 3 2015 21:28:39 for LeitorExibidor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

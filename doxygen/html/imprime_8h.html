@@ -46,7 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -156,6 +156,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>imprime_attribute_fil
 <tr class="memitem:ae4f8a5f85274165378f0fa9bad9d53ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="imprime_8h.html#ae4f8a5f85274165378f0fa9bad9d53ca">carrega_instrucoes</a> (<a class="el" href="structinstrucao.html">Instrucao</a> *mapa)</td></tr>
 <tr class="memdesc:ae4f8a5f85274165378f0fa9bad9d53ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que organiza um mapa com mnemonicos e argumentos de instrucoes.  <a href="#ae4f8a5f85274165378f0fa9bad9d53ca">More...</a><br /></td></tr>
 <tr class="separator:ae4f8a5f85274165378f0fa9bad9d53ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b79b24988b1c6e52f71392cd047addf"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="imprime_8h.html#a5b79b24988b1c6e52f71392cd047addf">dereferencia</a> (u2 index, <a class="el" href="structclassfile.html">ClassFile</a> *classe)</td></tr>
+<tr class="memdesc:a5b79b24988b1c6e52f71392cd047addf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que recupera o valor de uma string no pool de constantes.  <a href="#a5b79b24988b1c6e52f71392cd047addf">More...</a><br /></td></tr>
+<tr class="separator:a5b79b24988b1c6e52f71392cd047addf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac3451b338f67fcbc9f84d75563404c7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="imprime_8h.html#aac3451b338f67fcbc9f84d75563404c7">verifica_match</a> (<a class="el" href="structclassfile.html">ClassFile</a> *classe, char *nome)</td></tr>
+<tr class="memdesc:aac3451b338f67fcbc9f84d75563404c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que verifica se o nome do arquivo e da classe batem.  <a href="#aac3451b338f67fcbc9f84d75563404c7">More...</a><br /></td></tr>
+<tr class="separator:aac3451b338f67fcbc9f84d75563404c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Arquivo com as definicoes de funcoes relacionadas a impressao do conteudo da classe em tela e em arquivo. </p>
@@ -182,6 +188,42 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>imprime_attribute_fil
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a5b79b24988b1c6e52f71392cd047addf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* dereferencia </td>
+          <td>(</td>
+          <td class="paramtype">u2&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structclassfile.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>classe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao que recupera o valor de uma string no pool de constantes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Indice onde a string se encontra. </td></tr>
+    <tr><td class="paramname">classe</td><td>Estrutura que contem a informacao da classe. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retorna uma string asciiz contendo o nome dereferenciado. </dd></dl>
 
 </div>
 </div>
@@ -480,13 +522,49 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>imprime_attribute_fil
 
 </div>
 </div>
+<a class="anchor" id="aac3451b338f67fcbc9f84d75563404c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int verifica_match </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structclassfile.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>classe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>nome</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao que verifica se o nome do arquivo e da classe batem. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">classe</td><td>Estrutura que contem a informacao da classe. </td></tr>
+    <tr><td class="paramname">nome</td><td>Nome do arquivo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status de execução: SUCESSO, ERRO_MAGIC, ERRO_VERSION ou ERRO_ARQUIVO </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="imprime_8h.html">imprime.h</a></li>
-    <li class="footer">Generated on Wed Jun 3 2015 00:10:23 for LeitorExibidor by
+    <li class="footer">Generated on Wed Jun 3 2015 21:28:39 for LeitorExibidor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

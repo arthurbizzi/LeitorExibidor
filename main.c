@@ -89,6 +89,11 @@ int main(int argc, char **argv) {
     carrega_methods(arq_classe, classe);
     carrega_attributes(arq_classe, classe);
 
+    if(verifica_match(classe, nome_arquivo) == ERRO_MATCHING) {
+        printf("ERRO: nome do arquivo e diferente do nome da classe.\n");
+        return ERRO_MATCHING;
+    }
+
     imprime_general_information(classe);
     imprime_constant_pool(classe);
     imprime_fields(classe);

@@ -1,4 +1,3 @@
-
 >>>General Information<<<
 Minor version:      	0
 Major version:      	46
@@ -17,7 +16,7 @@ Attributes count:   	1
 	Class name:          	cp info #10
 	Name and type:       	cp info #30
 [2]CONSTANT_Fieldref_info:
-	Class name:          	cp inf #9
+	Class name:          	cp info #9
 	Name and type:       	cp info #31
 [3]CONSTANT_Double_info:
 	High bytes:          	0x40026666
@@ -25,10 +24,10 @@ Attributes count:   	1
 	Double:              	2.300000
 [4](large numeric continued)
 [5]CONSTANT_Fieldref_info:
-	Class name:          	cp inf #9
+	Class name:          	cp info #9
 	Name and type:       	cp info #32
 [6]CONSTANT_Fieldref_info:
-	Class name:          	cp inf #33
+	Class name:          	cp info #33
 	Name and type:       	cp info #34
 [7]CONSTANT_String_info:
 	String:              	cp info #35
@@ -198,23 +197,23 @@ Methods Count: 	6
 		Max Locals:         	1
 		Code Length:        	17
 		Code:	 
-					OP: 2a
-					OP: b7
-					OP: 0
-					OP: 1
-					OP: 2a
-					OP: 6
-					OP: b5
-					OP: 0
-					OP: 2
-					OP: 2a
-					OP: 14
-					OP: 0
-					OP: 3
-					OP: b5
-					OP: 0
-					OP: 5
-					OP: b1
+					0: aload_0
+					1: invokespecial
+					2: nop
+					3: aconst_null
+					4: aload_0
+					5: iconst_3
+					6: putfield
+					7: nop
+					8: iconst_m1
+					9: aload_0
+					10: ldc2_w
+					11: nop
+					12: iconst_0
+					13: putfield
+					14: nop
+					15: iconst_2
+					16: return
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
@@ -242,11 +241,11 @@ Methods Count: 	6
 		Max Locals:         	1
 		Code Length:        	5
 		Code:	 
-					OP: 2a
-					OP: b4
-					OP: 0
-					OP: 2
-					OP: ac
+					0: aload_0
+					1: getfield
+					2: nop
+					3: iconst_m1
+					4: ireturn
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
@@ -268,11 +267,11 @@ Methods Count: 	6
 		Max Locals:         	1
 		Code Length:        	5
 		Code:	 
-					OP: 2a
-					OP: b4
-					OP: 0
-					OP: 5
-					OP: af
+					0: aload_0
+					1: getfield
+					2: nop
+					3: iconst_2
+					4: dreturn
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
@@ -294,12 +293,12 @@ Methods Count: 	6
 		Max Locals:         	2
 		Code Length:        	6
 		Code:	 
-					OP: 2a
-					OP: 1b
-					OP: b5
-					OP: 0
-					OP: 2
-					OP: b1
+					0: aload_0
+					1: iload_1
+					2: putfield
+					3: nop
+					4: iconst_m1
+					5: return
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
@@ -323,12 +322,12 @@ Methods Count: 	6
 		Max Locals:         	3
 		Code Length:        	6
 		Code:	 
-					OP: 2a
-					OP: 27
-					OP: b5
-					OP: 0
-					OP: 5
-					OP: b1
+					0: aload_0
+					1: dload_1
+					2: putfield
+					3: nop
+					4: iconst_2
+					5: return
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
@@ -352,15 +351,15 @@ Methods Count: 	6
 		Max Locals:         	1
 		Code Length:        	9
 		Code:	 
-					OP: b2
-					OP: 0
-					OP: 6
-					OP: 12
-					OP: 7
-					OP: b6
-					OP: 0
-					OP: 8
-					OP: b1
+					0: getstatic
+					1: nop
+					2: iconst_3
+					3: ldc
+					4: iconst_4
+					5: invokevirtual
+					6: nop
+					7: iconst_5
+					8: return
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1

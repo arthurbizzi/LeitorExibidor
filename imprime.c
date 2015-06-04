@@ -8,19 +8,28 @@
 #include "carregamento.h"
 
 void imprime_general_information(ClassFile *classe) {
+    char *nomeThisClass, *nomeSuperClass;
+    int index = classe->constant_pool[classe->this_class].info.Class.name_index - 2;
+    printf("%d", nomeThisClass);
+    nomeThisClass = dereferencia(index, classe);
+    index = classe->constant_pool[classe->super_class].info.Class.name_index;
+    nomeSuperClass = (char *) malloc(3 * sizeof(char));
+    nomeSuperClass[0] = '\0';
+    //nomeSuperClass = dereferencia(index, classe);
     printf("\n");
     printf(">>>General Information<<<\n");
     printf("Minor version:      \t%d\n", classe->minor_version);
     printf("Major version:      \t%d\n", classe->major_version);
     printf("Constant pool count:\t%d\n", classe->constant_pool_count);
     printf("Access flags:       \t0x%x\n", classe->access_flags);
-    printf("This class:         \tcp info #%d\n", classe->this_class);
-    printf("Super class:        \tcp info #%d\n", classe->super_class);
+    printf("This class:         \tcp info #%d %s\n", classe->this_class, nomeThisClass);
+    printf("Super class:        \tcp info #%d %s\n", classe->super_class, nomeSuperClass);
     printf("Interfaces count:   \t%d\n", classe->interfaces_count);
     printf("Fields count:       \t%d\n", classe->fields_count);
     printf("Methods count:      \t%d\n", classe->methods_count);
     printf("Attributes count:   \t%d\n", classe->attributes_count);
     printf("\n");
+    system("PAUSE");
 }
 
 void imprime_constant_pool(ClassFile *classe) {
@@ -36,7 +45,7 @@ void imprime_constant_pool(ClassFile *classe) {
                 break;
             case CONSTANT_Fieldref:
                 printf("[%d]CONSTANT_Fieldref_info:\n", (i + 1));
-                printf("\tClass name:          \tcp inf #%d\n", classe->constant_pool[i].info.Fieldref.class_index);
+                printf("\tClass name:          \tcp info #%d\n", classe->constant_pool[i].info.Fieldref.class_index);
                 printf("\tName and type:       \tcp info #%d\n",
                        classe->constant_pool[i].info.Fieldref.name_and_type_index);
                 break;
@@ -152,11 +161,10 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
             printf("\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
             printf("\t\tCode:\t \n");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
-                //Instrucao instrucoes[0xCA];
+                Instrucao mapa[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
-                //carrega_instrucoes(instrucoes);
-                //printf("\t\t\t\t\tOP: %x, INSTR: %s\n", opcode, instrucoes[opcode].mnemonico);
-                printf("\t\t\t\t\tOP: %x\n", opcode);
+                carrega_instrucoes(mapa);
+                printf("\t\t\t\t\t%d: %s\n", i, mapa[opcode].mnemonico);
             }
             printf("\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
             for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++) {
@@ -260,7 +268,6 @@ void imprime_attributes(ClassFile *classe) {
 
 
 void imprime_general_information_file(ClassFile *classe, FILE *file) {
-    fprintf(file, "\n");
     fprintf(file, ">>>General Information<<<\n");
     fprintf(file, "Minor version:      \t%d\n", classe->minor_version);
     fprintf(file, "Major version:      \t%d\n", classe->major_version);
@@ -288,7 +295,7 @@ void imprime_constant_pool_file(ClassFile *classe, FILE *file) {
                 break;
             case CONSTANT_Fieldref:
                 fprintf(file, "[%d]CONSTANT_Fieldref_info:\n", (i + 1));
-                fprintf(file, "\tClass name:          \tcp inf #%d\n",
+                fprintf(file, "\tClass name:          \tcp info #%d\n",
                         classe->constant_pool[i].info.Fieldref.class_index);
                 fprintf(file, "\tName and type:       \tcp info #%d\n",
                         classe->constant_pool[i].info.Fieldref.name_and_type_index);
@@ -409,11 +416,10 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             fprintf(file, "\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
             fprintf(file, "\t\tCode:\t \n");
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++) {
-                //Instrucao instrucoes[0xCA];
+                Instrucao mapa[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
-                //carrega_instrucoes(instrucoes);
-                //fprintf(file, "\t\t\t\t\tOP: %x, INSTR: %s\n", opcode, instrucoes[opcode].mnemonico);
-                fprintf(file, "\t\t\t\t\tOP: %x\n", opcode);
+                carrega_instrucoes(mapa);
+                fprintf(file, "\t\t\t\t\t%d: %s\n", i, mapa[opcode].mnemonico);
             }
             fprintf(file, "\n\t\tException Table Length: \t%d\n",
                     attributeInfo->info.CodeAttribute.exception_table_length);
@@ -532,4 +538,35 @@ void carrega_instrucoes(Instrucao *mapa) {
         fscanf(arq_mapa, "%s", mapa[i].mnemonico);
     }
     fclose(arq_mapa);
+}
+
+char* dereferencia(u2 index, ClassFile *classe) {
+    char *nome;
+    int i;
+    nome = (char *) malloc((classe->constant_pool[index].info.Utf8.length + 1) * sizeof(char));
+    for (i = 0; i < classe->constant_pool[index].info.Utf8.length; i++) {
+        nome[i] = classe->constant_pool[index].info.Utf8.bytes[i];
+    }
+    nome[++i] = '\0';
+    printf("%s", nome); // DEBUG
+    return nome;
+}
+
+int verifica_match(ClassFile *classe, char *nome) {
+    char *temp, *nomeThisClass;
+    char c;
+    int i = 0, index = classe->constant_pool[classe->this_class].info.Class.name_index - 2;
+
+    temp = (char *) malloc(strlen(nome) * sizeof(char));
+    while(c != '.') {
+        c = nome[i];
+        temp[i] = nome[i];
+        i++;
+    }
+    temp[i++] = '\0';
+    nomeThisClass = dereferencia(index, classe);
+    if(!strcmp(temp, nomeThisClass)) {
+        return ERRO_MATCHING;
+    }
+    return SUCESSO;
 }

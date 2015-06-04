@@ -1,6 +1,7 @@
 var imprime_8c =
 [
     [ "carrega_instrucoes", "imprime_8c.html#ae4f8a5f85274165378f0fa9bad9d53ca", null ],
+    [ "dereferencia", "imprime_8c.html#a8ba5d36cda32a068c0d91e36b92eea4a", null ],
     [ "imprime_attribute", "imprime_8c.html#afc1f9eb4377c66132b3e7cedf502e1d5", null ],
     [ "imprime_attribute_file", "imprime_8c.html#a36317b6299a703bba0a28f74f7054e4c", null ],
     [ "imprime_attributes", "imprime_8c.html#a15277fbfe7a7741905e84632c7f2e3d3", null ],
@@ -12,5 +13,6 @@ var imprime_8c =
     [ "imprime_general_information", "imprime_8c.html#ad6c3de4ab82963a7f909578021408af9", null ],
     [ "imprime_general_information_file", "imprime_8c.html#a90db8a67d48bb3b72f3d8991841e2aa4", null ],
     [ "imprime_methods", "imprime_8c.html#a106a7bd7db691aea74b8f1953c44be1a", null ],
-    [ "imprime_methods_file", "imprime_8c.html#a31f73cbf6d289ff97f9a1408ce733f30", null ]
+    [ "imprime_methods_file", "imprime_8c.html#a31f73cbf6d289ff97f9a1408ce733f30", null ],
+    [ "verifica_match", "imprime_8c.html#aac3451b338f67fcbc9f84d75563404c7", null ]
 ];

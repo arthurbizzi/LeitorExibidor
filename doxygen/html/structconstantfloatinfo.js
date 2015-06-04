@@ -1,5 +1,5 @@
 var structconstantfloatinfo =
 [
-    [ "bytes", "structconstantfloatinfo.html#abf62a92cd62205a4cd53b41e479a294d", null ],
-    [ "tag", "structconstantfloatinfo.html#a0b5b4a882ddb17ab98a85740ec812b35", null ]
+    [ "bytes", "structconstantfloatinfo.html#a97a61703bfa9c32f2cfa2709825b67ee", null ],
+    [ "tag", "structconstantfloatinfo.html#a17726ed17c64ec8550633ebf17fd1a98", null ]
 ];
