@@ -24,3 +24,27 @@
 	"imprime.h"
 	"carregamento.h"
 
+1433531655 source:e:\guilherme\area\gui\sb\leitorexibidor\carregamento.c
+	"carregamento.h"
+
+1433377031 e:\guilherme\area\gui\sb\leitorexibidor\carregamento.h
+	<stdio.h>
+	"main.h"
+
+1433378441 e:\guilherme\area\gui\sb\leitorexibidor\main.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdint.h>
+
+1433540464 source:e:\guilherme\area\gui\sb\leitorexibidor\imprime.c
+	"imprime.h"
+
+1433378441 e:\guilherme\area\gui\sb\leitorexibidor\imprime.h
+	"main.h"
+
+1433378441 source:e:\guilherme\area\gui\sb\leitorexibidor\main.c
+	"main.h"
+	"imprime.h"
+	"carregamento.h"
+
