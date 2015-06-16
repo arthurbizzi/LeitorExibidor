@@ -1,10 +1,10 @@
 /**
-* @file imprime.c
+* @file impressao.c
 * @author Bruno, Guilherme, Kelvin
 * @brief Arquivo com as implementacoes de funcoes relacionadas a impressao do conteudo da classe em tela e em arquivo.
 */
 
-#include "imprime.h"
+#include "impressao.h"
 
 void imprime_general_information(ClassFile *classe) {
     char *nomeThisClass, *nomeSuperClass;
@@ -30,7 +30,7 @@ void imprime_general_information(ClassFile *classe) {
 }
 
 void imprime_constant_pool(ClassFile *classe) {
-    l1 l;
+    u8 l;
     char *derreferencia = NULL, *derreferencia2 = NULL, *derreferencia3 = NULL;
     printf("\n");
     printf(">>>Constant Pool<<<\n");
@@ -104,7 +104,7 @@ void imprime_constant_pool(ClassFile *classe) {
                 printf("\tFloat:               \t%f\n", classe->constant_pool[i].info.Float.bytes);
                 break;
             case CONSTANT_Long:
-                l = (l1) classe->constant_pool[i].info.Long.high_bytes << 32;
+                l = (u8) classe->constant_pool[i].info.Long.high_bytes << 32;
                 l = l | classe->constant_pool[i].info.Long.low_bytes;
                 printf("[%d]CONSTANT_Long_info:\n", (i + 1));
                 printf("\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Long.high_bytes);
@@ -114,7 +114,7 @@ void imprime_constant_pool(ClassFile *classe) {
                 printf("[%d](large numeric continued)\n", (i + 1));
                 break;
             case CONSTANT_Double:
-                l = (l1) classe->constant_pool[i].info.Double.high_bytes << 32;
+                l = (u8) classe->constant_pool[i].info.Double.high_bytes << 32;
                 l = l | classe->constant_pool[i].info.Double.low_bytes;
                 printf("[%d]CONSTANT_Double_info:\n", (i + 1));
                 printf("\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Double.high_bytes);
@@ -178,7 +178,7 @@ void imprime_fields(ClassFile *classe) {
 
 void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
     char *derreferencia = NULL;
-    l1 l;
+    u8 l;
     char *tipoAtributo;
     u2 index = attributeInfo->attribute_name_index - 1, index1;
     float f;
@@ -199,11 +199,11 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe) {
             index = attributeInfo->info.ConstantValue.constantvalue_index - 1;
             switch (classe->constant_pool[index].tag){
                 case CONSTANT_Long:
-                    l = (l1)classe->constant_pool[index].info.Long.high_bytes<<32|classe->constant_pool[index].info.Long.low_bytes;
+                    l = (u8)classe->constant_pool[index].info.Long.high_bytes<<32|classe->constant_pool[index].info.Long.low_bytes;
                     printf("\t\tConstant Value Index: \tCP INFO #%d < %ld >", attributeInfo->info.ConstantValue.constantvalue_index, l);
                 break;
                 case CONSTANT_Double:
-                    l = (l1)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
+                    l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
                     printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, l);
                 break;
                 case CONSTANT_Float:
@@ -380,7 +380,7 @@ void imprime_general_information_file(ClassFile *classe, FILE *file) {
 void imprime_constant_pool_file(ClassFile *classe, FILE *file) {
     char *derreferencia = NULL, *derreferencia2 = NULL, *derreferencia3 = NULL;
     int index = 0;
-    l1 l;
+    u8 l;
     fprintf(file, "\n");
     fprintf(file, ">>>Constant Pool<<<\n");
     for (int i = 0;
@@ -452,7 +452,7 @@ void imprime_constant_pool_file(ClassFile *classe, FILE *file) {
                 fprintf(file, "\tFloat:               \t%f\n", classe->constant_pool[i].info.Float.bytes);
                 break;
             case CONSTANT_Long:
-                l = (l1) classe->constant_pool[i].info.Long.high_bytes << 32;
+                l = (u8) classe->constant_pool[i].info.Long.high_bytes << 32;
                 l = l | classe->constant_pool[i].info.Long.low_bytes;
                 fprintf(file, "[%d]CONSTANT_Long_info:\n", (i + 1));
                 fprintf(file, "\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Long.high_bytes);
@@ -462,7 +462,7 @@ void imprime_constant_pool_file(ClassFile *classe, FILE *file) {
                 fprintf(file, "[%d](large numeric continued)\n", (i + 1));
                 break;
             case CONSTANT_Double:
-                l = (l1) classe->constant_pool[i].info.Double.high_bytes << 32;
+                l = (u8) classe->constant_pool[i].info.Double.high_bytes << 32;
                 l = l | classe->constant_pool[i].info.Double.low_bytes;
                 fprintf(file, "[%d]CONSTANT_Double_info:\n", (i + 1));
                 fprintf(file, "\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Double.high_bytes);
@@ -529,7 +529,7 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
     char *derreferencia = NULL;
     char *tipoAtributo;
     u2 index = attributeInfo->attribute_name_index - 1;
-    l1 l;
+    u8 l;
     float f;
     int i;
     tipoAtributo = (char *) malloc(classe->constant_pool[index].info.Utf8.length * sizeof(char));
@@ -548,11 +548,11 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             index = attributeInfo->info.ConstantValue.constantvalue_index - 1;
             switch (classe->constant_pool[index].tag){
                 case CONSTANT_Long:
-                    l = (l1)classe->constant_pool[index].info.Long.high_bytes<<32|classe->constant_pool[index].info.Long.low_bytes;
+                    l = (u8)classe->constant_pool[index].info.Long.high_bytes<<32|classe->constant_pool[index].info.Long.low_bytes;
                     fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %ld >", attributeInfo->info.ConstantValue.constantvalue_index, l);
                 break;
                 case CONSTANT_Double:
-                    l = (l1)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
+                    l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
                     fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, l);
                 break;
                 case CONSTANT_Float:

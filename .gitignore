@@ -1,5 +1,13 @@
 *.exe
+*.o
+*.dev
+*.layout
+*.depend
 bin/Debug/LeitorExibidor.exe
-LeitorExibidor.depend
+bin/Release/LeitorExibidor.exe
 obj/Debug/main.o
+obj/Debug/carregamento.o
+obj/Debug/imprime.o
 obj/Release/main.o
+obj/Release/carregamento.o
+obj/Release/imprime.o

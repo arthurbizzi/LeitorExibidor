@@ -1,14 +1,17 @@
 # depslib dependency file v1.0
-1433377346 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.c
+1434424451 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.c
 	"main.h"
-	"imprime.h"
-	"carregamento.h"
 
-1433376722 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.h
+1434425913 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
+	"ClassLoader/carregamento.h"
+	"ClassLoader/classloader.h"
+	"ClassLoader/impressao.h"
+	"Pilha/pilha_frames.h"
+	"Pilha/pilha_operandos.h"
 
 1433297496 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\carregamento.c
 	"carregamento.h"
@@ -17,12 +20,11 @@
 	<stdio.h>
 	"main.h"
 
-1433376606 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\imprime.h
+1433377683 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\imprime.h
 	"main.h"
 
-1433377297 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\imprime.c
+1434422974 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\imprime.c
 	"imprime.h"
-	"carregamento.h"
 
 1433531655 source:e:\guilherme\area\gui\sb\leitorexibidor\carregamento.c
 	"carregamento.h"
@@ -47,4 +49,42 @@
 	"main.h"
 	"imprime.h"
 	"carregamento.h"
+
+1433297496 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\carregamento.c
+	"carregamento.h"
+
+1434425979 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\carregamento.h
+	<stdio.h>
+	"classloader.h"
+
+1434425999 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\classloader.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdint.h>
+
+1434424380 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\classloader.c
+	"classloader.h"
+	"impressao.h"
+	"carregamento.h"
+
+1434425887 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.h
+	"classloader.h"
+
+1434425857 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.c
+	"impressao.h"
+
+1434424753 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_operandos.c
+	"pilha_operandos.h"
+
+1434426417 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_operandos.h
+	"../ClassLoader/classloader.h"
+
+1434426642 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_frames.h
+	"../ClassLoader/classloader.h"
+	"pilha_operandos.h"
+
+1434424193 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_frames.c
+	"pilha_frames.h"
+	"pilha_operandos.h"
 

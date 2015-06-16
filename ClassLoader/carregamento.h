@@ -8,7 +8,7 @@
 #define LEITOREXIBIDOR_CARREGAMENTO_H
 
 #include <stdio.h>
-#include "main.h"
+#include "classloader.h"
 
 /* Protótipos */
 /**

@@ -1,5 +1,5 @@
 /**
-* @file imprime.h
+* @file impressao.h
 * @author Bruno, Guilherme, Kelvin
 * @brief Arquivo com as definicoes de funcoes relacionadas a impressao do conteudo da classe em tela e em arquivo.
 */
@@ -7,7 +7,7 @@
 #ifndef LEITOREXIBIDOR_IMPRIME_H
 #define LEITOREXIBIDOR_IMPRIME_H
 
-#include "main.h"
+#include "classloader.h"
 
 /* Protótipos */
 // Imprime Stdout

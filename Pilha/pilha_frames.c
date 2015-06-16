@@ -12,8 +12,8 @@ Frame *ConstruirFrame(ClassFile *classe, method_info *method){
     frame->VetorVariaveisLocais = (u4 *)malloc(sizeof(u4) * frame->TamanhoVetorVariaveisLocais);
     frame->constant_pool_count = classe->constant_pool_count;
     frame->constant_pool = classe->constant_pool;
-    frame->listaArrays = NULL;
-    frame->listaObjetos = NULL;
+//    frame->listaArrays = NULL;
+  //  frame->listaObjetos = NULL;
     frame->returAddress = 0;
 
     return frame;
@@ -54,8 +54,8 @@ Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame){
 
 void DestruirFrame(Frame *frame){
     desalocaPilhaOperandos(frame->pilhaOperandos);
-    desalocaListaArrays(frame->listaArrays);
-    desalocaListaObjetos(frame->listaObjetos);
+//    desalocaListaArrays(frame->listaArrays);
+  //  desalocaListaObjetos(frame->listaObjetos);
     free(frame->VetorVariaveisLocais);
     free(frame);
 }

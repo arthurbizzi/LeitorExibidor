@@ -1,4 +1,4 @@
-#include "main.h"
+#include "pilha_operandos.h"
 
 void InicializaPilhaDeOperandos(PilhaDeOperandos **pilhaOperandos){
     *pilhaOperandos = NULL;
@@ -21,7 +21,7 @@ void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 dado){
     return;
 }
 
-void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, l1 dado){
+void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 dado){
     u4 op;
     op = (u4)(dado & 0x00000000FFFFFFFF);
     EmpilhaOperando32bits(pilhaOperandos,op);
@@ -41,12 +41,12 @@ u4 DesempilhaOperando32bits(PilhaDeOperandos **pilhaOperandos){
     return op;
 }
 
-l1 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos){
+u8 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos){
     u4 op32_1, op32_2;
-    l1 op64;
+    u8 op64;
     op32_1 = DesempilhaOperando32bits(pilhaOperandos);
     op32_2 = DesempilhaOperando32bits(pilhaOperandos);
-    op64 = (l1)(op32_1 << 32) | (l1)op32_2;
+    op64 = (u8)(op32_1 << 32) | (u8)op32_2;
     return op64;
 }
 
