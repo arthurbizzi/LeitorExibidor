@@ -7,7 +7,9 @@
 #ifndef LEITOREXIBIDOR_IMPRIME_H
 #define LEITOREXIBIDOR_IMPRIME_H
 
+#include <stdio.h>
 #include "classloader.h"
+#include "../main.h"
 
 /* Protótipos */
 // Imprime Stdout

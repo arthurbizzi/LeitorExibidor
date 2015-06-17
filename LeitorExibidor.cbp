@@ -32,14 +32,27 @@
 			<Add option="-Wall" />
 			<Add option="-std=c99" />
 		</Compiler>
-		<Unit filename="carregamento.c">
+		<Unit filename="ClassLoader/carregamento.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="carregamento.h" />
-		<Unit filename="imprime.c">
+		<Unit filename="ClassLoader/carregamento.h" />
+		<Unit filename="ClassLoader/classloader.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="imprime.h" />
+		<Unit filename="ClassLoader/classloader.h" />
+		<Unit filename="ClassLoader/impressao.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ClassLoader/impressao.h" />
+		<Unit filename="ClassLoader/mapa.txt" />
+		<Unit filename="Pilha/pilha_frames.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Pilha/pilha_frames.h" />
+		<Unit filename="Pilha/pilha_operandos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Pilha/pilha_operandos.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

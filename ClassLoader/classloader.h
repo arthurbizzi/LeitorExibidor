@@ -16,9 +16,6 @@
 /* Controle do Programa */
 #define MAGIC_NUMBER 0xCAFEBABE
 #define VERSION 46
-#define SUCESSO 0
-#define ERRO_ARQUIVO -1
-#define ERRO_EXECUCAO -2
 #define ERRO_MAGIC -3
 #define ERRO_VERSION -4
 #define ERRO_MATCHING -5
@@ -260,6 +257,6 @@ typedef struct instrucao {
 *   @param argv Argumentos passados pela linha de comando
 *   @return Status de execução: SUCESSO, ERRO_MAGIC, ERRO_VERSION ou ERRO_ARQUIVO
 */
-int carrega_classe(int argc, char **argv);
+int carrega_classe(char *nome_arquivo, ClassFile *classe);
 
 #endif // CLASSLOADER_H

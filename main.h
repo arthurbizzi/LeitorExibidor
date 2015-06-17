@@ -11,6 +11,10 @@
 #include "Pilha/pilha_frames.h"
 #include "Pilha/pilha_operandos.h"
 
+#define SUCESSO 0
+#define ERRO_ARQUIVO -1
+#define ERRO_EXECUCAO -2
+
 /**
 *   @fn int main(int argc, char **argv)
 *   @brief Funcao que dirige a execucao do programa

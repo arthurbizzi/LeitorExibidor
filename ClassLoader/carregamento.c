@@ -7,20 +7,17 @@
 #include "carregamento.h"
 
 u1 le_u1(FILE *arquivo) {
-    u1 valor;
-    valor = (getc(arquivo));
+    u1 valor = (getc(arquivo));
     return valor;
 }
 
 u2 le_u2(FILE *arquivo) {
-    u2 valor;
-    valor = (getc(arquivo) << 8 | getc(arquivo));
+    u2 valor = (getc(arquivo) << 8 | getc(arquivo));
     return valor;
 }
 
 u4 le_u4(FILE *arquivo) {
-    u4 valor;
-    valor = (getc(arquivo) << 24 | getc(arquivo) << 16 | getc(arquivo) << 8 | getc(arquivo));
+    u4 valor = (getc(arquivo) << 24 | getc(arquivo) << 16 | getc(arquivo) << 8 | getc(arquivo));
     return valor;
 }
 
