@@ -53,6 +53,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Pilha/pilha_operandos.h" />
+		<Unit filename="lista_arrays_objetos_classes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lista_arrays_objetos_classes.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

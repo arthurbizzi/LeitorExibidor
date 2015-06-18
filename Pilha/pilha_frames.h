@@ -7,7 +7,7 @@
 #ifndef PILHA_FRAMES_H
 #define PILHA_FRAMES_H
 
-#include "../ClassLoader/classloader.h"
+#include "../lista_arrays_objetos_classes.h"
 #include "pilha_operandos.h"
 
 typedef struct frame {
@@ -18,8 +18,8 @@ typedef struct frame {
     u4                  *VetorVariaveisLocais;
     u2                  constant_pool_count;
     cp_info             *constant_pool;
-    //listaArrays         *listaArrays;
-    //listaObjetos        *listaObjetos;
+    ListaArrays         *listaArrays;
+    ListaObjetos        *listaObjetos;
     u4                  returAddress;
 } Frame;
 
@@ -31,7 +31,7 @@ typedef struct pilhaframes{
 /**
 *   @fn void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames)
 *   @brief
-*   @param pilhaFrame
+*   @param pilhaFrames
 */
 void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames);
 
@@ -46,7 +46,6 @@ void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame);
 /**
 *   @fn void DestruirFrame(Frame *frame)
 *   @brief
-*   @param pilhaOperandos
 *   @param frame
 */
 void DestruirFrame(Frame *frame);
