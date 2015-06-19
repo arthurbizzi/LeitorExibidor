@@ -90,24 +90,25 @@
 	"pilha_frames.h"
 	"pilha_operandos.h"
 
-1434602669 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/carregamento.c
+1434746617 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/carregamento.c
 	"carregamento.h"
 
 1434602669 /home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/carregamento.h
 	"classloader.h"
 	"../main.h"
 
-1434602669 /home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/classloader.h
+1434746617 /home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/classloader.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
 
-1434604190 /home/kelvinec/Área de Trabalho/LeitorExibidor/main.h
+1434746617 /home/kelvinec/Área de Trabalho/LeitorExibidor/main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
+	"lista_arrays_objetos_classes.h"
 	"ClassLoader/carregamento.h"
 	"ClassLoader/classloader.h"
 	"ClassLoader/impressao.h"
@@ -119,18 +120,18 @@
 	"classloader.h"
 	"../main.h"
 
-1434602669 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_frames.h
-	"../ClassLoader/classloader.h"
+1434746617 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_frames.h
+	"../lista_arrays_objetos_classes.h"
 	"pilha_operandos.h"
 
 1434602669 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_operandos.h
 	"../ClassLoader/classloader.h"
 
-1434602669 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/classloader.c
+1434746617 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/classloader.c
 	"classloader.h"
 	"carregamento.h"
 
-1434602669 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/impressao.c
+1434746617 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/impressao.c
 	"impressao.h"
 
 1434602669 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/main.c
@@ -149,4 +150,8 @@
 
 1434685680 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
+
+1434746617 /home/kelvinec/Área de Trabalho/LeitorExibidor/lista_arrays_objetos_classes.h
+	"ClassLoader/classloader.h"
+	"ClassLoader/carregamento.h"
 

@@ -11,99 +11,114 @@ void nop(){
 };
 
 void aconst_null(PilhaDeOperandos* pilhaDeOperandos){
-    EmpilhaOperando32bits(&pilhaDeOperandos,0);
+	u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 0;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
     return;
 };
 
 void iconst_m1(PilhaDeOperandos* pilhaDeOperandos){
-    u4 number = -1;
-    EmpilhaOperando32bits(&pilhaDeOperandos,&number);
+    u4 *value = (u4*)malloc(sizeof(u4));
+	*value = -1;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void iconst_0(PilhaDeOperandos* pilhaDeOperandos) {
-    u4 number = 0;
-    EmpilhaOperando32bits(&pilhaDeOperandos,&number);
+   u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 0;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void iconst_1(PilhaDeOperandos* pilhaDeOperandos) {
-    u4 number = 1;
-    EmpilhaOperando32bits(&pilhaDeOperandos,&number);
+    u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 1;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void iconst_2(PilhaDeOperandos* pilhaDeOperandos) {
-    u4 number = 2;
-    EmpilhaOperando32bits(&pilhaDeOperandos,&number);
+    u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 2;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void iconst_3(PilhaDeOperandos* pilhaDeOperandos) {
-    u4 number = 3;
-    EmpilhaOperando32bits(&pilhaDeOperandos,&number);
+    u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 3;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void iconst_4(PilhaDeOperandos* pilhaDeOperandos) {
-    u4 number = 4;
-    EmpilhaOperando32bits(&pilhaDeOperandos,&number);
+    u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 4;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void iconst_5(PilhaDeOperandos* pilhaDeOperandos) {
-    u4 number = 5;
-    EmpilhaOperando32bits(&pilhaDeOperandos,&number);
+    u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 5;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 void lconst_0(PilhaDeOperandos* pilhaDeOperandos) {
-    u4 high = 0;
-    u4 low = 0;
-    EmpilhaOperando64bits(&pilhaDeOperandos,0);
+	u8 *value = (u8*)malloc(sizeof(u8));
+	*value = 0.0;
+    EmpilhaOperando64bits(&pilhaDeOperandos,value);
 }
 
 void lconst_1(PilhaDeOperandos* pilhaDeOperandos) {
-    u4 high = 1;
-    u4 low = 0;
+    u8 *value = (u8*)malloc(sizeof(u8));
+	*value = 1;
    EmpilhaOperando64bits(&pilhaDeOperandos,1);
 }
 
 void fconst_0(PilhaDeOperandos* pilhaDeOperandos) {
-    float zeroNum = 0.0;
-    EmpilhaOperando32bits(&pilhaDeOperandos,0);
+	u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 0.0f;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void fconst_1(PilhaDeOperandos* pilhaDeOperandos) {
-    float zeroNum = 1.0;
-    EmpilhaOperando32bits(&pilhaDeOperandos,1);
+    u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 1.0f;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void fconst_2(PilhaDeOperandos* pilhaDeOperandos) {
-    float zeroNum = 2.0;
-    EmpilhaOperando32bits(&pilhaDeOperandos,2);
+     u4 *value = (u4*)malloc(sizeof(u4));
+	*value = 2.0f;
+    EmpilhaOperando32bits(&pilhaDeOperandos,value);
 }
 
 void dconst_0(PilhaDeOperandos* pilhaDeOperandos) {
-    long zeroNum = 0.0;
-    EmpilhaOperando64bits(pilhaDeOperandos,0);
+    u8 *value = (u8*)malloc(sizeof(u8));
+	*value = 0.0d;
+    EmpilhaOperando64bits(&pilhaDeOperandos,value);
 }
 
 void dconst_1(PilhaDeOperandos* pilhaDeOperandos) {
-    EmpilhaOperando64bits(&pilhaDeOperandos,1);
+    u8 *value = (u8*)malloc(sizeof(u8));
+	*value = 1.0d;
+    EmpilhaOperando64bits(&pilhaDeOperandos,value);
 }
 
 void bipush(PilhaDeOperandos* pilhaDeOperandos,u4* n){
-    EmpilhaOperando32bits(&pilhaDeOperandos,*n);
+    EmpilhaOperando32bits(&pilhaDeOperandos,n);
 }
 
 void sipush(PilhaDeOperandos* pilhaDeOperandos,u2* n){
-    EmpilhaOperando32bits(&pilhaDeOperandos,*n);
+    EmpilhaOperando32bits(&pilhaDeOperandos,n);
 }
 
 void ldc(PilhaDeOperandos* pilhaDeOperandos,u1 index, cp_info* constantPool){
     u1 tag = constantPool[index-1].tag;
     switch (tag){
-        case 3: //Integer
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[index-1].info.Integer.bytes);
+       case CONSTANT_Integer:  //Integer
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[index-1].info.Integer.bytes);
             break;
-        case 4: //Float
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[index-1].info.Float.bytes);
+        case CONSTANT_Float: //Float
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[index-1].info.Float.bytes);
             break;
-        case 8: //String, Need to see the correct reference to save it.
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[index-1].info.String.string_index);
+		case CONSTANT_String: //String, Need to see the correct reference to save it.
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[index-1].info.String.string_index);
             break;
     }
 }
@@ -112,14 +127,14 @@ void ldc_w(PilhaDeOperandos* pilhaDeOperandos,u1 index,u1 index2, cp_info* const
     u2 indexConcat = (index<<8) | index2;
     u1 tag = constantPool[index-1].tag;
    switch (tag){
-        case 3: //Integer
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[index-1].info.Integer.bytes);
+        case CONSTANT_Integer: //Integer
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[index-1].info.Integer.bytes);
             break;
-        case 4: //Float
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[index-1].info.Float.bytes);
+        case CONSTANT_Float: //Float
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[index-1].info.Float.bytes);
             break;
-        case 8: //String, Need to see the correct reference to save it.
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[index-1].info.String.string_index);
+        case CONSTANT_String: //String, Need to see the correct reference to save it.
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[index-1].info.String.string_index);
             break;
     }
 }
@@ -129,13 +144,13 @@ void ldc2_w(PilhaDeOperandos* pilhaDeOperandos,u1 index,u1 index2, cp_info* cons
     u1 tag = constantPool[indexConcat-1].tag;
 
     switch(tag){
-        case 5:
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[indexConcat-1].info.Long.high_bytes);
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[indexConcat-1].info.Long.low_bytes);
+        case CONSTANT_Long:
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[indexConcat-1].info.Long.high_bytes);
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[indexConcat-1].info.Long.low_bytes);
             break;
-        case 6:
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[indexConcat-1].info.Double.high_bytes);
-            EmpilhaOperando32bits(&pilhaDeOperandos,constantPool[indexConcat-1].info.Double.low_bytes);
+        case CONSTANT_Double:
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[indexConcat-1].info.Double.high_bytes);
+            EmpilhaOperando32bits(&pilhaDeOperandos,&constantPool[indexConcat-1].info.Double.low_bytes);
             break;
     }
 }
@@ -148,7 +163,7 @@ void iload(PilhaDeOperandos* pilhaDeOperandos,u1 index, u1 index2, field_info* f
         indexConcat = (u2)index;
     }
 #warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
-//    EmpilhaOperando32bits(&pilhaDeOperandos,fields[indexConcat]);
+    EmpilhaOperando32bits(&pilhaDeOperandos,&fields[indexConcat].attributes->info.ConstantValue.constantvalue_index);
 }
 
 void lload(PilhaDeOperandos* pilhaDeOperandos,u1 index, u1 index2, field_info* fields){
@@ -158,9 +173,9 @@ void lload(PilhaDeOperandos* pilhaDeOperandos,u1 index, u1 index2, field_info* f
     }else{
         indexConcat = (u2)index;
     }
-//#warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
-//    push(fields[indexConcat]);
-//    push(fields[indexConcat+1]);
+#warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
+#warning Need to see if smurf implementation cover this case, or need to mount the u8 field to pass to function store. Or access CP to pass the value.
+	    EmpilhaOperando64bits(&pilhaDeOperandos,&fields[indexConcat].attributes->info.ConstantValue.constantvalue_index);
 }
 
 void fload(PilhaDeOperandos* pilhaDeOperandos,u1 index, u1 index2, field_info* fields){
@@ -171,7 +186,8 @@ void fload(PilhaDeOperandos* pilhaDeOperandos,u1 index, u1 index2, field_info* f
         indexConcat = (u2)index;
     }
 #warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
-//    push(fields[indexConcat]);
+#warning Need to see if smurf implementation cover this case, or need to mount the u4 field to pass to function store.
+	 EmpilhaOperando32bits(&pilhaDeOperandos,&fields[indexConcat].attributes->info.ConstantValue.constantvalue_index);
 }
 
 void dload(PilhaDeOperandos* pilhaDeOperandos,u1 index, u1 index2, field_info* fields){
@@ -182,12 +198,15 @@ void dload(PilhaDeOperandos* pilhaDeOperandos,u1 index, u1 index2, field_info* f
         indexConcat = (u2)index;
     }
 #warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
-//    push(fields[indexConcat]);
-//    push(fields[indexConcat+1]);
+#warning Need to see if smurf implementation cover this case, or need to mount the u8 field to pass to function store.
+	  EmpilhaOperando64bits(&pilhaDeOperandos,&fields[indexConcat].attributes->info.ConstantValue.constantvalue_index);
 }
 
 
-#minha parte.
+
+
+
+#pragma mark - SMURF PART
 
 
 void wide(){

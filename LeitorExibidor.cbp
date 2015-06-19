@@ -45,6 +45,10 @@
 		</Unit>
 		<Unit filename="ClassLoader/impressao.h" />
 		<Unit filename="ClassLoader/mapa.txt" />
+		<Unit filename="Instrucoes/exec_instrucoes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/exec_instrucoes.h" />
 		<Unit filename="Pilha/pilha_frames.c">
 			<Option compilerVar="CC" />
 		</Unit>
