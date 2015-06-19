@@ -8,9 +8,9 @@
 #define LISTA_ARRAYS_OBJETOS_CLASSES_H
 
 #include "ClassLoader/classloader.h"
-#include "ClassLoader/impressao.h"
+#include "ClassLoader/carregamento.h"
 
-typedef struct tipoarray{
+typedef struct tipoarray {
     u1 tag;
     u4 tamanho;
     u1 dimensao;
@@ -33,9 +33,9 @@ typedef struct listadearrays{
     struct listadearrays    *prox;
 } ListaArrays;
 
-typedef struct tipofield{
+typedef struct tipofield {
     u1 tag;
-    union{
+    union {
         u1 tipoBoolean;
         u1 tipoByte;
         u2 tipoShort;
@@ -137,7 +137,17 @@ void desalocaListaDeClasses(ListaClasses **listadeclasses);
 *   @brief
 *   @param listadeclasses
 *   @param nomedaclasse
+*   @return
 */
 u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse);
+
+/**
+*   @fn u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
+*   @brief Funcao que recebe um indice e procura na lista de classes a classe correspondente a esse indice.
+*   @param index Indice da lista a ser recuperado.
+*   @param listadeclasses Lista que contem as classes carregadas.
+*   @return Retorna a i-esima classe da lista.
+*/
+ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses);
 
 #endif // LISTA_ARRAYS_OBJETOS_CLASSES_H

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.c'],['../main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.c']]]
+  ['hello',['Hello',['../class_hello.html#ad1b909887b36c092ca06870b842616a4',1,'Hello.Hello()'],['../class_hello.html#a27a1864e1f4693766ae2596e6e205731',1,'Hello.hello()']]]
 ];

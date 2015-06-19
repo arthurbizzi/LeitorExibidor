@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['defaultattribute',['defaultattribute',['../structdefaultattribute.html',1,'']]],
-  ['dereferencia',['dereferencia',['../imprime_8c.html#a8ba5d36cda32a068c0d91e36b92eea4a',1,'dereferencia(u2 index, ClassFile *classe):&#160;imprime.c'],['../imprime_8h.html#a5b79b24988b1c6e52f71392cd047addf',1,'dereferencia(u2 index, ClassFile *classe):&#160;imprime.c']]]
+  ['dado',['dado',['../structlistadearrays.html#a193a327f233e6036bcb2563eb94e72be',1,'listadearrays::dado()'],['../structlistadeobjetos.html#a689d7ee84802e611bc0f237835ad770b',1,'listadeobjetos::dado()'],['../structlistadeclasses.html#aabfc235d346958db283dd11c9e6bbe9a',1,'listadeclasses::dado()']]],
+  ['desalocalistadearrays',['desalocaListaDeArrays',['../lista__arrays__objetos__classes_8c.html#a4a4ff8f09e57d8934a102874df4267dc',1,'desalocaListaDeArrays(ListaArrays **listadearrays):&#160;lista_arrays_objetos_classes.c'],['../lista__arrays__objetos__classes_8h.html#a4a4ff8f09e57d8934a102874df4267dc',1,'desalocaListaDeArrays(ListaArrays **listadearrays):&#160;lista_arrays_objetos_classes.c']]],
+  ['desalocalistadeclasses',['desalocaListaDeClasses',['../lista__arrays__objetos__classes_8c.html#a505b1b5974645b61b8d2cd5002c27045',1,'desalocaListaDeClasses(ListaClasses **listadeclasses):&#160;lista_arrays_objetos_classes.c'],['../lista__arrays__objetos__classes_8h.html#a505b1b5974645b61b8d2cd5002c27045',1,'desalocaListaDeClasses(ListaClasses **listadeclasses):&#160;lista_arrays_objetos_classes.c']]],
+  ['desalocalistadeobjetos',['desalocaListaDeObjetos',['../lista__arrays__objetos__classes_8c.html#aa4e2be55c66ad6de73ebaa31cb263f3a',1,'desalocaListaDeObjetos(ListaObjetos **listadeobjetos):&#160;lista_arrays_objetos_classes.c'],['../lista__arrays__objetos__classes_8h.html#aa4e2be55c66ad6de73ebaa31cb263f3a',1,'desalocaListaDeObjetos(ListaObjetos **listadeobjetos):&#160;lista_arrays_objetos_classes.c']]],
+  ['dimensao',['dimensao',['../structtipoarray.html#a21cdf0863e00c3d29a6dcae2eb86c661',1,'tipoarray']]]
 ];

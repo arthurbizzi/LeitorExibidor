@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['verifica_5fmatch',['verifica_match',['../imprime_8c.html#aac3451b338f67fcbc9f84d75563404c7',1,'verifica_match(ClassFile *classe, char *nome):&#160;imprime.c'],['../imprime_8h.html#aac3451b338f67fcbc9f84d75563404c7',1,'verifica_match(ClassFile *classe, char *nome):&#160;imprime.c']]]
+  ['main',['main',['../main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.c'],['../main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.c']]],
+  ['main_2ec',['main.c',['../main_8c.html',1,'']]],
+  ['main_2eh',['main.h',['../main_8h.html',1,'']]]
 ];

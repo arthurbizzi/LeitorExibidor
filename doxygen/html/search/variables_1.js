@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exception_5ftable_5flength',['exception_table_length',['../structcodeattribute.html#a9da5c85df2c7341bf72b86a61d7f8af8',1,'codeattribute']]]
+  ['classe',['classe',['../structtipofield.html#a1942388b11cd7d23873507db737f8ba7',1,'tipofield::classe()'],['../structtipoobjeto.html#a1942388b11cd7d23873507db737f8ba7',1,'tipoobjeto::classe()']]]
 ];

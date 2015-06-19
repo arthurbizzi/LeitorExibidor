@@ -1,3 +1,8 @@
+warning: source ..\imprime.h is not a readable file or directory... skipping.
+warning: source ..\carregamento.c is not a readable file or directory... skipping.
+warning: source ..\carregamento.h is not a readable file or directory... skipping.
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/lista_arrays_objetos_classes.h:146: warning: argument 'index' of command @param is not found in the argument list of ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/lista_arrays_objetos_classes.h:146: warning: argument 'index' of command @param is not found in the argument list of ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
 C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/main.c:11: warning: Unsupported xml/html tag <arquivo> found
 C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/main.c:13: warning: Unsupported xml/html tag <arquivo> found
-C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/main.c:13: warning: Unsupported xml/html tag <arquivo> found
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/main.c:13: warning: Unsupported xml/html tag <opcao> found

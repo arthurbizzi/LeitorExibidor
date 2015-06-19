@@ -2,7 +2,8 @@
 * @file main.c
 * @author Bruno, Guilherme, Kelvin
 * @brief Arquivo principal da implementacao do Leitor e Exibidor de arquivos no formato .class.
-*
+*/
+/*
 *    Trabalho da Disciplina Software Basico, 2015-1
 *    Alunos: Bruno Ribeiro das Virgens (11/0111141)
 *            Guilherme de Sousa Castro (11/0148746)
@@ -17,7 +18,7 @@
 *       Tanto o arquivo da classe quanto o arquivo do relatorio serao pedidos ao usuario
 *    leitorexibidor.exe <arquivo da classe>
 *       Nao sera gerado o arquivo do relatorio (somente impressao na tela)
-*    leitorexibidor.exe <arquivo da classe> <arquivo do relatorio>
+*    leitorexibidor.exe <arquivo da classe> <opcao de impressao>
 *       Esta chamada gerará relatório em arquivo e na tela.
 *
 *    Observacao: o arquivo "mapa.txt" deve estar na pasta dos codigos-fonte.
@@ -25,10 +26,12 @@
 
 #include "main.h"
 
+ListaClasses *lista_de_classes; /// Lista de classes carregadas no programa
+char opcao; /// Modo de impressao (t - tela, a - arquivo, s - ambos, n - nenhum)
+
 int main(int argc, char **argv) {
     ClassFile *classe = (ClassFile *) malloc(sizeof(ClassFile));
     char nome_classe[21];
-    char opcao;
     int status;
 
     switch(argc) {
@@ -42,6 +45,10 @@ int main(int argc, char **argv) {
         case 2:
             status = carrega_classe(argv[1], classe);
             break;
+        case 3:
+            status = carrega_classe(argv[1], classe);
+            opcao = argv[2][0];
+            break;
         default:
             printf("Quantidade incompativel de argumentos.\n");
             printf("Digite o nome do arquivo com a classe a ser carregada, com extensao:\n");
@@ -53,17 +60,32 @@ int main(int argc, char **argv) {
     }
 
     if(status != SUCESSO) {
-        printf("Execucao interrompida.");
+        printf("Carregamento interrompido.\n");
         return status;
     }
 
-    verifica_impressao(opcao, classe);
+    if(verifica_impressao(classe)) { // Verifica onde imprimir o conteudo da classe
+        return ERRO_ARQUIVO;
+    }
 
-    printf("Fim da execucao.");
-    return SUCESSO;
+    InicializaListaDeClasses(&lista_de_classes);
+    InsereListaDeClasses(&lista_de_classes, classe);
+
+    free(classe);
+
+    status = executa_programa(); // Executa o codigo da classe a partir de main
+
+    if(status == SUCESSO) {
+        printf("Fim da execucao.\n");
+        return SUCESSO;
+    }
+    else {
+        printf("Execucao interrompida.\n");
+        return status;
+    }
 }
 
-void verifica_impressao(char opcao, ClassFile *classe) {
+int verifica_impressao(ClassFile *classe) {
     FILE *arquivo_saida;
 
     switch(opcao) {
@@ -106,4 +128,31 @@ void verifica_impressao(char opcao, ClassFile *classe) {
         default:
             break;
     }
+    return SUCESSO;
+}
+
+int executa_programa() {
+    method_info *metodo_main = recupera_main();
+    if(!metodo_main) {
+        printf("ERRO: Metodo MAIN nao encontrado.\n");
+        return ERRO_MAIN;
+    }
+    return SUCESSO;
+}
+
+method_info* recupera_main() {
+    ClassFile *classe = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe carregada
+    u1 *nome;
+    int index_nome;
+
+    for(int i = 0; i < classe->methods_count; i++) { // Para cada metodo dentro da classe
+        index_nome = classe->methods[i].name_index - 1;
+        //index_descritor = classe->methods[i].descriptor_index - 1;
+        nome = classe->constant_pool[index_nome].info.Utf8.bytes;
+        //descritor = classe->constant_pool[index_descritor].info.Utf8.bytes;
+        if(!strcmp("main", (char *) nome)) { // Se o nome do metodo for main
+            return &classe->methods[i];
+        }
+    }
+    return NULL;
 }

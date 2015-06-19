@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>LeitorExibidor: main.h File Reference</title>
+<title>White Stars JVM: main.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,8 +31,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">LeitorExibidor
+   <div id="projectname">White Stars JVM
+   &#160;<span id="projectnumber">Tetra</span>
    </div>
+   <div id="projectbrief">Uma versao estrelada da JVM!</div>
   </td>
  </tr>
  </tbody>
@@ -103,284 +105,119 @@ $(document).ready(function(){initNavTree('main_8h.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">main.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Arquivo com as definicoes de constantes e estruturas do programa.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="lista__arrays__objetos__classes_8h_source.html">lista_arrays_objetos_classes.h</a>&quot;</code><br />
+<code>#include &quot;ClassLoader/carregamento.h&quot;</code><br />
+<code>#include &quot;ClassLoader/classloader.h&quot;</code><br />
+<code>#include &quot;ClassLoader/impressao.h&quot;</code><br />
+<code>#include &quot;Pilha/pilha_frames.h&quot;</code><br />
+<code>#include &quot;Pilha/pilha_operandos.h&quot;</code><br />
 </div>
 <p><a href="main_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantclassinfo.html">constantclassinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantfieldrefinfo.html">constantfieldrefinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantnameandtypeinfo.html">constantnameandtypeinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantutf8info.html">constantutf8info</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantmethodrefinfo.html">constantmethodrefinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantinterfacemethodrefinfo.html">constantinterfacemethodrefinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantstringinfo.html">constantstringinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantintegerinfo.html">constantintegerinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantfloatinfo.html">constantfloatinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantlonginfo.html">constantlonginfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantdoubleinfo.html">constantdoubleinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcodeattribute.html">codeattribute</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcodeattribute_1_1et.html">codeattribute::et</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstantvalueattribute.html">constantvalueattribute</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structexceptionsattribute.html">exceptionsattribute</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinnerclasses.html">innerclasses</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinnerclasses_1_1ic.html">innerclasses::ic</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlinenumbertableattribute.html">linenumbertableattribute</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlinenumbertableattribute_1_1lnt.html">linenumbertableattribute::lnt</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlocalvariabletableattribute.html">localvariabletableattribute</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlocalvariabletableattribute_1_1lvt.html">localvariabletableattribute::lvt</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsourcefileattribute.html">sourcefileattribute</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdefaultattribute.html">defaultattribute</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcpinfo.html">cpinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structattributeinfo.html">attributeinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmethodinfo.html">methodinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfieldinfo.html">fieldinfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclassfile.html">classfile</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinstrucao.html">instrucao</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a54061e5993a5517320d425f44408cc86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54061e5993a5517320d425f44408cc86"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAGIC_NUMBER</b>&#160;&#160;&#160;0xCAFEBABE</td></tr>
-<tr class="separator:a54061e5993a5517320d425f44408cc86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c6d5de492ac61ad29aec7aa9a436bbf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c6d5de492ac61ad29aec7aa9a436bbf"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>VERSION</b>&#160;&#160;&#160;46</td></tr>
-<tr class="separator:a1c6d5de492ac61ad29aec7aa9a436bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d756aebcbd3d7c0bd83950a5b087139"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d756aebcbd3d7c0bd83950a5b087139"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SUCESSO</b>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:a7d756aebcbd3d7c0bd83950a5b087139"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a7d756aebcbd3d7c0bd83950a5b087139">SUCESSO</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a7d756aebcbd3d7c0bd83950a5b087139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a225e36d3f4453a8ec3e65d5a4539cc63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a225e36d3f4453a8ec3e65d5a4539cc63"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERRO_ARQUIVO</b>&#160;&#160;&#160;-1</td></tr>
+<tr class="memitem:a225e36d3f4453a8ec3e65d5a4539cc63"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a225e36d3f4453a8ec3e65d5a4539cc63">ERRO_ARQUIVO</a>&#160;&#160;&#160;-10</td></tr>
 <tr class="separator:a225e36d3f4453a8ec3e65d5a4539cc63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8e0f523307e6470310d2cc47d874628"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8e0f523307e6470310d2cc47d874628"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERRO_EXECUCAO</b>&#160;&#160;&#160;-2</td></tr>
+<tr class="memitem:ac8e0f523307e6470310d2cc47d874628"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#ac8e0f523307e6470310d2cc47d874628">ERRO_EXECUCAO</a>&#160;&#160;&#160;-11</td></tr>
 <tr class="separator:ac8e0f523307e6470310d2cc47d874628"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b0f96dca3b8f73ede422e90967bf050"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b0f96dca3b8f73ede422e90967bf050"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERRO_MAGIC</b>&#160;&#160;&#160;-3</td></tr>
-<tr class="separator:a9b0f96dca3b8f73ede422e90967bf050"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9776ba8c9ecc175abfb3cb49809e7054"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9776ba8c9ecc175abfb3cb49809e7054"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERRO_VERSION</b>&#160;&#160;&#160;-4</td></tr>
-<tr class="separator:a9776ba8c9ecc175abfb3cb49809e7054"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9e6dd45628ef40600fbafe14c4f83e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9e6dd45628ef40600fbafe14c4f83e1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERRO_MATCHING</b>&#160;&#160;&#160;-5</td></tr>
-<tr class="separator:ab9e6dd45628ef40600fbafe14c4f83e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72b5b534aa409975da610a36f648fa0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72b5b534aa409975da610a36f648fa0a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Class</b>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:a72b5b534aa409975da610a36f648fa0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a008d43478c2e2973e7413f5d1c48095d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a008d43478c2e2973e7413f5d1c48095d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Fieldref</b>&#160;&#160;&#160;9</td></tr>
-<tr class="separator:a008d43478c2e2973e7413f5d1c48095d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a179cf178ea867c6ab1700508c269dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a179cf178ea867c6ab1700508c269dd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Methodref</b>&#160;&#160;&#160;10</td></tr>
-<tr class="separator:a2a179cf178ea867c6ab1700508c269dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0e92044d246c6e4d691116f89a70ebb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0e92044d246c6e4d691116f89a70ebb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_InterfaceMethodref</b>&#160;&#160;&#160;11</td></tr>
-<tr class="separator:ac0e92044d246c6e4d691116f89a70ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a7acbe175de56072a2f0a1a051418e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a7acbe175de56072a2f0a1a051418e1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_String</b>&#160;&#160;&#160;8</td></tr>
-<tr class="separator:a0a7acbe175de56072a2f0a1a051418e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a856a6553a55d721970ca5450eb1ccd2c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a856a6553a55d721970ca5450eb1ccd2c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Integer</b>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a856a6553a55d721970ca5450eb1ccd2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab914627ce5b25c4acfc98f2eacb78473"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab914627ce5b25c4acfc98f2eacb78473"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Float</b>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:ab914627ce5b25c4acfc98f2eacb78473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a426ca017b895fc522671a561d460be7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a426ca017b895fc522671a561d460be7a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Long</b>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:a426ca017b895fc522671a561d460be7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab49341c3b4ade4bfa1a64be8d2f73ae1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab49341c3b4ade4bfa1a64be8d2f73ae1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Double</b>&#160;&#160;&#160;6</td></tr>
-<tr class="separator:ab49341c3b4ade4bfa1a64be8d2f73ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b6ba749976ae61415983ca0b890c91a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b6ba749976ae61415983ca0b890c91a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_NameAndType</b>&#160;&#160;&#160;12</td></tr>
-<tr class="separator:a5b6ba749976ae61415983ca0b890c91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc46559a7d3f7baf519fc183c2fad2b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc46559a7d3f7baf519fc183c2fad2b4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Utf8</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:afc46559a7d3f7baf519fc183c2fad2b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fdbb084daf13068941396db9988bb8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fdbb084daf13068941396db9988bb8d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_PUBLIC</b>&#160;&#160;&#160;0x0001</td></tr>
-<tr class="separator:a0fdbb084daf13068941396db9988bb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4a89247b3598c31a5999c76bf168a6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4a89247b3598c31a5999c76bf168a6a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_PRIVATE</b>&#160;&#160;&#160;0x0002</td></tr>
-<tr class="separator:ab4a89247b3598c31a5999c76bf168a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab759ad3d0d4d4ed59b7f516f1a4e271"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab759ad3d0d4d4ed59b7f516f1a4e271"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_PROTECTED</b>&#160;&#160;&#160;0x0004</td></tr>
-<tr class="separator:aab759ad3d0d4d4ed59b7f516f1a4e271"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7980f70a1935dcd3a74bf0e24fd2bce7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7980f70a1935dcd3a74bf0e24fd2bce7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_STATIC</b>&#160;&#160;&#160;0x0008</td></tr>
-<tr class="separator:a7980f70a1935dcd3a74bf0e24fd2bce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad170615172fa272627b79f604e3471b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad170615172fa272627b79f604e3471b9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_FINAL</b>&#160;&#160;&#160;0x0010</td></tr>
-<tr class="separator:ad170615172fa272627b79f604e3471b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6eb88a744819be2fd9b240ed56bbb421"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6eb88a744819be2fd9b240ed56bbb421"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_SYNCHRONIZED</b>&#160;&#160;&#160;0x0020</td></tr>
-<tr class="separator:a6eb88a744819be2fd9b240ed56bbb421"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64ab0ee48e02f736237394d4580bad5a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64ab0ee48e02f736237394d4580bad5a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_SUPER</b>&#160;&#160;&#160;0x0020</td></tr>
-<tr class="separator:a64ab0ee48e02f736237394d4580bad5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa6aaa9fa8e6b7c139a6f459ab3a42b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa6aaa9fa8e6b7c139a6f459ab3a42b1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_VOLATILE</b>&#160;&#160;&#160;0x0040</td></tr>
-<tr class="separator:afa6aaa9fa8e6b7c139a6f459ab3a42b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79b164828e45ca7eb81b895b8ee4960e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79b164828e45ca7eb81b895b8ee4960e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_TRANSIENT</b>&#160;&#160;&#160;0x0080</td></tr>
-<tr class="separator:a79b164828e45ca7eb81b895b8ee4960e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21cd44dc8506e7f393a8e90936a22613"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21cd44dc8506e7f393a8e90936a22613"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_NATIVE</b>&#160;&#160;&#160;0x0100</td></tr>
-<tr class="separator:a21cd44dc8506e7f393a8e90936a22613"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca0c3297ae6a71033cf324d99793189a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca0c3297ae6a71033cf324d99793189a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_INTERFACE</b>&#160;&#160;&#160;0x0200</td></tr>
-<tr class="separator:aca0c3297ae6a71033cf324d99793189a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a638658b616d4e7c16078f606224dc9ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a638658b616d4e7c16078f606224dc9ba"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_ABSTRACT</b>&#160;&#160;&#160;0x0400</td></tr>
-<tr class="separator:a638658b616d4e7c16078f606224dc9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a896d91d006ed72a57d9ce427f7699555"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a896d91d006ed72a57d9ce427f7699555"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_STRICT</b>&#160;&#160;&#160;0x0800</td></tr>
-<tr class="separator:a896d91d006ed72a57d9ce427f7699555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ad9f4cdb6757615aae2fad89dab3c5470"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9f4cdb6757615aae2fad89dab3c5470"></a>
-typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>u1</b></td></tr>
-<tr class="separator:ad9f4cdb6757615aae2fad89dab3c5470"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a732cde1300aafb73b0ea6c2558a7a54f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a732cde1300aafb73b0ea6c2558a7a54f"></a>
-typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>u2</b></td></tr>
-<tr class="separator:a732cde1300aafb73b0ea6c2558a7a54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5be1f726785414dd1b77d60df074c9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5be1f726785414dd1b77d60df074c9d"></a>
-typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>u4</b></td></tr>
-<tr class="separator:ae5be1f726785414dd1b77d60df074c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fefefe2af324093180c69d53261d1eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fefefe2af324093180c69d53261d1eb"></a>
-typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>l1</b></td></tr>
-<tr class="separator:a4fefefe2af324093180c69d53261d1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbd952c90001c7a589232a116212b6b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbd952c90001c7a589232a116212b6b0"></a>
-typedef struct <a class="el" href="structconstantclassinfo.html">constantclassinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Class_info</b></td></tr>
-<tr class="separator:abbd952c90001c7a589232a116212b6b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ff81913c017a2026b93243aae360e7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ff81913c017a2026b93243aae360e7c"></a>
-typedef struct <a class="el" href="structconstantfieldrefinfo.html">constantfieldrefinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Fieldref_info</b></td></tr>
-<tr class="separator:a5ff81913c017a2026b93243aae360e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ae286f79f2bf3300d06cfca5deb0ea7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ae286f79f2bf3300d06cfca5deb0ea7"></a>
-typedef struct <a class="el" href="structconstantnameandtypeinfo.html">constantnameandtypeinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_NameAndType_info</b></td></tr>
-<tr class="separator:a5ae286f79f2bf3300d06cfca5deb0ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7642b55de32830f7026e9080e712894a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7642b55de32830f7026e9080e712894a"></a>
-typedef struct <a class="el" href="structconstantutf8info.html">constantutf8info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Utf8_info</b></td></tr>
-<tr class="separator:a7642b55de32830f7026e9080e712894a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac351e06583bd9b73ec85c827477b7c7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac351e06583bd9b73ec85c827477b7c7a"></a>
-typedef struct <a class="el" href="structconstantmethodrefinfo.html">constantmethodrefinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Methodref_info</b></td></tr>
-<tr class="separator:ac351e06583bd9b73ec85c827477b7c7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50b908b5ba81b1da7cb1c4a1d3e49773"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a50b908b5ba81b1da7cb1c4a1d3e49773"></a>
-typedef struct <a class="el" href="structconstantinterfacemethodrefinfo.html">constantinterfacemethodrefinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_InterfaceMethodref_info</b></td></tr>
-<tr class="separator:a50b908b5ba81b1da7cb1c4a1d3e49773"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3551422500bdabc4d3486867a45a9883"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3551422500bdabc4d3486867a45a9883"></a>
-typedef struct <a class="el" href="structconstantstringinfo.html">constantstringinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_String_info</b></td></tr>
-<tr class="separator:a3551422500bdabc4d3486867a45a9883"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49d95d8909db4c243d114dc1ecf9bbd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49d95d8909db4c243d114dc1ecf9bbd6"></a>
-typedef struct <a class="el" href="structconstantintegerinfo.html">constantintegerinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Integer_info</b></td></tr>
-<tr class="separator:a49d95d8909db4c243d114dc1ecf9bbd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35fa9c471cbad3a31e26c53c79abd4de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35fa9c471cbad3a31e26c53c79abd4de"></a>
-typedef struct <a class="el" href="structconstantfloatinfo.html">constantfloatinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Float_info</b></td></tr>
-<tr class="separator:a35fa9c471cbad3a31e26c53c79abd4de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1899bde8541af9843238f37654ab58ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1899bde8541af9843238f37654ab58ea"></a>
-typedef struct <a class="el" href="structconstantlonginfo.html">constantlonginfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Long_info</b></td></tr>
-<tr class="separator:a1899bde8541af9843238f37654ab58ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae28328231d4a62213dca038360dd1eec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae28328231d4a62213dca038360dd1eec"></a>
-typedef struct <a class="el" href="structconstantdoubleinfo.html">constantdoubleinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CONSTANT_Double_info</b></td></tr>
-<tr class="separator:ae28328231d4a62213dca038360dd1eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a232c5f77673b2fee38b60ed10bab2dac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a232c5f77673b2fee38b60ed10bab2dac"></a>
-typedef struct <a class="el" href="structcodeattribute.html">codeattribute</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ATTR_Code</b></td></tr>
-<tr class="separator:a232c5f77673b2fee38b60ed10bab2dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48a9f8d0f3e3e46af3b189c37224735f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48a9f8d0f3e3e46af3b189c37224735f"></a>
-typedef struct <a class="el" href="structconstantvalueattribute.html">constantvalueattribute</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ATTR_Constantvalue</b></td></tr>
-<tr class="separator:a48a9f8d0f3e3e46af3b189c37224735f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62a9e0bec2a62148c97f97c0b907ef79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62a9e0bec2a62148c97f97c0b907ef79"></a>
-typedef struct <a class="el" href="structexceptionsattribute.html">exceptionsattribute</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ATTR_Exception</b></td></tr>
-<tr class="separator:a62a9e0bec2a62148c97f97c0b907ef79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6be16afd0c7a61f7d9c359ad55ff7f31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6be16afd0c7a61f7d9c359ad55ff7f31"></a>
-typedef struct <a class="el" href="structinnerclasses.html">innerclasses</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ATTR_Innerclasses</b></td></tr>
-<tr class="separator:a6be16afd0c7a61f7d9c359ad55ff7f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c4f5e36b51733603ba52a7dfe4e2e0b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c4f5e36b51733603ba52a7dfe4e2e0b"></a>
-typedef struct <a class="el" href="structlinenumbertableattribute.html">linenumbertableattribute</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ATTR_Linenumbertable</b></td></tr>
-<tr class="separator:a6c4f5e36b51733603ba52a7dfe4e2e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cf0ace6ad2f82b4d31147e01aef9918"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5cf0ace6ad2f82b4d31147e01aef9918"></a>
-typedef struct <a class="el" href="structlocalvariabletableattribute.html">localvariabletableattribute</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ATTR_Localvariabletable</b></td></tr>
-<tr class="separator:a5cf0ace6ad2f82b4d31147e01aef9918"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad4538e3cead26bcd50f9eb0de0d5556"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad4538e3cead26bcd50f9eb0de0d5556"></a>
-typedef struct <a class="el" href="structsourcefileattribute.html">sourcefileattribute</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ATTR_Sourcefile</b></td></tr>
-<tr class="separator:aad4538e3cead26bcd50f9eb0de0d5556"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66166a9670dd387915fdc247e9464950"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66166a9670dd387915fdc247e9464950"></a>
-typedef struct <a class="el" href="structdefaultattribute.html">defaultattribute</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ATTR_Default</b></td></tr>
-<tr class="separator:a66166a9670dd387915fdc247e9464950"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4adccda3bcb027f7e7ebc78ead60ab14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4adccda3bcb027f7e7ebc78ead60ab14"></a>
-typedef struct <a class="el" href="structcpinfo.html">cpinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cp_info</b></td></tr>
-<tr class="separator:a4adccda3bcb027f7e7ebc78ead60ab14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6900d0d745ef0a11239294c41fd12408"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6900d0d745ef0a11239294c41fd12408"></a>
-typedef struct <a class="el" href="structattributeinfo.html">attributeinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attribute_info</b></td></tr>
-<tr class="separator:a6900d0d745ef0a11239294c41fd12408"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c33c9b0977065cedffcfb8fce2927c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c33c9b0977065cedffcfb8fce2927c2"></a>
-typedef struct <a class="el" href="structmethodinfo.html">methodinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>method_info</b></td></tr>
-<tr class="separator:a8c33c9b0977065cedffcfb8fce2927c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e470208f1714a4db52dd7d4b3f15862"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e470208f1714a4db52dd7d4b3f15862"></a>
-typedef struct <a class="el" href="structfieldinfo.html">fieldinfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>field_info</b></td></tr>
-<tr class="separator:a8e470208f1714a4db52dd7d4b3f15862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac186cd331df37e7854fc59e7b28f9ed1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac186cd331df37e7854fc59e7b28f9ed1"></a>
-typedef struct <a class="el" href="structclassfile.html">classfile</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ClassFile</b></td></tr>
-<tr class="separator:ac186cd331df37e7854fc59e7b28f9ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034610cf9d3d1a5bb9fc28ff3bfe8d73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a034610cf9d3d1a5bb9fc28ff3bfe8d73"></a>
-typedef struct <a class="el" href="structinstrucao.html">instrucao</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Instrucao</b></td></tr>
-<tr class="separator:a034610cf9d3d1a5bb9fc28ff3bfe8d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3166d6e7ac388e8df3e2e5a22e9c7dc8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a3166d6e7ac388e8df3e2e5a22e9c7dc8">ERRO_MAIN</a>&#160;&#160;&#160;-12</td></tr>
+<tr class="separator:a3166d6e7ac388e8df3e2e5a22e9c7dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
-<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que dirige a execucao do programa.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br /></td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modo de impressao (t - tela, a - arquivo, s - ambos, n - nenhum)  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br /></td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4d8c7228c13905b7aedfcfca2121465"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#ad4d8c7228c13905b7aedfcfca2121465">verifica_impressao</a> (ClassFile *classe)</td></tr>
+<tr class="memdesc:ad4d8c7228c13905b7aedfcfca2121465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que verifica como a classe deve ser exibida. O modificador e uma variavel global.  <a href="#ad4d8c7228c13905b7aedfcfca2121465">More...</a><br /></td></tr>
+<tr class="separator:ad4d8c7228c13905b7aedfcfca2121465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0d02d3787dbb46dd783ab8aea629586"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#ad0d02d3787dbb46dd783ab8aea629586">executa_programa</a> ()</td></tr>
+<tr class="memdesc:ad0d02d3787dbb46dd783ab8aea629586"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que executa o programa a partir do metodo main da primeira classe carregada.  <a href="#ad0d02d3787dbb46dd783ab8aea629586">More...</a><br /></td></tr>
+<tr class="separator:ad0d02d3787dbb46dd783ab8aea629586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a505c02b126496342a20725a04373277a"><td class="memItemLeft" align="right" valign="top">method_info *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a505c02b126496342a20725a04373277a">recupera_main</a> ()</td></tr>
+<tr class="memdesc:a505c02b126496342a20725a04373277a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que recupera o metodo main da primeira classe carregada.  <a href="#a505c02b126496342a20725a04373277a">More...</a><br /></td></tr>
+<tr class="separator:a505c02b126496342a20725a04373277a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Arquivo com as definicoes de constantes e estruturas do programa. </p>
-<dl class="section author"><dt>Author</dt><dd>Bruno, Guilherme, Kelvin </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a225e36d3f4453a8ec3e65d5a4539cc63"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERRO_ARQUIVO&#160;&#160;&#160;-10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac8e0f523307e6470310d2cc47d874628"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERRO_EXECUCAO&#160;&#160;&#160;-11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3166d6e7ac388e8df3e2e5a22e9c7dc8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERRO_MAIN&#160;&#160;&#160;-12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7d756aebcbd3d7c0bd83950a5b087139"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SUCESSO&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ad0d02d3787dbb46dd783ab8aea629586"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int executa_programa </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao que executa o programa a partir do metodo main da primeira classe carregada. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retorna o metodo main, se encontrado, ou NULL, caso contrario. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
 <div class="memitem">
 <div class="memproto">
@@ -405,15 +242,59 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Funcao que dirige a execucao do programa. </p>
+<p>Modo de impressao (t - tela, a - arquivo, s - ambos, n - nenhum) </p>
+<p>Funcao que dirige a execucao do programa.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td>Quantidade de argumentos passados pela linha de comando </td></tr>
-    <tr><td class="paramname">argv</td><td>Argumentos passados pela linha de comando </td></tr>
+    <tr><td class="paramname">argc</td><td>Quantidade de argumentos passados pela linha de comando. </td></tr>
+    <tr><td class="paramname">argv</td><td>Argumentos passados pela linha de comando. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Status de execuÃ§Ã£o: SUCESSO, ERRO_MAGIC, ERRO_VERSION ou ERRO_ARQUIVO </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Status de execução: SUCESSO, ERRO_MAGIC, ERRO_VERSION, ERRO_ARQUIVO, ERRO_EXECUCAO ou ERRO_MAIN. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a505c02b126496342a20725a04373277a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">method_info* recupera_main </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao que recupera o metodo main da primeira classe carregada. </p>
+<dl class="section return"><dt>Returns</dt><dd>Retorna o metodo main, se encontrado, ou NULL, caso contrario. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad4d8c7228c13905b7aedfcfca2121465"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int verifica_impressao </td>
+          <td>(</td>
+          <td class="paramtype">ClassFile *&#160;</td>
+          <td class="paramname"><em>classe</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao que verifica como a classe deve ser exibida. O modificador e uma variavel global. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">classe</td><td>Classe que deve ser impressa (ou nao). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status de execucao: SUCESSO ou ERRO_ARQUIVO. </dd></dl>
 
 </div>
 </div>
@@ -423,7 +304,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="main_8h.html">main.h</a></li>
-    <li class="footer">Generated on Wed Jun 3 2015 21:28:39 for LeitorExibidor by
+    <li class="footer">Generated on Fri Jun 19 2015 01:05:18 for White Stars JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

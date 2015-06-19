@@ -1,5 +1,5 @@
 /**
-* @file pilha_operandos.h
+* @file pilha_frames.h
 * @author Guilherme
 * @brief
 */
@@ -18,12 +18,12 @@ typedef struct frame {
     u4                  *VetorVariaveisLocais;
     u2                  constant_pool_count;
     cp_info             *constant_pool;
-    ListaArrays         *listaArrays;
-    ListaObjetos        *listaObjetos;
+    struct listadearrays         *listaArrays;
+    struct listadeobjetos        *listaObjetos;
     u4                  returAddress;
 } Frame;
 
-typedef struct pilhaframes{
+typedef struct pilhaframes {
     Frame *dado;
     struct pilhaframes *prox;
 } PilhaDeFrames;

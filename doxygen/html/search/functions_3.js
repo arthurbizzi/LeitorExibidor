@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['le_5fu1',['le_u1',['../carregamento_8c.html#ac2fcefe15ef7a88eb265d6e3ff4ca7bd',1,'le_u1(FILE *arquivo):&#160;carregamento.c'],['../carregamento_8h.html#ac2fcefe15ef7a88eb265d6e3ff4ca7bd',1,'le_u1(FILE *arquivo):&#160;carregamento.c']]],
-  ['le_5fu2',['le_u2',['../carregamento_8c.html#aa3a0520a41a8ece2ff21f792cd2be414',1,'le_u2(FILE *arquivo):&#160;carregamento.c'],['../carregamento_8h.html#aa3a0520a41a8ece2ff21f792cd2be414',1,'le_u2(FILE *arquivo):&#160;carregamento.c']]],
-  ['le_5fu4',['le_u4',['../carregamento_8c.html#a21ccfa8617a9ab70216c67062acce262',1,'le_u4(FILE *arquivo):&#160;carregamento.c'],['../carregamento_8h.html#a21ccfa8617a9ab70216c67062acce262',1,'le_u4(FILE *arquivo):&#160;carregamento.c']]]
+  ['get_5fdouble',['get_double',['../class_hello.html#a54e57376e802f51927335e8b473209c5',1,'Hello']]],
+  ['get_5fint',['get_int',['../class_hello.html#a292781868f4c4b971b71dbf1122c507d',1,'Hello']]]
 ];

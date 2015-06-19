@@ -82,10 +82,23 @@ u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse){
     lc1 = *listadeclasses;
     while (lc1 != NULL){
         index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
-        nomeThisClass = dereferencia(index,lc1->dado);
+        nomeThisClass = dereferencia(index, lc1->dado);
         if (!strcmp(nomedaclasse,nomeThisClass))
             return 1;
         lc1 = lc1->prox;
     }
     return 0;
+}
+
+ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses) {
+    ListaClasses *lc1;
+
+    lc1 = *listadeclasses;
+    for(int i = 0; i < index; i++) {
+        if(i == index) {
+            return lc1->dado;
+        }
+        lc1 = lc1->prox;
+    }
+    return NULL;
 }

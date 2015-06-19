@@ -16,9 +16,9 @@
 /* Controle do Programa */
 #define MAGIC_NUMBER 0xCAFEBABE
 #define VERSION 46
-#define ERRO_MAGIC -3
-#define ERRO_VERSION -4
-#define ERRO_MATCHING -5
+#define ERRO_MAGIC -20 /// Magic Number invalido.
+#define ERRO_VERSION -21 /// Versao nao suportada.
+#define ERRO_MATCHING -22 /// Nome do arquivo diferente do nome da classe.
 /* Tags Validos */
 #define CONSTANT_Class 7
 #define CONSTANT_Fieldref 9

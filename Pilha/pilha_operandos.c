@@ -1,3 +1,8 @@
+/**
+* @file pilha_operandos.c
+* @author Guilherme
+* @brief
+*/
 #include "pilha_operandos.h"
 
 void InicializaPilhaDeOperandos(PilhaDeOperandos **pilhaOperandos){

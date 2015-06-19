@@ -510,8 +510,8 @@ void imprime_fields_file(ClassFile *classe, FILE *file) {
             fprintf(file, "%c", classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.bytes[j]);
         fprintf(file, "\n");
         fprintf(file, "\tAccess Flags:    \t%d\n", classe->fields[i].access_flags);
-        fprintf(file, "\tName Index:      \tCP INFO #%d\n", classe->fields[i].name_index, derreferencia);
-        fprintf(file, "\tDescriptor Index:\tCP INFO #%d\n", classe->fields[i].descriptor_index, derreferencia2);
+        fprintf(file, "\tName Index:      \tCP INFO #%d %s\n", classe->fields[i].name_index, derreferencia);
+        fprintf(file, "\tDescriptor Index:\tCP INFO #%d %s\n", classe->fields[i].descriptor_index, derreferencia2);
         fprintf(file, "\tAttributes Count:\t%d\n", classe->fields[i].attributes_count);
         for (int j = 0; j < classe->fields[i].attributes_count; j++) {
             fprintf(file, "\t[%d]", j);
@@ -718,7 +718,7 @@ void carrega_instrucoes(Instrucao *mapa) {
     }
 
     for (int i = 0; i < 0xCA; i++) {
-        fscanf(arq_mapa, "%s", mapa[i].mnemonico);
+        fscanf(arq_mapa, "%[^\n]s", mapa[i].mnemonico);
     }
     fclose(arq_mapa);
 }

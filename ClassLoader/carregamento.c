@@ -264,4 +264,5 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
             atributo->info.Default.data[i] = le_u1(arquivo);
         }
     }
+    free(tipoAtributo); /// CPPCHECK
 }
