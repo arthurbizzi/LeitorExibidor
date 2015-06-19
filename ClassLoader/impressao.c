@@ -730,7 +730,6 @@ char* dereferencia(u2 index, ClassFile *classe) {
     for (i = 0; i < classe->constant_pool[index].info.Utf8.length; i++) {
         nome[i] = classe->constant_pool[index].info.Utf8.bytes[i];
     }
-    i+=1;
     nome[i] = '\0';
     return nome;
 }

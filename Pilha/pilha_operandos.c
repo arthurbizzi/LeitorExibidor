@@ -17,21 +17,25 @@ u1 PilhaDeOperandosVazia(PilhaDeOperandos *pilhaOperandos){
         return 0;
 }
 
-void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 dado){
+void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 *dado){
     PilhaDeOperandos *po1;
+    u4 dado1;
+    dado1 = *dado;
     po1 = (PilhaDeOperandos *)malloc(sizeof(PilhaDeOperandos));
-    po1->dado = dado;
+    po1->dado = dado1;
     po1->prox = *pilhaOperandos;
     *pilhaOperandos = po1;
     return;
 }
 
-void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 dado){
+void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 *dado){
     u4 op;
-    op = (u4)(dado & 0x00000000FFFFFFFF);
-    EmpilhaOperando32bits(pilhaOperandos,op);
-    op = (u4)(dado >> 32);
-    EmpilhaOperando32bits(pilhaOperandos,op);
+    u8 dado1;
+    dado1 = *dado;
+    op = (u4)(dado1 & 0x00000000FFFFFFFF);
+    EmpilhaOperando32bits(pilhaOperandos,&op);
+    op = (u4)(dado1 >> 32);
+    EmpilhaOperando32bits(pilhaOperandos,&op);
     return;
 }
 

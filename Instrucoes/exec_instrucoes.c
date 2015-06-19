@@ -185,3 +185,90 @@ void dload(PilhaDeOperandos* pilhaDeOperandos,u1 index, u1 index2, field_info* f
 //    push(fields[indexConcat]);
 //    push(fields[indexConcat+1]);
 }
+
+
+#minha parte.
+
+
+void wide(){
+    return;
+}
+
+void multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions){
+    u4 *valores;
+    int i;
+    char *tipo;
+    u2 index;
+    index = (indexbyte1 << 8 | indexbyte2);
+    index = ((frame->constant_pool[index - 1].info.Class.name_index) - 1);
+    tipo = dereferencia1(index, frame->constant_pool);
+    for (i = 0; i < dimensions; i++){
+        valores[i] = DesempilhaOperando32bits(&(frame->pilhaOperandos));
+    }
+    i = strlen(tipo) - 1;
+    switch (i){
+        case 1:
+            if (!strcmp(tipo, "[B")){
+
+            }
+        break;
+        case 2:
+        break;
+        case 3:
+        break;
+    }
+
+    if (!strcmp(tipo,"[")){
+
+    }
+
+    return;
+}
+
+void ifnull(Frame *frame, u1 branchbyte1, u1 branchbyte2){
+    u4 objref;
+    u2 branchoffset;
+    branchoffset = (branchbyte1 << 8 | branchbyte2);
+    objref = DesempilhaOperando32bits(&(frame->pilhaOperandos));
+    if (objref == NULL)
+        frame->pc = frame->pc + branchoffset;
+
+    return;
+}
+
+void ifnonnull(Frame *frame, u1 branchbyte1, u1 branchbyte2){
+    u4 objref;
+    u2 branchoffset;
+    branchoffset = (branchbyte1 << 8 | branchbyte2);
+    objref = DesempilhaOperando32bits(&(frame->pilhaOperandos));
+    if (objref != NULL)
+        frame->pc = frame->pc + branchoffset;
+
+    return;
+}
+
+void goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4){
+    u4 branchoffset;
+    branchoffset = (branchbyte1 << 24 | branchbyte2 << 16 | branchbyte3 << 8 | branchbyte4);
+    frame->pc = frame->pc + branchoffset;
+    return;
+}
+
+void jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4){
+    u4 branchoffset;
+    branchoffset = (branchbyte1 << 24 | branchbyte2 << 16 | branchbyte3 << 8 | branchbyte4);
+    EmpilhaOperando32bits(&(frame->pilhaOperandos),&(frame->pc + 5));
+    frame->pc = frame->pc + branchoffset;
+    return;
+}
+
+char* dereferencia1(u2 index, cp_info *cp) {
+    char *nome;
+    int i;
+    nome = (char *) malloc((cp[index].info.Utf8.length + 1) * sizeof(char));
+    for (i = 0; i < cp[index].info.Utf8.length; i++) {
+        nome[i] = cp[index].info.Utf8.bytes[i];
+    }
+    nome[i] = '\0';
+    return nome;
+}
