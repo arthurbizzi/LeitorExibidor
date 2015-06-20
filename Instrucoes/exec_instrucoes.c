@@ -357,70 +357,166 @@ void aload_3(Frame* frame,u1 index)
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[3]));
 }
 
-void iaload(Frame* frame){
-	u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+void iaload(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
-	ListaArrays* iterator = frame->listaArrays;
-	while(iterator!= NULL){
-		if(iterator = arrayRef){
-			break;
-		}
-		iterator = iterator->prox;
-	}
-	if(iterator!=NULL){
-		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoInt);
-	}
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoInt);
+    }
 }
 
-void laload(Frame* frame){
-	u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+void laload(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
-	ListaArrays* iterator = frame->listaArrays;
-	while(iterator!= NULL){
-		if(iterator = arrayRef){
-			break;
-		}
-		iterator = iterator->prox;
-	}
-	if(iterator!=NULL){
-		EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoLong);
-	}
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoLong);
+    }
 }
 
-void faload(Frame* frame){
-	u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+void faload(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
-	ListaArrays* iterator = frame->listaArrays;
-	while(iterator!= NULL){
-		if(iterator = arrayRef){
-			break;
-		}
-		iterator = iterator->prox;
-	}
-	if(iterator!=NULL){
-		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoFloat);
-	}
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoFloat);
+    }
 }
 
-void daload(Frame* frame){
-	u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+void daload(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
-	ListaArrays* iterator = frame->listaArrays;
-	while(iterator!= NULL){
-		if(iterator = arrayRef){
-			break;
-		}
-		iterator = iterator->prox;
-	}
-	if(iterator!=NULL){
-		EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoDouble);
-	}
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoDouble);
+    }
 }
 
+#warning Precisar entender o funcionamento do AALOAD. Não ficou claro.
+void aaload(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoDouble);
+    }
+}
+
+void baload(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoByte);
+    }
+}
+
+void caload(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoChar);
+    }
+}
+
+void saload(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoShort);
+    }
+}
 
 
 #pragma mark - SMURF PART
