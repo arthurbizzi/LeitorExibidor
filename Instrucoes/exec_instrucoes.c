@@ -518,7 +518,334 @@ void saload(Frame* frame)
     }
 }
 
+void istore(Frame* frame, u1 index)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = *value;
+}
 
+void lstore(Frame* frame, u1 index)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[index+1] = (*value) & 0xFFFFF;
+}
+
+void fstore(Frame* frame, u1 index)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = *value;
+}
+
+void dstore(Frame* frame, u1 index)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[index+1] = (*value) & 0xFFFFF;
+}
+
+void astore(Frame* frame, u1 index)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = *value;
+}
+
+void istore_0(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = *value;
+}
+
+void istore_1(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = *value;
+}
+
+void istore_2(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = *value;
+}
+
+void istore_3(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = *value;
+}
+
+void lstore_0(Frame* frame)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[1] = (*value) & 0xFFFFF;
+}
+
+void lstore_1(Frame* frame)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[2] = (*value) & 0xFFFFF;
+}
+
+void lstore_2(Frame* frame)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[3] = (*value) & 0xFFFFF;
+}
+
+void lstore_3(Frame* frame)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[4] = (*value) & 0xFFFFF;
+}
+
+void fstore_0(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = *value;
+}
+
+void fstore_1(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = *value;
+}
+
+void fstore_2(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = *value;
+}
+
+void fstore_3(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = *value;
+}
+
+void dstore_0(Frame* frame)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[1] = (*value) & 0xFFFFF;
+}
+
+void dstore_1(Frame* frame)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[2] = (*value) & 0xFFFFF;
+}
+
+void dstore_2(Frame* frame)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[3] = (*value) & 0xFFFFF;
+}
+
+void dstore_3(Frame* frame)
+{
+    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = (*value) >> 32;
+    frame ->VetorVariaveisLocais[4] = (*value) & 0xFFFFF;
+}
+
+void astore_0(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = *value;
+}
+
+void astore_1(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = *value;
+}
+
+void astore_2(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = *value;
+}
+
+void astore_3(Frame* frame)
+{
+    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = *value;
+}
+
+void iastore(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        iterator[index].dado->info.tipoInt = value;
+    }
+}
+
+void lastore(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8 value =  DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        iterator[index].dado->info.tipoLong = value;
+    }
+}
+
+void fastore(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        iterator[index].dado->info.tipoFloat = value;
+    }
+}
+
+void dastore(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8 value =  DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        iterator[index].dado->info.tipoDouble = value;
+    }
+}
+
+#warning Need to see implemetation of this function.
+void aastore(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8 value =  DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        iterator[index].dado->info.tipoDouble = value;
+    }
+}
+
+void bastore(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u1 value =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        iterator[index].dado->info.tipoByte = value;
+    }
+}
+
+void castore(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u1 value =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        iterator[index].dado->info.tipoChar = value;
+    }
+}
+
+void sastore(Frame* frame)
+{
+    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u2 value =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    ListaArrays* iterator = frame->listaArrays;
+    while(iterator!= NULL)
+    {
+        if(iterator = arrayRef)
+        {
+            break;
+        }
+        iterator = iterator->prox;
+    }
+    if(iterator!=NULL)
+    {
+        iterator[index].dado->info.tipoShort = value;
+    }
+}
 #pragma mark - SMURF PART
 
 
