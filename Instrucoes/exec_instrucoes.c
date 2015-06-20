@@ -943,9 +943,10 @@ void goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 bra
 
 void jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4)
 {
-    u4 branchoffset;
+    u4 branchoffset, pc;
     branchoffset = (branchbyte1 << 24 | branchbyte2 << 16 | branchbyte3 << 8 | branchbyte4);
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(frame->pc + 5));
+    pc = frame->pc + 5;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &pc);
     frame->pc = frame->pc + branchoffset;
     return;
 }

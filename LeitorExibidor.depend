@@ -35,11 +35,18 @@
 	<stdio.h>
 	"main.h"
 
-1433378441 e:\guilherme\area\gui\sb\leitorexibidor\main.h
+1434817998 e:\guilherme\area\gui\sb\leitorexibidor\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
+	"lista_arrays_objetos_classes.h"
+	"ClassLoader/carregamento.h"
+	"ClassLoader/classloader.h"
+	"ClassLoader/impressao.h"
+	"Pilha/pilha_frames.h"
+	"Pilha/pilha_operandos.h"
+	"AreaMetodos/area_metodos.h"
 
 1433540464 source:e:\guilherme\area\gui\sb\leitorexibidor\imprime.c
 	"imprime.h"
@@ -170,4 +177,50 @@
 	"../ClassLoader/classloader.h"
 	"../Pilha/pilha_frames.h"
 	"../Pilha/pilha_operandos.h"
+
+1434817996 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\carregamento.c
+	"carregamento.h"
+
+1434817996 e:\guilherme\area\gui\sb\leitorexibidor\classloader\carregamento.h
+	"classloader.h"
+	"../main.h"
+
+1434817996 e:\guilherme\area\gui\sb\leitorexibidor\classloader\classloader.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdint.h>
+
+1434817998 e:\guilherme\area\gui\sb\leitorexibidor\lista_arrays_objetos_classes.h
+	"ClassLoader/classloader.h"
+	"ClassLoader/carregamento.h"
+
+1434817996 e:\guilherme\area\gui\sb\leitorexibidor\classloader\impressao.h
+	<stdio.h>
+	"classloader.h"
+	"../main.h"
+
+1434817996 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.h
+	"../lista_arrays_objetos_classes.h"
+	"pilha_operandos.h"
+
+1434817996 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.h
+	"../ClassLoader/classloader.h"
+
+1434817996 e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.h
+	"../main.h"
+	"../lista_arrays_objetos_classes.h"
+	"../ClassLoader/classloader.h"
+	"../Pilha/pilha_frames.h"
+	"../Pilha/pilha_operandos.h"
+
+1434817996 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\classloader.c
+	"classloader.h"
+	"carregamento.h"
+
+1434817996 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\impressao.c
+	"impressao.h"
+
+1434817998 source:e:\guilherme\area\gui\sb\leitorexibidor\lista_arrays_objetos_classes.c
+	"lista_arrays_objetos_classes.h"
 
