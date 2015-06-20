@@ -846,6 +846,25 @@ void sastore(Frame* frame)
         iterator[index].dado->info.tipoShort = value;
     }
 }
+
+void pop(Frame* frame){
+    DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+}
+
+void pop2(Frame* frame){
+    DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+}
+
+void dup(Frame* frame){
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),value);
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),value);
+}
+
+
+
+
+
 #pragma mark - SMURF PART
 
 
