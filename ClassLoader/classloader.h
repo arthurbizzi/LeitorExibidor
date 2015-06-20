@@ -31,6 +31,14 @@
 #define CONSTANT_Double 6
 #define CONSTANT_NameAndType 12
 #define CONSTANT_Utf8 1
+#define ATTRTAG_Constantvalue 0
+#define ATTRTAG_Code 1
+#define ATTRTAG_Exception 2
+#define ATTRTAG_Innerclasses 3
+#define ATTRTAG_Sourcefile 4
+#define ATTRTAG_Linenumbertable 5
+#define ATTRTAG_Localvariabletable 6
+#define ATTRTAG_Default 7
 /* Flags */
 #define ACC_PUBLIC 0x0001
 #define ACC_PRIVATE 0x0002
@@ -197,6 +205,7 @@ typedef struct cpinfo {
 typedef struct attributeinfo {
     u2              attribute_name_index;
     u4              attribute_length;
+    u1              tag;
     union {
         ATTR_Constantvalue      ConstantValue;
         ATTR_Code               CodeAttribute;
