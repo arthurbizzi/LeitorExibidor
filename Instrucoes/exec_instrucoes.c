@@ -335,7 +335,7 @@ void dload_3(Frame* frame)
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[4]));
 }
 
-#fim da seção de ponto flutuante.
+#warning fim da seção de ponto flutuante.
 
 void aload_0(Frame* frame,u1 index)
 {
@@ -357,8 +357,69 @@ void aload_3(Frame* frame,u1 index)
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[3]));
 }
 
+void iaload(Frame* frame){
+	u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
+	ListaArrays* iterator = frame->listaArrays;
+	while(iterator!= NULL){
+		if(iterator = arrayRef){
+			break;
+		}
+		iterator = iterator->prox;
+	}
+	if(iterator!=NULL){
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoInt);
+	}
+}
 
+void laload(Frame* frame){
+	u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+	ListaArrays* iterator = frame->listaArrays;
+	while(iterator!= NULL){
+		if(iterator = arrayRef){
+			break;
+		}
+		iterator = iterator->prox;
+	}
+	if(iterator!=NULL){
+		EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoLong);
+	}
+}
+
+void faload(Frame* frame){
+	u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+	ListaArrays* iterator = frame->listaArrays;
+	while(iterator!= NULL){
+		if(iterator = arrayRef){
+			break;
+		}
+		iterator = iterator->prox;
+	}
+	if(iterator!=NULL){
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoFloat);
+	}
+}
+
+void daload(Frame* frame){
+	u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+	ListaArrays* iterator = frame->listaArrays;
+	while(iterator!= NULL){
+		if(iterator = arrayRef){
+			break;
+		}
+		iterator = iterator->prox;
+	}
+	if(iterator!=NULL){
+		EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoDouble);
+	}
+}
 
 
 
