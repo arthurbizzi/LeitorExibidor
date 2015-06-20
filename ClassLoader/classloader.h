@@ -61,96 +61,113 @@ typedef uint32_t u4;
 typedef uint64_t u8;
 
 /* Estruturas */
-typedef struct constantclassinfo {
+typedef struct constantclassinfo
+{
     u1              tag;
     u2              name_index;
 } CONSTANT_Class_info;
 
-typedef struct constantfieldrefinfo {
+typedef struct constantfieldrefinfo
+{
     u1              tag;
     u2              class_index;
     u2              name_and_type_index;
 } CONSTANT_Fieldref_info;
 
-typedef struct constantnameandtypeinfo {
+typedef struct constantnameandtypeinfo
+{
     u1              tag;
     u2              name_index;
     u2              descriptor_index;
 } CONSTANT_NameAndType_info;
 
-typedef struct constantutf8info {
+typedef struct constantutf8info
+{
     u1              tag;
     u2              length;
     u1              *bytes; /// tamanho: length
 } CONSTANT_Utf8_info;
 
-typedef struct constantmethodrefinfo {
+typedef struct constantmethodrefinfo
+{
     u1              tag;
     u2              class_index;
     u2              name_and_type_index;
 } CONSTANT_Methodref_info;
 
-typedef struct constantinterfacemethodrefinfo {
+typedef struct constantinterfacemethodrefinfo
+{
     u1              tag;
     u2              class_index;
     u2              name_and_type_index;
 } CONSTANT_InterfaceMethodref_info;
 
-typedef struct constantstringinfo {
+typedef struct constantstringinfo
+{
     u1              tag;
     u2              string_index;
 } CONSTANT_String_info;
 
-typedef struct constantintegerinfo {
+typedef struct constantintegerinfo
+{
     u1              tag;
     u4              bytes;
 } CONSTANT_Integer_info;
 
-typedef struct constantfloatinfo {
+typedef struct constantfloatinfo
+{
     u1              tag;
     u4              bytes;
 } CONSTANT_Float_info;
 
-typedef struct constantlonginfo {
+typedef struct constantlonginfo
+{
     u1              tag;
     u4              high_bytes;
     u4              low_bytes;
 } CONSTANT_Long_info;
 
-typedef struct constantdoubleinfo {
+typedef struct constantdoubleinfo
+{
     u1              tag;
     u4              high_bytes;
     u4              low_bytes;
 } CONSTANT_Double_info;
 
-typedef struct codeattribute {
+typedef struct codeattribute
+{
     u2              max_stack;
     u2              max_locals;
     u4              code_length;
     u1              *code; /// tamanho: code_length
     u2              exception_table_length;
-    struct et {
+    struct et
+    {
         u2          start_pc;
         u2          end_pc;
         u2          handler_pc;
         u2          catch_type;
-                    } *exception_table; /// tamanho: exception_table_length
+    } *exception_table; /// tamanho: exception_table_length
     u2              attributes_count;
     struct attributeinfo  *attributes; /// tamanho: attributes_count
 } ATTR_Code;
 
-typedef struct constantvalueattribute {
+typedef struct constantvalueattribute
+{
     u2              constantvalue_index;
 } ATTR_Constantvalue;
 
-typedef struct exceptionsattribute {
+typedef struct exceptionsattribute
+{
     u2              number_of_exceptions;
     u2              *exception_index_table; /// tamanho: number_of_exceptions
 } ATTR_Exception;
 
-typedef struct innerclasses {
+typedef struct innerclasses
+{
     u2              number_of_classes;
-    struct ic {
+    struct ic
+    {
         u2          inner_class_info_index;
         u2          outer_class_info_index;
         u2          inner_name_index;
@@ -158,17 +175,21 @@ typedef struct innerclasses {
     } *classes; /// tamanho: number_of_classes
 } ATTR_Innerclasses;
 
-typedef struct linenumbertableattribute {
+typedef struct linenumbertableattribute
+{
     u2              line_number_table_length;
-    struct lnt {
+    struct lnt
+    {
         u2          start_pc;
         u2          line_number;
     } *line_number_table; /// tamanho: line_number_table_length
 } ATTR_Linenumbertable;
 
-typedef struct localvariabletableattribute {
+typedef struct localvariabletableattribute
+{
     u2              local_variable_table_length;
-    struct lvt {
+    struct lvt
+    {
         u2          start_pc;
         u2          length;
         u2          name_index;
@@ -177,17 +198,21 @@ typedef struct localvariabletableattribute {
     } *local_variable_table; /// tamanho: local_variable_table_length
 } ATTR_Localvariabletable;
 
-typedef struct sourcefileattribute {
+typedef struct sourcefileattribute
+{
     u2              sourcefile_index;
 } ATTR_Sourcefile;
 
-typedef struct defaultattribute {
+typedef struct defaultattribute
+{
     u1              *data;
 } ATTR_Default;
 
-typedef struct cpinfo {
+typedef struct cpinfo
+{
     u1              tag;
-    union {
+    union
+    {
         CONSTANT_Class_info Class;
         CONSTANT_Double_info Double;
         CONSTANT_Fieldref_info Fieldref;
@@ -202,11 +227,13 @@ typedef struct cpinfo {
     } info;
 } cp_info;
 
-typedef struct attributeinfo {
+typedef struct attributeinfo
+{
     u2              attribute_name_index;
     u4              attribute_length;
     u1              tag;
-    union {
+    union
+    {
         ATTR_Constantvalue      ConstantValue;
         ATTR_Code               CodeAttribute;
         ATTR_Exception          Exception;
@@ -218,7 +245,8 @@ typedef struct attributeinfo {
     } info;
 } attribute_info;
 
-typedef struct methodinfo {
+typedef struct methodinfo
+{
     u2              access_flags;
     u2              name_index;
     u2              descriptor_index;
@@ -226,7 +254,8 @@ typedef struct methodinfo {
     attribute_info  *attributes; /// tamanho: attributes_count
 } method_info;
 
-typedef struct fieldinfo {
+typedef struct fieldinfo
+{
     u2              access_flags;
     u2              name_index;
     u2              descriptor_index;
@@ -234,7 +263,8 @@ typedef struct fieldinfo {
     attribute_info  *attributes; /// tamanho: attribute_count
 } field_info;
 
-typedef struct classfile {
+typedef struct classfile
+{
     u4              magic;
     u2              minor_version;
     u2              major_version;
@@ -253,7 +283,8 @@ typedef struct classfile {
     attribute_info  *attributes; /// tamanho: attributes_count
 } ClassFile;
 
-typedef struct instrucao {
+typedef struct instrucao
+{
     char            mnemonico[20];
     int             qtd_operandos;
     int             *operandos;

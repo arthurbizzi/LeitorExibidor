@@ -10,11 +10,13 @@
 #include "ClassLoader/classloader.h"
 #include "ClassLoader/carregamento.h"
 
-typedef struct tipoarray {
+typedef struct tipoarray
+{
     u1 tag;
     u4 tamanho;
     u1 dimensao;
-    union{
+    union
+    {
         u1 *tipoBoolean;
         u1 *tipoByte;
         u1 *tipoChar;
@@ -28,14 +30,17 @@ typedef struct tipoarray {
     } info;
 } tArray;
 
-typedef struct listadearrays{
+typedef struct listadearrays
+{
     tArray                  *dado;
     struct listadearrays    *prox;
 } ListaArrays;
 
-typedef struct tipofield {
+typedef struct tipofield
+{
     u1 tag;
-    union {
+    union
+    {
         u1 tipoBoolean;
         u1 tipoByte;
         u2 tipoShort;
@@ -48,7 +53,8 @@ typedef struct tipofield {
     ClassFile  *classe;
 } Field;
 
-typedef struct tipoobjeto{
+typedef struct tipoobjeto
+{
     ClassFile   *classe;
     u2          tamanhotipoField;
     Field       *tipofield;
@@ -56,12 +62,14 @@ typedef struct tipoobjeto{
     tArray      *tipoarray;
 } Objeto;
 
-typedef struct listadeobjetos{
+typedef struct listadeobjetos
+{
     Objeto                  *dado;
     struct listadeobjetos   *prox;
 } ListaObjetos;
 
-typedef struct listadeclasses{
+typedef struct listadeclasses
+{
     ClassFile               *dado;
     struct listadeclasses   *prox;
 } ListaClasses;

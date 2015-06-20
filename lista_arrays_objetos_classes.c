@@ -1,11 +1,13 @@
 #include "lista_arrays_objetos_classes.h"
 
-void InicializaListaDeArrays(ListaArrays **listadearrays){
+void InicializaListaDeArrays(ListaArrays **listadearrays)
+{
     *listadearrays = NULL;
     return;
 }
 
-void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado){
+void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado)
+{
     ListaArrays *la1;
     la1 = (ListaArrays *)malloc(sizeof(ListaArrays));
     la1->dado = dado;
@@ -14,9 +16,11 @@ void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado){
     return;
 }
 
-void desalocaListaDeArrays(ListaArrays **listadearrays){
+void desalocaListaDeArrays(ListaArrays **listadearrays)
+{
     ListaArrays *la1;
-    while (*listadearrays != NULL){
+    while (*listadearrays != NULL)
+    {
         free((*listadearrays)->dado);
         la1 = *listadearrays;
         *listadearrays = la1->prox;
@@ -25,12 +29,14 @@ void desalocaListaDeArrays(ListaArrays **listadearrays){
     return;
 }
 
-void InicializaListaDeObjetos(ListaObjetos **listadeobjetos){
+void InicializaListaDeObjetos(ListaObjetos **listadeobjetos)
+{
     *listadeobjetos = NULL;
     return;
 }
 
-void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado){
+void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado)
+{
     ListaObjetos *lo1;
     lo1 = (ListaObjetos *)malloc(sizeof(ListaObjetos));
     lo1->dado = dado;
@@ -39,9 +45,11 @@ void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado){
     return;
 }
 
-void desalocaListaDeObjetos(ListaObjetos **listadeobjetos){
+void desalocaListaDeObjetos(ListaObjetos **listadeobjetos)
+{
     ListaObjetos *lo1;
-    while (*listadeobjetos != NULL){
+    while (*listadeobjetos != NULL)
+    {
         free((*listadeobjetos)->dado);
         lo1 = *listadeobjetos;
         *listadeobjetos = lo1->prox;
@@ -50,12 +58,14 @@ void desalocaListaDeObjetos(ListaObjetos **listadeobjetos){
     return;
 }
 
-void InicializaListaDeClasses(ListaClasses **listadeclasses){
+void InicializaListaDeClasses(ListaClasses **listadeclasses)
+{
     *listadeclasses = NULL;
     return;
 }
 
-void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado){
+void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
+{
     ListaClasses *lc1;
     lc1 = (ListaClasses *)malloc(sizeof(ListaClasses));
     lc1->dado = dado;
@@ -64,9 +74,11 @@ void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado){
     return;
 }
 
-void desalocaListaDeClasses(ListaClasses **listadeclasses){
+void desalocaListaDeClasses(ListaClasses **listadeclasses)
+{
     ListaClasses *lc1;
-    while (*listadeclasses != NULL){
+    while (*listadeclasses != NULL)
+    {
         free((*listadeclasses)->dado);
         lc1 = *listadeclasses;
         *listadeclasses = lc1->prox;
@@ -75,12 +87,14 @@ void desalocaListaDeClasses(ListaClasses **listadeclasses){
     return;
 }
 
-u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse){
+u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
+{
     ListaClasses *lc1;
     int index;
     char *nomeThisClass;
     lc1 = *listadeclasses;
-    while (lc1 != NULL){
+    while (lc1 != NULL)
+    {
         index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
         nomeThisClass = dereferencia(index, lc1->dado);
         if (!strcmp(nomedaclasse,nomeThisClass))
@@ -90,12 +104,15 @@ u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse){
     return 0;
 }
 
-ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses) {
+ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses)
+{
     ListaClasses *lc1;
 
     lc1 = *listadeclasses;
-    for(int i = 0; i < index; i++) {
-        if(i == index) {
+    for(int i = 0; i < index; i++)
+    {
+        if(i == index)
+        {
             return lc1->dado;
         }
         lc1 = lc1->prox;

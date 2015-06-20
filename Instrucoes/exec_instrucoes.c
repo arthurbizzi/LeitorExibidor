@@ -156,57 +156,53 @@ void ldc2_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool){
     }
 }
 
-void iload(Frame* frame,u1 index, u1 index2, field_info* fields){
+void iload(Frame* frame,u1 index, u1 index2){
     u2 indexConcat =0;
     if(index2 != NULL){
         indexConcat = (u2)(index<<8) | (u2)(index2);
     }else{
         indexConcat = (u2)index;
     }
-#warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&fields[indexConcat].attributes->info.ConstantValue.constantvalue_index);
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
 }
 
-void lload(Frame* frame,u1 index, u1 index2, field_info* fields){
+void lload(Frame* frame,u1 index, u1 index2){
     u2 indexConcat =0;
     if(index2 != NULL){
         indexConcat = (u2)(index<<8) | (u2)(index2);
     }else{
         indexConcat = (u2)index;
     }
-#warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
-#warning Need to see if smurf implementation cover this case, or need to mount the u8 field to pass to function store. Or access CP to pass the value.
-	    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&fields[indexConcat].attributes->info.ConstantValue.constantvalue_index);
+	    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
 }
 
-void fload(Frame* frame,u1 index, u1 index2, field_info* fields){
+void fload(Frame* frame,u1 index, u1 index2){
     u2 indexConcat =0;
     if(index2 != NULL){
         indexConcat = (u2)(index<<8) | (u2)index2;
     }else{
         indexConcat = (u2)index;
     }
-#warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
+
 #warning Need to see if smurf implementation cover this case, or need to mount the u4 field to pass to function store.
-	 EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&fields[indexConcat].attributes->info.ConstantValue.constantvalue_index);
+	 EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
 }
 
-void dload(Frame* frame,u1 index, u1 index2, field_info* fields){
+void dload(Frame* frame,u1 index, u1 index2){
     u2 indexConcat =0;
+
+#warning definition of wide. chage this when function is implemened.
     if(index2 != NULL){
         indexConcat = (u2)(index<<8) | (u2)(index2);
     }else{
         indexConcat = (u2)index;
     }
-#warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
 #warning Need to see if smurf implementation cover this case, or need to mount the u8 field to pass to function store.
-	  EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&fields[indexConcat].attributes->info.ConstantValue.constantvalue_index);
+	  EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
 }
 
-void aload(Frame* frame,u1 index, field_info* fields){
-
-#warning Need to teste this implementation. In my mind its incomplete. Need to access something on this structure.
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&fields[index].attributes->info.LocalVariableTable);
+void aload(Frame* frame,u1 index){
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[index]));
 }
 
 

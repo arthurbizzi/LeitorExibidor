@@ -8,8 +8,8 @@
 #define PILHA_OPERANDOS_H
 
 #include "../ClassLoader/classloader.h"
-
-typedef struct pilhadeoperandos {
+typedef struct pilhadeoperandos
+{
     u4 dado;
     struct pilhadeoperandos *prox;
 } PilhaDeOperandos;

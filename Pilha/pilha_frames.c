@@ -7,7 +7,8 @@
 #include "pilha_frames.h"
 #include "pilha_operandos.h"
 
-Frame *ConstruirFrame(ClassFile *classe, method_info *method){
+Frame *ConstruirFrame(ClassFile *classe, method_info *method)
+{
     Frame *frame;
 
     frame = (Frame *)malloc(sizeof(Frame));
@@ -19,25 +20,28 @@ Frame *ConstruirFrame(ClassFile *classe, method_info *method){
     frame->constant_pool_count = classe->constant_pool_count;
     frame->constant_pool = classe->constant_pool;
 //    frame->listaArrays = NULL;
-  //  frame->listaObjetos = NULL;
+    //  frame->listaObjetos = NULL;
     frame->returAddress = 0;
 
     return frame;
 }
 
-void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames){
+void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames)
+{
     *pilhaFrames = NULL;
     return;
 }
 
-u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame){
+u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame)
+{
     if (pilhaFrame == NULL)
         return 1;
     else
         return 0;
 }
 
-void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame){
+void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame)
+{
     PilhaDeFrames *pf1;
     pf1 = (PilhaDeFrames *)malloc(sizeof(PilhaDeFrames));
     pf1->dado = frame;
@@ -46,7 +50,8 @@ void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame){
     return;
 }
 
-Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame){
+Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
+{
     PilhaDeFrames *pf1;
     Frame *frame;
     pf1 = (PilhaDeFrames *)malloc(sizeof(PilhaDeFrames));
@@ -58,17 +63,20 @@ Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame){
     return frame;
 }
 
-void DestruirFrame(Frame *frame){
+void DestruirFrame(Frame *frame)
+{
     desalocaPilhaOperandos(frame->pilhaOperandos);
 //    desalocaListaArrays(frame->listaArrays);
-  //  desalocaListaObjetos(frame->listaObjetos);
+    //  desalocaListaObjetos(frame->listaObjetos);
     free(frame->VetorVariaveisLocais);
     free(frame);
 }
 
-void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames){
+void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames)
+{
     PilhaDeFrames *pf1;
-    while (*pilhaFrames != NULL){
+    while (*pilhaFrames != NULL)
+    {
         pf1 = *pilhaFrames;
         *pilhaFrames = pf1->prox;
         DestruirFrame(pf1->dado);
