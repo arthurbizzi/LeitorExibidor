@@ -13,7 +13,7 @@
 typedef struct frame {
     method_info         *method;
     u4                  pc;
-    PilhaDeOperandos    *pilhaOperandos;
+    PilhaDeOperandos    *pilhaDeOperandos;
     u4                  TamanhoVetorVariaveisLocais;
     u4                  *VetorVariaveisLocais;
     u2                  constant_pool_count;
