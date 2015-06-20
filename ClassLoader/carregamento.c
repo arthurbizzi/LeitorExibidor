@@ -182,6 +182,7 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
 
     if (!strcmp(tipoAtributo, "ConstantValue")) {
         atributo->info.ConstantValue.constantvalue_index = le_u2(arquivo);
+        atributo->tag = ATTRTAG_Constantvalue;
     }
     else if (!strcmp(tipoAtributo, "Code")) {
         u4 code_length;
@@ -210,6 +211,7 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
         for (int k = 0; k < attributes_count; k++) {
             carrega_attribute(arquivo, classe, atributo->info.CodeAttribute.attributes);
         }
+        atributo->tag = ATTRTAG_Code;
     }
     else if (!strcmp(tipoAtributo, "Exceptions")) {
         u2 number_of_exceptions;
@@ -219,6 +221,7 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
         for (int i = 0; i < number_of_exceptions; i++) {
             atributo->info.Exception.exception_index_table[i] = le_u2(arquivo);
         }
+        atributo->tag = ATTRTAG_Exception;
     }
     else if (!strcmp(tipoAtributo, "InnerClasses")) {
         u2 number_of_classes;
@@ -231,9 +234,11 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
             atributo->info.InnerClasses.classes[i].inner_name_index = le_u2(arquivo);
             atributo->info.InnerClasses.classes[i].inner_class_access_flags = le_u2(arquivo);
         }
+        atributo->tag = ATTRTAG_Innerclasses;
     }
     else if (!strcmp(tipoAtributo, "SourceFile")) {
         atributo->info.Sourcefile.sourcefile_index = le_u2(arquivo);
+        atributo->tag = ATTRTAG_Sourcefile;
     }
     else if (!strcmp(tipoAtributo, "LineNumberTable")) {
         atributo->info.LineNumberTable.line_number_table_length = le_u2(arquivo);
@@ -243,6 +248,7 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
             atributo->info.LineNumberTable.line_number_table[i].start_pc = le_u2(arquivo);
             atributo->info.LineNumberTable.line_number_table[i].line_number = le_u2(arquivo);
         }
+        atributo->tag = ATTRTAG_Linenumbertable;
     }
     else if (!strcmp(tipoAtributo, "LocalVariableTable")) {
         u2 local_variable_table_length;
@@ -257,12 +263,14 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
             atributo->info.LocalVariableTable.local_variable_table[i].descriptor_index = le_u2(arquivo);
             atributo->info.LocalVariableTable.local_variable_table[i].index = le_u2(arquivo);
         }
+        atributo->tag = ATTRTAG_Localvariabletable;
     }
     else {
         atributo->info.Default.data = (u1 *) malloc(attribute_length * sizeof(u1));
         for (int i = 0; i < attribute_length; i++) {
             atributo->info.Default.data[i] = le_u1(arquivo);
         }
+        atributo->tag = ATTRTAG_Default;
     }
     free(tipoAtributo); /// CPPCHECK
 }

@@ -27,11 +27,11 @@
 #include "main.h"
 
 ListaClasses *lista_de_classes; /// Lista de classes carregadas no programa
-char opcao; /// Modo de impressao (t - tela, a - arquivo, s - ambos, n - nenhum)
 
 int main(int argc, char **argv) {
     ClassFile *classe = (ClassFile *) malloc(sizeof(ClassFile));
     char nome_classe[21];
+    char opcao; /// Modo de impressao (t - tela, a - arquivo, s - ambos, n - nenhum)
     int status;
 
     switch(argc) {
@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
         return status;
     }
 
-    if(verifica_impressao(classe)) { // Verifica onde imprimir o conteudo da classe
+    if(verifica_impressao(classe, opcao) == ERRO_ARQUIVO) { // Verifica onde imprimir o conteudo da classe
         return ERRO_ARQUIVO;
     }
 
@@ -85,7 +85,7 @@ int main(int argc, char **argv) {
     }
 }
 
-int verifica_impressao(ClassFile *classe) {
+int verifica_impressao(ClassFile *classe, char opcao) {
     FILE *arquivo_saida;
 
     switch(opcao) {
@@ -132,27 +132,16 @@ int verifica_impressao(ClassFile *classe) {
 }
 
 int executa_programa() {
-    method_info *metodo_main = recupera_main();
-    if(!metodo_main) {
+    method_info *metodo_main;
+    ClassFile *classe_inicial = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe carregada
+
+    if(!(metodo_main = recupera_main(classe_inicial))) {
         printf("ERRO: Metodo MAIN nao encontrado.\n");
         return ERRO_MAIN;
     }
+
+    prepara_metodo(metodo_main, classe);
+    executa_metodo(metodo_main, classe);
+
     return SUCESSO;
-}
-
-method_info* recupera_main() {
-    ClassFile *classe = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe carregada
-    u1 *nome;
-    int index_nome;
-
-    for(int i = 0; i < classe->methods_count; i++) { // Para cada metodo dentro da classe
-        index_nome = classe->methods[i].name_index - 1;
-        //index_descritor = classe->methods[i].descriptor_index - 1;
-        nome = classe->constant_pool[index_nome].info.Utf8.bytes;
-        //descritor = classe->constant_pool[index_descritor].info.Utf8.bytes;
-        if(!strcmp("main", (char *) nome)) { // Se o nome do metodo for main
-            return &classe->methods[i];
-        }
-    }
-    return NULL;
 }

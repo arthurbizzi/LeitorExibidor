@@ -11,6 +11,7 @@
 #include "ClassLoader/impressao.h"
 #include "Pilha/pilha_frames.h"
 #include "Pilha/pilha_operandos.h"
+#include "AreaMetodos/area_metodos.h"
 
 #define SUCESSO 0
 #define ERRO_ARQUIVO -10 /// Arquivo nao encontrado.
@@ -32,7 +33,7 @@ int main(int argc, char **argv);
 *   @param classe Classe que deve ser impressa (ou nao).
 *   @return Status de execucao: SUCESSO ou ERRO_ARQUIVO.
 */
-int verifica_impressao(ClassFile *classe);
+int verifica_impressao(ClassFile *classe, char opcao);
 
 /**
 *   @fn int executa_programa()
@@ -40,12 +41,5 @@ int verifica_impressao(ClassFile *classe);
 *   @return Retorna o metodo main, se encontrado, ou NULL, caso contrario.
 */
 int executa_programa();
-
-/**
-*   @fn method_info* recupera_main()
-*   @brief Funcao que recupera o metodo main da primeira classe carregada.
-*   @return Retorna o metodo main, se encontrado, ou NULL, caso contrario.
-*/
-method_info* recupera_main();
 
 #endif // MAIN_H
