@@ -1100,7 +1100,7 @@ void ishl(Frame* frame){
     }else{
     	value |= 0x80000000;
     }
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void lshl(Frame* frame){
@@ -1113,7 +1113,7 @@ void lshl(Frame* frame){
     }else{
     	value |= 0x800000000000000;
     }
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void ishr(Frame* frame){
@@ -1127,7 +1127,7 @@ void ishr(Frame* frame){
     }else{
     	value |= 0x80000000;
     }
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void lshr(Frame* frame){
@@ -1141,7 +1141,7 @@ void lshr(Frame* frame){
     }else{
     	value |= 0x800000000000000;
     }
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void iushr(Frame* frame){
@@ -1149,13 +1149,61 @@ void iushr(Frame* frame){
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     value = (value >> shifter);
 
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void lushr(Frame* frame){
 	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     value = (value >> shifter);
+
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&value;
+}
+
+void iand(Frame* frame){
+	u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 result = (value1 & value2);
+
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void land(Frame* frame){
+	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8 result = (value1 & value2);
+
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void ior(Frame* frame){
+	u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 result = (value1 | value2);
+
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lor(Frame* frame){
+	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8 result = (value1 | value2);
+
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void ixor(Frame* frame){
+	u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 result = (value1 ^ value2);
+
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lxor(Frame* frame){
+	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8 result = (value1 ^ value2);
 
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
