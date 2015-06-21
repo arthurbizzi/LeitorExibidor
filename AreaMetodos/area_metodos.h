@@ -20,4 +20,8 @@
 */
 method_info* recupera_main();
 
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames);
+
+void executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames);
+
 #endif // AREA_METODOS_H

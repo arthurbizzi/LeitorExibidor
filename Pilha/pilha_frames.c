@@ -19,8 +19,8 @@ Frame *ConstruirFrame(ClassFile *classe, method_info *method)
     frame->VetorVariaveisLocais = (u4 *)malloc(sizeof(u4) * frame->TamanhoVetorVariaveisLocais);
     frame->constant_pool_count = classe->constant_pool_count;
     frame->constant_pool = classe->constant_pool;
-//    frame->listaArrays = NULL;
-    //  frame->listaObjetos = NULL;
+    frame->listaArrays = NULL;
+    frame->listaObjetos = NULL;
     frame->returAddress = 0;
 
     return frame;
