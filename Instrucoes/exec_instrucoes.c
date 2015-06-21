@@ -914,6 +914,41 @@ void dup2_x2(Frame* frame){
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value2);
 }
 
+void swap(Frame* frame){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value2);
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value1);
+}
+
+void iadd(Frame* frame){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1+value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void ladd(Frame* frame){
+    u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1+value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+#warning see this implementation
+void fadd(Frame* frame){
+    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1+value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void dadd(Frame* frame){
+    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1+value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
 
 
 
