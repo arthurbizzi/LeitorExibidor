@@ -1066,6 +1066,32 @@ void drem(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
+void ineg(Frame* frame){
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 result = ~value;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lneg(Frame* frame){
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 result = ~value;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void fneg(Frame* frame){
+    float value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 result = ~value;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void dneg(Frame* frame){
+    double value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 result = ~value;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+
+
 
 
 #pragma mark - SMURF PART
