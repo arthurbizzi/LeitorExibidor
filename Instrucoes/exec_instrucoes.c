@@ -1208,8 +1208,92 @@ void lxor(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
+#warning needs to implement wide.
+void iinc(Frame* frame, u1 index, u1 inc){
+	frame->VetorVariaveisLocais[index] += inc;
+}
+
+void i2l(Frame* frame){
+	u8 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+#warning Need to see this implementation
+void i2f(Frame* frame){
+	float result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+#warning Need to see this implementation
+void i2d(Frame* frame){
+	double result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void l2i(Frame* frame){
+	u4 result = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void l2f(Frame* frame){
+	float result = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void l2d(Frame* frame){
+	double result = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void f2i(Frame* frame){
+	u4 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void f2l(Frame* frame){
+	u4 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void f2d(Frame* frame){
+	double result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void d2i(Frame* frame){
+	double op = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u4 result = op;
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void d2l(Frame* frame){
+	double op = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = op;
+	EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void d2f(Frame* frame){
+	double op = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	float result = op;
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void i2b(Frame* frame){
+	u1 result =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
 
 
+void i2c(Frame* frame){
+	char result =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+
+void i2s(Frame* frame){
+	u2 result =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
 
 #pragma mark - SMURF PART
 
