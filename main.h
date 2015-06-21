@@ -40,6 +40,6 @@ int verifica_impressao(ClassFile *classe, char opcao);
 *   @brief Funcao que executa o programa a partir do metodo main da primeira classe carregada.
 *   @return Retorna o metodo main, se encontrado, ou NULL, caso contrario.
 */
-int executa_programa();
+int executa_programa(ClassFile *classe);
 
 #endif // MAIN_H
