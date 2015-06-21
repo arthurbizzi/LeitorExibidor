@@ -27,7 +27,7 @@ void InicializaPilhaDeOperandos(PilhaDeOperandos **pilhaOperandos);
 *   @param pilhaOperandos
 *   @param dado
 */
-void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 dado);
+void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 *dado);
 
 /**
 *   @fn void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 dado)
@@ -35,7 +35,7 @@ void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 dado);
 *   @param pilhaOperandos
 *   @param dado
 */
-void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 dado);
+void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 *dado);
 
 /**
 *   @fn void desalocaPilhaOperandos(PilhaDeOperandos **pilhaOperandos)
