@@ -6,6 +6,7 @@
 #include "../Pilha/pilha_operandos.h"
 #include "../Pilha/pilha_frames.h"
 #include "../ClassLoader/classloader.h"
+#include <math.h>
 
 void nop()
 {
@@ -1295,7 +1296,219 @@ void i2s(Frame* frame){
 	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
+void lcmp(Frame* frame){
+	u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u4 result = 0;
+	if(value1 == value2){
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else if(value1 < value2){
+		result = 1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else{
+		result = -1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}
+}
+
+void fcmpl(Frame* frame){
+	float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = 0;
+	if(value1 == value2){
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else if(value1 < value2){
+		result = 1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else{
+		result = -1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}
+}
+
+void fcmpg(Frame* frame){
+	float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = 0;
+	if(value1 == value2){
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else if(value1 < value2){
+		result = 1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else if(value1 > value2){
+		result = -1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else{
+		result = 1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}
+}
+
+void dcmpl(Frame* frame){
+	double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u4 result = 0;
+	if(value1 == value2){
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else if(value1 < value2){
+		result = 1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else{
+		result = -1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}
+}
+
+void dcmpg(Frame* frame){
+	double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u4 result = 0;
+	if(value1 == value2){
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else if(value1 < value2){
+		result = 1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else if(value1 > value2){
+		result = -1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}else{
+		result = 1;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	}
+}
+
+void ifeq(Frame* frame,u1 index1,u2 index2){
+    u4 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    if(result == 0){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void ifne(Frame* frame,u1 index1,u2 index2){
+    u4 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    if(result != 0){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void iflt(Frame* frame,u1 index1,u2 index2){
+    u4 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    if(result < 0){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void ifge(Frame* frame,u1 index1,u2 index2){
+    u4 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    if(result >= 0){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void ifgt(Frame* frame,u1 index1,u2 index2){
+    u4 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    if(result > 0){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void ifle(Frame* frame,u1 index1,u2 index2){
+    u4 result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    if(result <= 0){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void if_icmpeq(Frame* frame,u1 index1,u2 index2){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    if(value1 == value2){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void if_icmpne(Frame* frame,u1 index1,u2 index2){
+	u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    if(value1 != value2){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void if_icmplt(Frame* frame,u1 index1,u2 index2){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    if(value1 < value2){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void if_icmpge(Frame* frame,u1 index1,u2 index2){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    if(value1 >= value2){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void if_icmpgt(Frame* frame,u1 index1,u2 index2){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    if(value1 > value2){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void if_icmple(Frame* frame,u1 index1,u2 index2){
+     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    if(value1 <= value2){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void if_acmpeq(Frame* frame,u1 index1,u2 index2){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    if(value1 == value2){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void if_acmpne(Frame* frame,u1 index1,u2 index2){
+	u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+
+    if(value1 != value2){
+		frame->pc += (index1<<8)+index2;
+    }
+}
+
+void i_goto(Frame* frame, u1 index1, u1 index2){
+	frame->pc += (u2)(index<<8)+index2);
+}
+
+#warning alinhar como incremento do ponteiro de PC é feito
+void jsr(Frame* frame, u1 index, u1 index2){
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(frame->pc++))
+}
+
+#warning precis ser olhado com mais cuidado
+void ret(Frame* frame, u1 index){
+	frame->pc = frame->VetorVariaveisLocais[index];
+}
+
+
+
 #pragma mark - SMURF PART
+
 
 
 void wide()
