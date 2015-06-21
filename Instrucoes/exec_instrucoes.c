@@ -1090,6 +1090,75 @@ void dneg(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
+void ishl(Frame* frame){
+	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
+    u4 signal = value >> 31;
+    value = (value << shifter);
+    if(signal == 0){
+		value &= 0x7FFFFFFF;
+    }else{
+    	value |= 0x80000000;
+    }
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lshl(Frame* frame){
+	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
+    u4 signal = value >> 63;
+    value = (value << shifter);
+    if(signal == 0){
+		value &= 0x7FFFFFFFFFFFFFFF;
+    }else{
+    	value |= 0x800000000000000;
+    }
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void ishr(Frame* frame){
+	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
+    u4 signal = value >> 31;
+    value &= 0x7FFFFFFF
+    value = (value >> shifter);
+    if(signal == 0){
+		value &= 0x7FFFFFFF;
+    }else{
+    	value |= 0x80000000;
+    }
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lshr(Frame* frame){
+	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
+    u4 signal = value >> 63;
+    value &= 0x7FFFFFFFFFFFFFFF;
+    value = (value >> shifter);
+    if(signal == 0){
+		value &= 0x7FFFFFFFFFFFFFFF;
+    }else{
+    	value |= 0x800000000000000;
+    }
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void iushr(Frame* frame){
+	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
+    value = (value >> shifter);
+
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lushr(Frame* frame){
+	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
+    value = (value >> shifter);
+
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
 
 
 
