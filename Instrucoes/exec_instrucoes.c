@@ -950,6 +950,122 @@ void dadd(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
+void isub(Frame* frame){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1-value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lsub(Frame* frame){
+    u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1-value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+#warning see this implementation
+void fsub(Frame* frame){
+    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1-value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void dsub(Frame* frame){
+    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1-value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void imul(Frame* frame){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1*value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lmul(Frame* frame){
+    u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1*value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+#warning see this implementation
+void fmul(Frame* frame){
+    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1*value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void dmul(Frame* frame){
+    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1*value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void idiv(Frame* frame){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1/value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void ldiv(Frame* frame){
+    u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1/value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+#warning see this implementation
+void fdiv(Frame* frame){
+    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1/value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void ddiv(Frame* frame){
+    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1/value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void irem(Frame* frame){
+    u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1%value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void lrem(Frame* frame){
+    u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1%value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
+#warning see this implementation
+void frem(Frame* frame){
+    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 result = value1%value2;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+}
+
+void drem(Frame* frame){
+    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 result = value1%value2;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+}
+
 
 
 #pragma mark - SMURF PART
