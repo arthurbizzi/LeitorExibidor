@@ -14,19 +14,17 @@ typedef struct tipoarray
 {
     u1 tag;
     u4 tamanho;
-    u1 dimensao;
     union
     {
         u1 *tipoBoolean;
         u1 *tipoByte;
-        u1 *tipoChar;
+        u2 *tipoChar;
         u2 *tipoShort;
+        u4 *tipoReferencia;
         u4 *tipoInt;
         u4 *tipoFloat;
         u8 *tipoLong;
         u8 *tipoDouble;
-        struct listadearrays  *Array;
-        struct listadeobjetos *Objeto;
     } info;
 } tArray;
 

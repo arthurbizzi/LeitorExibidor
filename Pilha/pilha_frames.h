@@ -12,16 +12,16 @@
 
 typedef struct frame
 {
-    method_info         *method;
-    u4                  pc;
-    PilhaDeOperandos    *pilhaDeOperandos;
-    u4                  TamanhoVetorVariaveisLocais;
-    u4                  *VetorVariaveisLocais;
-    u2                  constant_pool_count;
-    cp_info             *constant_pool;
-    struct listadearrays         *listaArrays;
-    struct listadeobjetos        *listaObjetos;
-    u4                  returAddress;
+    method_info             *method;
+    u4                      pc;
+    PilhaDeOperandos        *pilhaDeOperandos;
+    u4                      TamanhoVetorVariaveisLocais;
+    u4                      *VetorVariaveisLocais;
+    u2                      constant_pool_count;
+    cp_info                 *constant_pool;
+    struct listadearrays    *listaArrays;
+    struct listadeobjetos   *listaObjetos;
+    u4                      returAddress;
 } Frame;
 
 typedef struct pilhaframes

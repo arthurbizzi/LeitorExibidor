@@ -1492,12 +1492,12 @@ void if_acmpne(Frame* frame,u1 index1,u2 index2){
 }
 
 void i_goto(Frame* frame, u1 index1, u1 index2){
-	frame->pc += (u2)(index<<8)+index2);
+	frame->pc += (u2)((index<<8)+index2);
 }
 
 #warning alinhar como incremento do ponteiro de PC é feito
 void jsr(Frame* frame, u1 index, u1 index2){
-	EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(frame->pc++))
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(frame->pc++));
 }
 
 #warning precis ser olhado com mais cuidado
@@ -1509,46 +1509,335 @@ void ret(Frame* frame, u1 index){
 
 #pragma mark - SMURF PART
 
-
-
-void wide()
+void summondragon(Frame *frame)
 {
+
+    return;
+}
+
+void new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses)
+{
+    Objeto *obj;
+    char *tipo;
+    u2 index;
+    index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
+    index = frame->constant_pool[index - 1].info.Class.name_index - 1;
+    tipo = dereferencia_instrucoes(index, frame->constant_pool);
+    obj = (Objeto *)malloc(sizeof(Objeto));
+    obj->classe = RecuperaClasse(tipo,&listadeclasses);
+    obj->tamanhotipoField = 0;
+    obj->tipofield = NULL;
+    obj->tamanhotipoArray = 0;
+    obj->tipoarray = NULL;
+    return;
+}
+
+void newarray(Frame *frame, u1 atype)
+{
+    tArray *a;
+    a = (tArray *)malloc(sizeof(tArray));
+    switch (atype)
+    {
+    case 'B':
+        a->tag = TipoByte;
+        a->info.tipoByte = (u1 *)malloc(sizeof(u1) * valor);
+        break;
+    case 'C':
+        a->tag = TipoChar;
+        a->info.tipoChar = (u2 *)malloc(sizeof(u2) * valor);
+        break;
+    case 'D':
+        a->tag = TipoDouble;
+        a->info.tipoDouble = (u8 *)malloc(sizeof(u8) * valor);
+        break;
+    case 'F':
+        a->tag = TipoFloat;
+        a->info.tipoFloat = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'I':
+        a->tag = TipoInt;
+        a->info.tipoInt = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'J':
+        a->tag = TipoLong;
+        a->info.tipoLong = (u8 *)malloc(sizeof(u8) * valor);
+        break;
+    case 'L':
+        a->tag = TipoReferencia;
+        a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'S':
+        a->tag = TipoShort;
+        a->info.tipoShort = (u2 *)malloc(sizeof(u2) * valor);
+        break;
+    case 'Z':
+        a->tag = TipoBoolean;
+        a->info.tipoBoolean = (u1 *)malloc(sizeof(u1) * valor);
+        break;
+    default:
+        a->tag = TipoReferencia;
+        a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    }
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &a);
+    return;
+}
+
+void anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
+{
+    char *tipo;
+    u2 index;
+    u4 i, valor;
+    tArray *a;
+    a = (tArray *)malloc(sizeof(tArray));
+    index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
+    index = frame->constant_pool[index - 1].info.Class.name_index - 1;
+    tipo = dereferencia_instrucoes(index, frame->constant_pool);
+    valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    i = 0;
+    while (tipo[i] == '[')
+    {
+        i++;
+    }
+    switch (tipo[i])
+    {
+    case 'B':
+        a->tag = TipoByte;
+        a->info.tipoByte = (u1 *)malloc(sizeof(u1) * valor);
+        break;
+    case 'C':
+        a->tag = TipoChar;
+        a->info.tipoChar = (u2 *)malloc(sizeof(u2) * valor);
+        break;
+    case 'D':
+        a->tag = TipoDouble;
+        a->info.tipoDouble = (u8 *)malloc(sizeof(u8) * valor);
+        break;
+    case 'F':
+        a->tag = TipoFloat;
+        a->info.tipoFloat = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'I':
+        a->tag = TipoInt;
+        a->info.tipoInt = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'J':
+        a->tag = TipoLong;
+        a->info.tipoLong = (u8 *)malloc(sizeof(u8) * valor);
+        break;
+    case 'L':
+        a->tag = TipoReferencia;
+        a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'S':
+        a->tag = TipoShort;
+        a->info.tipoShort = (u2 *)malloc(sizeof(u2) * valor);
+        break;
+    case 'Z':
+        a->tag = TipoBoolean;
+        a->info.tipoBoolean = (u1 *)malloc(sizeof(u1) * valor);
+        break;
+    default:
+        a->tag = TipoReferencia;
+        a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    }
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &a);
+    return;
+}
+
+void arraylength(Frame *frame)
+{
+    tArray *a;
+    a = (tArray *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(a->tamanho));
+    return;
+}
+
+void atrhow(Frame *frame)
+{
+
+    return;
+}
+
+void checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)
+{
+    char *nomeclasse, *nomeclasseobjeto;
+    Objeto *obj;
+    u2 index;
+    u4 valor = 0;
+    index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
+    obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    index = frame->constant_pool[index - 1].info.Class.name_index - 1;
+    nomeclasse = dereferencia_instrucoes(index, frame->constant_pool);
+    nomeclasseobjeto = dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
+    if (obj == NULL)
+    {
+        printf("Erro: Referencia nula\n");
+    } else if (!strcmp(nomeclasse,nomeclasseobjeto))
+    {
+        printf(" Erro: Objeto do tipo errado\n");
+    }
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), (u4 *)obj);
+    return;
+}
+
+void instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2)
+{
+    char *nomeclasse, *nomeclasseobjeto;
+    Objeto *obj;
+    u2 index;
+    u4 valor = 0;
+    index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
+    obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    index = frame->constant_pool[index - 1].info.Class.name_index - 1;
+    nomeclasse = dereferencia_instrucoes(index, frame->constant_pool);
+    nomeclasseobjeto = dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
+    if (obj == NULL)
+    {
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
+    } else if (!strcmp(nomeclasse,nomeclasseobjeto))
+    {
+        valor = 1;
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
+    } else
+    {
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
+    }
+    return;
+}
+
+void monitorenter(Frame *frame)
+{
+    return;
+}
+
+void monitorexit(Frame *frame)
+{
+    return;
+}
+
+void wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constbyte2)
+{
+    u2 indexConcat = 0;
+    indexConcat = (u2)(index<<8) | (u2)(index2);
+    switch (opcode)
+    {
+        case 0x15:
+            EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+        break;
+        case 0x16:
+            EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat + 1]));
+            EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+        break;
+        case 0x17:
+            EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+        break;
+        case 0x18:
+            EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat + 1]));
+            EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+        break;
+        case 0x19:
+            EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+        break;
+        case 0x36:
+            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            frame->VetorVariaveisLocais[indexConcat] = value;
+        break;
+        case 0x37:
+            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            frame->VetorVariaveisLocais[indexConcat] = value;
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            frame->VetorVariaveisLocais[indexConcat + 1] = value;
+        break;
+        case 0x38:
+            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            frame->VetorVariaveisLocais[indexConcat] = value;
+        break;
+        case 0x39:
+            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            frame->VetorVariaveisLocais[indexConcat] = value;
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            frame->VetorVariaveisLocais[indexConcat + 1] = value;
+        break;
+        case 0x3a:
+            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            frame->VetorVariaveisLocais[indexConcat] = value;
+        break;
+        case 0x84:
+            int16_t valor;
+            valor = (int16_t)(constbyte1<<8) | (int16_t)(constbyte2);
+            frame->VetorVariaveisLocais[indexConcat] += valor;
+        break;
+    }
     return;
 }
 
 void multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)
 {
-    u4 *valores;
+    u4 valor = 1;
     int i;
     char *tipo;
     u2 index;
-    index = (indexbyte1 << 8 | indexbyte2);
+    tArray *a;
+    a = (tArray *)malloc(sizeof(tArray));
+    index = (u2)(indexbyte1 << 8 | indexbyte2);
     index = ((frame->constant_pool[index - 1].info.Class.name_index) - 1);
-    tipo = dereferencia1(index, frame->constant_pool);
+    tipo = dereferencia_instrucoes(index, frame->constant_pool);
     for (i = 0; i < dimensions; i++)
     {
-        valores[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+        valor *= DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     }
-    i = strlen(tipo) - 1;
-    switch (i)
+    i = 0;
+    while (tipo[i] == '[')
     {
-    case 1:
-        if (!strcmp(tipo, "[B"))
-        {
-
-        }
-        break;
-    case 2:
-        break;
-    case 3:
-        break;
+        i++;
     }
-
-    if (!strcmp(tipo,"["))
+    a->tamanho = valor;
+    switch (tipo[i])
     {
-
+    case 'B':
+        a->tag = TipoByte;
+        a->info.tipoByte = (u1 *)malloc(sizeof(u1) * valor);
+        break;
+    case 'C':
+        a->tag = TipoChar;
+        a->info.tipoChar = (u2 *)malloc(sizeof(u2) * valor);
+        break;
+    case 'D':
+        a->tag = TipoDouble;
+        a->info.tipoDouble = (u8 *)malloc(sizeof(u8) * valor);
+        break;
+    case 'F':
+        a->tag = TipoFloat;
+        a->info.tipoFloat = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'I':
+        a->tag = TipoInt;
+        a->info.tipoInt = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'J':
+        a->tag = TipoLong;
+        a->info.tipoLong = (u8 *)malloc(sizeof(u8) * valor);
+        break;
+    case 'L':
+        a->tag = TipoReferencia;
+        a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
+        break;
+    case 'S':
+        a->tag = TipoShort;
+        a->info.tipoShort = (u2 *)malloc(sizeof(u2) * valor);
+        break;
+    case 'Z':
+        a->tag = TipoBoolean;
+        a->info.tipoBoolean = (u1 *)malloc(sizeof(u1) * valor);
+        break;
+    default:
+        a->tag = TipoReferencia;
+        a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
+        break;
     }
-
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &a);
     return;
 }
 
@@ -1605,4 +1894,21 @@ char* dereferencia_instrucoes(u2 index, cp_info *cp)
     }
     nome[i] = '\0';
     return nome;
+}
+
+ClassFile *RecuperaClasse(char *nome, ListaClasses **listadeclasses)
+{
+    ListaClasses *lc1;
+    int index;
+    char *nomeThisClass;
+    lc1 = *listadeclasses;
+    while (lc1 != NULL)
+    {
+        index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
+        nomeThisClass = dereferencia(index, lc1->dado);
+        if (!strcmp(nome,nomeThisClass))
+            return lc1->dado;
+        lc1 = lc1->prox;
+    }
+    return NULL;
 }

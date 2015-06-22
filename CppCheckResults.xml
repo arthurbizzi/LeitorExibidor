@@ -78,25 +78,7 @@
     <error file="ClassLoader\impressao.c" line="826" id="memleak" severity="error" msg="Memory leak: temp" />
     <error file="ClassLoader\impressao.c" line="826" id="memleak" severity="error" msg="Memory leak: nomeThisClass" />
     <error file="ClassLoader\impressao.c" line="813" id="uninitvar" severity="error" msg="Uninitialized variable: c" />
-    <error file="Instrucoes\exec_instrucoes.c" line="368" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="388" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="408" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="428" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="449" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="469" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="489" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="509" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="690" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="711" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="732" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="753" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="775" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="796" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="817" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="838" id="nullPointer" severity="style" msg="Possible null pointer dereference: iterator - otherwise it is redundant to check it against null." />
-    <error file="Instrucoes\exec_instrucoes.c" line="149" id="unreadVariable" severity="style" msg="Variable &apos;indexConcat&apos; is assigned a value that is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="878" id="unassignedVariable" severity="style" msg="Variable &apos;valores&apos; is not assigned a value." />
-    <error file="Instrucoes\exec_instrucoes.c" line="887" id="uninitvar" severity="error" msg="Uninitialized variable: valores" />
+    <error file="Instrucoes\exec_instrucoes.c" line="1161" id="syntaxError" severity="error" msg="Invalid number of character (() when these macros are defined: &apos;&apos;." />
     <error file="Pilha\pilha_frames.c" line="59" id="redundantAssignment" severity="style" msg="Variable &apos;pf1&apos; is reassigned a value before the old one has been used." />
     <error file="Pilha\pilha_frames.c" line="61" id="redundantAssignment" severity="style" msg="Variable &apos;frame&apos; is reassigned a value before the old one has been used." />
     <error file="Pilha\pilha_frames.c" line="59" id="memleak" severity="error" msg="Memory leak: pf1" />
@@ -120,120 +102,22 @@
     <error file="lista_arrays_objetos_classes.h" line="48" id="unusedStructMember" severity="style" msg="struct or union member &apos;Anonymous3::tipoFloat&apos; is never used." />
     <error file="lista_arrays_objetos_classes.h" line="49" id="unusedStructMember" severity="style" msg="struct or union member &apos;Anonymous3::tipoLong&apos; is never used." />
     <error file="lista_arrays_objetos_classes.h" line="50" id="unusedStructMember" severity="style" msg="struct or union member &apos;Anonymous3::tipoDouble&apos; is never used." />
-    <error file="main.c" line="42" id="invalidscanf" severity="style" msg='scanf without field width limits can crash with huge input data. Add a field width specifier to fix this problem:    %s =&gt; %20sSample program that can crash:#include &lt;stdio.h&gt;int main(){    char c[5];    scanf(&quot;%s&quot;, c);    return 0;}Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.Source: http://linux.die.net/man/3/scanfSource: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c' />
-    <error file="main.c" line="57" id="invalidscanf" severity="style" msg='scanf without field width limits can crash with huge input data. Add a field width specifier to fix this problem:    %s =&gt; %20sSample program that can crash:#include &lt;stdio.h&gt;int main(){    char c[5];    scanf(&quot;%s&quot;, c);    return 0;}Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.Source: http://linux.die.net/man/3/scanfSource: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c' />
+    <error file="main.c" line="38" id="invalidscanf" severity="style" msg='scanf without field width limits can crash with huge input data. Add a field width specifier to fix this problem:    %s =&gt; %20sSample program that can crash:#include &lt;stdio.h&gt;int main(){    char c[5];    scanf(&quot;%s&quot;, c);    return 0;}Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.Source: http://linux.die.net/man/3/scanfSource: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c' />
+    <error file="main.c" line="53" id="invalidscanf" severity="style" msg='scanf without field width limits can crash with huge input data. Add a field width specifier to fix this problem:    %s =&gt; %20sSample program that can crash:#include &lt;stdio.h&gt;int main(){    char c[5];    scanf(&quot;%s&quot;, c);    return 0;}Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.Source: http://linux.die.net/man/3/scanfSource: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c' />
     <error file="lista_arrays_objetos_classes.c" line="90" id="unusedFunction" severity="style" msg="The function &apos;ClasseCarregada&apos; is never used." />
     <error file="Pilha\pilha_frames.c" line="10" id="unusedFunction" severity="style" msg="The function &apos;ConstruirFrame&apos; is never used." />
     <error file="Pilha\pilha_frames.c" line="53" id="unusedFunction" severity="style" msg="The function &apos;DesempilhaFrame&apos; is never used." />
+    <error file="Pilha\pilha_operandos.c" line="58" id="unusedFunction" severity="style" msg="The function &apos;DesempilhaOperando64bits&apos; is never used." />
     <error file="Pilha\pilha_frames.c" line="43" id="unusedFunction" severity="style" msg="The function &apos;EmpilhaFrame&apos; is never used." />
+    <error file="Pilha\pilha_operandos.c" line="34" id="unusedFunction" severity="style" msg="The function &apos;EmpilhaOperando64bits&apos; is never used." />
     <error file="lista_arrays_objetos_classes.c" line="3" id="unusedFunction" severity="style" msg="The function &apos;InicializaListaDeArrays&apos; is never used." />
     <error file="lista_arrays_objetos_classes.c" line="32" id="unusedFunction" severity="style" msg="The function &apos;InicializaListaDeObjetos&apos; is never used." />
-    <error file="Pilha\pilha_frames.c" line="29" id="unusedFunction" severity="style" msg="The function &apos;InicializaPilhaDeFrames&apos; is never used." />
     <error file="Pilha\pilha_operandos.c" line="8" id="unusedFunction" severity="style" msg="The function &apos;InicializaPilhaDeOperandos&apos; is never used." />
     <error file="lista_arrays_objetos_classes.c" line="9" id="unusedFunction" severity="style" msg="The function &apos;InsereListaDeArrays&apos; is never used." />
     <error file="lista_arrays_objetos_classes.c" line="38" id="unusedFunction" severity="style" msg="The function &apos;InsereListaDeObjetos&apos; is never used." />
     <error file="Pilha\pilha_frames.c" line="35" id="unusedFunction" severity="style" msg="The function &apos;PilhaDeFramesVazia&apos; is never used." />
     <error file="Pilha\pilha_operandos.c" line="14" id="unusedFunction" severity="style" msg="The function &apos;PilhaDeOperandosVazia&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="441" id="unusedFunction" severity="style" msg="The function &apos;aaload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="766" id="unusedFunction" severity="style" msg="The function &apos;aastore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="15" id="unusedFunction" severity="style" msg="The function &apos;aconst_null&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="244" id="unusedFunction" severity="style" msg="The function &apos;aload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="340" id="unusedFunction" severity="style" msg="The function &apos;aload_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="345" id="unusedFunction" severity="style" msg="The function &apos;aload_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="350" id="unusedFunction" severity="style" msg="The function &apos;aload_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="355" id="unusedFunction" severity="style" msg="The function &apos;aload_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="547" id="unusedFunction" severity="style" msg="The function &apos;astore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="657" id="unusedFunction" severity="style" msg="The function &apos;astore_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="663" id="unusedFunction" severity="style" msg="The function &apos;astore_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="669" id="unusedFunction" severity="style" msg="The function &apos;astore_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="675" id="unusedFunction" severity="style" msg="The function &apos;astore_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="461" id="unusedFunction" severity="style" msg="The function &apos;baload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="787" id="unusedFunction" severity="style" msg="The function &apos;bastore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="120" id="unusedFunction" severity="style" msg="The function &apos;bipush&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="481" id="unusedFunction" severity="style" msg="The function &apos;caload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="808" id="unusedFunction" severity="style" msg="The function &apos;castore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="420" id="unusedFunction" severity="style" msg="The function &apos;daload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="744" id="unusedFunction" severity="style" msg="The function &apos;dastore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="106" id="unusedFunction" severity="style" msg="The function &apos;dconst_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="113" id="unusedFunction" severity="style" msg="The function &apos;dconst_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="953" id="unusedFunction" severity="style" msg="The function &apos;dereferencia_instrucoes&apos; is never used." />
     <error file="lista_arrays_objetos_classes.c" line="19" id="unusedFunction" severity="style" msg="The function &apos;desalocaListaDeArrays&apos; is never used." />
-    <error file="lista_arrays_objetos_classes.c" line="77" id="unusedFunction" severity="style" msg="The function &apos;desalocaListaDeClasses&apos; is never used." />
     <error file="lista_arrays_objetos_classes.c" line="48" id="unusedFunction" severity="style" msg="The function &apos;desalocaListaDeObjetos&apos; is never used." />
-    <error file="Pilha\pilha_frames.c" line="75" id="unusedFunction" severity="style" msg="The function &apos;desalocaPilhaFrames&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="227" id="unusedFunction" severity="style" msg="The function &apos;dload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="314" id="unusedFunction" severity="style" msg="The function &apos;dload_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="320" id="unusedFunction" severity="style" msg="The function &apos;dload_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="326" id="unusedFunction" severity="style" msg="The function &apos;dload_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="332" id="unusedFunction" severity="style" msg="The function &apos;dload_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="540" id="unusedFunction" severity="style" msg="The function &apos;dstore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="629" id="unusedFunction" severity="style" msg="The function &apos;dstore_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="636" id="unusedFunction" severity="style" msg="The function &apos;dstore_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="643" id="unusedFunction" severity="style" msg="The function &apos;dstore_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="650" id="unusedFunction" severity="style" msg="The function &apos;dstore_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="858" id="unusedFunction" severity="style" msg="The function &apos;dup&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="400" id="unusedFunction" severity="style" msg="The function &apos;faload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="723" id="unusedFunction" severity="style" msg="The function &apos;fastore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="85" id="unusedFunction" severity="style" msg="The function &apos;fconst_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="92" id="unusedFunction" severity="style" msg="The function &apos;fconst_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="99" id="unusedFunction" severity="style" msg="The function &apos;fconst_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="211" id="unusedFunction" severity="style" msg="The function &apos;fload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="294" id="unusedFunction" severity="style" msg="The function &apos;fload_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="299" id="unusedFunction" severity="style" msg="The function &apos;fload_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="304" id="unusedFunction" severity="style" msg="The function &apos;fload_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="309" id="unusedFunction" severity="style" msg="The function &apos;fload_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="534" id="unusedFunction" severity="style" msg="The function &apos;fstore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="605" id="unusedFunction" severity="style" msg="The function &apos;fstore_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="611" id="unusedFunction" severity="style" msg="The function &apos;fstore_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="617" id="unusedFunction" severity="style" msg="The function &apos;fstore_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="623" id="unusedFunction" severity="style" msg="The function &apos;fstore_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="936" id="unusedFunction" severity="style" msg="The function &apos;goto_w&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="360" id="unusedFunction" severity="style" msg="The function &apos;iaload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="681" id="unusedFunction" severity="style" msg="The function &apos;iastore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="30" id="unusedFunction" severity="style" msg="The function &apos;iconst_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="37" id="unusedFunction" severity="style" msg="The function &apos;iconst_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="44" id="unusedFunction" severity="style" msg="The function &apos;iconst_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="51" id="unusedFunction" severity="style" msg="The function &apos;iconst_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="58" id="unusedFunction" severity="style" msg="The function &apos;iconst_4&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="65" id="unusedFunction" severity="style" msg="The function &apos;iconst_5&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="23" id="unusedFunction" severity="style" msg="The function &apos;iconst_m1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="924" id="unusedFunction" severity="style" msg="The function &apos;ifnonnull&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="912" id="unusedFunction" severity="style" msg="The function &apos;ifnull&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="183" id="unusedFunction" severity="style" msg="The function &apos;iload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="249" id="unusedFunction" severity="style" msg="The function &apos;iload_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="254" id="unusedFunction" severity="style" msg="The function &apos;iload_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="259" id="unusedFunction" severity="style" msg="The function &apos;iload_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="264" id="unusedFunction" severity="style" msg="The function &apos;iload_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="521" id="unusedFunction" severity="style" msg="The function &apos;istore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="553" id="unusedFunction" severity="style" msg="The function &apos;istore_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="559" id="unusedFunction" severity="style" msg="The function &apos;istore_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="565" id="unusedFunction" severity="style" msg="The function &apos;istore_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="571" id="unusedFunction" severity="style" msg="The function &apos;istore_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="944" id="unusedFunction" severity="style" msg="The function &apos;jsr_w&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="380" id="unusedFunction" severity="style" msg="The function &apos;laload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="702" id="unusedFunction" severity="style" msg="The function &apos;lastore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="71" id="unusedFunction" severity="style" msg="The function &apos;lconst_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="78" id="unusedFunction" severity="style" msg="The function &apos;lconst_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="130" id="unusedFunction" severity="style" msg="The function &apos;ldc&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="165" id="unusedFunction" severity="style" msg="The function &apos;ldc2_w&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="147" id="unusedFunction" severity="style" msg="The function &apos;ldc_w&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="197" id="unusedFunction" severity="style" msg="The function &apos;lload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="269" id="unusedFunction" severity="style" msg="The function &apos;lload_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="275" id="unusedFunction" severity="style" msg="The function &apos;lload_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="281" id="unusedFunction" severity="style" msg="The function &apos;lload_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="287" id="unusedFunction" severity="style" msg="The function &apos;lload_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="527" id="unusedFunction" severity="style" msg="The function &apos;lstore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="577" id="unusedFunction" severity="style" msg="The function &apos;lstore_0&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="584" id="unusedFunction" severity="style" msg="The function &apos;lstore_1&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="591" id="unusedFunction" severity="style" msg="The function &apos;lstore_2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="598" id="unusedFunction" severity="style" msg="The function &apos;lstore_3&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="876" id="unusedFunction" severity="style" msg="The function &apos;multianewarray&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="10" id="unusedFunction" severity="style" msg="The function &apos;nop&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="850" id="unusedFunction" severity="style" msg="The function &apos;pop&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="854" id="unusedFunction" severity="style" msg="The function &apos;pop2&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="501" id="unusedFunction" severity="style" msg="The function &apos;saload&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="829" id="unusedFunction" severity="style" msg="The function &apos;sastore&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="125" id="unusedFunction" severity="style" msg="The function &apos;sipush&apos; is never used." />
-    <error file="Instrucoes\exec_instrucoes.c" line="871" id="unusedFunction" severity="style" msg="The function &apos;wide&apos; is never used." />
     <error id="missingIncludeSystem" severity="style" msg="Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project&apos;s include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config." />
 </results>
