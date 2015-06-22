@@ -1509,7 +1509,7 @@ void ret(Frame* frame, u1 index){
 
 #pragma mark - SMURF PART
 
-void summondragon(Frame *frame)
+void invokeinterface(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero)
 {
 
     return;
@@ -1538,39 +1538,39 @@ void newarray(Frame *frame, u1 atype)
     a = (tArray *)malloc(sizeof(tArray));
     switch (atype)
     {
-    case 'B':
+    case TipoByte:
         a->tag = TipoByte;
         a->info.tipoByte = (u1 *)malloc(sizeof(u1) * valor);
         break;
-    case 'C':
+    case TipoChar:
         a->tag = TipoChar;
         a->info.tipoChar = (u2 *)malloc(sizeof(u2) * valor);
         break;
-    case 'D':
+    case TipoDouble:
         a->tag = TipoDouble;
         a->info.tipoDouble = (u8 *)malloc(sizeof(u8) * valor);
         break;
-    case 'F':
+    case TipoFloat:
         a->tag = TipoFloat;
         a->info.tipoFloat = (u4 *)malloc(sizeof(u4) * valor);
         break;
-    case 'I':
+    case TipoInt:
         a->tag = TipoInt;
         a->info.tipoInt = (u4 *)malloc(sizeof(u4) * valor);
         break;
-    case 'J':
+    case TipoLong:
         a->tag = TipoLong;
         a->info.tipoLong = (u8 *)malloc(sizeof(u8) * valor);
         break;
-    case 'L':
+    case TipoReferencia:
         a->tag = TipoReferencia;
         a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
         break;
-    case 'S':
+    case TipoShort:
         a->tag = TipoShort;
         a->info.tipoShort = (u2 *)malloc(sizeof(u2) * valor);
         break;
-    case 'Z':
+    case TipoBoolean:
         a->tag = TipoBoolean;
         a->info.tipoBoolean = (u1 *)malloc(sizeof(u1) * valor);
         break;
