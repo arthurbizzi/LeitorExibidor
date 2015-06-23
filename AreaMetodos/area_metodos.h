@@ -40,4 +40,6 @@ void executa_metodo(method_info *metodo, ClassFile *classe, struct pilhaframes *
 */
 int executa_instrucoes(method_info *metodo, struct frame *frame);
 
+int executa_instrucao(u4 opcode);
+
 #endif // AREA_METODOS_H

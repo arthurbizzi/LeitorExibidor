@@ -44,5 +44,17 @@ void executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha
 }
 
 int executa_instrucoes(method_info *metodo, Frame *frame) {
+    for(int i = 0; i < metodo->attributes_count; i++) {
+        if(metodo->attributes[i].tag == ATTRTAG_Code) {
+            attribute_info *codigo = &(metodo->attributes[i]);
+            for(int j = 0; j < codigo->info.CodeAttribute.code_length; j++) {
+                executa_instrucao(codigo->info.CodeAttribute.code[i]);
+            }
+
+        }
+    }
+}
+
+int executa_instrucao(u4 opcode) {
 
 }
