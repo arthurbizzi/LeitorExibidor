@@ -111,7 +111,7 @@
 	<string.h>
 	<stdint.h>
 
-1434773605 /home/kelvinec/Área de Trabalho/LeitorExibidor/main.h
+1434867768 /home/kelvinec/Área de Trabalho/LeitorExibidor/main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -129,11 +129,11 @@
 	"classloader.h"
 	"../main.h"
 
-1434773765 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_frames.h
+1434943911 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_frames.h
 	"../lista_arrays_objetos_classes.h"
 	"pilha_operandos.h"
 
-1434773765 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_operandos.h
+1434943911 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_operandos.h
 	"../ClassLoader/classloader.h"
 
 1434773765 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/classloader.c
@@ -160,7 +160,7 @@
 1434685680 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
 
-1434773765 /home/kelvinec/Área de Trabalho/LeitorExibidor/lista_arrays_objetos_classes.h
+1434943911 /home/kelvinec/Área de Trabalho/LeitorExibidor/lista_arrays_objetos_classes.h
 	"ClassLoader/classloader.h"
 	"ClassLoader/carregamento.h"
 
@@ -170,12 +170,11 @@
 	"../ClassLoader/classloader.h"
 	"../Pilha/pilha_frames.h"
 
-1434773605 /home/kelvinec/Área de Trabalho/LeitorExibidor/AreaMetodos/area_metodos.h
+1434943911 /home/kelvinec/Área de Trabalho/LeitorExibidor/AreaMetodos/area_metodos.h
 	"../main.h"
 	"../lista_arrays_objetos_classes.h"
 	"../ClassLoader/classloader.h"
 	"../Pilha/pilha_frames.h"
-	"../Pilha/pilha_operandos.h"
 
 1434817996 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\carregamento.c
 	"carregamento.h"
@@ -228,4 +227,78 @@
 
 1434867647 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
+
+1435035400 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/cast.c
+	"cast.h"
+
+1435035358 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/cast.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035418 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/comparacao.c
+	"comparacao.h"
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035343 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/comparacao.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035459 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/const.c
+	"const.h"
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035334 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/const.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035493 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/ifs.c
+	"ifs.h"
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035313 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/ifs.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035585 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/load.c
+	"load.h"
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035230 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/load.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435036467 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/logico_aritimeticas.c
+	"logico_aritimeticas.h"
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435035299 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/logico_aritimeticas.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
 

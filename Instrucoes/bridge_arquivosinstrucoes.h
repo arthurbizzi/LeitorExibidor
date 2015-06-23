@@ -1,0 +1,8 @@
+#include "cast.h"
+#include "comparacao.h"
+#include "const.h"
+#include "ifs.h"
+#include "logico_aritimeticas.h"
+#include "others.h"
+#include "pop_dup_swap.h"
+#include "store.h"
