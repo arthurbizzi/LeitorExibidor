@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-std=c99" />
 		</Compiler>
+		<Unit filename="AreaMetodos/area_metodos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="AreaMetodos/area_metodos.h" />
 		<Unit filename="ClassLoader/carregamento.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -45,6 +49,14 @@
 		</Unit>
 		<Unit filename="ClassLoader/impressao.h" />
 		<Unit filename="ClassLoader/mapa.txt" />
+		<Unit filename="Heap/heap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Heap/heap.h" />
+		<Unit filename="Heap/lista_arrays_objetos_classes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Heap/lista_arrays_objetos_classes.h" />
 		<Unit filename="Instrucoes/cast.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -84,10 +96,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Pilha/pilha_operandos.h" />
-		<Unit filename="lista_arrays_objetos_classes.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="lista_arrays_objetos_classes.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -20,7 +20,7 @@ method_info* recupera_main(ClassFile *classe) {
     return NULL;
 }
 
-void executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames) {
+int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames) {
     int fim = 0;
     Frame *frame = ConstruirFrame(classe, metodo);
 
@@ -32,13 +32,14 @@ void executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha
         if(fim == ERRO_INSTRUCAO) {
             printf("ERRO: instrucao nao pode ser executada.\n");
             DestruirFrame(atual);
-            return; // ERRO_INSTRUCAO;
+            return ERRO_INSTRUCAO;
         }
         if(!fim) {
             EmpilhaFrame(&pilha_de_frames, frame);
         }
         else {
             DestruirFrame(atual);
+            fim = 1;
         }
     }
 }
@@ -48,13 +49,22 @@ int executa_instrucoes(method_info *metodo, Frame *frame) {
         if(metodo->attributes[i].tag == ATTRTAG_Code) {
             attribute_info *codigo = &(metodo->attributes[i]);
             for(int j = 0; j < codigo->info.CodeAttribute.code_length; j++) {
-                executa_instrucao(codigo->info.CodeAttribute.code[i]);
+                int status = executa_instrucao(codigo->info.CodeAttribute.code[i]);
+                if(status) {
+                    return ERRO_INSTRUCAO;
+                }
             }
-
+            return SUCESSO;
         }
     }
+    return ERRO_INSTRUCAO;
 }
 
 int executa_instrucao(u4 opcode) {
-
+    switch(opcode) {
+        case 0x00:
+            return SUCESSO;
+        default:
+            return ERRO_INSTRUCAO;
+    }
 }

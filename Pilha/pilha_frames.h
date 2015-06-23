@@ -7,7 +7,7 @@
 #ifndef PILHA_FRAMES_H
 #define PILHA_FRAMES_H
 
-#include "../lista_arrays_objetos_classes.h"
+#include "../Heap/lista_arrays_objetos_classes.h"
 #include "pilha_operandos.h"
 
 typedef struct frame

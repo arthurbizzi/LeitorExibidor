@@ -7,8 +7,8 @@
 #ifndef LISTA_ARRAYS_OBJETOS_CLASSES_H
 #define LISTA_ARRAYS_OBJETOS_CLASSES_H
 
-#include "ClassLoader/classloader.h"
-#include "ClassLoader/carregamento.h"
+#include "../ClassLoader/classloader.h"
+#include "../ClassLoader/carregamento.h"
 
 typedef struct tipoarray
 {

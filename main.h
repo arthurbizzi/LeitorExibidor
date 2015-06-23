@@ -1,3 +1,9 @@
+/**
+* @file main.h
+* @author Bruno, Guilherme, Kelvin
+* @brief
+*/
+
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -5,7 +11,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "lista_arrays_objetos_classes.h"
+#include "Heap/lista_arrays_objetos_classes.h"
+#include "Heap/heap.h"
 #include "ClassLoader/carregamento.h"
 #include "ClassLoader/classloader.h"
 #include "ClassLoader/impressao.h"
