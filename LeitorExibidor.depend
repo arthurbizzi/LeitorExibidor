@@ -36,12 +36,13 @@
 	<stdio.h>
 	"main.h"
 
-1434817998 e:\guilherme\area\gui\sb\leitorexibidor\main.h
+1435079319 e:\guilherme\area\gui\sb\leitorexibidor\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
-	"lista_arrays_objetos_classes.h"
+	"Heap/lista_arrays_objetos_classes.h"
+	"Heap/heap.h"
 	"ClassLoader/carregamento.h"
 	"ClassLoader/classloader.h"
 	"ClassLoader/impressao.h"
@@ -177,14 +178,14 @@
 	"../ClassLoader/classloader.h"
 	"../Pilha/pilha_frames.h"
 
-1434817996 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\carregamento.c
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\carregamento.c
 	"carregamento.h"
 
-1434817996 e:\guilherme\area\gui\sb\leitorexibidor\classloader\carregamento.h
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\classloader\carregamento.h
 	"classloader.h"
 	"../main.h"
 
-1434817996 e:\guilherme\area\gui\sb\leitorexibidor\classloader\classloader.h
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\classloader\classloader.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -194,30 +195,29 @@
 	"ClassLoader/classloader.h"
 	"ClassLoader/carregamento.h"
 
-1434817996 e:\guilherme\area\gui\sb\leitorexibidor\classloader\impressao.h
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\classloader\impressao.h
 	<stdio.h>
 	"classloader.h"
 	"../main.h"
 
-1434817996 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.h
-	"../lista_arrays_objetos_classes.h"
+1435079317 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.h
+	"../Heap/lista_arrays_objetos_classes.h"
 	"pilha_operandos.h"
 
-1434817996 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.h
+1435079317 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.h
 	"../ClassLoader/classloader.h"
 
-1434817996 e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.h
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.h
 	"../main.h"
-	"../lista_arrays_objetos_classes.h"
-	"../ClassLoader/classloader.h"
 	"../Pilha/pilha_frames.h"
-	"../Pilha/pilha_operandos.h"
+	"../Heap/lista_arrays_objetos_classes.h"
+	"../ClassLoader/classloader.h"
 
-1434817996 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\classloader.c
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\classloader.c
 	"classloader.h"
 	"carregamento.h"
 
-1434817996 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\impressao.c
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\impressao.c
 	"impressao.h"
 
 1434817998 source:e:\guilherme\area\gui\sb\leitorexibidor\lista_arrays_objetos_classes.c
@@ -315,4 +315,55 @@
 
 1434861921 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
+
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.c
+	"area_metodos.h"
+
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\heap\lista_arrays_objetos_classes.h
+	"../ClassLoader/classloader.h"
+	"../ClassLoader/carregamento.h"
+
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\heap\heap.h
+	"../main.h"
+
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\heap\heap.c
+	"heap.h"
+
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\heap\lista_arrays_objetos_classes.c
+	"lista_arrays_objetos_classes.h"
+
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\cast.c
+	"cast.h"
+
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\cast.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\comparacao.c
+	"comparacao.h"
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\comparacao.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\const.c
+	"const.h"
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435079316 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\const.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
 

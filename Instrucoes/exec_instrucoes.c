@@ -1121,7 +1121,7 @@ void ishr(Frame* frame){
 	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     u4 signal = value >> 31;
-    value &= 0x7FFFFFFF
+    value &= 0x7FFFFFFF;
     value = (value >> shifter);
     if(signal == 0){
 		value &= 0x7FFFFFFF;
@@ -1158,7 +1158,7 @@ void lushr(Frame* frame){
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     value = (value >> shifter);
 
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&value;
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void iand(Frame* frame){
@@ -1492,12 +1492,13 @@ void if_acmpne(Frame* frame,u1 index1,u2 index2){
 }
 
 void i_goto(Frame* frame, u1 index1, u1 index2){
-	frame->pc += (u2)((index<<8)+index2);
+	frame->pc += (u2)((index1<<8)+index2);
 }
 
 #warning alinhar como incremento do ponteiro de PC é feito
 void jsr(Frame* frame, u1 index, u1 index2){
-	EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(frame->pc++));
+	frame->pc += 1;
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(frame->pc));
 }
 
 #warning precis ser olhado com mais cuidado
@@ -1534,8 +1535,10 @@ void new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasse
 
 void newarray(Frame *frame, u1 atype)
 {
+    u4 valor;
     tArray *a;
     a = (tArray *)malloc(sizeof(tArray));
+    valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     switch (atype)
     {
     case TipoByte:
@@ -1719,6 +1722,8 @@ void monitorexit(Frame *frame)
 
 void wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constbyte2)
 {
+    int16_t valor;
+    u4 value;
     u2 indexConcat = 0;
     indexConcat = (u2)(index<<8) | (u2)(index2);
     switch (opcode)
@@ -1741,31 +1746,30 @@ void wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constb
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
         break;
         case 0x36:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
         break;
         case 0x37:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat + 1] = value;
         break;
         case 0x38:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
         break;
         case 0x39:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat + 1] = value;
         break;
         case 0x3a:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
         break;
         case 0x84:
-            int16_t valor;
             valor = (int16_t)(constbyte1<<8) | (int16_t)(constbyte2);
             frame->VetorVariaveisLocais[indexConcat] += valor;
         break;
