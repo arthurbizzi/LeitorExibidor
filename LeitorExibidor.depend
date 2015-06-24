@@ -113,12 +113,13 @@
 	<string.h>
 	<stdint.h>
 
-1434867768 /home/kelvinec/Área de Trabalho/LeitorExibidor/main.h
+1435149776 /home/kelvinec/Área de Trabalho/LeitorExibidor/main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
-	"lista_arrays_objetos_classes.h"
+	"Heap/lista_arrays_objetos_classes.h"
+	"Heap/heap.h"
 	"ClassLoader/carregamento.h"
 	"ClassLoader/classloader.h"
 	"ClassLoader/impressao.h"
@@ -131,8 +132,8 @@
 	"classloader.h"
 	"../main.h"
 
-1434943911 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_frames.h
-	"../lista_arrays_objetos_classes.h"
+1435149776 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_frames.h
+	"../Heap/lista_arrays_objetos_classes.h"
 	"pilha_operandos.h"
 
 1434943911 /home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_operandos.h
@@ -172,11 +173,11 @@
 	"../Heap/lista_arrays_objetos_classes.h"
 	"../ClassLoader/classloader.h"
 
-1434943911 /home/kelvinec/Área de Trabalho/LeitorExibidor/AreaMetodos/area_metodos.h
+1435151064 /home/kelvinec/Área de Trabalho/LeitorExibidor/AreaMetodos/area_metodos.h
 	"../main.h"
-	"../lista_arrays_objetos_classes.h"
-	"../ClassLoader/classloader.h"
 	"../Pilha/pilha_frames.h"
+	"../Heap/lista_arrays_objetos_classes.h"
+	"../ClassLoader/classloader.h"
 
 1435079316 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\carregamento.c
 	"carregamento.h"
@@ -366,4 +367,20 @@
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
+
+1435149776 /home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/lista_arrays_objetos_classes.h
+	"../ClassLoader/classloader.h"
+	"../ClassLoader/carregamento.h"
+
+1435149776 /home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/heap.h
+	"../main.h"
+
+1435151125 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/AreaMetodos/area_metodos.c
+	"area_metodos.h"
+
+1435149776 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/heap.c
+	"heap.h"
+
+1435149776 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/lista_arrays_objetos_classes.c
+	"lista_arrays_objetos_classes.h"
 

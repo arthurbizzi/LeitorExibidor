@@ -12,19 +12,23 @@ void i_bipush(Frame* frame,u4* n)
 
 void i_sipush(Frame* frame,u2* n)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),n);
+	u4 dado = *n;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&dado);
 }
 
 void i_ldc(Frame* frame,u1 index, cp_info* constantPool)
 {
     u1 tag = constantPool[index-1].tag;
+    u4 dado;
     switch (tag)
     {
     case CONSTANT_Integer:  //Integer
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.Integer.bytes);
         break;
     case CONSTANT_Float: //Float
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.Float.bytes);
+    	dado =  constantPool[index-1].info.Float.bytes;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&dado);
+        //EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.Float.bytes);
         break;
     case CONSTANT_String: //String, Need to see the correct reference to save it.
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.String.string_index);
@@ -158,6 +162,7 @@ void i_newarray(Frame *frame, u1 atype)
         a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
         break;
     }
+#warning SMURF: ou está usando a funçao errada da pilha ou  passando o valor errado pra ser guardado
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &a);
     return;
 }
@@ -221,6 +226,7 @@ void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
         a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
         break;
     }
+    #warning SMURF: ou está usando a funçao errada da pilha ou  passando o valor errado pra ser guardado
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &a);
     return;
 }
@@ -298,6 +304,8 @@ void i_monitorexit(Frame *frame)
 
 void i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constbyte2)
 {
+	int16_t valor;
+	u4 value = 0;
     u2 indexConcat = 0;
     indexConcat = (u2)(index<<8) | (u2)(index2);
     switch (opcode)
@@ -320,31 +328,36 @@ void i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 cons
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
         break;
         case 0x36:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+			value=0;
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
         break;
         case 0x37:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+			value=0;
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat + 1] = value;
         break;
         case 0x38:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+			value=0;
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
         break;
         case 0x39:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+			value=0;
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat + 1] = value;
         break;
         case 0x3a:
-            u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+			value=0;
+            value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
         break;
         case 0x84:
-            int16_t valor;
+
             valor = (int16_t)(constbyte1<<8) | (int16_t)(constbyte2);
             frame->VetorVariaveisLocais[indexConcat] += valor;
         break;

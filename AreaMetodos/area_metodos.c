@@ -42,6 +42,9 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
             fim = 1;
         }
     }
+
+#warning BRUNO VEJA O QUE É PRA RETORNAR AQUI.
+    return 0;
 }
 
 int executa_instrucoes(method_info *metodo, Frame *frame) {
