@@ -5,7 +5,7 @@
 */
 
 #include "pilha_frames.h"
-#include "pilha_operandos.h"
+#include "../Heap/lista_arrays_objetos_classes.h"
 
 Frame *ConstruirFrame(ClassFile *classe, method_info *method)
 {
@@ -65,9 +65,9 @@ Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
 
 void DestruirFrame(Frame *frame)
 {
-    desalocaPilhaOperandos(frame->pilhaDeOperandos);
-    desalocaListaArrays(frame->listaArrays);
-    desalocaListaObjetos(frame->listaObjetos);
+    desalocaPilhaOperandos(&frame->pilhaDeOperandos);
+    desalocaListaDeArrays(&frame->listaArrays);
+    desalocaListaDeObjetos(&frame->listaObjetos);
     free(frame->VetorVariaveisLocais);
     free(frame);
 }

@@ -441,3 +441,12 @@
 1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.c
 	"pilha_operandos.h"
 
+1435156070 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
+	"others.h"
+
+1435152586 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+

@@ -122,8 +122,10 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
 
 void i_newarray(Frame *frame, u1 atype)
 {
+    u4 valor;
     tArray *a;
     a = (tArray *)malloc(sizeof(tArray));
+    valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     switch (atype)
     {
     case TipoByte:
@@ -258,8 +260,8 @@ void i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
-    nomeclasse = dereferencia_instrucoes(index, frame->constant_pool);
-    nomeclasseobjeto = dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
+    nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
+    nomeclasseobjeto = i_dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
     if (obj == NULL)
     {
         printf("Erro: Referencia nula\n");
@@ -280,8 +282,8 @@ void i_instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
-    nomeclasse = dereferencia_instrucoes(index, frame->constant_pool);
-    nomeclasseobjeto = dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
+    nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
+    nomeclasseobjeto = i_dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
     if (obj == NULL)
     {
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
@@ -379,7 +381,7 @@ void i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)
     a = (tArray *)malloc(sizeof(tArray));
     index = (u2)(indexbyte1 << 8 | indexbyte2);
     index = ((frame->constant_pool[index - 1].info.Class.name_index) - 1);
-    tipo = dereferencia_instrucoes(index, frame->constant_pool);
+    tipo = i_dereferencia_instrucoes(index, frame->constant_pool);
     for (i = 0; i < dimensions; i++)
     {
         valor *= DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
