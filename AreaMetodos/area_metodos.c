@@ -28,7 +28,7 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
     DestruirFrame(frame);
     while(!fim) {
         Frame *atual = DesempilhaFrame(&pilha_de_frames); // Recupera frame atual
-        fim = executa_instrucoes(metodo, &atual);
+        fim = executa_instrucoes(metodo, atual);
         if(fim == ERRO_INSTRUCAO) {
             printf("ERRO: instrucao nao pode ser executada.\n");
             DestruirFrame(atual);

@@ -199,17 +199,17 @@
 	"classloader.h"
 	"../main.h"
 
-1435152586 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.h
+1435170482 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.h
 	"../Heap/lista_arrays_objetos_classes.h"
 	"pilha_operandos.h"
 
 1435152586 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.h
 	"../ClassLoader/classloader.h"
 
-1435152586 e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.h
+1435170774 e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.h
 	"../main.h"
-	"../Pilha/pilha_frames.h"
 	"../Heap/lista_arrays_objetos_classes.h"
+	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 
 1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\classloader.c
@@ -315,7 +315,7 @@
 1434861921 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
 
-1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.c
+1435167290 source:e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
 
 1435152586 e:\guilherme\area\gui\sb\leitorexibidor\heap\lista_arrays_objetos_classes.h
@@ -331,7 +331,7 @@
 1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\heap\lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
 
-1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\cast.c
+1435156681 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\cast.c
 	"cast.h"
 
 1435152586 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\cast.h
@@ -434,14 +434,14 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.c
+1435156630 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.c
 	"pilha_frames.h"
-	"pilha_operandos.h"
+	"../Heap/lista_arrays_objetos_classes.h"
 
 1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.c
 	"pilha_operandos.h"
 
-1435156070 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
+1435168220 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
 	"others.h"
 
 1435152586 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.h

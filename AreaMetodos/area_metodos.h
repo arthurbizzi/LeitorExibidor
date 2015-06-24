@@ -8,9 +8,10 @@
 #define AREA_METODOS_H
 
 #include "../main.h"
-#include "../Pilha/pilha_frames.h"
 #include "../Heap/lista_arrays_objetos_classes.h"
+#include "../Pilha/pilha_frames.h"
 #include "../ClassLoader/classloader.h"
+
 
 #define ERRO_INSTRUCAO 30
 
@@ -30,7 +31,7 @@ method_info* recupera_main(ClassFile *classe);
 *   @param pilha_de_frames Pilha que armazena os frames.
 *   @return
 */
-int executa_metodo(method_info *metodo, ClassFile *classe, struct pilhaframes *pilha_de_frames);
+int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames);
 
 /**
 *   @fn int executa_instrucoes(method_info *metodo, Frame *frame)
@@ -39,7 +40,7 @@ int executa_metodo(method_info *metodo, ClassFile *classe, struct pilhaframes *p
 *   @param frame Frame atual.
 *   @return Status de execucao.
 */
-int executa_instrucoes(method_info *metodo, struct frame *frame);
+int executa_instrucoes(method_info *metodo, Frame *frame);
 
 /**
 *   @fn int executa_instrucao(u4 opcode)

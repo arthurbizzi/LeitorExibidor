@@ -122,7 +122,7 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
 
 void i_newarray(Frame *frame, u1 atype)
 {
-    u4 valor;
+    u4 valor, referencia;
     tArray *a;
     a = (tArray *)malloc(sizeof(tArray));
     valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -170,7 +170,8 @@ void i_newarray(Frame *frame, u1 atype)
         break;
     }
 #warning SMURF: ou está usando a funçao errada da pilha ou  passando o valor errado pra ser guardado
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &a);
+    referencia = a;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &referencia);
     return;
 }
 
@@ -178,7 +179,7 @@ void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 {
     char *tipo;
     u2 index;
-    u4 i, valor;
+    u4 i, valor, referencia;
     tArray *a;
     a = (tArray *)malloc(sizeof(tArray));
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
@@ -234,7 +235,8 @@ void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
         break;
     }
     #warning SMURF: ou está usando a funçao errada da pilha ou  passando o valor errado pra ser guardado
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &a);
+    referencia = a;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &referencia);
     return;
 }
 

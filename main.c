@@ -143,7 +143,7 @@ int executa_programa(ClassFile *classe) {
         return ERRO_MAIN;
     }
 
-    executa_metodo(metodo_main, classe_inicial, &pilha_de_frames);
+    executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
     desalocaListaDeClasses(&lista_de_classes);
     desalocaPilhaFrames(&pilha_de_frames);

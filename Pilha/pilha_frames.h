@@ -10,8 +10,7 @@
 #include "../Heap/lista_arrays_objetos_classes.h"
 #include "pilha_operandos.h"
 
-typedef struct frame
-{
+typedef struct frame{
     method_info             *method;
     u4                      pc;
     PilhaDeOperandos        *pilhaDeOperandos;
@@ -24,7 +23,7 @@ typedef struct frame
     u4                      returAddress;
 } Frame;
 
-typedef struct pilhaframes
+typedef struct pilhadeframes
 {
     Frame *dado;
     struct pilhaframes *prox;
