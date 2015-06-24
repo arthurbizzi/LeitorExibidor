@@ -6,13 +6,11 @@ void i_i2l(Frame* frame){
 	EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning Need to see this implementation
 void i_i2f(Frame* frame){
 	float result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning Need to see this implementation
 void i_i2d(Frame* frame){
 	double result = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
@@ -68,17 +66,20 @@ void i_d2f(Frame* frame){
 
 void i_i2b(Frame* frame){
 	u1 result =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	u4 valor = result;
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
 }
 
 
 void i_i2c(Frame* frame){
-	char result =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	u2 result =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 valor = result;
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
 }
 
 
 void i_i2s(Frame* frame){
 	u2 result =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
+	u4 valor = result;
+	EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
 }
