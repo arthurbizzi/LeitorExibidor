@@ -20,6 +20,7 @@
 #include "Pilha/pilha_operandos.h"
 #include "AreaMetodos/area_metodos.h"
 
+
 #define SUCESSO 0
 #define ERRO_ARQUIVO -10 /// Arquivo nao encontrado.
 #define ERRO_EXECUCAO -11 /// Execucao abortada.

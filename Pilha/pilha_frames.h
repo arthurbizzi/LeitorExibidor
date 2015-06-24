@@ -4,11 +4,12 @@
 * @brief
 */
 
+#include "../Heap/lista_arrays_objetos_classes.h"
+#include "pilha_operandos.h"
+
 #ifndef PILHA_FRAMES_H
 #define PILHA_FRAMES_H
 
-#include "../Heap/lista_arrays_objetos_classes.h"
-#include "pilha_operandos.h"
 
 typedef struct frame{
     method_info             *method;

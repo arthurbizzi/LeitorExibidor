@@ -4,10 +4,11 @@
 * @brief Arquivo com as definicoes de constantes e estruturas do Class Loader.
 */
 
+/* Includes */
+
 #ifndef CLASSLOADER_H
 #define CLASSLOADER_H
 
-/* Includes */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

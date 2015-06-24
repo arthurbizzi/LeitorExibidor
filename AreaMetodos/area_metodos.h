@@ -4,13 +4,14 @@
 * @brief .
 */
 
-#ifndef AREA_METODOS_H
-#define AREA_METODOS_H
 
 #include "../main.h"
 #include "../Heap/lista_arrays_objetos_classes.h"
 #include "../Pilha/pilha_frames.h"
 #include "../ClassLoader/classloader.h"
+
+#ifndef AREA_METODOS_H
+#define AREA_METODOS_H
 
 
 #define ERRO_INSTRUCAO 30
