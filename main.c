@@ -136,7 +136,7 @@ int executa_programa(ClassFile *classe) {
     InsereListaDeClasses(&lista_de_classes, classe);
     classe_inicial = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe
 
-    InicializaPilhaDeFrames(&pilha_frames);
+    InicializaPilhaDeFrames(&pilha_de_frames);
 
     if(!(metodo_main = recupera_main(classe_inicial))) {
         printf("ERRO: Metodo MAIN nao encontrado.\n");
