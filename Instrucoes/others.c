@@ -31,13 +31,16 @@ void i_ldc(Frame* frame,u1 index, cp_info* constantPool)
         //EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.Float.bytes);
         break;
     case CONSTANT_String: //String, Need to see the correct reference to save it.
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.String.string_index);
+		dado =  constantPool[index-1].info.String.string_index;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&dado);
+        //EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.String.string_index);
         break;
     }
 }
 
 void i_ldc_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 {
+	u4 dado=0;
     u2 indexConcat = (index<<8) | index2;
     u1 tag = constantPool[index-1].tag;
     switch (tag)
@@ -49,7 +52,9 @@ void i_ldc_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.Float.bytes);
         break;
     case CONSTANT_String: //String, Need to see the correct reference to save it.
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.String.string_index);
+		dado = constantPool[index-1].info.String.string_index;
+		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&dado);
+        //EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.String.string_index);
         break;
     }
 }
@@ -105,9 +110,9 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
     u2 index;
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
-    tipo = dereferencia_instrucoes(index, frame->constant_pool);
+    tipo = i_dereferencia_instrucoes(index, frame->constant_pool);
     obj = (Objeto *)malloc(sizeof(Objeto));
-    obj->classe = RecuperaClasse(tipo,&listadeclasses);
+    obj->classe = i_RecuperaClasse(tipo,&listadeclasses);
     obj->tamanhotipoField = 0;
     obj->tipofield = NULL;
     obj->tamanhotipoArray = 0;
@@ -176,7 +181,7 @@ void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     a = (tArray *)malloc(sizeof(tArray));
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
-    tipo = dereferencia_instrucoes(index, frame->constant_pool);
+    tipo = i_dereferencia_instrucoes(index, frame->constant_pool);
     valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     i = 0;
     while (tipo[i] == '[')
@@ -250,7 +255,6 @@ void i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     char *nomeclasse, *nomeclasseobjeto;
     Objeto *obj;
     u2 index;
-    u4 valor = 0;
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
