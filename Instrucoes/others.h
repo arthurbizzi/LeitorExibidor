@@ -5,6 +5,7 @@
 #ifndef OTHERS_H
 #define LEITOREXIBIDOR_EXEC_INSTRUCOES_H
 
+#include "../Heap/heap.h"
 #include "../Pilha/pilha_operandos.h"
 #include "../Pilha/pilha_frames.h"
 #include "../ClassLoader/classloader.h"

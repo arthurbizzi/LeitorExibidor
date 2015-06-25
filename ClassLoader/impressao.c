@@ -243,7 +243,7 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
             {
                 Instrucao mapa[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
-                carrega_instrucoes(mapa);
+                carrega_mnemonicos(mapa);
                 printf("\t\t\t\t\t%d: %s\n", i, mapa[opcode].mnemonico);
             }
             printf("\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
@@ -624,7 +624,7 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             {
                 Instrucao mapa[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
-                carrega_instrucoes(mapa);
+                carrega_mnemonicos(mapa);
                 fprintf(file, "\t\t\t\t\t%d: %s\n", i, mapa[opcode].mnemonico);
             }
             fprintf(file, "\n\t\tException Table Length: \t%d\n",
@@ -773,7 +773,7 @@ void imprime_attributes_file(ClassFile *classe, FILE *file)
     }
 }
 
-void carrega_instrucoes(Instrucao *mapa)
+void carrega_mnemonicos(Instrucao *mapa)
 {
     FILE *arq_mapa = fopen("mapa.txt", "r");
 

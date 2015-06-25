@@ -1,69 +1,168 @@
 /**
 * @file heap.h
-* @author Bruno
+* @author Bruno, Guilherme
 * @brief
 */
 
 #ifndef HEAP_H
 #define HEAP_H
 
-#include "../main.h"
+#include "../ClassLoader/classloader.h"
+#include "../ClassLoader/carregamento.h"
 
-typedef struct object {
-    ClassFile *this_class;
-    struct object *super_class;
-    u4 *fields;
-    u4 *fields_index;
-} Object;
+typedef struct tipoarray
+{
+    u1 tag;
+    u4 tamanho;
+    union
+    {
+        u1 *tipoBoolean;
+        u1 *tipoByte;
+        u2 *tipoChar;
+        u2 *tipoShort;
+        u4 *tipoReferencia;
+        u4 *tipoInt;
+        u4 *tipoFloat;
+        u8 *tipoLong;
+        u8 *tipoDouble;
+    } info;
+} tArray;
+
+typedef struct listadearrays
+{
+    tArray                  *dado;
+    struct listadearrays    *prox;
+} ListaArrays;
+
+typedef struct tipofield
+{
+    u1 tag;
+    union
+    {
+        u1 tipoBoolean;
+        u1 tipoByte;
+        u2 tipoShort;
+        u4 tipoInt;
+        u4 tipoFloat;
+        u8 tipoLong;
+        u8 tipoDouble;
+    } info;
+    field_info *field;
+    ClassFile  *classe;
+} Field;
+
+typedef struct tipoobjeto
+{
+    ClassFile   *classe;
+    u2          tamanhotipoField;
+    Field       *tipofield;
+    u2          tamanhotipoArray;
+    tArray      *tipoarray;
+} Objeto;
+
+typedef struct listadeobjetos
+{
+    Objeto                  *dado;
+    struct listadeobjetos   *prox;
+} ListaObjetos;
+
+typedef struct listadeclasses
+{
+    ClassFile               *dado;
+    struct listadeclasses   *prox;
+} ListaClasses;
 
 /**
-*   @fn void nova_heap()
+*   @fn void InicializaListaDeArrays(ListaArrays **listadearrays)
 *   @brief
+*   @param listadearrays
 */
-void nova_heap();
+void InicializaListaDeArrays(ListaArrays **listadearrays);
 
 /**
-*   @fn Object novo_objeto(ClassFile *this_class)
+*   @fn void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado)
 *   @brief
-*   @param this_class
+*   @param listadearrays
+*   @param dado
+*/
+void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado);
+
+/**
+*   @fn void desalocaListaDeArrays(ListaArrays **listadearrays)
+*   @brief
+*   @param listadearrays
+*/
+void desalocaListaDeArrays(ListaArrays **listadearrays);
+
+/**
+*   @fn void InicializaListaDeObjetos(ListaObjetos **listadeobjetos)
+*   @brief
+*   @param listadeobjetos
+*/
+void InicializaListaDeObjetos(ListaObjetos **listadeobjetos);
+
+/**
+*   @fn void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado)
+*   @brief
+*   @param listadeobjetos
+*   @param dado
+*/
+void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado);
+
+/**
+*   @fn void desalocaListaDeObjetos(ListaObjetos **listadeobjetos)
+*   @brief
+*   @param listadeobjetos
+*/
+void desalocaListaDeObjetos(ListaObjetos **listadeobjetos);
+
+/**
+*   @fn void InicializaListaDeClasses(ListaClasses **listadeclasses)
+*   @brief
+*   @param listadeclasses
+*/
+void InicializaListaDeClasses(ListaClasses **listadeclasses);
+
+/**
+*   @fn void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
+*   @brief
+*   @param listadeclasses
+*   @param dado
+*/
+void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado);
+
+/**
+*   @fn void desalocaListaDeClasses(ListaClasses **listadeclasses)
+*   @brief
+*   @param listadeclasses
+*/
+void desalocaListaDeClasses(ListaClasses **listadeclasses);
+
+/**
+*   @fn u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
+*   @brief
+*   @param listadeclasses
+*   @param nomedaclasse
 *   @return
 */
-Object novo_objeto(ClassFile *this_class);
+u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse);
 
 /**
-*   @fn u4 get_field(Object *objeto, u4 name_index)
-*   @brief
-*   @param objeto
-*   @param name_index
-*   @return
+*   @fn ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses)
+*   @brief Funcao que recebe um indice e procura na lista de classes a classe correspondente a esse indice.
+*   @param index Indice da lista a ser recuperado.
+*   @param listadeclasses Lista que contem as classes carregadas.
+*   @return I-esima classe da lista.
 */
-u4 get_field(Object *objeto, u4 name_index);
+ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses);
 
 /**
-*   @fn u8 get_field_wide(Object *objeto, u4 name_index)
-*   @brief
-*   @param objeto
-*   @param name_index
-*   @return
+*   @fn ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses)
+*   @brief Funcao que recebe um indice e procura na lista de classes a classe correspondente a esse indice.
+*   @param nome Nome da classe a ser recuperada.
+*   @param listadeclasses Lista que contem as classes carregadas.
+*   @return Classe com o nome correspondente.
 */
-u8 get_field_wide(Object *objeto, u4 name_index);
-
-/**
-*   @fn void set_field(Object *objeto, u4 name_index, u4 field)
-*   @brief
-*   @param objeto
-*   @param name_index
-*   @param field
-*/
-void set_field(Object *objeto, u4 name_index, u4 field);
-
-/**
-*   @fn void set_field(Object *objeto, u4 name_index, u8 field)
-*   @brief
-*   @param objeto
-*   @param name_index
-*   @param field
-*/
-void set_field_wide(Object *objeto, u4 name_index, u8 field);
+ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses);
 
 #endif // HEAP_H

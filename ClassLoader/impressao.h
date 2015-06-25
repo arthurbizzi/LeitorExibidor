@@ -112,7 +112,7 @@ void imprime_fields_file(ClassFile *classe, FILE *file);
 *   @brief Funcao que organiza um mapa com mnemonicos e argumentos de instrucoes.
 *   @param mapa Referencia do mapa que sera preenchido.
 */
-void carrega_instrucoes(Instrucao *mapa);
+void carrega_mnemonicos(Instrucao *mapa);
 
 /**
 *   @fn char* dereferencia(u2 index, ClassFile *classe)
@@ -131,4 +131,5 @@ char* dereferencia(u2 index, ClassFile *classe);
 *   @return Status de execução: SUCESSO, ERRO_MAGIC, ERRO_VERSION ou ERRO_ARQUIVO
 */
 int verifica_match(ClassFile *classe, char *nome);
+
 #endif // LEITOREXIBIDOR_IMPRIME_H

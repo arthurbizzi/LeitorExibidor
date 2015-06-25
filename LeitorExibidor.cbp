@@ -53,10 +53,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Heap/heap.h" />
-		<Unit filename="Heap/lista_arrays_objetos_classes.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Heap/lista_arrays_objetos_classes.h" />
+		<Unit filename="Instrucoes/bridge_arquivosinstrucoes.h" />
 		<Unit filename="Instrucoes/cast.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -69,9 +66,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Instrucoes/const.h" />
+		<Unit filename="Instrucoes/ifs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/ifs.h" />
 		<Unit filename="Instrucoes/load.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Instrucoes/load.h" />
 		<Unit filename="Instrucoes/logico_aritimeticas.c">
 			<Option compilerVar="CC" />
 		</Unit>

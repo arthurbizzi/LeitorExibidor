@@ -8,6 +8,7 @@
 #define PILHA_OPERANDOS_H
 
 #include "../ClassLoader/classloader.h"
+
 typedef struct pilhadeoperandos
 {
     u4 dado;

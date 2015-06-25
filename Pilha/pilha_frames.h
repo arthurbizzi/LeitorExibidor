@@ -4,7 +4,7 @@
 * @brief
 */
 
-#include "../Heap/lista_arrays_objetos_classes.h"
+#include "../Heap/heap.h"
 #include "pilha_operandos.h"
 
 #ifndef PILHA_FRAMES_H

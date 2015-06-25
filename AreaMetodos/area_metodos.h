@@ -1,12 +1,12 @@
 /**
 * @file area_metodos.h
 * @author Bruno
-* @brief .
+* @brief Arquivo com definicoes de prototipos das funcoes relativas a area de metodos.
 */
 
 
 #include "../main.h"
-#include "../Heap/lista_arrays_objetos_classes.h"
+#include "../Heap/heap.h"
 #include "../Pilha/pilha_frames.h"
 #include "../ClassLoader/classloader.h"
 
@@ -20,7 +20,7 @@
 *   @fn method_info* recupera_main(ClassFile *classe)
 *   @brief Funcao que recupera o metodo main de uma classe.
 *   @param classe Classe carregada.
-*   @return Retorna o metodo main, se encontrado, ou NULL, caso contrario.
+*   @return Metodo main, se encontrado, ou NULL, caso contrario.
 */
 method_info* recupera_main(ClassFile *classe);
 
@@ -30,7 +30,7 @@ method_info* recupera_main(ClassFile *classe);
 *   @param metodo Metodo a ser executado.
 *   @param classe Classe que contem o metodo.
 *   @param pilha_de_frames Pilha que armazena os frames.
-*   @return
+*   @return Status de execucao.
 */
 int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames);
 
