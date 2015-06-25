@@ -141,10 +141,10 @@
 	"classloader.h"
 	"carregamento.h"
 
-1434773745 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/impressao.c
+1435189627 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/ClassLoader/impressao.c
 	"impressao.h"
 
-1434602669 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/main.c
+1435187496 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/main.c
 	"main.h"
 
 1435156974 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Pilha/pilha_frames.c
@@ -471,6 +471,15 @@
 	<math.h>
 
 1435035109 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/store.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435187496 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/others.c
+	"others.h"
+
+1435036493 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/others.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
