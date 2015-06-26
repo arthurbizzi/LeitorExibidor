@@ -1,6 +1,6 @@
 /**
 * @file cast.h
-* @author Bruno
+* @author Kelvin
 * @brief Arquivo com definição de protótipos pras funções que implementam as instruções de conversão de tipos.
 */
 
