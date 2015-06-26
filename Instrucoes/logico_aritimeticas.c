@@ -19,19 +19,32 @@ void i_ladd(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning see this implementation
 void i_fadd(Frame* frame){
-    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 result = value1+value2;
+    u4 result;
+    u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float fvalue2;
+    float fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u4));
+    memcpy(&fvalue1,&aux1,sizeof(u4));
+	float fresult = fvalue1+fvalue2;
+	memcpy(&result,&fresult,sizeof(u4));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_dadd(Frame* frame){
-    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	u8 result = value1+value2;
+
+    u8 result;
+    u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double fvalue2;
+    double fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u8));
+    memcpy(&fvalue1,&aux1,sizeof(u8));
+	double fresult = fvalue1+fvalue2;
+	memcpy(&result,&fresult,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
+
 }
 
 void i_isub(Frame* frame){
@@ -48,18 +61,29 @@ void i_lsub(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning see this implementation
 void i_fsub(Frame* frame){
-    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 result = value1-value2;
+    u4 result;
+    u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float fvalue2;
+    float fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u4));
+    memcpy(&fvalue1,&aux1,sizeof(u4));
+	float fresult = fvalue1+fvalue2;
+	memcpy(&result,&fresult,sizeof(u4));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_dsub(Frame* frame){
-    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	u8 result = value1-value2;
+	u8 result;
+    u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double fvalue2;
+    double fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u8));
+    memcpy(&fvalue1,&aux1,sizeof(u8));
+	double fresult = fvalue1-fvalue2;
+	memcpy(&result,&fresult,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -77,18 +101,29 @@ void i_lmul(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning see this implementation
 void i_fmul(Frame* frame){
-    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 result = value1*value2;
+    u4 result;
+    u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float fvalue2;
+    float fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u4));
+    memcpy(&fvalue1,&aux1,sizeof(u4));
+	float fresult = fvalue1*fvalue2;
+	memcpy(&result,&fresult,sizeof(u4));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_dmul(Frame* frame){
-    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	u8 result = value1*value2;
+	u8 result;
+    u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double fvalue2;
+    double fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u8));
+    memcpy(&fvalue1,&aux1,sizeof(u8));
+	double fresult = fvalue1*fvalue2;
+	memcpy(&result,&fresult,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -106,18 +141,30 @@ void i_ldiv(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning see this implementation
+
 void i_fdiv(Frame* frame){
-    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 result = value1/value2;
+    u4 result;
+    u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float fvalue2;
+    float fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u4));
+    memcpy(&fvalue1,&aux1,sizeof(u4));
+	float fresult = fvalue1/fvalue2;
+	memcpy(&result,&fresult,sizeof(u4));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_ddiv(Frame* frame){
-    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	u8 result = value1/value2;
+   u8 result;
+    u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double fvalue2;
+    double fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u8));
+    memcpy(&fvalue1,&aux1,sizeof(u8));
+	double fresult = fvalue1/fvalue2;
+	memcpy(&result,&fresult,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -135,18 +182,29 @@ void i_lrem(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning see this implementation
 void i_frem(Frame* frame){
-    float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u4 result = fmod(value1,value2);
+    u4 result;
+    u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float fvalue2;
+    float fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u4));
+    memcpy(&fvalue1,&aux1,sizeof(u4));
+	float fresult = fmod(fvalue1,fvalue2);
+	memcpy(&result,&fresult,sizeof(u4));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_drem(Frame* frame){
-    double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	u8 result = fmod(value1,value2);
+   u8 result;
+    u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double fvalue2;
+    double fvalue1;
+    memcpy(&fvalue2,&aux2,sizeof(u8));
+    memcpy(&fvalue1,&aux1,sizeof(u8));
+	double fresult = fmod(fvalue1,fvalue2);
+	memcpy(&result,&fresult,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -163,14 +221,22 @@ void i_lneg(Frame* frame){
 }
 
 void i_fneg(Frame* frame){
-    float value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 result = -value;
+	u4 result;
+    u4 aux = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    float fvalue;
+    memcpy(&fvalue,&aux,sizeof(u4));
+	float fresult = ~fvalue;
+	memcpy(&result,&fresult,sizeof(u4));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_dneg(Frame* frame){
-    double value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    u8 result = -value;
+	u8 result;
+    u8 aux = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    double fvalue;
+    memcpy(&fvalue,&aux,sizeof(u8));
+	double fresult = ~fvalue;
+	memcpy(&result,&fresult,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -292,7 +358,6 @@ void i_lxor(Frame* frame){
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning needs to implement wide.
 void i_iinc(Frame* frame, u1 index, u1 inc){
 	frame->VetorVariaveisLocais[index] += inc;
 }
