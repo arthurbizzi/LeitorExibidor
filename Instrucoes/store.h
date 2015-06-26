@@ -9,6 +9,8 @@
 #include "../ClassLoader/classloader.h"
 #include <math.h>
 
+#ifndef STORE_H
+#define STORE_H
 
 /**
 *   @fn void i_istore(Frame* frame, u1 index)
@@ -279,4 +281,4 @@ void i_castore(Frame* frame);
 */
 void i_sastore(Frame* frame);
 
-
+#endif // STORE_H

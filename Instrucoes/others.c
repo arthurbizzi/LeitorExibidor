@@ -146,7 +146,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
 
 	argumentos = (u4 *)malloc(sizeof(u4) * numparam);
 
-	for (i = 0, i < numparam, i++)
+	for (i = 0; i < numparam; i++)
     {
         argumentos[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     }

@@ -9,6 +9,8 @@
 #include "../ClassLoader/classloader.h"
 #include <math.h>
 
+#ifndef COMPARACAO_H
+#define COMPARACAO_H
 
 /**
 *   @fn void i_lcmp(Frame* frame)
@@ -50,3 +52,4 @@ void i_dcmpl(Frame* frame);
 */
 void i_dcmpg(Frame* frame);
 
+#endif // COMPARACAO_H

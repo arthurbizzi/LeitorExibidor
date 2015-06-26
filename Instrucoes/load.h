@@ -9,6 +9,8 @@
 #include "../ClassLoader/classloader.h"
 #include <math.h>
 
+#ifndef LOAD_H
+#define LOAD_H
 
 /**
 *   @fn void i_iload(Frame* frame, u1 index)
@@ -280,3 +282,4 @@ void i_caload(Frame* frame);
 */
 void i_saload(Frame* frame);
 
+#endif

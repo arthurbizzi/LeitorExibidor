@@ -10,6 +10,8 @@
 #include "../ClassLoader/classloader.h"
 #include <math.h>
 
+#ifndef CONST_H
+#define CONST_H
 
 /**
 *   @fn void i_aconst_null(Frame* frame)
@@ -131,3 +133,4 @@ void i_dconst_0(Frame* frame);
 */
 void i_dconst_1(Frame* frame);
 
+#endif // CONST_H

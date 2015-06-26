@@ -9,6 +9,8 @@
 #include "../ClassLoader/classloader.h"
 #include <math.h>
 
+#ifndef CAST_H
+#define CAST_H
 
 /**
 *   @fn void i_i2l(Frame* frame)
@@ -130,3 +132,4 @@ void i_i2c(Frame* frame);
 */
 void i_i2s(Frame* frame);
 
+#endif // CAST_H

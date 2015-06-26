@@ -10,6 +10,9 @@
 #include <math.h>
 
 
+#ifndef LOGICO_ARITIMETICAS_H
+#define LOGICO_ARITIMETICAS_H
+
 /**
 *   @fn void i_iadd(Frame* frame)
 *   @brief Desempilha dois números do tipo inteiros, realiza a soma e empilha o resultado.
@@ -308,3 +311,4 @@ void i_lxor(Frame* frame);
 */
 void i_iinc(Frame* frame, u1 index, u1 inc);
 
+#endif // LOGICO_ARITIMETICAS_H

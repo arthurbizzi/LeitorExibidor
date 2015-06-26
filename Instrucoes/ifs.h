@@ -10,6 +10,8 @@
 #include "../ClassLoader/classloader.h"
 #include <math.h>
 
+#ifndef IFS_H
+#define IFS_H
 
 /**
 *   @fn void i_ifeq(Frame* frame, u1 index1, u1 index2)
@@ -150,3 +152,5 @@ void i_if_acmpeq(Frame* frame,u1 index1,u1 index2);
 *   @return
 */
 void i_if_acmpne(Frame* frame,u1 index1,u1 index2);
+
+#endif

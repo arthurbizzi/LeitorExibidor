@@ -9,6 +9,9 @@
 #include "../ClassLoader/classloader.h"
 #include <math.h>
 
+#ifndef POP_DUP_SWAP_H
+#define POP_DUP_SWAP_H
+
 /**
 *   @fn void i_pop(Frame* frame)
 *   @brief Descarta o valor no topo da pilha.
@@ -80,3 +83,5 @@ void i_dup2_x2(Frame* frame);
 *   @return
 */
 void i_swap(Frame* frame);
+
+#endif
