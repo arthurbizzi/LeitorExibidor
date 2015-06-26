@@ -4,65 +4,26 @@
 #include "../ClassLoader/classloader.h"
 #include <math.h>
 
-void i_iload(Frame* frame,u1 index, u1 index2)
+void i_iload(Frame* frame,u1 index)
 {
-    u2 indexConcat =0;
-    if(index2 != NULL)
-    {
-        indexConcat = (u2)(index<<8) | (u2)(index2);
-    }
-    else
-    {
-        indexConcat = (u2)index;
-    }
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[index]));
 }
 
-void i_lload(Frame* frame,u1 index, u1 index2)
+void i_lload(Frame* frame,u1 index)
 {
-    u2 indexConcat =0;
-    if(index2 != NULL)
-    {
-        indexConcat = (u2)(index<<8) | (u2)(index2);
-    }
-    else
-    {
-        indexConcat = (u2)index;
-    }
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-void i_fload(Frame* frame,u1 index, u1 index2)
+void i_fload(Frame* frame,u1 index)
 {
-    u2 indexConcat =0;
-    if(index2 != NULL)
-    {
-        indexConcat = (u2)(index<<8) | (u2)index2;
-    }
-    else
-    {
-        indexConcat = (u2)index;
-    }
-
-#warning Need to see if smurf implementation cover this case, or need to mount the u4 field to pass to function store.
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[index]));
 }
 
-void i_dload(Frame* frame,u1 index, u1 index2)
+void i_dload(Frame* frame,u1 index)
 {
-    u2 indexConcat =0;
-
-#warning definition of wide. chage this when function is implemened.
-    if(index2 != NULL)
-    {
-        indexConcat = (u2)(index<<8) | (u2)(index2);
-    }
-    else
-    {
-        indexConcat = (u2)index;
-    }
-#warning Need to see if smurf implementation cover this case, or need to mount the u8 field to pass to function store.
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_aload(Frame* frame,u1 index)
@@ -92,29 +53,32 @@ void i_iload_3(Frame* frame)
 
 void i_lload_0(Frame* frame)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[0]));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[1]));
+	u4 index = 0;
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_lload_1(Frame* frame)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[1]));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[2]));
+  u4 index = 1;
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_lload_2(Frame* frame)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[2]));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[3]));
+    u4 index = 2;
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_lload_3(Frame* frame)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[3]));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[4]));
+    u4 index = 3;
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning essa seção precisa de revisão pra ver como fazer a correta implementação de ponto flutuante.
 void i_fload_0(Frame* frame)
 {
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[0]));
@@ -137,26 +101,30 @@ void i_fload_3(Frame* frame)
 
 void i_dload_0(Frame* frame)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[0]));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[1]));
+    u4 index = 0;
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_dload_1(Frame* frame)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[1]));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[2]));
+    u4 index = 1;
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_dload_2(Frame* frame)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[2]));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[3]));
+    u4 index = 2;
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_dload_3(Frame* frame)
 {
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[3]));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[4]));
+	u4 index = 3;
+	u8 result = (frame->VetorVariaveisLocais[index] << 32) |(frame->VetorVariaveisLocais[index+1]);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 #warning fim da seção de ponto flutuante.
@@ -183,161 +151,63 @@ void i_aload_3(Frame* frame,u1 index)
 
 void i_iaload(Frame* frame)
 {
-    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    ListaArrays* iterator = frame->listaArrays;
-    while(iterator!= NULL)
-    {
-        if(iterator = arrayRef)
-        {
-            break;
-        }
-        iterator = iterator->prox;
-    }
-    if(iterator!=NULL)
-    {
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoInt);
-    }
+    u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
 }
 
 void i_laload(Frame* frame)
 {
-    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    ListaArrays* iterator = frame->listaArrays;
-    while(iterator!= NULL)
-    {
-        if(iterator = arrayRef)
-        {
-            break;
-        }
-        iterator = iterator->prox;
-    }
-    if(iterator!=NULL)
-    {
-        EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoLong);
-    }
+	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8* arrayRef =(u8*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
 }
 
 void i_faload(Frame* frame)
 {
-    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    ListaArrays* iterator = frame->listaArrays;
-    while(iterator!= NULL)
-    {
-        if(iterator = arrayRef)
-        {
-            break;
-        }
-        iterator = iterator->prox;
-    }
-    if(iterator!=NULL)
-    {
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoFloat);
-    }
+	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 aux;
+    memcpy(&aux, arrayRef[index],sizeof(u4));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
 }
 
 void i_daload(Frame* frame)
 {
-    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    ListaArrays* iterator = frame->listaArrays;
-    while(iterator!= NULL)
-    {
-        if(iterator = arrayRef)
-        {
-            break;
-        }
-        iterator = iterator->prox;
-    }
-    if(iterator!=NULL)
-    {
-        EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoDouble);
-    }
+   	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8* arrayRef =(u8*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8 aux;
+    memcpy(&aux, arrayRef[index],sizeof(u8));
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
 }
 
-#warning Precisar entender o funcionamento do AALOAD. Não ficou claro.
 void i_aaload(Frame* frame)
 {
-    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    ListaArrays* iterator = frame->listaArrays;
-    while(iterator!= NULL)
-    {
-        if(iterator = arrayRef)
-        {
-            break;
-        }
-        iterator = iterator->prox;
-    }
-    if(iterator!=NULL)
-    {
-        EmpilhaOperando64bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoDouble);
-    }
+	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
 }
 
 void i_baload(Frame* frame)
 {
-    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    ListaArrays* iterator = frame->listaArrays;
-    while(iterator!= NULL)
-    {
-        if(iterator = arrayRef)
-        {
-            break;
-        }
-        iterator = iterator->prox;
-    }
-    if(iterator!=NULL)
-    {
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoByte);
-    }
+    u1* arrayRef =(u1*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 result= arrayref[index];
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_caload(Frame* frame)
 {
-    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    ListaArrays* iterator = frame->listaArrays;
-    while(iterator!= NULL)
-    {
-        if(iterator = arrayRef)
-        {
-            break;
-        }
-        iterator = iterator->prox;
-    }
-    if(iterator!=NULL)
-    {
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoChar);
-    }
+    u2* arrayRef =(u2*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 result= arrayref[index];
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_saload(Frame* frame)
 {
-    u4 arrayRef = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    ListaArrays* iterator = frame->listaArrays;
-    while(iterator!= NULL)
-    {
-        if(iterator = arrayRef)
-        {
-            break;
-        }
-        iterator = iterator->prox;
-    }
-    if(iterator!=NULL)
-    {
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),iterator[index].dado->info.tipoShort);
-    }
+	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u2* arrayRef =(u2*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4 result= arrayref[index];
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
