@@ -4,12 +4,13 @@
 * @brief Arquivo com as definicoes de funcoes relacionadas a impressao do conteudo da classe em tela e em arquivo.
 */
 
-#ifndef LEITOREXIBIDOR_IMPRIME_H
-#define LEITOREXIBIDOR_IMPRIME_H
-
 #include <stdio.h>
 #include "classloader.h"
 #include "../main.h"
+
+
+#ifndef IMPRESSAO_H
+#define IMPRESSAO_H
 
 /* Protótipos */
 // Imprime Stdout

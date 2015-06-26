@@ -6,13 +6,14 @@
 
 /* Includes */
 
-#ifndef CLASSLOADER_H
-#define CLASSLOADER_H
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+
+#ifndef CLASSLOADER_H
+#define CLASSLOADER_H
+
 /* Defines */
 /* Controle do Programa */
 #define MAGIC_NUMBER 0xCAFEBABE

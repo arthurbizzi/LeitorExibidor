@@ -4,10 +4,10 @@
 * @brief
 */
 
+#include "../ClassLoader/classloader.h"
+
 #ifndef PILHA_OPERANDOS_H
 #define PILHA_OPERANDOS_H
-
-#include "../ClassLoader/classloader.h"
 
 typedef struct pilhadeoperandos
 {

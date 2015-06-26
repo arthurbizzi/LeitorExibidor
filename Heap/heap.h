@@ -4,11 +4,11 @@
 * @brief
 */
 
-#ifndef HEAP_H
-#define HEAP_H
-
 #include "../ClassLoader/classloader.h"
 #include "../ClassLoader/carregamento.h"
+
+#ifndef HEAP_H
+#define HEAP_H
 
 typedef struct tipoarray
 {

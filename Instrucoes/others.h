@@ -2,14 +2,11 @@
 // Created by kelvinec on 18/06/15.
 //
 
-#ifndef OTHERS_H
-#define LEITOREXIBIDOR_EXEC_INSTRUCOES_H
-
-#include "../Heap/heap.h"
-#include "../Pilha/pilha_operandos.h"
-#include "../Pilha/pilha_frames.h"
-#include "../ClassLoader/classloader.h"
 #include <math.h>
+#include "../Pilha/pilha_frames.h"
+
+#ifndef OTHERS_H
+#define OTHERS_H
 
 #define TipoReferencia  0
 #define TipoBoolean     4

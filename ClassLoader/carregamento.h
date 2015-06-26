@@ -4,11 +4,12 @@
 * @brief Arquivo com as definicoes de funcoes relacionadas ao carregamento do conteudo da classe de um arquivo.
 */
 
-#ifndef LEITOREXIBIDOR_CARREGAMENTO_H
-#define LEITOREXIBIDOR_CARREGAMENTO_H
-
 #include "classloader.h"
 #include "../main.h"
+
+#ifndef CARREGAMENTO_H
+#define CARREGAMENTO_H
+
 
 /* Protótipos */
 /**

@@ -4,15 +4,11 @@
 * @brief Arquivo com definicoes de prototipos das funcoes relativas a area de metodos.
 */
 
-
 #include "../main.h"
-#include "../Heap/heap.h"
 #include "../Pilha/pilha_frames.h"
-#include "../ClassLoader/classloader.h"
 
 #ifndef AREA_METODOS_H
 #define AREA_METODOS_H
-
 
 #define ERRO_INSTRUCAO 30
 
