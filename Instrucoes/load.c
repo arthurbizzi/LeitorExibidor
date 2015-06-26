@@ -127,24 +127,23 @@ void i_dload_3(Frame* frame)
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
-#warning fim da seção de ponto flutuante.
 
-void i_aload_0(Frame* frame,u1 index)
+void i_aload_0(Frame* frame)
 {
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[0]));
 }
 
-void i_aload_1(Frame* frame,u1 index)
+void i_aload_1(Frame* frame)
 {
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[1]));
 }
 
-void i_aload_2(Frame* frame,u1 index)
+void i_aload_2(Frame* frame)
 {
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[2]));
 }
 
-void i_aload_3(Frame* frame,u1 index)
+void i_aload_3(Frame* frame)
 {
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[3]));
 }
@@ -153,14 +152,14 @@ void i_iaload(Frame* frame)
 {
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayRef[index]));
 }
 
 void i_laload(Frame* frame)
 {
 	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u8* arrayRef =(u8*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayRef[index]));
 }
 
 void i_faload(Frame* frame)
@@ -169,7 +168,7 @@ void i_faload(Frame* frame)
     u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 aux;
     memcpy(&aux, arrayRef[index],sizeof(u4));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayRef[index]));
 }
 
 void i_daload(Frame* frame)
@@ -178,21 +177,21 @@ void i_daload(Frame* frame)
     u8* arrayRef =(u8*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u8 aux;
     memcpy(&aux, arrayRef[index],sizeof(u8));
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&(arrayRef[index]));
 }
 
 void i_aaload(Frame* frame)
 {
 	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayref[index]));
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(arrayRef[index]));
 }
 
 void i_baload(Frame* frame)
 {
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u1* arrayRef =(u1*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 result= arrayref[index];
+    u4 result= arrayRef[index];
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -200,7 +199,7 @@ void i_caload(Frame* frame)
 {
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u2* arrayRef =(u2*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 result= arrayref[index];
+    u4 result= arrayRef[index];
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -208,6 +207,6 @@ void i_saload(Frame* frame)
 {
 	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u2* arrayRef =(u2*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4 result= arrayref[index];
+    u4 result= arrayRef[index];
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }

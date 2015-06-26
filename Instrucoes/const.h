@@ -33,7 +33,7 @@ void i_iconst_m1(Frame* frame);
 *   @param frame Frame corrente.
 *   @return
 */
-void i_iconst_0(Frame* frame);v
+void i_iconst_0(Frame* frame);
 
 /**
 *   @fn void i_iconst_1(Frame* frame)
