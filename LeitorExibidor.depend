@@ -165,7 +165,7 @@
 	"ClassLoader/classloader.h"
 	"ClassLoader/carregamento.h"
 
-1435275828 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.h
+1435287106 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.h
 	"../main.h"
 	"../Heap/heap.h"
 	"../Pilha/pilha_frames.h"
@@ -225,7 +225,7 @@
 1434773765 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
 
-1435276381 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.c
+1435287248 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
 	"../Instrucoes/bridge_arquivosinstrucoes.h"
 
@@ -311,7 +311,7 @@
 	"../ClassLoader/classloader.h"
 	"../ClassLoader/carregamento.h"
 
-1435071608 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\heap.c
+1435276649 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\heap.c
 	"heap.h"
 
 1434861921 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\lista_arrays_objetos_classes.c
@@ -542,7 +542,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435276611 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\others.h
+1435287285 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\others.h
 	"../Heap/heap.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
@@ -589,6 +589,20 @@
 	<math.h>
 
 1435070071 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\load.h
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435070071 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\ifs.c
+	"ifs.h"
+	"../Pilha/pilha_operandos.h"
+	"../Pilha/pilha_frames.h"
+	"../ClassLoader/classloader.h"
+	<math.h>
+
+1435269562 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\load.c
+	"load.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"

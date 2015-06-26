@@ -25,6 +25,15 @@
 method_info* recupera_main(ClassFile *classe);
 
 /**
+*   @fn void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)
+*   @brief Funcao que prepara um metodo de uma classe.
+*   @param metodo Metodo a ser executado.
+*   @param classe Classe que contem o metodo.
+*   @param pilha_de_frames Pilha que armazena os frames.
+*/
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames);
+
+/**
 *   @fn int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)
 *   @brief Funcao que executa um metodo de uma classe.
 *   @param metodo Metodo a ser executado.

@@ -124,10 +124,11 @@ int executa_programa(ClassFile *classe) {
     ListaClasses *lista_de_classes; /// Lista de classes carregadas no programa
     method_info *metodo_main;
     ClassFile *classe_inicial;
+
     InicializaListaDeClasses(&lista_de_classes);
     InsereListaDeClasses(&lista_de_classes, classe);
     classe_inicial = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe
-
+    carrega_instrucoes();
     InicializaPilhaDeFrames(&pilha_de_frames);
 
     if(!(metodo_main = recupera_main(classe_inicial))) {
@@ -135,6 +136,7 @@ int executa_programa(ClassFile *classe) {
         return ERRO_MAIN;
     }
 
+    prepara_metodo(metodo_main, classe_inicial, pilha_de_frames);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
     desalocaListaDeClasses(&lista_de_classes);

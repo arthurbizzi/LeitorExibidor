@@ -22,12 +22,32 @@ method_info* recupera_main(ClassFile *classe) {
     return NULL;
 }
 
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames) {
+    for(int i = 0; i < metodo->attributes_count; i++) {
+        if(metodo->attributes[i].tag == ATTRTAG_Code) {
+            if(metodo->attributes_count > 0) {
+                Frame *frame = ConstruirFrame(classe, metodo);
+                EmpilhaFrame(&pilha_de_frames, frame);
+                DestruirFrame(frame);
+                return;
+            }
+            else {
+                metodo->attributes_count++;
+                metodo->attributes = (attribute_info *) malloc(sizeof(attribute_info));
+                metodo->attributes[0].info.CodeAttribute.code_length = 0;
+                Frame *frame = ConstruirFrame(classe, metodo);
+                EmpilhaFrame(&pilha_de_frames, frame);
+                DestruirFrame(frame);
+                return;
+            }
+        }
+    }
+    printf("ERRO: Metodo sem ATTRIBUTE CODE.\n");
+    return;
+}
+
 int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames) {
     int fim = 0;
-    Frame *frame = ConstruirFrame(classe, metodo);
-
-    EmpilhaFrame(&pilha_de_frames, frame);
-    DestruirFrame(frame);
     while(!fim) {
         Frame *atual = DesempilhaFrame(&pilha_de_frames); // Recupera frame atual
         fim = executa_instrucoes(metodo, atual);
@@ -37,11 +57,10 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
             return ERRO_INSTRUCAO;
         }
         if(!fim) {
-            EmpilhaFrame(&pilha_de_frames, frame);
+            EmpilhaFrame(&pilha_de_frames, atual);
         }
         else {
             DestruirFrame(atual);
-            fim = 1;
         }
     }
 
@@ -55,7 +74,7 @@ int executa_instrucoes(method_info *metodo, Frame *frame) {
             for(int j = 0; j < codigo->info.CodeAttribute.code_length; j++) {
                 instrucao[codigo->info.CodeAttribute.code[i]](frame);
             }
-            return SUCESSO;
+            return 1;
         }
     }
     return ERRO_INSTRUCAO;
@@ -248,7 +267,7 @@ void carrega_instrucoes() {
 //	instrucao[0xb7] = i_invokespecial;
 //	instrucao[0xb8] = i_invokestatic;
 	instrucao[0xb9] = i_invokeinterface;
-	instrucao[0xbb] = i_new;
+//	instrucao[0xbb] = i_new;
 	instrucao[0xbc] = i_newarray;
 	instrucao[0xbd] = i_anewarray;
 //	instrucao[0xbf] = i_athrow;
