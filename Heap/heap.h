@@ -10,10 +10,12 @@
 #ifndef HEAP_H
 #define HEAP_H
 
+
 typedef struct tipoarray
 {
     u1 tag;
     u4 tamanho;
+    u4 tamanho1;
     union
     {
         u1 *tipoBoolean;
