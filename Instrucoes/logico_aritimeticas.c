@@ -225,7 +225,7 @@ void i_fneg(Frame* frame){
     u4 aux = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     float fvalue;
     memcpy(&fvalue,&aux,sizeof(u4));
-	float fresult = ~fvalue;
+	float fresult = fvalue*(-1);
 	memcpy(&result,&fresult,sizeof(u4));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
@@ -235,7 +235,7 @@ void i_dneg(Frame* frame){
     u8 aux = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     double fvalue;
     memcpy(&fvalue,&aux,sizeof(u8));
-	double fresult = ~fvalue;
+	double fresult = fvalue*(-1);
 	memcpy(&result,&fresult,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
