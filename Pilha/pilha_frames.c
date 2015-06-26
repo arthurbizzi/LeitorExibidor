@@ -5,7 +5,7 @@
 */
 
 #include "pilha_frames.h"
-#include "../Heap/lista_arrays_objetos_classes.h"
+#include "../Heap/heap.h"
 
 Frame *ConstruirFrame(ClassFile *classe, method_info *method)
 {

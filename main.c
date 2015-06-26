@@ -60,9 +60,7 @@ int main(int argc, char **argv) {
     }
 
     if(opcao == 'n') { // Modo classloader se op != n
-        int *instrucao[0xFF];
-        instrucoes = carrega_instrucoes(instrucao);
-        status = executa_programa(classe, instrucao); // Executa o codigo da classe a partir de main
+        status = executa_programa(classe); // Executa o codigo da classe a partir de main
     }
 
     free(classe);
