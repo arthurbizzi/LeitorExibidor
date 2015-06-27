@@ -7,13 +7,27 @@
 #include "classloader.h"
 #include "carregamento.h"
 
+char *diretorio = NULL;
+int raiz = 1;
+
 int carrega_classe(char *nome_arquivo, ClassFile *classe)
 {
     FILE *arq_classe;
+    char *caminho_arquivo;
 
-    if(!(arq_classe = fopen(nome_arquivo, "rb")))
+    diretorio = recupera_diretorio(nome_arquivo);
+
+    if(raiz) {
+        strcpy(caminho_arquivo, nome_arquivo);
+    }
+    else {
+        strcpy(caminho_arquivo, diretorio);
+        strcat(caminho_arquivo, nome_arquivo);
+    }
+
+    if(!(arq_classe = fopen(caminho_arquivo, "rb")))
     {
-        printf("ERRO: arquivo \"%s\" nao existe.\n", nome_arquivo);
+        printf("ERRO: arquivo \"%s\" nao existe em \"%s\".\n", nome_arquivo, diretorio);
         return ERRO_ARQUIVO;
     }
     /* Carregamento do Magic Number e da versao, juntamente com suas verificacoes */
@@ -48,4 +62,28 @@ int carrega_classe(char *nome_arquivo, ClassFile *classe)
 
     fclose(arq_classe);
     return SUCESSO;
+}
+
+char* recupera_diretorio(char *caminho) {
+    int tamanho = strlen(caminho), barras = 0;
+    char *temp = (char *) malloc(tamanho * sizeof(char));
+
+    for(int i = 0; i < tamanho; i++) {
+        if(caminho[i] == '/')
+            barras++;
+    }
+
+    if(barras > 0) {
+        int i = 0;
+        raiz = 0;
+        while(barras > 0) {
+            temp[i] = caminho[i];
+            if(caminho[i] == '/')
+                barras--;
+            i++;
+        }
+        temp[i] = '\0';
+    }
+
+    return temp;
 }

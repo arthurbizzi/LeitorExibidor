@@ -294,11 +294,18 @@ typedef struct instrucao
 
 /**
 *   @fn int carrega_classe(int argc, char **argv)
-*   @brief Funcao que dirige a execucao do programa
-*   @param argc Quantidade de argumentos passados pela linha de comando
-*   @param argv Argumentos passados pela linha de comando
-*   @return Status de execução: SUCESSO, ERRO_MAGIC, ERRO_VERSION ou ERRO_ARQUIVO
+*   @brief Funcao que dirige a execucao do programa.
+*   @param argc Quantidade de argumentos passados pela linha de comando.
+*   @param argv Argumentos passados pela linha de comando.
+*   @return Status de execução.
 */
 int carrega_classe(char *nome_arquivo, ClassFile *classe);
 
+/**
+*   @fn char* recupera_diretorio(char *caminho)
+*   @brief Funcao que recupera somente o diretorio de um dado caminho.
+*   @param caminho Caminho completo para o arquivo.
+*   @return Diretorio onde se encontra o arquivo.
+*/
+char* recupera_diretorio(char *caminho);
 #endif // CLASSLOADER_H

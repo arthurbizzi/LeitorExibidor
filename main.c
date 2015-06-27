@@ -77,10 +77,15 @@ int main(int argc, char **argv) {
 
 int verifica_impressao(ClassFile *classe, char opcao) {
     FILE *arquivo_saida;
+    char *nome_arquivo;
+    int index;
 
+    index = classe->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
+    nome_arquivo = dereferencia(index, classe); // Recupera nome da classe
+    strcat(nome_arquivo, ".txt"); // Adiciona extensao txt
     switch(opcao) {
         case 'a': // Impressao em Arquivo
-            arquivo_saida = fopen("classes.txt", "w");
+            arquivo_saida = fopen(nome_arquivo, "w");
             if (!arquivo_saida)
                 return ERRO_ARQUIVO;
             imprime_general_information_file(classe, arquivo_saida);
@@ -103,7 +108,7 @@ int verifica_impressao(ClassFile *classe, char opcao) {
             imprime_fields(classe);
             imprime_methods(classe);
             imprime_attributes(classe);
-            arquivo_saida = fopen("classes.txt", "w");
+            arquivo_saida = fopen(nome_arquivo, "w");
             if (!arquivo_saida)
                 return ERRO_ARQUIVO;
             imprime_general_information_file(classe, arquivo_saida);
