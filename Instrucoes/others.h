@@ -40,7 +40,7 @@ void i_ldc2_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool);
 void i_goto(Frame* frame, u1 index1, u1 index2);
 void i_jsr(Frame* frame, u1 index, u1 index2);
 void i_ret(Frame* frame, u1 index);
-void i_invokeinterface(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero);
+void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero);
 void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses);
 void i_newarray(Frame *frame, u1 atype);
 void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2);

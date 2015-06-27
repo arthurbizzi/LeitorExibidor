@@ -80,7 +80,8 @@ int verifica_impressao(ClassFile *classe, char opcao) {
     char *nome_arquivo;
     int index;
 
-    index = classe->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
+#warning BRUNO aqui eu acho que consertei o erro da uma olhada
+    index = classe->constant_pool[classe->this_class - 1].info.Class.name_index - 1;
     nome_arquivo = dereferencia(index, classe); // Recupera nome da classe
     strcat(nome_arquivo, ".txt"); // Adiciona extensao txt
     switch(opcao) {

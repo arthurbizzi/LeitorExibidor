@@ -96,13 +96,194 @@ void i_ret(Frame* frame, u1 index){
 
 
 #pragma mark - SMURF PART
+void i_putfield()
+{
 
-void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
+    return;
+}
+
+void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
+{
+    tArray *array1;
+    Frame *frame1;
+    ClassFile *classe;
+    float valorf;
+    char *nomeclasse, *nomemetodo, *metododesc, *nome;
+    u8 valoru8;
+    u4 numparam, i, j, valoru4, *argumentos;
+    u2 index, classindex, descriptorindex, metodoindex, length;
+    u1 *bytes;
+    index = (u4)indexbyte1 << 8 | (u4)indexbyte2;
+    classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
+    classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
+    nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
+    descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
+    metodoindex = frame->constant_pool[descriptorindex].info.NameAndType.name_index - 1;
+    descriptorindex = frame->constant_pool[descriptorindex].info.NameAndType.descriptor_index - 1;
+    nomemetodo = i_dereferencia_instrucoes(metodoindex, frame->constant_pool);
+    metododesc = i_dereferencia_instrucoes(descriptorindex, frame->constant_pool);
+
+    if (!strcmp(nomeclasse, "java/io/PrintStream") && (!strcmp(nomemetodo, "print") || !strcmp(nomemetodo, "println")))
+    {
+        //Long
+        if (strstr(metododesc, "J") != NULL)
+        {
+            valoru8 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+            printf("%l", (int64_t)valoru8);
+
+        }//Double
+        else if (strstr(metododesc, "D") != NULL)
+        {
+            valoru8 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+            printf("%.15f", (int64_t)valoru8);
+
+        }//Boolean
+        else if (strstr(metododesc, "Z") != NULL)
+        {
+            if (DesempilhaOperando32bits(&(frame->pilhaDeOperandos)))
+                printf("TRUE");
+            else
+                printf("FALSE");
+
+        }//Char
+        else if (strstr(metododesc, "C") != NULL)
+        {
+            //Array
+            if (strstr(metododesc, "[C") != NULL)
+            {
+                array1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+                for (i = 0; i < array1->tamanho1; i++)
+                {
+                    printf("%c", (int16_t)array1->info.tipoChar[i]);
+                }
+
+            }//Char
+            else
+            {
+                printf("%c", (int16_t)DesempilhaOperando32bits(&(frame->pilhaDeOperandos)));
+            }
+
+        }//Inteiro
+        else if (strstr(metododesc, "I") != NULL)
+        {
+            printf("%d", (int32_t)DesempilhaOperando32bits(&(frame->pilhaDeOperandos)));
+
+        }//Float
+        else if (strstr(metododesc, "F") != NULL)
+        {
+            valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            memcpy(&valorf, &valoru4, sizeof(u4));
+            printf("%f", valorf);
+
+        }//String
+        else if (strstr(metododesc, "Ljava/lang/String") != NULL)
+        {
+            valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            printf("%s", (char *)valoru4);
+
+        }//Object
+        else if (strstr(metododesc, "Ljava/lang/Object") != NULL)
+        {
+            printf("%p", (void *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos)));
+        }
+
+        if (strstr(nomemetodo, "println") != NULL)
+            printf("\n");
+    }
+    else
+    {
+        classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+        if (classe == NULL)
+        {
+            char *nomearquivo;
+            classe = (ClassFile *)malloc(sizeof(ClassFile));
+            nomearquivo = (char *)malloc(sizeof(char) * (strlen(nomeclasse) + 7));
+            strcpy(nomearquivo, nomeclasse);
+            strcat(nomearquivo, ".class");
+            carrega_classe(nomearquivo, classe);
+            InsereListaDeClasses(&listadeclasses, classe);
+        }
+
+        bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
+        length = frame->constant_pool[descriptorindex].info.Utf8.length;
+
+        for (i = 0; i < length && bytes[i] != ')'; i++)
+        {
+            if(bytes[i] == 'L')
+            {
+                while(bytes[i] != ';')
+                {
+                    i++;
+                }
+                numparam++;
+            }
+            else if((bytes[i] == 'B')||(bytes[i] == 'C')||(bytes[i] == 'F')|| (bytes[i] == 'I')||(bytes[i] == 'S')||(bytes[i] == 'Z') )
+            {
+                numparam++;
+            }
+            else if((bytes[i] == 'D')||(bytes[i] == 'J'))
+            {
+                numparam+=2;
+            }
+        }
+
+        argumentos = (u4 *)malloc(sizeof(u4) * (numparam + 1));
+
+        for (i = numparam; i >= 0; i--)
+        {
+            argumentos[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+        }
+
+        nomemetodo = i_dereferencia_instrucoes(metodoindex, frame->constant_pool);
+
+        for(i = 0; i < classe->methods_count; i++) {
+            index = classe->methods[i].name_index - 1;
+            nome = i_dereferencia_instrucoes(index, classe->constant_pool);
+            if(!strcmp(nomemetodo, nome))
+                break;
+        }
+        if (i != classe->methods_count)
+        {
+            if (classe->methods[i].access_flags & AFNative)
+            {
+                u4 zero = 0;
+                bytes = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.bytes;
+                length = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.length;
+                if(bytes[length - 1] == 'D' || bytes[length - 1] == 'J') {
+                    EmpilhaOperando64bits(&frame->pilhaDeOperandos, &zero);
+                }
+                else if(bytes[length-1] != 'V')
+                {
+                    EmpilhaOperando32bits(&frame->pilhaDeOperandos, &zero);
+                }
+            }
+            else
+            {
+                prepara_metodo(&classe->methods[i], classe, pilhadeframes);
+                frame1 = DesempilhaFrame(&pilhadeframes);
+                for (j = numparam; j >= 0; j--)
+                {
+                    frame1->VetorVariaveisLocais[j] = argumentos[j];
+                }
+                EmpilhaFrame(&pilhadeframes, frame1);
+                executa_metodo(&classe->methods[i], classe, pilhadeframes);
+            }
+        }
+        else
+        {
+            printf("metodo não encontrado");
+        }
+    }
+
+    return;
+}
+
+void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
 {
     Frame *frame1;
     ClassFile *classe;
     char *nomeclasse, *nomemetodo;
-    u4 numparam, i, *argumentos;
+    u4 numparam, i, j, *argumentos;
     u2 index, classindex, descriptorindex, metodoindex, length;
     u1 *bytes;
     index = (u4)indexbyte1 << 8 | (u4)indexbyte2;
@@ -146,7 +327,90 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
 
 	argumentos = (u4 *)malloc(sizeof(u4) * numparam);
 
-	for (i = 0; i < numparam; i++)
+	for (i = numparam; i >= 0; i--)
+    {
+        argumentos[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    }
+
+    nomemetodo = i_dereferencia_instrucoes(metodoindex, frame->constant_pool);
+
+    if (classe->methods[0].access_flags & AFNative)
+    {
+        u4 zerou4 = 0;
+        u8 zerou8 = zerou4;
+        bytes = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.bytes;
+        length = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.length;
+        if(bytes[length - 1] == 'D' || bytes[length - 1] == 'J') {
+            EmpilhaOperando64bits(&frame->pilhaDeOperandos, &zerou8);
+        } else if(bytes[length-1] != 'V') {
+            EmpilhaOperando32bits(&frame->pilhaDeOperandos, &zerou4);
+        }
+    }
+    else
+    {
+        prepara_metodo(&classe->methods[0], classe, pilhadeframes);
+        frame1 = DesempilhaFrame(&pilhadeframes);
+        for (j = numparam; j >= 0; j--)
+        {
+            frame1->VetorVariaveisLocais[j] = argumentos[j];
+        }
+        EmpilhaFrame(&pilhadeframes, frame1);
+        executa_metodo(&classe->methods[0], classe, pilhadeframes);
+    }
+
+    return;
+}
+
+void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
+{
+    Frame *frame1;
+    ClassFile *classe;
+    char *nomeclasse, *nomemetodo, *nome;
+    u4 numparam, i, j, *argumentos;
+    u2 index, classindex, descriptorindex, metodoindex, length;
+    u1 *bytes;
+    index = (u4)indexbyte1 << 8 | (u4)indexbyte2;
+    classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
+    classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
+    nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
+    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    if (classe == NULL)
+    {
+        char *nomearquivo;
+        classe = (ClassFile *)malloc(sizeof(ClassFile));
+        nomearquivo = (char *)malloc(sizeof(char) * (strlen(nomeclasse) + 7));
+        strcpy(nomearquivo, nomeclasse);
+        strcat(nomearquivo, ".class");
+        carrega_classe(nomearquivo, classe);
+        InsereListaDeClasses(&listadeclasses, classe);
+    }
+    descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
+    metodoindex = frame->constant_pool[descriptorindex].info.NameAndType.name_index - 1;
+    descriptorindex = frame->constant_pool[descriptorindex].info.NameAndType.descriptor_index - 1;
+    bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
+    length = frame->constant_pool[descriptorindex].info.Utf8.length;
+
+    for (i = 0; i < length && bytes[i] != ')'; i++)
+    {
+		if(bytes[i] == 'L')
+		{
+			while(bytes[i] != ';')
+			{
+				i++;
+			}
+			numparam++;
+		} else if((bytes[i] == 'B')||(bytes[i] == 'C')||(bytes[i] == 'F')|| (bytes[i] == 'I')||(bytes[i] == 'S')||(bytes[i] == 'Z') )
+		{
+			numparam++;
+		} else if((bytes[i] == 'D')||(bytes[i] == 'J'))
+		{
+			numparam+=2;
+		}
+	}
+
+	argumentos = (u4 *)malloc(sizeof(u4) * numparam);
+
+	for (i = (numparam - 1); i >= 0; i--)
     {
         argumentos[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     }
@@ -164,8 +428,8 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
         if (classe->methods[i].access_flags & AFNative)
         {
             u4 zero = 0;
-            bytes = classe->constantPool[classe->methods[i].descriptor_index - 1].type.Utf8.bytes;
-            length = classe->constantPool[classe->methods[i].descriptor_index - 1].type.Utf8.length;
+            bytes = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.bytes;
+            length = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.length;
             if(bytes[length - 1] == 'D' || bytes[length - 1] == 'J') {
                 EmpilhaOperando64bits(&frame->pilhaDeOperandos, &zero);
             } else if(bytes[length-1] != 'V') {
@@ -174,14 +438,14 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
         }
         else
         {
-            prepara_metodo(classe->methods[i], classe, pilhadeframes);
+            prepara_metodo(&classe->methods[i], classe, pilhadeframes);
             frame1 = DesempilhaFrame(&pilhadeframes);
-            for (j = 0; i < numparam; j++)
+            for (j = (numparam - 1); j >= 0; j--)
             {
-                frame1->VetorVariaveisLocais[i] = argumentos[i];
+                frame1->VetorVariaveisLocais[j] = argumentos[j];
             }
             EmpilhaFrame(&pilhadeframes, frame1);
-            executa_metodo(classe->methods[i], classe, pilhadeframes);
+            executa_metodo(&classe->methods[i], classe, pilhadeframes);
         }
     }
     else
@@ -192,39 +456,54 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     return;
 }
 
-void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero)
+void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero)
 {
+    ClassFile *classe;
     Frame *frame1;
-    char *nome, *nomemetodo;
-    u2 index;
+    char *nome, *nomemetodo, *nomeclasse;
+    u2 index, classeindex;
     u4 *argumentos, i, j;
     Objeto *obj;
     argumentos = (u4 *)malloc(sizeof(u4) * (contagem + 1));
     index = (u4)indexbyte1 << 8 | (u4)indexbyte2;
-    for (i = 0; i <= contagem; i++)
+    classeindex = index;
+    for (i = contagem; i >= 0; i--)
     {
         argumentos[i] = DesempilhaOperando32bits(&frame->pilhaDeOperandos);
     }
-    obj = (Objeto *)argumentos[0];
     index = frame->constant_pool[index - 1].info.InterfaceMethodref.name_and_type_index - 1;
     index = frame->constant_pool[index].info.NameAndType.name_index - 1;
+    classeindex = frame->constant_pool[classeindex - 1].info.InterfaceMethodref.class_index - 1;
+    classeindex = frame->constant_pool[classeindex].info.Class.name_index - 1;
+    nomeclasse = i_dereferencia_instrucoes(classeindex, frame->constant_pool);
+    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    if (classe == NULL)
+    {
+        char *nomearquivo;
+        classe = (ClassFile *)malloc(sizeof(ClassFile));
+        nomearquivo = (char *)malloc(sizeof(char) * (strlen(nomeclasse) + 7));
+        strcpy(nomearquivo, nomeclasse);
+        strcat(nomearquivo, ".class");
+        carrega_classe(nomearquivo, classe);
+        InsereListaDeClasses(&listadeclasses, classe);
+    }
     nomemetodo = i_dereferencia_instrucoes(index,frame->constant_pool);
-    for(i = 0; i < obj->classe->methods_count; i++) {
-        index = obj->classe->methods[i].name_index - 1;
-        nome = i_dereferencia_instrucoes(index,obj->classe->constant_pool);
+    for(i = 0; i < classe->methods_count; i++) {
+        index = classe->methods[i].name_index - 1;
+        nome = i_dereferencia_instrucoes(index, classe->constant_pool);
         if(!strcmp(nomemetodo, nome))
             break;
     }
     if (i != obj->classe->methods_count)
     {
-        prepara_metodo(obj->classe->methods[i], obj->classe, pilhadeframes);
+        prepara_metodo(&obj->classe->methods[i], obj->classe, pilhadeframes);
         frame1 = DesempilhaFrame(&pilhadeframes);
-        for (j = 0; i <= contagem; j++)
+        for (j = contagem; j >= 0; j--)
         {
-            frame1->VetorVariaveisLocais[i] = argumentos[i];
+            frame1->VetorVariaveisLocais[j] = argumentos[j];
         }
         EmpilhaFrame(&pilhadeframes, frame1);
-        executa_metodo(obj->classe->methods[i], obj->classe, pilhadeframes);
+        executa_metodo(&obj->classe->methods[i], obj->classe, pilhadeframes);
     }
     else
     {
@@ -631,13 +910,33 @@ void i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 br
 char* i_dereferencia_instrucoes(u2 index, cp_info *cp)
 {
     char *nome;
-    int i;
-    nome = (char *) malloc((cp[index].info.Utf8.length + 1) * sizeof(char));
+    int i, j;
+
     for (i = 0; i < cp[index].info.Utf8.length; i++)
     {
-        nome[i] = cp[index].info.Utf8.bytes[i];
+        if ((char)cp[index].info.Utf8.bytes[i] == '$')
+            break;
     }
-    nome[i] = '\0';
+
+    if (i == cp[index].info.Utf8.length)
+    {
+        nome = (char *) malloc((cp[index].info.Utf8.length + 1) * sizeof(char));
+        for (i = 0; i < cp[index].info.Utf8.length; i++)
+        {
+            nome[i] = cp[index].info.Utf8.bytes[i];
+        }
+        nome[i] = '\0';
+        return nome;
+    }
+    else
+    {
+        nome = (char *) malloc((cp[index].info.Utf8.length - i) * sizeof(char));
+        for (j = 0; i < cp[index].info.Utf8.length; i++, j++)
+        {
+            nome[j] = cp[index].info.Utf8.bytes[i];
+        }
+    }
+    nome[j] = '\0';
     return nome;
 }
 
