@@ -56,4 +56,5 @@ int executa_instrucoes(method_info *metodo, Frame *frame);
 */
 int executa_instrucao(u4 opcode);
 
+void decodifica(Frame *frame);
 #endif // AREA_METODOS_H

@@ -8,7 +8,7 @@
 #include "../Instrucoes/bridge_arquivosinstrucoes.h"
 
 void (*instrucao[0xC9])(Frame *frame);
-int opcode;
+u1 opcode;
 
 method_info* recupera_main(ClassFile *classe) {
     for(int i = 0; i < classe->methods_count; i++) { // Para cada metodo dentro da classe
@@ -72,7 +72,8 @@ int executa_instrucoes(method_info *metodo, Frame *frame) {
         if(metodo->attributes[i].tag == ATTRTAG_Code) {
             attribute_info *codigo = &(metodo->attributes[i]);
             for(int j = 0; j < codigo->info.CodeAttribute.code_length; j++) {
-                instrucao[codigo->info.CodeAttribute.code[i]](frame);
+                opcode = codigo->info.CodeAttribute.code[i];
+                instrucao[opcode](frame);
             }
             return 1;
         }
@@ -97,11 +98,11 @@ void carrega_instrucoes() {
 	instrucao[0x0D] = i_fconst_2;
 	instrucao[0x0E] = i_dconst_0;
 	instrucao[0x0F] = i_dconst_1;
-	instrucao[0x10] = i_bipush; // decodifica
-	instrucao[0x11] = i_sipush; // decodifica
-	instrucao[0x12] = i_ldc; // decodifica
-	instrucao[0x13] = i_ldc_w; // decodifica
-	instrucao[0x14] = i_ldc2_w; // decodifica
+	instrucao[0x10] = decodifica;
+	instrucao[0x11] = decodifica;
+	instrucao[0x12] = decodifica;
+	instrucao[0x13] = decodifica;
+	instrucao[0x14] = decodifica;
 	instrucao[0x15] = i_iload; // decodifica
 	instrucao[0x16] = i_lload; // decodifica
 	instrucao[0x17] = i_fload; // decodifica
@@ -123,10 +124,10 @@ void carrega_instrucoes() {
 	instrucao[0x27] = i_dload_1;
 	instrucao[0x28] = i_dload_2;
 	instrucao[0x29] = i_dload_3;
-	instrucao[0x2A] = i_aload_0; // decodifica
-	instrucao[0x2B] = i_aload_1; // decodifica
-	instrucao[0x2C] = i_aload_2; // decodifica
-	instrucao[0x2D] = i_aload_3; // decodifica
+	instrucao[0x2A] = i_aload_0;
+	instrucao[0x2B] = i_aload_1;
+	instrucao[0x2C] = i_aload_2;
+	instrucao[0x2D] = i_aload_3;
 	instrucao[0x2E] = i_iaload;
 	instrucao[0x2F] = i_laload;
 	instrucao[0x30] = i_faload;
@@ -171,12 +172,12 @@ void carrega_instrucoes() {
 	instrucao[0x57] = i_pop;
 	instrucao[0x58] = i_pop2;
 	instrucao[0x59] = i_dup;
-//	instrucao[0x5A] = i_dup2_x1;
-//	instrucao[0x5B] = i_dup2_x2;
-//	instrucao[0x5C] = i_dup2;
-//	instrucao[0x5D] = i_dup2_x1;
-//	instrucao[0x5E] = i_dup2_x2;
-//	instrucao[0x5F] = i_swap;
+	instrucao[0x5A] = i_dup_x1;
+	instrucao[0x5B] = i_dup_x2;
+	instrucao[0x5C] = i_dup2;
+	instrucao[0x5D] = i_dup2_x1;
+	instrucao[0x5E] = i_dup2_x2;
+	instrucao[0x5F] = i_swap;
 	instrucao[0x60] = i_iadd;
 	instrucao[0x61] = i_ladd;
 	instrucao[0x62] = i_fadd;
@@ -213,7 +214,7 @@ void carrega_instrucoes() {
 	instrucao[0x81] = i_lor;
 	instrucao[0x82] = i_ixor;
 	instrucao[0x83] = i_lxor;
-	instrucao[0x84] = i_iinc; // decodifica
+	instrucao[0x84] = decodifica;
 	instrucao[0x85] = i_i2l;
 	instrucao[0x86] = i_i2f;
 	instrucao[0x87] = i_i2d;
@@ -248,9 +249,9 @@ void carrega_instrucoes() {
 	instrucao[0xA4] = i_if_icmple; // decodifica
 	instrucao[0xA5] = i_if_acmpeq; // decodifica
 	instrucao[0xA6] = i_if_acmpne; // decodifica
-	instrucao[0xA7] = i_goto; // decodifica
-	instrucao[0xA8] = i_jsr; // decodifica
-	instrucao[0xA9] = i_ret; // decodifica
+	instrucao[0xA7] = decodifica;
+	instrucao[0xA8] = decodifica;
+	instrucao[0xA9] = decodifica;
 //	instrucao[0xAA] = i_tableswitch;
 //	instrucao[0xAB] = i_lookupswitch;
 //	instrucao[0xAC] = i_ireturn;
@@ -266,23 +267,141 @@ void carrega_instrucoes() {
 //	instrucao[0xB6] = i_invokevirtual;
 //	instrucao[0xB7] = i_invokespecial;
 //	instrucao[0xB8] = i_invokestatic;
-	instrucao[0xB9] = i_invokeinterface; // decodifica
+	instrucao[0xB9] = decodifica;
+	//instrucao[0xBA] = decodifica;
 //	instrucao[0xBB] = i_new;
-	instrucao[0xBC] = i_newarray; // decodifica
-	instrucao[0xBD] = i_anewarray; // decodifica
+	instrucao[0xBC] = decodifica;
+	instrucao[0xBD] = decodifica;
+	//instrucao[0xBE] = decodifica;
 //	instrucao[0xBF] = i_athrow;
-	instrucao[0xC0] = i_checkcast; // decodifica
-	instrucao[0xC1] = i_instanceof; // decodifica
+	instrucao[0xC0] = decodifica;
+	instrucao[0xC1] = decodifica;
 	instrucao[0xC2] = i_monitorenter;
 	instrucao[0xC3] = i_monitorexit;
-	instrucao[0xC4] = i_wide; // decodifica
-	instrucao[0xC5] = i_multianewarray; // decodifica
-	instrucao[0xC6] = i_ifnull; // decodifica
-	instrucao[0xC7] = i_ifnonnull; // decodifica
-	instrucao[0xC8] = i_goto_w; // decodifica
-	instrucao[0xC9] = i_jsr_w; // decodifica
+	instrucao[0xC4] = decodifica;
+	instrucao[0xC5] = decodifica;
+	instrucao[0xC6] = decodifica;
+	instrucao[0xC7] = decodifica;
+	instrucao[0xC8] = decodifica;
+	instrucao[0xC9] = decodifica;
 }
 
 void decodifica(Frame *frame) {
-
+    u4 nu4;
+    u2 nu2;
+    u1 indexu1, index2u1, incu1, typeu1, constbyte1u1, constbyte2u1, dimensionsu1;
+    u1 branch1u1, branch2u1, branch3u1, branch4u1;
+    cp_info *constant_pool;
+    if(opcode > 0x14 && opcode < 0x1A) {
+        return;
+    }
+    else if(opcode > 0x35 && opcode < 0x3B) {
+        return;
+    }
+    else if(opcode > 0x98 && opcode < 0xA7) {
+        return;
+    }
+    switch(opcode) {
+        case 0x10:
+            i_bipush(frame, nu4);
+            break;
+        case 0x11:
+            i_sipush(frame, nu2);
+            break;
+        case 0x12:
+            i_ldc(frame, indexu1, constant_pool);
+            break;
+        case 0x13:
+            i_ldc_w(frame, indexu1, index2u1, constant_pool);
+            break;
+        case 0x14:
+            i_ldc2_w(frame, indexu1, index2u1, constant_pool);
+            break;
+        case 0x84:
+            i_iinc(frame, indexu1, incu1);
+            break;
+        case 0xA7:
+            i_goto(frame, indexu1, index2u1);
+            break;
+        case 0xA8:
+            i_jsr(frame, indexu1, index2u1);
+            break;
+        case 0xA9:
+            i_ret(frame, indexu1);
+            break;
+        /*case 0xAA:
+            break;
+        case 0xAB:
+            break;
+        case 0xAC:
+            break;
+        case 0xAD:
+            break;
+        case 0xAE:
+            break;
+        case 0xAF:
+            break;
+        case 0xB0:
+            break;
+        case 0xB1:
+            break;
+        case 0xB2:
+            break;
+        case 0xB3:
+            break;
+        case 0xB4:
+            break;
+        case 0xB5:
+            break;
+        case 0xB6:
+            break;
+        case 0xB7:
+            break;
+        case 0xB8:
+            break;
+        case 0xB9:
+            i_invokeinterface();
+            break;*/
+        case 0xBA:
+            break;
+        case 0xBB:
+            break;
+        case 0xBC:
+            i_newarray(frame, typeu1);
+            break;
+        case 0xBD:
+            i_anewarray(frame, indexu1, index2u1);
+            break;
+        case 0xBE:
+            break;
+        case 0xBF:
+            break;
+        case 0xC0:
+            i_checkcast(frame, indexu1, index2u1);
+            break;
+        case 0xC1:
+            i_instanceof(frame, indexu1, index2u1);
+            break;
+        case 0xC4:
+            i_wide(frame, opcode, indexu1, index2u1, constbyte1u1, constbyte2u1);
+            break;
+        case 0xC5:
+            i_multianewarray(frame, indexu1, index2u1, dimensionsu1);
+            break;
+        case 0xC6:
+            i_ifnull(frame, branch1u1, branch2u1);
+            break;
+        case 0xC7:
+            i_ifnonnull(frame, branch1u1, branch2u1);
+            break;
+        case 0xC8:
+            i_goto_w(frame, branch1u1, branch2u1, branch3u1, branch4u1);
+            break;
+        case 0xC9:
+            i_jsr_w(frame, branch1u1, branch2u1, branch3u1, branch4u1);
+            break;
+        default:
+            break;
+    }
+    return;
 }
