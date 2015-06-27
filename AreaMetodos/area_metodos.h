@@ -56,5 +56,39 @@ int executa_instrucoes(method_info *metodo, Frame *frame);
 */
 int executa_instrucao(u4 opcode);
 
-void decodifica(Frame *frame);
+/**
+*   @fn void decodifica_geral(Frame *frame)
+*   @brief Funcao que decodifica instrucoes com assinaturas diferenciadas.
+*   @param frame Frame atual.
+*/
+void decodifica_geral(Frame *frame);
+
+/**
+*   @fn void decodifica_load(Frame *frame)
+*   @brief Funcao que decodifica instrucoes do tipo load.
+*   @param frame Frame atual.
+*/
+void decodifica_load(Frame *frame);
+
+/**
+*   @fn void decodifica_store(Frame *frame)
+*   @brief Funcao que decodifica instrucoes do tipo store.
+*   @param frame Frame atual.
+*/
+void decodifica_store(Frame *frame);
+
+/**
+*   @fn void decodifica_if(Frame *frame)
+*   @brief Funcao que decodifica instrucoes do tipo if.
+*   @param frame Frame atual.
+*/
+void decodifica_if(Frame *frame);
+
+/**
+*   @fn void carrega_instrucoes()
+*   @brief Funcao que carrega o vetor de instrucoes.
+*/
+void carrega_instrucoes();
+
+
 #endif // AREA_METODOS_H

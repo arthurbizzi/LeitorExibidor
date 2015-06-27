@@ -9,17 +9,14 @@
 *            Guilherme de Sousa Castro (11/0148746)
 *            Kelvin William Moreira Lima (11/0159560)
 *
-*    Compilar com o comando:
-*    gcc -std=c99 main.c imprime.c carregamento.c -o jvm.exe
-*    Ou simplesmente com a IDE DevC++
+*    Compilar com o IDE DevC++.
 *
 *    Chamar com um dos comandos:
 *    jvm.exe <arquivo da classe>
-*       Nao sera gerado o arquivo do relatorio (somente impressao na tela)
+*       Nao sera gerado o arquivo do relatorio (somente impressao na tela).
 *    jvm.exe <arquivo da classe> <opcao de impressao>
-*       Chamada do class loader: .
-*
-*    Observacao: o arquivo "mapa.txt" deve estar na pasta do class loader.
+*       Chamada do class loader: nao executara o programa, somente exibira a classe.
+*    A chamada sem argumentos pedira ao usuario os dados necessarios para rodar o programa.
 */
 
 #include "main.h"
@@ -79,8 +76,8 @@ int verifica_impressao(ClassFile *classe, char opcao) {
     FILE *arquivo_saida;
     char *nome_arquivo;
     int index;
-
-#warning BRUNO aqui eu acho que consertei o erro da uma olhada
+    #warning SMURF
+    // Nada não, valeu por consertar o erro.
     index = classe->constant_pool[classe->this_class - 1].info.Class.name_index - 1;
     nome_arquivo = dereferencia(index, classe); // Recupera nome da classe
     strcat(nome_arquivo, ".txt"); // Adiciona extensao txt

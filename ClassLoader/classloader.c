@@ -13,7 +13,7 @@ int raiz = 1;
 int carrega_classe(char *nome_arquivo, ClassFile *classe)
 {
     FILE *arq_classe;
-    char *caminho_arquivo;
+    char *caminho_arquivo = NULL;
 
     diretorio = recupera_diretorio(nome_arquivo);
 

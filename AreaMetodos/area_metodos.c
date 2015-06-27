@@ -98,16 +98,16 @@ void carrega_instrucoes() {
 	instrucao[0x0D] = i_fconst_2;
 	instrucao[0x0E] = i_dconst_0;
 	instrucao[0x0F] = i_dconst_1;
-	instrucao[0x10] = decodifica;
-	instrucao[0x11] = decodifica;
-	instrucao[0x12] = decodifica;
-	instrucao[0x13] = decodifica;
-	instrucao[0x14] = decodifica;
-	instrucao[0x15] = i_iload; // decodifica
-	instrucao[0x16] = i_lload; // decodifica
-	instrucao[0x17] = i_fload; // decodifica
-	instrucao[0x18] = i_dload; // decodifica
-	instrucao[0x19] = i_aload; // decodifica
+	instrucao[0x10] = decodifica_geral;
+	instrucao[0x11] = decodifica_geral;
+	instrucao[0x12] = decodifica_geral;
+	instrucao[0x13] = decodifica_geral;
+	instrucao[0x14] = decodifica_geral;
+	instrucao[0x15] = decodifica_load;
+	instrucao[0x16] = decodifica_load;
+	instrucao[0x17] = decodifica_load;
+	instrucao[0x18] = decodifica_load;
+	instrucao[0x19] = decodifica_load;
 	instrucao[0x1A] = i_iload_0;
 	instrucao[0x1B] = i_iload_1;
 	instrucao[0x1C] = i_iload_2;
@@ -136,11 +136,11 @@ void carrega_instrucoes() {
 	instrucao[0x33] = i_baload;
 	instrucao[0x34] = i_caload;
 	instrucao[0x35] = i_saload;
-	instrucao[0x36] = i_istore; // decodifica
-	instrucao[0x37] = i_lstore; // decodifica
-	instrucao[0x38] = i_fstore; // decodifica
-	instrucao[0x39] = i_dstore; // decodifica
-	instrucao[0x3A] = i_astore; // decodifica
+	instrucao[0x36] = decodifica_store;
+	instrucao[0x37] = decodifica_store;
+	instrucao[0x38] = decodifica_store;
+	instrucao[0x39] = decodifica_store;
+	instrucao[0x3A] = decodifica_store;
 	instrucao[0x3B] = i_istore_0;
 	instrucao[0x3C] = i_istore_1;
 	instrucao[0x3D] = i_istore_2;
@@ -174,9 +174,9 @@ void carrega_instrucoes() {
 	instrucao[0x59] = i_dup;
 	instrucao[0x5A] = i_dup_x1;
 	instrucao[0x5B] = i_dup_x2;
-	instrucao[0x5C] = i_dup2;
-	instrucao[0x5D] = i_dup2_x1;
-	instrucao[0x5E] = i_dup2_x2;
+//	instrucao[0x5C] = i_dup2;
+	//instrucao[0x5D] = i_dup2_x1;
+	//instrucao[0x5E] = i_dup2_x2;
 	instrucao[0x5F] = i_swap;
 	instrucao[0x60] = i_iadd;
 	instrucao[0x61] = i_ladd;
@@ -214,7 +214,7 @@ void carrega_instrucoes() {
 	instrucao[0x81] = i_lor;
 	instrucao[0x82] = i_ixor;
 	instrucao[0x83] = i_lxor;
-	instrucao[0x84] = decodifica;
+	instrucao[0x84] = decodifica_geral;
 	instrucao[0x85] = i_i2l;
 	instrucao[0x86] = i_i2f;
 	instrucao[0x87] = i_i2d;
@@ -235,23 +235,23 @@ void carrega_instrucoes() {
 	instrucao[0x96] = i_fcmpg;
 	instrucao[0x97] = i_dcmpl;
 	instrucao[0x98] = i_dcmpg;
-	instrucao[0x99] = i_ifeq; // decodifica
-	instrucao[0x9A] = i_ifne; // decodifica
-	instrucao[0x9B] = i_iflt; // decodifica
-	instrucao[0x9C] = i_ifge; // decodifica
-	instrucao[0x9D] = i_ifgt; // decodifica
-	instrucao[0x9E] = i_ifle; // decodifica
-	instrucao[0x9F] = i_if_icmpeq; // decodifica
-	instrucao[0xA0] = i_if_icmpne; // decodifica
-	instrucao[0xA1] = i_if_icmplt; // decodifica
-	instrucao[0xA2] = i_if_icmpge; // decodifica
-	instrucao[0xA3] = i_if_icmpgt; // decodifica
-	instrucao[0xA4] = i_if_icmple; // decodifica
-	instrucao[0xA5] = i_if_acmpeq; // decodifica
-	instrucao[0xA6] = i_if_acmpne; // decodifica
-	instrucao[0xA7] = decodifica;
-	instrucao[0xA8] = decodifica;
-	instrucao[0xA9] = decodifica;
+	instrucao[0x99] = decodifica_if;
+	instrucao[0x9A] = decodifica_if;
+	instrucao[0x9B] = decodifica_if;
+	instrucao[0x9C] = decodifica_if;
+	instrucao[0x9D] = decodifica_if;
+	instrucao[0x9E] = decodifica_if;
+	instrucao[0x9F] = decodifica_if;
+	instrucao[0xA0] = decodifica_if;
+	instrucao[0xA1] = decodifica_if;
+	instrucao[0xA2] = decodifica_if;
+	instrucao[0xA3] = decodifica_if;
+	instrucao[0xA4] = decodifica_if;
+	instrucao[0xA5] = decodifica_if;
+	instrucao[0xA6] = decodifica_if;
+	instrucao[0xA7] = decodifica_geral;
+	instrucao[0xA8] = decodifica_geral;
+	instrucao[0xA9] = decodifica_geral;
 //	instrucao[0xAA] = i_tableswitch;
 //	instrucao[0xAB] = i_lookupswitch;
 //	instrucao[0xAC] = i_ireturn;
@@ -267,40 +267,32 @@ void carrega_instrucoes() {
 //	instrucao[0xB6] = i_invokevirtual;
 //	instrucao[0xB7] = i_invokespecial;
 //	instrucao[0xB8] = i_invokestatic;
-	instrucao[0xB9] = decodifica;
-	//instrucao[0xBA] = decodifica;
+	instrucao[0xB9] = decodifica_geral;
+	//instrucao[0xBA] = decodifica_geral;
 //	instrucao[0xBB] = i_new;
-	instrucao[0xBC] = decodifica;
-	instrucao[0xBD] = decodifica;
-	//instrucao[0xBE] = decodifica;
+	instrucao[0xBC] = decodifica_geral;
+	instrucao[0xBD] = decodifica_geral;
+	//instrucao[0xBE] = decodifica_geral;
 //	instrucao[0xBF] = i_athrow;
-	instrucao[0xC0] = decodifica;
-	instrucao[0xC1] = decodifica;
+	instrucao[0xC0] = decodifica_geral;
+	instrucao[0xC1] = decodifica_geral;
 	instrucao[0xC2] = i_monitorenter;
 	instrucao[0xC3] = i_monitorexit;
-	instrucao[0xC4] = decodifica;
-	instrucao[0xC5] = decodifica;
-	instrucao[0xC6] = decodifica;
-	instrucao[0xC7] = decodifica;
-	instrucao[0xC8] = decodifica;
-	instrucao[0xC9] = decodifica;
+	instrucao[0xC4] = decodifica_geral;
+	instrucao[0xC5] = decodifica_geral;
+	instrucao[0xC6] = decodifica_geral;
+	instrucao[0xC7] = decodifica_geral;
+	instrucao[0xC8] = decodifica_geral;
+	instrucao[0xC9] = decodifica_geral;
 }
 
-void decodifica(Frame *frame) {
-    u4 nu4;
-    u2 nu2;
-    u1 indexu1, index2u1, incu1, typeu1, constbyte1u1, constbyte2u1, dimensionsu1;
-    u1 branch1u1, branch2u1, branch3u1, branch4u1;
-    cp_info *constant_pool;
-    if(opcode > 0x14 && opcode < 0x1A) {
-        return;
-    }
-    else if(opcode > 0x35 && opcode < 0x3B) {
-        return;
-    }
-    else if(opcode > 0x98 && opcode < 0xA7) {
-        return;
-    }
+void decodifica_geral(Frame *frame) {
+    u4 *nu4 = NULL;
+    u2 *nu2 = NULL;
+    u1 indexu1 = 0, index2u1 = 0, incu1 = 0, typeu1 = 0, constbyte1u1 = 0, constbyte2u1 = 0, dimensionsu1 = 0;
+    u1 branch1u1 = 0, branch2u1 = 0, branch3u1 = 0, branch4u1 = 0;
+    cp_info *constant_pool = frame->constant_pool;
+
     switch(opcode) {
         case 0x10:
             i_bipush(frame, nu4);
@@ -404,4 +396,16 @@ void decodifica(Frame *frame) {
             break;
     }
     return;
+}
+
+void decodifica_load(Frame *frame) {
+
+}
+
+void decodifica_store(Frame *frame) {
+
+}
+
+void decodifica_if(Frame *frame) {
+
 }
