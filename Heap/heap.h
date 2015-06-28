@@ -163,6 +163,6 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses);
 *   @param listadeclasses Lista que contem as classes carregadas.
 *   @return Classe com o nome correspondente.
 */
-ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses);
+ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses);
 
 #endif // HEAP_H

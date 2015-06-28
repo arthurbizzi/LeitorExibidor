@@ -1162,23 +1162,6 @@ char* i_dereferencia_instrucoes(u2 index, cp_info *cp)
     return nome;
 }
 
-ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses)
-{
-    ListaClasses *lc1;
-    int index;
-    char *nomeThisClass;
-    lc1 = *listadeclasses;
-    while (lc1 != NULL)
-    {
-        index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
-        nomeThisClass = dereferencia(index, lc1->dado);
-        if (!strcmp(nome,nomeThisClass))
-            return lc1->dado;
-        lc1 = lc1->prox;
-    }
-    return NULL;
-}
-
 staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields)
 {
     ListaStaticField *lsf1;
