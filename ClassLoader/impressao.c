@@ -13,7 +13,6 @@ void imprime_general_information(ClassFile *classe)
     nomeThisClass = dereferencia(index, classe);
     index = classe->constant_pool[classe->super_class - 1].info.Class.name_index - 1;
     nomeSuperClass = dereferencia(index, classe);
-    //nomeSuperClass = dereferencia(index, classe);
     printf("\n");
     printf(">>>General Information<<<\n");
     printf("Minor version:      \t%d\n", classe->minor_version);
@@ -27,7 +26,6 @@ void imprime_general_information(ClassFile *classe)
     printf("Methods count:      \t%d\n", classe->methods_count);
     printf("Attributes count:   \t%d\n", classe->attributes_count);
     printf("\n");
-    system("PAUSE");
 }
 
 void imprime_constant_pool(ClassFile *classe)

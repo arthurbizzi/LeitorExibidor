@@ -33,7 +33,6 @@ int main(int argc, char **argv) {
             break;
         case 3:
             status = carrega_classe(argv[1], classe);
-            printf("bbbb\n");
             opcao = argv[2][0];
             break;
         default:
@@ -45,7 +44,6 @@ int main(int argc, char **argv) {
             scanf("%c", &opcao);
             break;
     }
-
     if(status != SUCESSO) {
         printf("Carregamento interrompido.\n");
         return status;
@@ -75,11 +73,12 @@ int verifica_impressao(ClassFile *classe, char opcao) {
     FILE *arquivo_saida;
     char *nome_arquivo;
     int index;
-
     index = classe->constant_pool[classe->this_class - 1].info.Class.name_index - 1;
     nome_arquivo = dereferencia(index, classe); // Recupera nome da classe
     strcat(nome_arquivo, ".txt"); // Adiciona extensao txt
     switch(opcao) {
+        case 'n':
+            break;
         case 'a': // Impressao em Arquivo
             arquivo_saida = fopen(nome_arquivo, "w");
             if (!arquivo_saida)
@@ -97,6 +96,22 @@ int verifica_impressao(ClassFile *classe, char opcao) {
             imprime_fields(classe);
             imprime_methods(classe);
             imprime_attributes(classe);
+            break;
+        case 'x':
+            arquivo_saida = fopen(nome_arquivo, "w");
+            if (!arquivo_saida)
+                return ERRO_ARQUIVO;
+            imprime_general_information(classe);
+            imprime_general_information_file(classe, arquivo_saida);
+            imprime_constant_pool(classe);
+            imprime_constant_pool_file(classe, arquivo_saida);
+            imprime_fields(classe);
+            imprime_fields_file(classe, arquivo_saida);
+            imprime_methods(classe);
+            imprime_methods_file(classe, arquivo_saida);
+            imprime_attributes(classe);
+            imprime_attributes_file(classe, arquivo_saida);
+            fclose(arquivo_saida);
             break;
         default: // Impressao em Arquivo e em Tela
             imprime_general_information(classe);
