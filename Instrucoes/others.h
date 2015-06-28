@@ -33,7 +33,7 @@ void i_freturn(PilhaDeFrames *pilhadeframes);
 void i_dreturn(PilhaDeFrames *pilhadeframes);
 void i_areturn(PilhaDeFrames *pilhadeframes);
 void i_return(PilhaDeFrames *pilhadeframes);
-void i_getstatic(Frame *frame, ListaStaticField *listadefields, u1 indexbyte1, u1 indexbyte2);
+void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
 void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
 void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2);
 void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2);
@@ -58,7 +58,7 @@ void i_goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 b
 void i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4);
 char* i_dereferencia_instrucoes(u2 index, cp_info *cp);
 ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses);
-
+staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields);
 
 
 #endif //OTHERS_H

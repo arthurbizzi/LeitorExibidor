@@ -174,12 +174,13 @@ void i_return(PilhaDeFrames *pilhadeframes)
     return;
 }
 
-void i_getstatic(Frame *frame, ListaStaticField *listadefields, u1 indexbyte1, u1 indexbyte2)
+void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
 {
+    ClassFile *classe;
     staticField *field;
     char *tipo, *name, *nomeclasse, *nome;
     u8 valoru8;
-    u4 vlaoru4;
+    u4 valoru4;
     u2 index, tipoindex, nameindex, fieldindex, nomeclasseindex, nomeindex;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     nomeclasseindex = frame->constant_pool[index - 1].info.Fieldref.class_index - 1;
@@ -196,7 +197,7 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, u1 indexbyte1, u
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
         nomeindex = classe->fields[fieldindex].name_index - 1;
-        nome = i_dereferencia_instrucoes(nomeindex, obj->classe->constant_pool);
+        nome = i_dereferencia_instrucoes(nomeindex, classe->constant_pool);
         if (!strcmp(name, nome))
             break;
     }
@@ -251,7 +252,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
         nomeindex = classe->fields[fieldindex].name_index - 1;
-        nome = i_dereferencia_instrucoes(nomeindex, obj->classe->constant_pool);
+        nome = i_dereferencia_instrucoes(nomeindex, classe->constant_pool);
         if (!strcmp(name, nome))
             break;
     }
@@ -1178,7 +1179,7 @@ ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses)
     return NULL;
 }
 
-staticField *i_RecuperaClasse(char *nome, ListaStaticField **listadefields)
+staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields)
 {
     ListaStaticField *lsf1;
     int index;
