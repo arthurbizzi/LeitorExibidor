@@ -163,8 +163,7 @@ ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses) {
     for(int i = 0; i < 10; i++) {
         u1 *nome_atual;
         int index_nome = lc1->dado->methods[i].name_index - 1;
-        nome_atual = dereferencia(lc1->dado, index_nome);
-        if(!strcmp(nome, nome_atual)) {
+        nome_atual = dereferencia(lc1->dado, index_nome);        if(!strcmp(nome, nome_atual)) {
             return lc1->dado;
         }
         lc1 = lc1->prox;

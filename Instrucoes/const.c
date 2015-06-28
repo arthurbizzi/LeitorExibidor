@@ -71,7 +71,7 @@ void i_lconst_1(Frame* frame)
 {
     u8 *value = (u8*)malloc(sizeof(u8));
     *value = 1;
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),1);
+    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),value);
 }
 
 void i_fconst_0(Frame* frame)

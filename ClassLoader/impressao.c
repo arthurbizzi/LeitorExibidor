@@ -214,7 +214,7 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
                 break;
             case CONSTANT_Double:
                 l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
-                printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", (double)attributeInfo->info.ConstantValue.constantvalue_index, l);
+                printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, (double)l);
                 break;
             case CONSTANT_Float:
                 f = (float)classe->constant_pool[index].info.Float.bytes;
@@ -595,7 +595,7 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
                 break;
             case CONSTANT_Double:
                 l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
-                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", (double)attributeInfo->info.ConstantValue.constantvalue_index, l);
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, (double)l);
                 break;
             case CONSTANT_Float:
                 f = (float)classe->constant_pool[index].info.Float.bytes;

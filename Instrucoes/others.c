@@ -41,7 +41,6 @@ void i_ldc(Frame* frame,u1 index, cp_info* constantPool)
 void i_ldc_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 {
 	u4 dado=0;
-    u2 indexConcat = (index<<8) | index2;
     u1 tag = constantPool[index-1].tag;
     switch (tag)
     {
