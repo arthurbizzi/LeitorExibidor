@@ -263,7 +263,7 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
         }
         atributo->tag = ATTRTAG_Innerclasses;
     }
-    else if (!strcmp(tipoAtributo, "SourceFile"))
+    else if (!strcmp(tipoAtributo, "SourceFileTable"))
     {
         atributo->info.Sourcefile.sourcefile_index = le_u2(arquivo);
         atributo->tag = ATTRTAG_Sourcefile;

@@ -102,25 +102,15 @@ int verifica_impressao(ClassFile *classe, char opcao) {
                 return ERRO_ARQUIVO;
             imprime_general_information(classe);
             imprime_general_information_file(classe, arquivo_saida);
-            printf("3\n");
             imprime_constant_pool(classe);
-            printf("4\n");
             imprime_constant_pool_file(classe, arquivo_saida);
-            printf("5\n");
             imprime_fields(classe);
-            printf("6\n");
             imprime_fields_file(classe, arquivo_saida);
-            printf("7\n");
             imprime_methods(classe);
-            printf("8\n");
             imprime_methods_file(classe, arquivo_saida);
-            printf("9\n");
             imprime_attributes(classe);
-            printf("10\n");
             imprime_attributes_file(classe, arquivo_saida);
-            printf("11\n");
             fclose(arquivo_saida);
-            printf("12\n");
             break;
         default: // Impressao em Arquivo e em Tela
             imprime_general_information(classe);
