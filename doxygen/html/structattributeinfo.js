@@ -10,5 +10,6 @@ var structattributeinfo =
     [ "InnerClasses", "structattributeinfo.html#af5b530008c2b2dbc7bb57d4a82e6d85d", null ],
     [ "LineNumberTable", "structattributeinfo.html#a69e5692dff2fa31e188916bf3a7a5496", null ],
     [ "LocalVariableTable", "structattributeinfo.html#ad0ca49c410f875310a5e2dc01eb2d005", null ],
-    [ "Sourcefile", "structattributeinfo.html#a63983c52f5ee40a1b91d767e0af7eab2", null ]
+    [ "Sourcefile", "structattributeinfo.html#a63983c52f5ee40a1b91d767e0af7eab2", null ],
+    [ "tag", "structattributeinfo.html#a17726ed17c64ec8550633ebf17fd1a98", null ]
 ];

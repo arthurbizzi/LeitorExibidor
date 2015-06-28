@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['hello',['Hello',['../class_hello.html',1,'Hello'],['../class_hello.html#ad1b909887b36c092ca06870b842616a4',1,'Hello.Hello()'],['../class_hello.html#a27a1864e1f4693766ae2596e6e205731',1,'Hello.hello()']]],
-  ['hello_2ejava',['Hello.java',['../_hello_8java.html',1,'']]]
+  ['heap_2ec',['heap.c',['../heap_8c.html',1,'']]],
+  ['heap_2eh',['heap.h',['../heap_8h.html',1,'']]],
+  ['hello',['Hello',['../class_hello.html',1,'']]]
 ];

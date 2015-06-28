@@ -1195,7 +1195,7 @@ char* dereferencia(u2 index, ClassFile *classe)
 int verifica_match(ClassFile *classe, char *nome)
 {
     char *temp, *nomeThisClass;
-    char c;
+    char c = nome[0];
     int i = 0, index = classe->constant_pool[classe->this_class - 1].info.Class.name_index - 1;
 
     temp = (char *) malloc(strlen(nome) * sizeof(char));

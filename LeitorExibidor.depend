@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1435446661 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.c
+1435463459 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.c
 	"main.h"
 
 1435275064 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\main.h
@@ -66,13 +66,13 @@
 	"classloader.h"
 	"../main.h"
 
-1435421867 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\classloader.h
+1435463414 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\classloader.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
 
-1435447238 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\classloader.c
+1435463465 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\classloader.c
 	"classloader.h"
 	"carregamento.h"
 
@@ -81,7 +81,7 @@
 	"classloader.h"
 	"../main.h"
 
-1435446177 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.c
+1435456613 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.c
 	"impressao.h"
 
 1434861921 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_operandos.c
@@ -165,7 +165,7 @@
 	"ClassLoader/classloader.h"
 	"ClassLoader/carregamento.h"
 
-1435447598 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.h
+1435447831 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.h
 	"../main.h"
 	"../Pilha/pilha_frames.h"
 
@@ -219,7 +219,7 @@
 1434773765 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
 
-1435430758 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.c
+1435458389 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
 	"../Instrucoes/bridge_arquivosinstrucoes.h"
 
@@ -562,7 +562,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435430729 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\others.c
+1435463379 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\others.c
 	"others.h"
 
 1435070071 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\pop_dup_swap.c

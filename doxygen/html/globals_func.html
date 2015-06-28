@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>White Stars JVM: Globals</title>
+<title>JVM: Globals</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,10 +31,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">White Stars JVM
-   &#160;<span id="projectnumber">Tetra</span>
+   <div id="projectname">JVM
    </div>
-   <div id="projectbrief">Uma versao estrelada da JVM!</div>
   </td>
  </tr>
  </tbody>
@@ -78,9 +76,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="globals.html"><span>All</span></a></li>
       <li class="current"><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
-      <li><a href="globals_type.html"><span>Typedefs</span></a></li>
-      <li><a href="globals_defs.html"><span>Macros</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li class="current"><a href="#index_v"><span>v</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -113,66 +121,408 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 </div>
 
 <div class="contents">
-&#160;<ul>
-<li>ClasseCarregada()
-: <a class="el" href="lista__arrays__objetos__classes_8c.html#aa76fb10d14c81c171b9374ef7c738a12">lista_arrays_objetos_classes.c</a>
-, <a class="el" href="lista__arrays__objetos__classes_8h.html#aa76fb10d14c81c171b9374ef7c738a12">lista_arrays_objetos_classes.h</a>
+&#160;
+
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>carrega_attribute()
+: <a class="el" href="carregamento_8c.html#af38f28edb1db4a05ce7cb2926a6dda26">carregamento.c</a>
+, <a class="el" href="carregamento_8h.html#ac970fbb71fd741678519f0ac8059e9db">carregamento.h</a>
 </li>
-<li>desalocaListaDeArrays()
-: <a class="el" href="lista__arrays__objetos__classes_8c.html#a4a4ff8f09e57d8934a102874df4267dc">lista_arrays_objetos_classes.c</a>
-, <a class="el" href="lista__arrays__objetos__classes_8h.html#a4a4ff8f09e57d8934a102874df4267dc">lista_arrays_objetos_classes.h</a>
+<li>carrega_attributes()
+: <a class="el" href="carregamento_8h.html#af6a83209af1d46f9d75995921812c6eb">carregamento.h</a>
+, <a class="el" href="carregamento_8c.html#a707a25f0e2b79fbaeea537f225ab2dbc">carregamento.c</a>
 </li>
-<li>desalocaListaDeClasses()
-: <a class="el" href="lista__arrays__objetos__classes_8h.html#a505b1b5974645b61b8d2cd5002c27045">lista_arrays_objetos_classes.h</a>
-, <a class="el" href="lista__arrays__objetos__classes_8c.html#a505b1b5974645b61b8d2cd5002c27045">lista_arrays_objetos_classes.c</a>
+<li>carrega_constantpool()
+: <a class="el" href="carregamento_8c.html#a5470e5ec674808d17774956556542d93">carregamento.c</a>
+, <a class="el" href="carregamento_8h.html#a1fd850299e3c4dd6bfc3a10766a85c90">carregamento.h</a>
 </li>
-<li>desalocaListaDeObjetos()
-: <a class="el" href="lista__arrays__objetos__classes_8h.html#aa4e2be55c66ad6de73ebaa31cb263f3a">lista_arrays_objetos_classes.h</a>
-, <a class="el" href="lista__arrays__objetos__classes_8c.html#aa4e2be55c66ad6de73ebaa31cb263f3a">lista_arrays_objetos_classes.c</a>
+<li>carrega_fields()
+: <a class="el" href="carregamento_8h.html#a464e5cd9e9b44e84dcb3f3a49b27171a">carregamento.h</a>
+, <a class="el" href="carregamento_8c.html#a3cf754b07632d3a6428f3b05a6f2ca86">carregamento.c</a>
 </li>
+<li>carrega_flagseclasses()
+: <a class="el" href="carregamento_8c.html#a47a868e7e0d77ea44246e4f8edf5c90f">carregamento.c</a>
+, <a class="el" href="carregamento_8h.html#a75abfca307fb4620182377434d9cff77">carregamento.h</a>
+</li>
+<li>carrega_header()
+: <a class="el" href="carregamento_8c.html#ab19ad8d9e54bb02ec85db39413288f0f">carregamento.c</a>
+, <a class="el" href="carregamento_8h.html#ab19ad8d9e54bb02ec85db39413288f0f">carregamento.h</a>
+</li>
+<li>carrega_interfaces()
+: <a class="el" href="carregamento_8c.html#a9585cc7cfd5f8f29bee54449990e5ba7">carregamento.c</a>
+, <a class="el" href="carregamento_8h.html#adf210e7667840be7aa19a244a3a54ec9">carregamento.h</a>
+</li>
+<li>carrega_methods()
+: <a class="el" href="carregamento_8c.html#a0410e3f84f83230c92717df257cdb96d">carregamento.c</a>
+, <a class="el" href="carregamento_8h.html#a16def4c916274a450c3cc1d66201d681">carregamento.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
+<li>dereferencia()
+: <a class="el" href="impressao_8c.html#a8ba5d36cda32a068c0d91e36b92eea4a">impressao.c</a>
+, <a class="el" href="impressao_8h.html#a5b79b24988b1c6e52f71392cd047addf">impressao.h</a>
+</li>
+<li>desalocaPilhaOperandos()
+: <a class="el" href="pilha__operandos_8h.html#a2c7749a0a415522a3dc8bf85041f95b5">pilha_operandos.h</a>
+, <a class="el" href="pilha__operandos_8c.html#a2c7749a0a415522a3dc8bf85041f95b5">pilha_operandos.c</a>
+</li>
+<li>DesempilhaOperando32bits()
+: <a class="el" href="pilha__operandos_8c.html#a19bba6eac51a47e1d28ff2f7d84f7227">pilha_operandos.c</a>
+, <a class="el" href="pilha__operandos_8h.html#a19bba6eac51a47e1d28ff2f7d84f7227">pilha_operandos.h</a>
+</li>
+<li>DesempilhaOperando64bits()
+: <a class="el" href="pilha__operandos_8h.html#a8bb539c348b37dab41f1a5aa4fcce699">pilha_operandos.h</a>
+, <a class="el" href="pilha__operandos_8c.html#a8bb539c348b37dab41f1a5aa4fcce699">pilha_operandos.c</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
 <li>executa_programa()
-: <a class="el" href="main_8c.html#ad0d02d3787dbb46dd783ab8aea629586">main.c</a>
-, <a class="el" href="main_8h.html#ad0d02d3787dbb46dd783ab8aea629586">main.h</a>
+: <a class="el" href="main_8c.html#ae1eeb7303b804347924d80848958e25a">main.c</a>
+, <a class="el" href="main_8h.html#ae1eeb7303b804347924d80848958e25a">main.h</a>
 </li>
-<li>InicializaListaDeArrays()
-: <a class="el" href="lista__arrays__objetos__classes_8c.html#a5b2c28cce6b7966cf4005b370ffb7ffd">lista_arrays_objetos_classes.c</a>
-, <a class="el" href="lista__arrays__objetos__classes_8h.html#a5b2c28cce6b7966cf4005b370ffb7ffd">lista_arrays_objetos_classes.h</a>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>i_aaload()
+: <a class="el" href="load_8h.html#ad5845bb9c7889ad60df19cac82680e67">load.h</a>
 </li>
-<li>InicializaListaDeClasses()
-: <a class="el" href="lista__arrays__objetos__classes_8h.html#a0ca783ec0eea8de1e0794a71ff2a5ec6">lista_arrays_objetos_classes.h</a>
-, <a class="el" href="lista__arrays__objetos__classes_8c.html#a0ca783ec0eea8de1e0794a71ff2a5ec6">lista_arrays_objetos_classes.c</a>
+<li>i_aconst_null()
+: <a class="el" href="const_8h.html#ae7c27bac082ba8d046c1b11de28ee3e4">const.h</a>
 </li>
-<li>InicializaListaDeObjetos()
-: <a class="el" href="lista__arrays__objetos__classes_8c.html#a75f7483efb7e7ac81c10782b43aa058d">lista_arrays_objetos_classes.c</a>
-, <a class="el" href="lista__arrays__objetos__classes_8h.html#a75f7483efb7e7ac81c10782b43aa058d">lista_arrays_objetos_classes.h</a>
+<li>i_aload()
+: <a class="el" href="load_8h.html#aa5f85195f94a36b6316f11dc51dfebcc">load.h</a>
 </li>
-<li>InsereListaDeArrays()
-: <a class="el" href="lista__arrays__objetos__classes_8h.html#aca090ba6d3e0f31c4972a1183647632c">lista_arrays_objetos_classes.h</a>
-, <a class="el" href="lista__arrays__objetos__classes_8c.html#aca090ba6d3e0f31c4972a1183647632c">lista_arrays_objetos_classes.c</a>
+<li>i_aload_0()
+: <a class="el" href="load_8h.html#a247b28a7c5f9d4bc887c55c7cdef0fee">load.h</a>
 </li>
-<li>InsereListaDeClasses()
-: <a class="el" href="lista__arrays__objetos__classes_8h.html#a6ef880072a90c0162383d683d0e390e0">lista_arrays_objetos_classes.h</a>
-, <a class="el" href="lista__arrays__objetos__classes_8c.html#a6ef880072a90c0162383d683d0e390e0">lista_arrays_objetos_classes.c</a>
+<li>i_aload_1()
+: <a class="el" href="load_8h.html#a4c9b41bc4bc4e09a99dbb9a6ef731091">load.h</a>
 </li>
-<li>InsereListaDeObjetos()
-: <a class="el" href="lista__arrays__objetos__classes_8c.html#a56ec17b4f66c1bbeb06c1532d3a215a2">lista_arrays_objetos_classes.c</a>
-, <a class="el" href="lista__arrays__objetos__classes_8h.html#a56ec17b4f66c1bbeb06c1532d3a215a2">lista_arrays_objetos_classes.h</a>
+<li>i_aload_2()
+: <a class="el" href="load_8h.html#a54d7dfe6e38bda1597e364019bdd65c7">load.h</a>
 </li>
+<li>i_aload_3()
+: <a class="el" href="load_8h.html#a0b665e2ba891f6796a17abd55ef90ce1">load.h</a>
+</li>
+<li>i_baload()
+: <a class="el" href="load_8h.html#a7276bc89a7054325626bf626e0c7150b">load.h</a>
+</li>
+<li>i_d2f()
+: <a class="el" href="cast_8h.html#a52c04d5ba1e4d8a1292db6f41b037b92">cast.h</a>
+</li>
+<li>i_d2i()
+: <a class="el" href="cast_8h.html#a1ded87e618ff5e1a8c6cb610d1a71d02">cast.h</a>
+</li>
+<li>i_d2l()
+: <a class="el" href="cast_8h.html#afe0ec3cd7510cd978203ee4730d90fe8">cast.h</a>
+</li>
+<li>i_daload()
+: <a class="el" href="load_8h.html#ad56900a03cb4b793576759af0f2d6cb5">load.h</a>
+</li>
+<li>i_dconst_0()
+: <a class="el" href="const_8h.html#ae9e69bee451a0d312231ce09f88b142e">const.h</a>
+</li>
+<li>i_dconst_1()
+: <a class="el" href="const_8h.html#a70de99abef3b5ecc8ee20a9b1847b1a9">const.h</a>
+</li>
+<li>i_dload()
+: <a class="el" href="load_8h.html#a254cd96fc34205948d35bd80687a427f">load.h</a>
+</li>
+<li>i_dload_0()
+: <a class="el" href="load_8h.html#a89314af04a8a7e1ad6d26efabbcbbe49">load.h</a>
+</li>
+<li>i_dload_1()
+: <a class="el" href="load_8h.html#a7af8e849fe0ad474d4640e3121ce8ab6">load.h</a>
+</li>
+<li>i_dload_2()
+: <a class="el" href="load_8h.html#ae96ec071e9eca84fed1c3887d54479cd">load.h</a>
+</li>
+<li>i_dload_3()
+: <a class="el" href="load_8h.html#adc4fded31d97b2342f371f1be0a49b63">load.h</a>
+</li>
+<li>i_dup()
+: <a class="el" href="pop__dup__swap_8h.html#a1e64bd8b298d73bea17384df00cd6008">pop_dup_swap.h</a>
+</li>
+<li>i_dup2()
+: <a class="el" href="pop__dup__swap_8h.html#aee91f0b2c558c8549035a5af39f5754d">pop_dup_swap.h</a>
+</li>
+<li>i_dup2_x1()
+: <a class="el" href="pop__dup__swap_8h.html#ad1cb53f6032aeb2b3e8f8387bcf58d9e">pop_dup_swap.h</a>
+</li>
+<li>i_dup2_x2()
+: <a class="el" href="pop__dup__swap_8h.html#a51277c4f620e6ed179be5d87ed792805">pop_dup_swap.h</a>
+</li>
+<li>i_dup_x1()
+: <a class="el" href="pop__dup__swap_8h.html#a10f43a0ff1455b57dea6318432448210">pop_dup_swap.h</a>
+</li>
+<li>i_dup_x2()
+: <a class="el" href="pop__dup__swap_8h.html#a8dacab3b70b1908f90bb1ab8792c4b08">pop_dup_swap.h</a>
+</li>
+<li>i_f2d()
+: <a class="el" href="cast_8h.html#af0c035caa01b5d5e285725d38f616b3f">cast.h</a>
+</li>
+<li>i_f2i()
+: <a class="el" href="cast_8h.html#a0b7655cd34cdf99286f7a31b90c80fd6">cast.h</a>
+</li>
+<li>i_f2l()
+: <a class="el" href="cast_8h.html#ae7bc760628616c1ae41de5e94793e883">cast.h</a>
+</li>
+<li>i_faload()
+: <a class="el" href="load_8h.html#a52be6607790a9cc52c9dfb0f89e07bbc">load.h</a>
+</li>
+<li>i_fload()
+: <a class="el" href="load_8h.html#afeb56b7560e82193da47e010347c5ea0">load.h</a>
+</li>
+<li>i_fload_0()
+: <a class="el" href="load_8h.html#a97db14ef2980a717cf041a3cfcf9c422">load.h</a>
+</li>
+<li>i_fload_1()
+: <a class="el" href="load_8h.html#a2cf903fd24e8b61c644401add16c37a7">load.h</a>
+</li>
+<li>i_fload_2()
+: <a class="el" href="load_8h.html#ab6f86102135f6c169a78902be35e4d86">load.h</a>
+</li>
+<li>i_fload_3()
+: <a class="el" href="load_8h.html#ad64d6bfb964e8014185713fcfbd81080">load.h</a>
+</li>
+<li>i_i2b()
+: <a class="el" href="cast_8h.html#a5dedaf6aaa292b425dc2b2ac9155c521">cast.h</a>
+</li>
+<li>i_i2c()
+: <a class="el" href="cast_8h.html#a4b403a6ba5b1f3ff976b7efa1a3a655e">cast.h</a>
+</li>
+<li>i_i2d()
+: <a class="el" href="cast_8h.html#a9ce54d9e7d0d2f9118658d6e7530ab9e">cast.h</a>
+</li>
+<li>i_i2f()
+: <a class="el" href="cast_8h.html#a04f38419956d3c3286111e970c3c750d">cast.h</a>
+</li>
+<li>i_i2l()
+: <a class="el" href="cast_8h.html#a294959b917cb6b791109ce5342a5aa1c">cast.h</a>
+</li>
+<li>i_i2s()
+: <a class="el" href="cast_8h.html#a0230cbf92295bf69672e2e6bc031c174">cast.h</a>
+</li>
+<li>i_iaload()
+: <a class="el" href="load_8h.html#a5d1799892f50f54b000016ee82526720">load.h</a>
+</li>
+<li>i_iconst_0()
+: <a class="el" href="const_8h.html#ac8b5a7cedc351735b92d6a7457cde9c7">const.h</a>
+</li>
+<li>i_iconst_1()
+: <a class="el" href="const_8h.html#afe4fd5ec3aef12f286775842c8e9e24f">const.h</a>
+</li>
+<li>i_iconst_2()
+: <a class="el" href="const_8h.html#a65030a0ebe8da0ba831ee56ab0ba3146">const.h</a>
+</li>
+<li>i_iconst_3()
+: <a class="el" href="const_8h.html#ab50b2c74408fb549303d94f301827855">const.h</a>
+</li>
+<li>i_iconst_4()
+: <a class="el" href="const_8h.html#a577cada27a1a828704842344983df83d">const.h</a>
+</li>
+<li>i_iconst_5()
+: <a class="el" href="const_8h.html#a840e07280d13c53c14d8ea2cd66534d7">const.h</a>
+</li>
+<li>i_if_acmpeq()
+: <a class="el" href="ifs_8h.html#afc55c65c48dc7cdbf9485dad9e0635d8">ifs.h</a>
+</li>
+<li>i_if_acmpne()
+: <a class="el" href="ifs_8h.html#ae90f13c7b9435458b132ce748d1cb3ee">ifs.h</a>
+</li>
+<li>i_if_icmpeq()
+: <a class="el" href="ifs_8h.html#af2f0dfda943d16411ff040110bfc1ba7">ifs.h</a>
+</li>
+<li>i_if_icmpge()
+: <a class="el" href="ifs_8h.html#ac2a3c9c1878dd3e8036e4205ad0c0ce4">ifs.h</a>
+</li>
+<li>i_if_icmpgt()
+: <a class="el" href="ifs_8h.html#a4da89c20817bc5ff0cb5a8b67bbcb81e">ifs.h</a>
+</li>
+<li>i_if_icmple()
+: <a class="el" href="ifs_8h.html#ab0d57add0802e62525d027039f70bb06">ifs.h</a>
+</li>
+<li>i_if_icmplt()
+: <a class="el" href="ifs_8h.html#a66ad97ab281b6a584ef46c060cb37731">ifs.h</a>
+</li>
+<li>i_if_icmpne()
+: <a class="el" href="ifs_8h.html#a949e0eef93a154bfd67c68eb1f23ff86">ifs.h</a>
+</li>
+<li>i_ifeq()
+: <a class="el" href="ifs_8h.html#ae0a01e1516fda294e751a595a7f72c65">ifs.h</a>
+</li>
+<li>i_ifge()
+: <a class="el" href="ifs_8h.html#a4e3cb78cdd8f0e584474f144052ad5d2">ifs.h</a>
+</li>
+<li>i_ifgt()
+: <a class="el" href="ifs_8h.html#a908226b205d4cd3670e8a2da03b592f3">ifs.h</a>
+</li>
+<li>i_ifle()
+: <a class="el" href="ifs_8h.html#a0128b78f8eb5c92dae1303a6be3bd6c0">ifs.h</a>
+</li>
+<li>i_iflt()
+: <a class="el" href="ifs_8h.html#a2ac8aecc178097afd2d80b510a544dbe">ifs.h</a>
+</li>
+<li>i_ifne()
+: <a class="el" href="ifs_8h.html#a9ee4edc02d8ec36b03ebefbfc2a60ab3">ifs.h</a>
+</li>
+<li>i_iload()
+: <a class="el" href="load_8h.html#a5417bae5a113b3faa377bef479232a3c">load.h</a>
+</li>
+<li>i_iload_0()
+: <a class="el" href="load_8h.html#a5801002d5aecefc3f53a53e86fcf4c5b">load.h</a>
+</li>
+<li>i_iload_1()
+: <a class="el" href="load_8h.html#a39c33c9fef2ccb0a4864ea1a569e4525">load.h</a>
+</li>
+<li>i_iload_2()
+: <a class="el" href="load_8h.html#a7e4d0127d1168f5c0f48f74e6d58dc5b">load.h</a>
+</li>
+<li>i_iload_3()
+: <a class="el" href="load_8h.html#ad7a217089d0cc195d8f4cb6dd935e9a9">load.h</a>
+</li>
+<li>i_l2d()
+: <a class="el" href="cast_8h.html#a02f41a0d5909860b38f5cd7542055f60">cast.h</a>
+</li>
+<li>i_l2f()
+: <a class="el" href="cast_8h.html#aafdfa699952019842e9e087bd5c03e06">cast.h</a>
+</li>
+<li>i_l2i()
+: <a class="el" href="cast_8h.html#a507577cf8e60dd95cb234999c3020582">cast.h</a>
+</li>
+<li>i_laload()
+: <a class="el" href="load_8h.html#a3640007cb4cae16af45ecaec55cfdb53">load.h</a>
+</li>
+<li>i_lconst_0()
+: <a class="el" href="const_8h.html#aab605db7ae1a758aed69d422a50cb9c1">const.h</a>
+</li>
+<li>i_lconst_1()
+: <a class="el" href="const_8h.html#a13081cde434c4f6b7c87772674dac0fd">const.h</a>
+</li>
+<li>i_lload()
+: <a class="el" href="load_8h.html#af5a504df4a55f1fa4fa955471810217e">load.h</a>
+</li>
+<li>i_lload_0()
+: <a class="el" href="load_8h.html#af67592f6f1285e9fea6617a76d8b4de2">load.h</a>
+</li>
+<li>i_lload_1()
+: <a class="el" href="load_8h.html#a6ac238930184ec79905319522239b75e">load.h</a>
+</li>
+<li>i_lload_2()
+: <a class="el" href="load_8h.html#a83efb089e317a9f2a904766065b5cfd1">load.h</a>
+</li>
+<li>i_lload_3()
+: <a class="el" href="load_8h.html#a35e4c9a8070f37843578fd9c04e676a0">load.h</a>
+</li>
+<li>i_pop()
+: <a class="el" href="pop__dup__swap_8h.html#a1368bba4a318e0252e2f89a882417a09">pop_dup_swap.h</a>
+</li>
+<li>i_pop2()
+: <a class="el" href="pop__dup__swap_8h.html#a47d6c1031904a70e353839b0826f4b9b">pop_dup_swap.h</a>
+</li>
+<li>i_swap()
+: <a class="el" href="pop__dup__swap_8h.html#a6007de8170730713eecc3a119e64fc8b">pop_dup_swap.h</a>
+</li>
+<li>imprime_attributes()
+: <a class="el" href="impressao_8h.html#a15277fbfe7a7741905e84632c7f2e3d3">impressao.h</a>
+, <a class="el" href="impressao_8c.html#a15277fbfe7a7741905e84632c7f2e3d3">impressao.c</a>
+</li>
+<li>imprime_attributes_file()
+: <a class="el" href="impressao_8h.html#a99b207edc9463e99ee1607b0fc4c327e">impressao.h</a>
+, <a class="el" href="impressao_8c.html#a99b207edc9463e99ee1607b0fc4c327e">impressao.c</a>
+</li>
+<li>imprime_constant_pool()
+: <a class="el" href="impressao_8c.html#a45cf25a94735345dcde1c7229a781d15">impressao.c</a>
+, <a class="el" href="impressao_8h.html#a45cf25a94735345dcde1c7229a781d15">impressao.h</a>
+</li>
+<li>imprime_constant_pool_file()
+: <a class="el" href="impressao_8c.html#a1e7acc3d8f536eeaf0ae0a6cedf26da2">impressao.c</a>
+, <a class="el" href="impressao_8h.html#a1e7acc3d8f536eeaf0ae0a6cedf26da2">impressao.h</a>
+</li>
+<li>imprime_fields()
+: <a class="el" href="impressao_8h.html#af06ea41455bea7d452bedb59434c0dfb">impressao.h</a>
+, <a class="el" href="impressao_8c.html#af06ea41455bea7d452bedb59434c0dfb">impressao.c</a>
+</li>
+<li>imprime_fields_file()
+: <a class="el" href="impressao_8h.html#a824813174b977fa05c933e2df930c44b">impressao.h</a>
+, <a class="el" href="impressao_8c.html#a824813174b977fa05c933e2df930c44b">impressao.c</a>
+</li>
+<li>imprime_general_information()
+: <a class="el" href="impressao_8c.html#ad6c3de4ab82963a7f909578021408af9">impressao.c</a>
+, <a class="el" href="impressao_8h.html#ad6c3de4ab82963a7f909578021408af9">impressao.h</a>
+</li>
+<li>imprime_general_information_file()
+: <a class="el" href="impressao_8c.html#a90db8a67d48bb3b72f3d8991841e2aa4">impressao.c</a>
+, <a class="el" href="impressao_8h.html#a90db8a67d48bb3b72f3d8991841e2aa4">impressao.h</a>
+</li>
+<li>imprime_methods()
+: <a class="el" href="impressao_8h.html#a106a7bd7db691aea74b8f1953c44be1a">impressao.h</a>
+, <a class="el" href="impressao_8c.html#a106a7bd7db691aea74b8f1953c44be1a">impressao.c</a>
+</li>
+<li>imprime_methods_file()
+: <a class="el" href="impressao_8c.html#a31f73cbf6d289ff97f9a1408ce733f30">impressao.c</a>
+, <a class="el" href="impressao_8h.html#a31f73cbf6d289ff97f9a1408ce733f30">impressao.h</a>
+</li>
+<li>InicializaPilhaDeOperandos()
+: <a class="el" href="pilha__operandos_8c.html#a17bc51ede49c3ea367da4f9b1a130cc6">pilha_operandos.c</a>
+, <a class="el" href="pilha__operandos_8h.html#a17bc51ede49c3ea367da4f9b1a130cc6">pilha_operandos.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>le_u1()
+: <a class="el" href="carregamento_8c.html#ac2fcefe15ef7a88eb265d6e3ff4ca7bd">carregamento.c</a>
+, <a class="el" href="carregamento_8h.html#ac2fcefe15ef7a88eb265d6e3ff4ca7bd">carregamento.h</a>
+</li>
+<li>le_u2()
+: <a class="el" href="carregamento_8h.html#aa3a0520a41a8ece2ff21f792cd2be414">carregamento.h</a>
+, <a class="el" href="carregamento_8c.html#aa3a0520a41a8ece2ff21f792cd2be414">carregamento.c</a>
+</li>
+<li>le_u4()
+: <a class="el" href="carregamento_8h.html#a21ccfa8617a9ab70216c67062acce262">carregamento.h</a>
+, <a class="el" href="carregamento_8c.html#a21ccfa8617a9ab70216c67062acce262">carregamento.c</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
 <li>main()
 : <a class="el" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main.c</a>
 , <a class="el" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627">main.h</a>
 </li>
-<li>recupera_main()
-: <a class="el" href="main_8c.html#a8848bcb130bb1703c0ea0bdda0361ce6">main.c</a>
-, <a class="el" href="main_8h.html#a505c02b126496342a20725a04373277a">main.h</a>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>PilhaDeOperandosVazia()
+: <a class="el" href="pilha__operandos_8c.html#ae24c3d237db3919eef42d6bd57c4f77e">pilha_operandos.c</a>
+, <a class="el" href="pilha__operandos_8h.html#ae24c3d237db3919eef42d6bd57c4f77e">pilha_operandos.h</a>
 </li>
-<li>RecuperaIesimaClasse()
-: <a class="el" href="lista__arrays__objetos__classes_8c.html#a300ce0bc84272cd3f5fb2c83513ed3d4">lista_arrays_objetos_classes.c</a>
-, <a class="el" href="lista__arrays__objetos__classes_8h.html#a300ce0bc84272cd3f5fb2c83513ed3d4">lista_arrays_objetos_classes.h</a>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>recupera_diretorio()
+: <a class="el" href="classloader_8c.html#a8a40a0db15bf97b6053bcb511dc4f095">classloader.c</a>
+, <a class="el" href="classloader_8h.html#a1a89edc4ce44e3fcfdb59eab13cb139e">classloader.h</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
 <li>verifica_impressao()
-: <a class="el" href="main_8c.html#ab1f903a496b65be4bf99d6688383d59d">main.c</a>
-, <a class="el" href="main_8h.html#ad4d8c7228c13905b7aedfcfca2121465">main.h</a>
+: <a class="el" href="main_8c.html#a41a5bad87aec6af96d34ef779d8ed877">main.c</a>
+, <a class="el" href="main_8h.html#a41a5bad87aec6af96d34ef779d8ed877">main.h</a>
+</li>
+<li>verifica_match()
+: <a class="el" href="impressao_8c.html#aac3451b338f67fcbc9f84d75563404c7">impressao.c</a>
+, <a class="el" href="impressao_8h.html#aac3451b338f67fcbc9f84d75563404c7">impressao.h</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -180,7 +530,7 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jun 19 2015 01:05:19 for White Stars JVM by
+    <li class="footer">Generated on Sat Jun 27 2015 22:49:13 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

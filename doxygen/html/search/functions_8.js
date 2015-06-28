@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['set_5fdouble',['set_double',['../class_hello.html#a2f90d8eeda2eda57e2eb507cc075a656',1,'Hello']]],
-  ['set_5fint',['set_int',['../class_hello.html#a8d54515b100c39af9030e0a87991e3db',1,'Hello']]]
+  ['verifica_5fimpressao',['verifica_impressao',['../main_8c.html#a41a5bad87aec6af96d34ef779d8ed877',1,'verifica_impressao(ClassFile *classe, char opcao):&#160;main.c'],['../main_8h.html#a41a5bad87aec6af96d34ef779d8ed877',1,'verifica_impressao(ClassFile *classe, char opcao):&#160;main.c']]],
+  ['verifica_5fmatch',['verifica_match',['../impressao_8c.html#aac3451b338f67fcbc9f84d75563404c7',1,'verifica_match(ClassFile *classe, char *nome):&#160;impressao.c'],['../impressao_8h.html#aac3451b338f67fcbc9f84d75563404c7',1,'verifica_match(ClassFile *classe, char *nome):&#160;impressao.c']]]
 ];

@@ -26,7 +26,6 @@ int main(int argc, char **argv) {
     char nome_classe[21];
     char opcao; /// Modo de impressao (t - tela, a - arquivo, s - ambos, n - nenhum)
     int status;
-
     switch(argc) {
         case 2:
             status = carrega_classe(argv[1], classe);
@@ -34,6 +33,7 @@ int main(int argc, char **argv) {
             break;
         case 3:
             status = carrega_classe(argv[1], classe);
+            printf("bbbb\n");
             opcao = argv[2][0];
             break;
         default:
@@ -50,7 +50,6 @@ int main(int argc, char **argv) {
         printf("Carregamento interrompido.\n");
         return status;
     }
-
     if(verifica_impressao(classe, opcao) == ERRO_ARQUIVO) { // Verifica onde imprimir o conteudo da classe
         printf("ERRO: arquivo nao pode ser criado.\n");
         return ERRO_ARQUIVO;
@@ -76,8 +75,7 @@ int verifica_impressao(ClassFile *classe, char opcao) {
     FILE *arquivo_saida;
     char *nome_arquivo;
     int index;
-    #warning SMURF
-    // Nada não, valeu por consertar o erro.
+
     index = classe->constant_pool[classe->this_class - 1].info.Class.name_index - 1;
     nome_arquivo = dereferencia(index, classe); // Recupera nome da classe
     strcat(nome_arquivo, ".txt"); // Adiciona extensao txt

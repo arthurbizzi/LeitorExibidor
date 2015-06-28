@@ -7,7 +7,7 @@
 #include "area_metodos.h"
 #include "../Instrucoes/bridge_arquivosinstrucoes.h"
 
-void (*instrucao[0xC9])(Frame *frame);
+void (*instrucao[0xCA])(Frame *frame);
 u1 opcode;
 
 method_info* recupera_main(ClassFile *classe) {
@@ -146,7 +146,7 @@ void carrega_instrucoes() {
 	instrucao[0x3D] = i_istore_2;
 	instrucao[0x3E] = i_istore_3;
 	instrucao[0x3F] = i_lstore_0;
-//	instrucao[0x40] = i_lstore_1;
+	instrucao[0x40] = i_lstore_1;
 	instrucao[0x41] = i_lstore_2;
 	instrucao[0x42] = i_lstore_3;
 	instrucao[0x43] = i_fstore_0;
@@ -174,9 +174,9 @@ void carrega_instrucoes() {
 	instrucao[0x59] = i_dup;
 	instrucao[0x5A] = i_dup_x1;
 	instrucao[0x5B] = i_dup_x2;
-//	instrucao[0x5C] = i_dup2;
-	//instrucao[0x5D] = i_dup2_x1;
-	//instrucao[0x5E] = i_dup2_x2;
+//	instrucao[0x5C] = i_dup2; // NAO IMPLEMENTADO
+//	instrucao[0x5D] = i_dup2_x1; // NAO IMPLEMENTADO
+//	instrucao[0x5E] = i_dup2_x2; // NAO IMPLEMENTADO
 	instrucao[0x5F] = i_swap;
 	instrucao[0x60] = i_iadd;
 	instrucao[0x61] = i_ladd;
@@ -252,28 +252,27 @@ void carrega_instrucoes() {
 	instrucao[0xA7] = decodifica_geral;
 	instrucao[0xA8] = decodifica_geral;
 	instrucao[0xA9] = decodifica_geral;
-//	instrucao[0xAA] = i_tableswitch;
-//	instrucao[0xAB] = i_lookupswitch;
-//	instrucao[0xAC] = i_ireturn;
-//	instrucao[0xAD] = i_lreturn;
-//	instrucao[0xAE] = i_freturn;
-//	instrucao[0xAF] = i_dreturn;
-//	instrucao[0xB0] = i_areturn;
-//	instrucao[0xB1] = i_return;
-//	instrucao[0xB2] = i_getstatic;
-//	instrucao[0xB3] = i_putstatic;
-//	instrucao[0xB4] = i_getfield;
-//	instrucao[0xB5] = i_putfield;
-//	instrucao[0xB6] = i_invokevirtual;
-//	instrucao[0xB7] = i_invokespecial;
-//	instrucao[0xB8] = i_invokestatic;
+//	instrucao[0xAA] = i_tableswitch; // NAO IMPLEMENTADO
+//	instrucao[0xAB] = i_lookupswitch; // NAO IMPLEMENTADO
+//	instrucao[0xAC] = i_ireturn; // NAO IMPLEMENTADO
+//	instrucao[0xAD] = i_lreturn; // NAO IMPLEMENTADO
+//	instrucao[0xAE] = i_freturn; // NAO IMPLEMENTADO
+//	instrucao[0xAF] = i_dreturn; // NAO IMPLEMENTADO
+//	instrucao[0xB0] = i_areturn; // NAO IMPLEMENTADO
+//	instrucao[0xB1] = i_return; // NAO IMPLEMENTADO
+//	instrucao[0xB2] = i_getstatic; // NAO IMPLEMENTADO
+//	instrucao[0xB3] = i_putstatic; // NAO IMPLEMENTADO
+//	instrucao[0xB4] = i_getfield; // NAO IMPLEMENTADO
+//	instrucao[0xB5] = i_putfield; // NAO IMPLEMENTADO
+//	instrucao[0xB6] = i_invokevirtual; // NAO IMPLEMENTADO
+//	instrucao[0xB7] = i_invokespecial; // NAO IMPLEMENTADO
+//	instrucao[0xB8] = i_invokestatic; // NAO IMPLEMENTADO
 	instrucao[0xB9] = decodifica_geral;
-	//instrucao[0xBA] = decodifica_geral;
-//	instrucao[0xBB] = i_new;
+	instrucao[0xBB] = decodifica_geral;
 	instrucao[0xBC] = decodifica_geral;
 	instrucao[0xBD] = decodifica_geral;
-	//instrucao[0xBE] = decodifica_geral;
-//	instrucao[0xBF] = i_athrow;
+	instrucao[0xBE] = i_arraylength;
+	instrucao[0xBF] = i_atrhow;
 	instrucao[0xC0] = decodifica_geral;
 	instrucao[0xC1] = decodifica_geral;
 	instrucao[0xC2] = i_monitorenter;
@@ -289,8 +288,8 @@ void carrega_instrucoes() {
 void decodifica_geral(Frame *frame) {
     u4 *nu4 = NULL;
     u2 *nu2 = NULL;
-    u1 indexu1 = 0, index2u1 = 0, incu1 = 0, typeu1 = 0, constbyte1u1 = 0, constbyte2u1 = 0, dimensionsu1 = 0;
-    u1 branch1u1 = 0, branch2u1 = 0, branch3u1 = 0, branch4u1 = 0;
+    u1 index = 0, index2 = 0, inc = 0, type = 0, constbyte1 = 0, constbyte2 = 0;
+    u1 branch1 = 0, branch2 = 0, branch3 = 0, branch4 = 0, dimensions = 0;
     cp_info *constant_pool = frame->constant_pool;
 
     switch(opcode) {
@@ -301,25 +300,25 @@ void decodifica_geral(Frame *frame) {
             i_sipush(frame, nu2);
             break;
         case 0x12:
-            i_ldc(frame, indexu1, constant_pool);
+            i_ldc(frame, index, constant_pool);
             break;
         case 0x13:
-            i_ldc_w(frame, indexu1, index2u1, constant_pool);
+            i_ldc_w(frame, index, index2, constant_pool);
             break;
         case 0x14:
-            i_ldc2_w(frame, indexu1, index2u1, constant_pool);
+            i_ldc2_w(frame, index, index2, constant_pool);
             break;
         case 0x84:
-            i_iinc(frame, indexu1, incu1);
+            i_iinc(frame, index, inc);
             break;
         case 0xA7:
-            i_goto(frame, indexu1, index2u1);
+            i_goto(frame, index, index2);
             break;
         case 0xA8:
-            i_jsr(frame, indexu1, index2u1);
+            i_jsr(frame, index, index2);
             break;
         case 0xA9:
-            i_ret(frame, indexu1);
+            i_ret(frame, index);
             break;
         /*case 0xAA:
             break;
@@ -352,45 +351,40 @@ void decodifica_geral(Frame *frame) {
         case 0xB8:
             break;
         case 0xB9:
-            i_invokeinterface();
-            break;*/
-        case 0xBA:
+            i_invokeinterface(frame, pilha);
             break;
         case 0xBB:
-            break;
+            i_new(frame, index, index2);
+            break;*/
         case 0xBC:
-            i_newarray(frame, typeu1);
+            i_newarray(frame, type);
             break;
         case 0xBD:
-            i_anewarray(frame, indexu1, index2u1);
-            break;
-        case 0xBE:
-            break;
-        case 0xBF:
+            i_anewarray(frame, index, index2);
             break;
         case 0xC0:
-            i_checkcast(frame, indexu1, index2u1);
+            i_checkcast(frame, index, index2);
             break;
         case 0xC1:
-            i_instanceof(frame, indexu1, index2u1);
+            i_instanceof(frame, index, index2);
             break;
         case 0xC4:
-            i_wide(frame, opcode, indexu1, index2u1, constbyte1u1, constbyte2u1);
+            i_wide(frame, opcode, index, index2, constbyte1, constbyte2);
             break;
         case 0xC5:
-            i_multianewarray(frame, indexu1, index2u1, dimensionsu1);
+            i_multianewarray(frame, index, index2, dimensions);
             break;
         case 0xC6:
-            i_ifnull(frame, branch1u1, branch2u1);
+            i_ifnull(frame, branch1, branch2);
             break;
         case 0xC7:
-            i_ifnonnull(frame, branch1u1, branch2u1);
+            i_ifnonnull(frame, branch1, branch2);
             break;
         case 0xC8:
-            i_goto_w(frame, branch1u1, branch2u1, branch3u1, branch4u1);
+            i_goto_w(frame, branch1, branch2, branch3, branch4);
             break;
         case 0xC9:
-            i_jsr_w(frame, branch1u1, branch2u1, branch3u1, branch4u1);
+            i_jsr_w(frame, branch1, branch2, branch3, branch4);
             break;
         default:
             break;
