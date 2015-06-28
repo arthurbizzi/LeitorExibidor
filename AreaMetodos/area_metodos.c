@@ -72,7 +72,7 @@ int executa_instrucoes(method_info *metodo, Frame *frame) {
         if(metodo->attributes[i].tag == ATTRTAG_Code) {
             attribute_info *codigo = &(metodo->attributes[i]);
             for(int j = 0; j < codigo->info.CodeAttribute.code_length; j++) {
-                opcode = codigo->info.CodeAttribute.code[i];
+                opcode = codigo->info.CodeAttribute.code[j];
                 instrucao[opcode](frame);
             }
             return 1;

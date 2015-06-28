@@ -115,7 +115,7 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses)
     ListaClasses *lc1;
 
     lc1 = *listadeclasses;
-    for(int i = 0; i < index; i++)
+    for(int i = 0; i < index + 1; i++)
     {
         if(i == index)
         {

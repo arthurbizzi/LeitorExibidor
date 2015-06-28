@@ -46,7 +46,6 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
     default:
         break;
     }
-
     /* Carregamento dos demais itens */
     carrega_constantpool(arq_classe, classe);
     carrega_flagseclasses(arq_classe, classe);

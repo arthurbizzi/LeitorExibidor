@@ -52,7 +52,6 @@ int main(int argc, char **argv) {
         printf("ERRO: arquivo nao pode ser criado.\n");
         return ERRO_ARQUIVO;
     }
-
     if(opcao == 'n') { // Modo classloader se op != n
         status = executa_programa(classe); // Executa o codigo da classe a partir de main
     }
@@ -103,15 +102,25 @@ int verifica_impressao(ClassFile *classe, char opcao) {
                 return ERRO_ARQUIVO;
             imprime_general_information(classe);
             imprime_general_information_file(classe, arquivo_saida);
+            printf("3\n");
             imprime_constant_pool(classe);
+            printf("4\n");
             imprime_constant_pool_file(classe, arquivo_saida);
+            printf("5\n");
             imprime_fields(classe);
+            printf("6\n");
             imprime_fields_file(classe, arquivo_saida);
+            printf("7\n");
             imprime_methods(classe);
+            printf("8\n");
             imprime_methods_file(classe, arquivo_saida);
+            printf("9\n");
             imprime_attributes(classe);
+            printf("10\n");
             imprime_attributes_file(classe, arquivo_saida);
+            printf("11\n");
             fclose(arquivo_saida);
+            printf("12\n");
             break;
         default: // Impressao em Arquivo e em Tela
             imprime_general_information(classe);
@@ -142,14 +151,13 @@ int executa_programa(ClassFile *classe) {
     InicializaListaDeClasses(&lista_de_classes);
     InsereListaDeClasses(&lista_de_classes, classe);
     classe_inicial = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe
-    carrega_instrucoes();
     InicializaPilhaDeFrames(&pilha_de_frames);
 
-    if(!(metodo_main = recupera_main(classe_inicial))) {
+    metodo_main = recupera_main(classe_inicial);
+    if(!metodo_main) {
         printf("ERRO: Metodo MAIN nao encontrado.\n");
         return ERRO_MAIN;
     }
-
     prepara_metodo(metodo_main, classe_inicial, pilha_de_frames);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
