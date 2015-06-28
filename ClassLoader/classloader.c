@@ -14,18 +14,19 @@ int raiz = 1;
 int carrega_classe(char *nome_completo, ClassFile *classe)
 {
     FILE *arq_classe;
-    char caminho_arquivo[50] = "";
+    char *caminho_arquivo;
 
     diretorio = recupera_nome_diretorio(nome_completo);
     nome_arquivo = recupera_nome_arquivo(nome_completo);
     if(raiz) {
+        caminho_arquivo = (char *) malloc(strlen(nome_completo) * sizeof(char));
         strcpy(caminho_arquivo, nome_completo);
     }
     else {
+        caminho_arquivo = (char *) malloc((strlen(diretorio) + strlen(nome_arquivo)) * sizeof(char));
         strcpy(caminho_arquivo, diretorio);
         strcat(caminho_arquivo, nome_arquivo);
     }
-
     if(!(arq_classe = fopen(caminho_arquivo, "rb")))
     {
         printf("ERRO: arquivo \"%s\" nao existe em \"%s\".\n", nome_completo, diretorio);
@@ -61,7 +62,6 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
     }
 
     fclose(arq_classe);
-
     return SUCESSO;
 }
 
