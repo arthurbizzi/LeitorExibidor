@@ -56,7 +56,7 @@
 1433378441 e:\guilherme\area\gui\sb\leitorexibidor\imprime.h
 	"main.h"
 
-1435152747 source:e:\guilherme\area\gui\sb\leitorexibidor\main.c
+1435521472 source:e:\guilherme\area\gui\sb\leitorexibidor\main.c
 	"main.h"
 
 1434861921 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\carregamento.c
@@ -319,11 +319,11 @@
 	"../ClassLoader/classloader.h"
 	"../ClassLoader/carregamento.h"
 
-1435513905 e:\guilherme\area\gui\sb\leitorexibidor\heap\heap.h
+1435531448 e:\guilherme\area\gui\sb\leitorexibidor\heap\heap.h
 	"../ClassLoader/classloader.h"
 	"../ClassLoader/carregamento.h"
 
-1435521860 source:e:\guilherme\area\gui\sb\leitorexibidor\heap\heap.c
+1435531448 source:e:\guilherme\area\gui\sb\leitorexibidor\heap\heap.c
 	"heap.h"
 
 1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\heap\lista_arrays_objetos_classes.c
@@ -408,7 +408,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435427884 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\pop_dup_swap.c
+1435521467 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\pop_dup_swap.c
 	"pop_dup_swap.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
@@ -421,7 +421,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435427884 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\store.c
+1435521467 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\store.c
 	"store.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
@@ -434,17 +434,17 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435156630 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.c
+1435521467 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_frames.c
 	"pilha_frames.h"
-	"../Heap/lista_arrays_objetos_classes.h"
+	"../Heap/heap.h"
 
-1435152586 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.c
+1435521467 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.c
 	"pilha_operandos.h"
 
-1435428700 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
+1435529951 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
 	"others.h"
 
-1435529872 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.h
+1435531501 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.h
 	<math.h>
 	"../Pilha/pilha_frames.h"
 

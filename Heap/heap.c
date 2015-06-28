@@ -155,17 +155,18 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses)
     return NULL;
 }
 
-ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses) {
+ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses)
+{
     ListaClasses *lc1;
-
+    int index;
+    char *nomeThisClass;
     lc1 = *listadeclasses;
-    #warning IMPLEMENTAR CONTADOR DE CLASSES
-    for(int i = 0; i < 10; i++) {
-        u1 *nome_atual;
-        int index_nome = lc1->dado->methods[i].name_index - 1;
-        nome_atual = dereferencia(lc1->dado, index_nome);        if(!strcmp(nome, nome_atual)) {
+    while (lc1 != NULL)
+    {
+        index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
+        nomeThisClass = dereferencia(index, lc1->dado);
+        if (!strcmp(nome,nomeThisClass))
             return lc1->dado;
-        }
         lc1 = lc1->prox;
     }
     return NULL;

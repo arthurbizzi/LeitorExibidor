@@ -57,7 +57,6 @@ void i_ifnonnull(Frame *frame, u1 branchbyte1, u1 branchbyte2);
 void i_goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4);
 void i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4);
 char* i_dereferencia_instrucoes(u2 index, cp_info *cp);
-ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses);
 staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields);
 
 
