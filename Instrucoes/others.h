@@ -18,19 +18,6 @@
 #define TipoInt         10
 #define TipoLong        11
 
-#define AFPuplic    0x0001
-#define AFPrivate   0x0002
-#define AFProtected 0x0004
-#define AFStatic    0x0008
-#define AFFinal     0x0010
-#define AFSuper     0x0020
-#define AFVolatile  0x0040
-#define AFTransient 0x0080
-#define AFNative    0x0100
-#define AFInterface 0x0200
-#define AFAbstract  0x0400
-#define AFStrict    0x0800
-
 void i_nop();
 void i_bipush(Frame* frame,u4* n);
 void i_sipush(Frame* frame,u2* n);
@@ -40,6 +27,19 @@ void i_ldc2_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool);
 void i_goto(Frame* frame, u1 index1, u1 index2);
 void i_jsr(Frame* frame, u1 index, u1 index2);
 void i_ret(Frame* frame, u1 index);
+void i_ireturn(PilhaDeFrames *pilhadeframes);
+void i_lreturn(PilhaDeFrames *pilhadeframes);
+void i_freturn(PilhaDeFrames *pilhadeframes);
+void i_dreturn(PilhaDeFrames *pilhadeframes);
+void i_areturn(PilhaDeFrames *pilhadeframes);
+void i_return(PilhaDeFrames *pilhadeframes);
+void i_getstatic(Frame *frame, ListaStaticField *listadefields, u1 indexbyte1, u1 indexbyte2);
+void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
+void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2);
+void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2);
+void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
+void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
+void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
 void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero);
 void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses);
 void i_newarray(Frame *frame, u1 atype);

@@ -93,6 +93,35 @@ void desalocaListaDeClasses(ListaClasses **listadeclasses)
     return;
 }
 
+void InicializaListaDeFields(ListaStaticField **listadefields)
+{
+    *listadefields = NULL;
+    return;
+}
+
+void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado)
+{
+    ListaStaticField *lsf1;
+    lsf1 = (ListaStaticField *)malloc(sizeof(ListaStaticField));
+    lsf1->dado = dado;
+    lsf1->prox = *listadefields;
+    *listadefields = lsf1;
+    return;
+}
+
+void desalocaListaDeFields(ListaStaticField **listadefields)
+{
+    ListaStaticField *lsf1;
+    while (*listadefields != NULL)
+    {
+        free((*listadefields)->dado);
+        lsf1 = *listadefields;
+        *listadefields = lsf1->prox;
+        free(lsf1);
+    }
+    return;
+}
+
 u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
 {
     ListaClasses *lc1;

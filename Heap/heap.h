@@ -36,31 +36,25 @@ typedef struct listadearrays
     struct listadearrays    *prox;
 } ListaArrays;
 
-typedef struct tipofield
-{
-    u1 tag;
-    union
-    {
-        u1 tipoBoolean;
-        u1 tipoByte;
-        u2 tipoShort;
-        u4 tipoInt;
-        u4 tipoFloat;
-        u8 tipoLong;
-        u8 tipoDouble;
-    } info;
-    field_info *field;
-    ClassFile  *classe;
-} Field;
-
 typedef struct tipoobjeto
 {
     ClassFile   *classe;
     u2          tamanhotipoField;
-    Field       *tipofield;
-    u2          tamanhotipoArray;
-    tArray      *tipoarray;
+    u8          *tipofield;
 } Objeto;
+
+typedef struct
+{
+	char    *NomeClasse;
+	u2      fieldCount;
+	u8      *valor;
+} staticField;
+
+typedef struct listastaticfield
+{
+	staticField             *dado;
+	struct listastaticfield *prox;
+} ListaStaticField;
 
 typedef struct listadeobjetos
 {
@@ -139,6 +133,10 @@ void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado);
 *   @param listadeclasses
 */
 void desalocaListaDeClasses(ListaClasses **listadeclasses);
+
+void InicializaListaDeFields(ListaStaticField **listadefields);
+void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado);
+void desalocaListaDeFields(ListaStaticField **listadefields);
 
 /**
 *   @fn u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
