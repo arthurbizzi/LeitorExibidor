@@ -22,13 +22,13 @@ method_info* recupera_main(ClassFile *classe) {
     return NULL;
 }
 
-void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap) {
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap *heap) {
     for(int i = 0; i < metodo->attributes_count; i++) {
         if(metodo->attributes[i].tag == ATTRTAG_Code) {
             if(metodo->attributes_count > 0) {
                 Frame *frame = ConstruirFrame(classe, metodo, pilha_de_frames, heap);
-                EmpilhaFrame(&pilha_de_frames, frame);
-                free(frame);
+                EmpilhaFrame(pilha_de_frames, frame);
+                //free(frame);
                 return;
             }
             else {
@@ -68,9 +68,9 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
 }
 
 int executa_instrucoes(method_info *metodo, Frame *frame) {
-    for(int i = 0; i < frame->codigo->info.CodeAttribute.code_length; i++) {
-        opcode = frame->codigo->info.CodeAttribute.code[i];
-        instrucao[opcode](frame);
+    for( ;frame->pc < frame->codigo->info.CodeAttribute.code_length; frame->pc++) {
+        opcode = frame->codigo->info.CodeAttribute.code[frame->pc];
+		instrucao[opcode](frame);
     }
     return 1;
 }
@@ -289,50 +289,50 @@ void decodifica_geral(Frame *frame) {
 
     switch(opcode) {
         case 0x10:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index3 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index4 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             *nu4 = (u4)(index << 24 | index2 << 16 | index3 << 8 | index4);
             i_bipush(frame, nu4);
             break;
         case 0x11:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             *nu2 = (u4)(index << 8 | index2);
             i_sipush(frame, nu2);
             break;
         case 0x12:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_ldc(frame, index, constant_pool);
             break;
         case 0x13:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_ldc_w(frame, index, index2, constant_pool);
             break;
         case 0x14:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_ldc2_w(frame, index, index2, constant_pool);
             break;
         case 0x84:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            inc = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            inc = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_iinc(frame, index, inc);
             break;
         case 0xA7:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_goto(frame, index, index2);
             break;
         case 0xA8:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_jsr(frame, index, index2);
             break;
         case 0xA9:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_ret(frame, index);
             break;
         case 0xAA:
@@ -358,107 +358,107 @@ void decodifica_geral(Frame *frame) {
             i_return(frame->pilhaDeFrames);
             break;
         case 0xB2:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_getstatic(frame, frame->heap->listaStaticField, frame->heap->listaDeClasses, index, index2);
             break;
         case 0xB3:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_putstatic(frame, frame->heap->listaStaticField, frame->heap->listaDeClasses, index, index2);
             break;
         case 0xB4:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_getfield(frame, index, index2);
             break;
         case 0xB5:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_putfield(frame, index, index2);
             break;
         case 0xB6:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_invokevirtual(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, frame->heap);
             break;
         case 0xB7:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_invokespecial(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, frame->heap);
             break;
         case 0xB8:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_invokestatic(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, frame->heap);
             break;
         case 0xB9:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            contagem = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            zero = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            contagem = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            zero = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_invokeinterface(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, contagem, zero, frame->heap);
             break;
         case 0xBB:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_new(frame, index, index2, frame->heap->listaDeClasses);
             break;
         case 0xBC:
-            type = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            type = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_newarray(frame, type);
             break;
         case 0xBD:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_anewarray(frame, index, index2);
             break;
         case 0xC0:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_checkcast(frame, index, index2);
             break;
         case 0xC1:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_instanceof(frame, index, index2);
             break;
         case 0xC4:
-            opcode1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            constbyte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            constbyte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            opcode1 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            constbyte1 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            constbyte2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_wide(frame, opcode1, index, index2, constbyte1, constbyte2);
             break;
         case 0xC5:
-            index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            dimensions = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            dimensions = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_multianewarray(frame, index, index2, dimensions);
             break;
         case 0xC6:
-            branch1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            branch2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            branch1 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            branch2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_ifnull(frame, branch1, branch2);
             break;
         case 0xC7:
-            branch1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            branch2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            branch1 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            branch2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_ifnonnull(frame, branch1, branch2);
             break;
         case 0xC8:
-            branch1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            branch2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            branch3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            branch4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            branch1 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            branch2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            branch3 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            branch4 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_goto_w(frame, branch1, branch2, branch3, branch4);
             break;
         case 0xC9:
-            branch1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            branch2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            branch3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            branch4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+            branch1 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            branch2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            branch3 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            branch4 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_jsr_w(frame, branch1, branch2, branch3, branch4);
             break;
         default:
@@ -468,7 +468,7 @@ void decodifica_geral(Frame *frame) {
 }
 
 void decodifica_load(Frame *frame) {
-    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc++];
+    u1 index = frame->codigo->info.CodeAttribute.code[++frame->pc];
     switch(opcode) {
         case 0x15:
             i_iload(frame, index);
@@ -489,7 +489,7 @@ void decodifica_load(Frame *frame) {
 }
 
 void decodifica_store(Frame *frame) {
-    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc++];
+    u1 index = frame->codigo->info.CodeAttribute.code[++frame->pc];
     switch(opcode) {
     case 0x36:
         i_istore(frame, index);
@@ -510,8 +510,8 @@ void decodifica_store(Frame *frame) {
 }
 
 void decodifica_if(Frame *frame) {
-    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc++];
-    u1 index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+    u1 index = frame->codigo->info.CodeAttribute.code[++frame->pc];
+    u1 index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
     switch(opcode) {
         case 0x99:
             i_ifeq(frame, index, index2);

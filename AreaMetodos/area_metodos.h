@@ -28,7 +28,7 @@ method_info* recupera_main(ClassFile *classe);
 *   @param pilha_de_frames Pilha que armazena os frames.
 *   @param heap Heap do programa.
 */
-void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap);
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap *heap);
 
 /**
 *   @fn int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)

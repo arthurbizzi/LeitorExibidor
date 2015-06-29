@@ -157,7 +157,8 @@ int executa_programa(ClassFile *classe) {
         printf("ERRO: Metodo MAIN nao encontrado.\n");
         return ERRO_MAIN;
     }
-    prepara_metodo(metodo_main, classe_inicial, pilha_de_frames, heap);
+    carrega_instrucoes();
+    prepara_metodo(metodo_main, classe_inicial, &pilha_de_frames, heap);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
     desalocaListaDeClasses(&lista_de_classes);

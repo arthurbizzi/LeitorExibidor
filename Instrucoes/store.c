@@ -8,186 +8,185 @@
 void i_istore(Frame* frame, u1 index)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[index] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = value;
 }
 
 void i_lstore(Frame* frame, u1 index)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[index] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[index+1] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = (value) >> 32;
+    frame ->VetorVariaveisLocais[index+1] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_fstore(Frame* frame, u1 index)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[index] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = value;
 }
 
 void i_dstore(Frame* frame, u1 index)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[index] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[index+1] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = (value) >> 32;
+    frame ->VetorVariaveisLocais[index+1] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_astore(Frame* frame, u1 index)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[index] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[index] = value;
 }
 
 void i_istore_0(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[0] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = value;
 }
 
 void i_istore_1(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[1] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = value;
 }
 
 void i_istore_2(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[2] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = value;
 }
 
 void i_istore_3(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[3] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = value;
 }
 
 void i_lstore_0(Frame* frame)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[0] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[1] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = (value) >> 32;
+    frame ->VetorVariaveisLocais[1] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_lstore_1(Frame* frame)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[1] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[2] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = (value) >> 32;
+    frame ->VetorVariaveisLocais[2] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_lstore_2(Frame* frame)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[2] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[3] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = (value) >> 32;
+    frame->VetorVariaveisLocais[3] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_lstore_3(Frame* frame)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[3] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[4] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = (value) >> 32;
+    frame->VetorVariaveisLocais[4] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_fstore_0(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[0] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = value;
 }
 
 void i_fstore_1(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[1] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = value;
 }
 
 void i_fstore_2(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[2] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = value;
 }
 
 void i_fstore_3(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[3] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = value;
 }
 
 void i_dstore_0(Frame* frame)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[0] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[1] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = (value) >> 32;
+    frame ->VetorVariaveisLocais[1] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_dstore_1(Frame* frame)
 {
-
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[1] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[2] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = (value) >> 32;
+    frame ->VetorVariaveisLocais[2] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_dstore_2(Frame* frame)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[2] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[3] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = (value) >> 32;
+    frame ->VetorVariaveisLocais[3] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_dstore_3(Frame* frame)
 {
 
-    u8 *value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[3] = (*value) >> 32;
-    frame ->VetorVariaveisLocais[4] = (*value) & 0x00000000FFFFFFFF;
+    u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = (value) >> 32;
+    frame ->VetorVariaveisLocais[4] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_astore_0(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[0] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[0] = value;
 }
 
 void i_astore_1(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[1] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[1] = value;
 }
 
 void i_astore_2(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[2] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[2] = value;
 }
 
 void i_astore_3(Frame* frame)
 {
 
-    u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    frame->VetorVariaveisLocais[3] = *value;
+    u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    frame->VetorVariaveisLocais[3] = value;
 }
 
 void i_iastore(Frame* frame)
