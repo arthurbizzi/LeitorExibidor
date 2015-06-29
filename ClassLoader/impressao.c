@@ -242,7 +242,11 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
                 Instrucao mapa[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
                 carrega_mnemonicos(mapa);
-                printf("\t\t\t\t\t%d: %s\n", i, mapa[opcode].mnemonico);
+                printf("\t\t\t\t\t%d: %s\t", i, mapa[opcode].mnemonico);
+                for(int j = 0; j < mapa[opcode].qtd_operandos; j++) {
+                    printf("%hu\t", attributeInfo->info.CodeAttribute.code[++i]);
+                }
+                printf("\n");
             }
             printf("\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
             for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++)
@@ -623,7 +627,11 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
                 Instrucao mapa[0xCA];
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i];
                 carrega_mnemonicos(mapa);
-                fprintf(file, "\t\t\t\t\t%d: %s\n", i, mapa[opcode].mnemonico);
+                fprintf(file, "\t\t\t\t\t%d: %s\t", i, mapa[opcode].mnemonico);
+                for(int j = 0; j < mapa[opcode].qtd_operandos; j++) {
+                    fprintf(file, "%hu\t", attributeInfo->info.CodeAttribute.code[++i]);
+                }
+                fprintf(file, "\n");
             }
             fprintf(file, "\n\t\tException Table Length: \t%d\n",
                     attributeInfo->info.CodeAttribute.exception_table_length);
