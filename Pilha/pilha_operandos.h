@@ -17,52 +17,54 @@ typedef struct pilhadeoperandos
 
 /**
 *   @fn void InicializaPilhaDeOperandos(PilhaDeOperandos **pilhaOperandos)
-*   @brief
-*   @param pilhaOperandos
+*   @brief Funcao que inicializa a pilha de operandos de um frame.
+*   @param pilhaOperandos Estrutura que contera a pilha de operandos.
 */
 void InicializaPilhaDeOperandos(PilhaDeOperandos **pilhaOperandos);
 
 /**
-*   @fn EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 dado)
-*   @brief
-*   @param pilhaOperandos
-*   @param dado
+*   @fn void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 *dado)
+*   @brief Funcao que empilha um operando de 32 bits na pilha de operandos.
+*   @param pilhaOperandos Estrutura que contem a pilha de operandos.
+*   @param dado Dado a ser empilhado.
 */
 void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 *dado);
 
 /**
-*   @fn void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 dado)
-*   @brief
-*   @param pilhaOperandos
-*   @param dado
+*   @fn void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u4 *dado)
+*   @brief Funcao que empilha um operando de 64 bits na pilha de operandos.
+*   @param pilhaOperandos Estrutura que contem a pilha de operandos.
+*   @param dado Dado a ser empilhado.
 */
 void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 *dado);
 
 /**
 *   @fn void desalocaPilhaOperandos(PilhaDeOperandos **pilhaOperandos)
-*   @brief
-*   @param pilhaOperandos
+*   @brief Funcao que desaloca completamente uma pilha de operandos.
+*   @param pilhaOperandos Pilha a ser destruida.
 */
 void desalocaPilhaOperandos(PilhaDeOperandos **pilhaOperandos);
 
 /**
 *   @fn u1 PilhaDeOperandosVazia(PilhaDeOperandos *pilhaOperandos)
-*   @brief
-*   @param pilhaOperandos
+*   @brief Funcao que verifica se a pilha de operandos esta vazia.
+*   @param pilhaOperandos Estrutura que contem a pilha de operandos.
 */
 u1 PilhaDeOperandosVazia(PilhaDeOperandos *pilhaOperandos);
 
 /**
 *   @fn u4 DesempilhaOperando32bits(PilhaDeOperandos **pilhaOperandos)
-*   @brief
-*   @param pilhaOperandos
+*   @brief Funcao que desempilha um operando de 32 bits da pilha de operandos.
+*   @param pilhaOperandos Estrutura que contem a pilha de operandos.
+*   @return Topo (u4) da pilha de operandos.
 */
 u4 DesempilhaOperando32bits(PilhaDeOperandos **pilhaOperandos);
 
 /**
-*   @fn u8 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos)
-*   @brief
-*   @param pilhaOperandos
+*   @fn u4 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos)
+*   @brief Funcao que desempilha um operando de 64 bits da pilha de operandos.
+*   @param pilhaOperandos Estrutura que contem a pilha de operandos.
+*   @return Topo (u8) da pilha de operandos.
 */
 u8 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos);
 

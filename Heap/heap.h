@@ -70,80 +70,98 @@ typedef struct listadeclasses
 
 /**
 *   @fn void InicializaListaDeArrays(ListaArrays **listadearrays)
-*   @brief
-*   @param listadearrays
+*   @brief Funcao que inicializa a lista de arrays carregados na heap.
+*   @param listadearrays Estrutura que contera a lista de arrays.
 */
 void InicializaListaDeArrays(ListaArrays **listadearrays);
 
 /**
 *   @fn void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado)
-*   @brief
-*   @param listadearrays
-*   @param dado
+*   @brief Funcao que insere um elemento na lista de arrays.
+*   @param listadearrays Lista que recebera o elemento.
+*   @param dado Dado a ser inserido.
 */
 void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado);
 
 /**
 *   @fn void desalocaListaDeArrays(ListaArrays **listadearrays)
-*   @brief
-*   @param listadearrays
+*   @brief Funcao que desaloca completamente uma lista de arrays.
+*   @param listadearrays Lista a ser destruida.
 */
 void desalocaListaDeArrays(ListaArrays **listadearrays);
 
 /**
 *   @fn void InicializaListaDeObjetos(ListaObjetos **listadeobjetos)
-*   @brief
-*   @param listadeobjetos
+*   @brief Funcao que inicializa a lista de objetos carregados na heap.
+*   @param listadeobjetos Estrutura que contera a lista de objetos.
 */
 void InicializaListaDeObjetos(ListaObjetos **listadeobjetos);
 
 /**
 *   @fn void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado)
-*   @brief
-*   @param listadeobjetos
-*   @param dado
+*   @brief Funcao que insere um elemento na lista de objetos.
+*   @param listadeobjetos Lista que recebera o elemento.
+*   @param dado Dado a ser inserido.
 */
 void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado);
 
 /**
 *   @fn void desalocaListaDeObjetos(ListaObjetos **listadeobjetos)
-*   @brief
-*   @param listadeobjetos
+*   @brief Funcao que desaloca completamente uma lista de objetos.
+*   @param listadeobjetos Lista a ser destruida.
 */
 void desalocaListaDeObjetos(ListaObjetos **listadeobjetos);
 
 /**
 *   @fn void InicializaListaDeClasses(ListaClasses **listadeclasses)
-*   @brief
-*   @param listadeclasses
+*   @brief Funcao que inicializa a lista de classes carregados na heap.
+*   @param listadeclasses Estrutura que contera a lista de classes.
 */
 void InicializaListaDeClasses(ListaClasses **listadeclasses);
 
 /**
 *   @fn void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
-*   @brief
-*   @param listadeclasses
-*   @param dado
+*   @brief Funcao que insere um elemento na lista de classes.
+*   @param listadeclasses Lista que recebera o elemento.
+*   @param dado Dado a ser inserido.
 */
 void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado);
 
 /**
 *   @fn void desalocaListaDeClasses(ListaClasses **listadeclasses)
-*   @brief
-*   @param listadeclasses
+*   @brief Funcao que desaloca completamente uma lista de classes.
+*   @param listadeclasses Lista a ser destruida.
 */
 void desalocaListaDeClasses(ListaClasses **listadeclasses);
 
+/**
+*   @fn void InicializaListaDeFields(ListaStaticField **listadefields)
+*   @brief Funcao que inicializa a lista de fields carregados na heap.
+*   @param listadefields Estrutura que contera a lista de fields.
+*/
 void InicializaListaDeFields(ListaStaticField **listadefields);
+
+/**
+*   @fn void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado)
+*   @brief Funcao que insere um elemento na lista de fields.
+*   @param listadefields Lista que recebera o elemento.
+*   @param dado Dado a ser inserido.
+*/
 void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado);
+
+/**
+*   @fn void desalocaListaDeFields(ListaStaticField **listadefields)
+*   @brief Funcao que desaloca completamente uma lista de fields.
+*   @param listadefields Lista a ser destruida.
+*/
 void desalocaListaDeFields(ListaStaticField **listadefields);
 
 /**
 *   @fn u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
-*   @brief
-*   @param listadeclasses
-*   @param nomedaclasse
-*   @return
+*   @brief Funcao que verifica se uma classe esta carregada numa lista de classes.
+*   @param listadeclasses Lista de classes carregadas.
+*   @param nomedaclasse Classe a ser procurada.
+*   @return 1, se estiver carregada, 0, caso contrario.
 */
 u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse);
 

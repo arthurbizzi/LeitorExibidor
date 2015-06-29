@@ -34,52 +34,53 @@ typedef struct pilhadeframes
 
 /**
 *   @fn void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames)
-*   @brief
-*   @param pilhaFrames
+*   @brief Funcao que inicializa a pilha de frames.
+*   @param pilhaFrames Estrutura que contera a pilha de frames.
 */
 void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames);
 
 /**
 *   @fn void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame)
-*   @brief
-*   @param pilhaFrame
-*   @param frame
+*   @brief Funcao que empilha um frame pilha de frames.
+*   @param pilhaFrame Estrutura que contem a pilha de frames.
+*   @param frame Dado a ser empilhado.
 */
 void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame);
 
 /**
 *   @fn void DestruirFrame(Frame *frame)
-*   @brief
-*   @param frame
+*   @brief Funcao que destroi um frame.
+*   @param frame Frame a ser destruido.
 */
 void DestruirFrame(Frame *frame);
 
 /**
 *   @fn void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames)
-*   @brief
-*   @param pilhaFrames
+*   @brief Funcao que desaloca completamente uma pilha de frames.
+*   @param pilhaFrames Pilha a ser destruida.
 */
 void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames);
 
 /**
 *   @fn Frame *ConstruirFrame(ClassFile *classe, method_info *method)
-*   @brief
-*   @param classe
-*   @param method
+*   @brief Funcao que constroi um frame a partir de uma classe e de um metodo.
+*   @param classe Estrutura que contem a classe atual.
+*   @param method Estrutura que contem o metodo atual.
 */
 Frame *ConstruirFrame(ClassFile *classe, method_info *method);
 
 /**
 *   @fn Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
-*   @brief
-*   @param pilhaFrame
+*   @brief Funcao que desempilha um frame da pilha de frames.
+*   @param pilhaFrames Estrutura que contem a pilha de frames.
+*   @return Topo da pilha de frames (frame corrente).
 */
 Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame);
 
 /**
-*   @fn u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame)
-*   @brief
-*   @param pilhaFrame
+*   @fn u1 PilhaDeFramesVazia(PilhaDeOperandos *pilhaFrames)
+*   @brief Funcao que verifica se a pilha de frames esta vazia.
+*   @param pilhaFrames Estrutura que contem a pilha de frames.
 */
 u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame);
 

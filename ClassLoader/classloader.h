@@ -296,12 +296,13 @@ typedef struct instrucao
 *   @fn int carrega_classe(int *nome_arquivo, ClassFile *classe)
 *   @brief Funcao que carrega uma classe.
 *   @param nome_arquivo Nome do arquivo que contem a classe.
-*   @return Classe carregada.
+*   @param classe Estrutura que contem a informacao da classe.
+*   @return Status de execucao.
 */
 int carrega_classe(char *nome_arquivo, ClassFile* classe);
 
 /**
-*   @fn char* recupera_diretorio(char *arquivo)
+*   @fn char* recupera_nome_diretorio(char *arquivo)
 *   @brief Funcao que recupera somente o diretorio de um dado caminho.
 *   @param arquivo Caminho completo para o arquivo.
 *   @return Diretorio onde se encontra o arquivo.

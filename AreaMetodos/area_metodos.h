@@ -16,14 +16,14 @@
 *   @fn method_info* recupera_main(ClassFile *classe)
 *   @brief Funcao que recupera o metodo main de uma classe.
 *   @param classe Classe carregada.
-*   @return Metodo main, se encontrado, ou NULL, caso contrario.
+*   @return Metodo main, se encontrado, NULL, caso contrario.
 */
 method_info* recupera_main(ClassFile *classe);
 
 /**
 *   @fn void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)
 *   @brief Funcao que prepara um metodo de uma classe.
-*   @param metodo Metodo a ser executado.
+*   @param metodo Metodo a ser preparado.
 *   @param classe Classe que contem o metodo.
 *   @param pilha_de_frames Pilha que armazena os frames.
 */
@@ -41,7 +41,7 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
 
 /**
 *   @fn int executa_instrucoes(method_info *metodo, Frame *frame)
-*   @brief Funcao que executa as instrucoes de um metodo.
+*   @brief Funcao que executa cada instrucao de um metodo.
 *   @param metodo Metodo a ser executado.
 *   @param frame Frame atual.
 *   @return Status de execucao.
@@ -50,8 +50,8 @@ int executa_instrucoes(method_info *metodo, Frame *frame);
 
 /**
 *   @fn int executa_instrucao(u4 opcode)
-*   @brief Funcao que executa as instrucoes de um metodo.
-*   @param opcode Metodo a ser executado.
+*   @brief Funcao que executa uma instrucao especifica.
+*   @param opcode Opcode da instrucao a ser executada.
 *   @return Status de execucao.
 */
 int executa_instrucao(u4 opcode);
