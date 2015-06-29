@@ -88,13 +88,13 @@ void DestruirFrame(Frame *frame)
 
 void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames)
 {
-    PilhaDeFrames *pf1;
+    PilhaDeFrames *lc1;
     while (*pilhaFrames != NULL)
     {
-        pf1 = *pilhaFrames;
-        *pilhaFrames = pf1->prox;
-        DestruirFrame(pf1->dado);
-        free(pf1);
+        free((*pilhaFrames)->dado);
+        lc1 = *pilhaFrames;
+        *pilhaFrames = lc1->prox;
+        free(lc1);
     }
     return;
 }

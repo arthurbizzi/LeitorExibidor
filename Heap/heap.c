@@ -24,13 +24,15 @@ void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado)
 
 void desalocaListaDeArrays(ListaArrays **listadearrays)
 {
-    ListaArrays *la1;
+    ListaArrays *lc1;
+    ListaArrays *lc2;
     while (*listadearrays != NULL)
     {
-        free((*listadearrays)->dado);
-        la1 = *listadearrays;
-        *listadearrays = la1->prox;
-        free(la1);
+		lc2 = *listadearrays;
+        free(lc2->dado);
+        lc1 = *listadearrays;
+        *listadearrays = lc1->prox;
+        free(lc1);
     }
     return;
 }
@@ -183,7 +185,7 @@ void InicializaHeap(Heap *heap, ListaArrays *listaArrays, ListaStaticField *list
 }
 
 void desalocaHeap(Heap *heap) {
-    desalocaListaDeArrays(&heap->listaDeArrays);
+    //desalocaListaDeArrays(&heap->listaDeArrays);
     desalocaListaDeClasses(&heap->listaDeClasses);
     desalocaListaDeObjetos(&heap->listaDeObjetos);
     desalocaListaDeFields(&heap->listaStaticField);

@@ -355,7 +355,7 @@ void decodifica_geral(Frame *frame) {
             i_areturn(frame->pilhaDeFrames);
             break;
         case 0xB1:
-            i_return(frame->pilhaDeFrames);
+            i_return(frame);
             break;
         case 0xB2:
             index = frame->codigo->info.CodeAttribute.code[++frame->pc];

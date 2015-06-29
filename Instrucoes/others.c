@@ -170,11 +170,9 @@ void i_areturn(PilhaDeFrames *pilhadeframes)
     return;
 }
 
-void i_return(PilhaDeFrames *pilhadeframes)
+void i_return(Frame* frame)
 {
-    Frame *frame;
-    frame = DesempilhaFrame(&(pilhadeframes));
-    DestruirFrame(frame);
+	frame->pc = frame->codigo->info.CodeAttribute.code_length;
     return;
 }
 

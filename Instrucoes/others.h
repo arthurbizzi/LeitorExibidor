@@ -147,7 +147,7 @@ void i_areturn(PilhaDeFrames *pilhadeframes);
 *	@param pilhadeframes
 *   @return
 */
-void i_return(PilhaDeFrames *pilhadeframes);
+void i_return(Frame *frame);
 
 /**
 *   @fn void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
