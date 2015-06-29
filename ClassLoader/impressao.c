@@ -35,8 +35,9 @@ void imprime_constant_pool(ClassFile *classe)
     printf("\n");
     printf(">>>Constant Pool<<<\n");
     int index = 0;
-    for (int i = 0;
-            i < (classe->constant_pool_count - 1); i++)   /* Armazena os valores de cada elemento do constant pool */
+    double dvalue;
+    float fvalue;
+    for (int i = 0;  i < (classe->constant_pool_count - 1); i++)   /* Armazena os valores de cada elemento do constant pool */
     {
         switch (classe->constant_pool[i].tag)   /* Existem respostas diferentes para cada tag */
         {
@@ -101,9 +102,10 @@ void imprime_constant_pool(ClassFile *classe)
             printf("\tInteger:             \t%d\n", classe->constant_pool[i].info.Integer.bytes);
             break;
         case CONSTANT_Float:
+			memcpy(&fvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u4));
             printf("[%d]CONSTANT_Float_info:\n", (i + 1));
             printf("\tBytes:               \t0x%x\n", classe->constant_pool[i].info.Float.bytes);
-            printf("\tFloat:               \t%f\n", (float)classe->constant_pool[i].info.Float.bytes);
+            printf("\tFloat:               \t%f\n", fvalue);
             break;
         case CONSTANT_Long:
             l = (u8) classe->constant_pool[i].info.Long.high_bytes << 32;
@@ -118,10 +120,12 @@ void imprime_constant_pool(ClassFile *classe)
         case CONSTANT_Double:
             l = (u8) classe->constant_pool[i].info.Double.high_bytes << 32;
             l = l | classe->constant_pool[i].info.Double.low_bytes;
+
+            memcpy(&fvalue,&l,sizeof(u4));
             printf("[%d]CONSTANT_Double_info:\n", (i + 1));
             printf("\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Double.high_bytes);
             printf("\tLow bytes:           \t0x%x\n", classe->constant_pool[i].info.Double.low_bytes);
-            printf("\tDouble:              \t%f\n",(double) l);
+            printf("\tDouble:              \t%f\n",fvalue);
             i++;
             printf("[%d](large numeric continued)\n", (i + 1));
             break;
@@ -189,12 +193,13 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
     u2 index = attributeInfo->attribute_name_index - 1, index1;
     float f;
     int i;
-    tipoAtributo = (char *) malloc(classe->constant_pool[index].info.Utf8.length * sizeof(char));
+    tipoAtributo = (char *) malloc((classe->constant_pool[index].info.Utf8.length+1) * sizeof(char));
     for (int l = 0; l < classe->constant_pool[index].info.Utf8.length; l++)
     {
         printf("%c", classe->constant_pool[index].info.Utf8.bytes[l]);
         tipoAtributo[l] = classe->constant_pool[index].info.Utf8.bytes[l];
     }
+    tipoAtributo[classe->constant_pool[index].info.Utf8.length] = '\0';
     index = attributeInfo->attribute_name_index - 1;
     derreferencia = dereferencia(index,classe);
     printf("\n");
@@ -206,6 +211,9 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
         if (!strcmp(tipoAtributo, "ConstantValue"))
         {
             index = attributeInfo->info.ConstantValue.constantvalue_index - 1;
+            float fvalue;
+            double dvalue;
+
             switch (classe->constant_pool[index].tag)
             {
             case CONSTANT_Long:
@@ -214,11 +222,12 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
                 break;
             case CONSTANT_Double:
                 l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
-                printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, (double)l);
+				memcpy(&dvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u8));
+                printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
                 break;
             case CONSTANT_Float:
-                f = (float)classe->constant_pool[index].info.Float.bytes;
-                printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, f);
+				memcpy(&fvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u4));
+                printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
                 break;
             case CONSTANT_Integer:
                 i = (int)classe->constant_pool[index].info.Integer.bytes;
@@ -422,6 +431,8 @@ void imprime_constant_pool_file(ClassFile *classe, FILE *file)
     for (int i = 0;
             i < (classe->constant_pool_count - 1); i++)   /* Armazena os valores de cada elemento do constant pool */
     {
+    float fvalue;
+    double dvalue;
         switch (classe->constant_pool[i].tag)   /* Existem respostas diferentes para cada tag */
         {
         case CONSTANT_Class:
@@ -485,9 +496,11 @@ void imprime_constant_pool_file(ClassFile *classe, FILE *file)
             fprintf(file, "\tInteger:             \t%d\n", classe->constant_pool[i].info.Integer.bytes);
             break;
         case CONSTANT_Float:
+
+            memcpy(&fvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u4));
             fprintf(file, "[%d]CONSTANT_Float_info:\n", (i + 1));
             fprintf(file, "\tBytes:               \t0x%x\n", classe->constant_pool[i].info.Float.bytes);
-            fprintf(file, "\tFloat:               \t%f\n", (float)classe->constant_pool[i].info.Float.bytes);
+            fprintf(file, "\tFloat:               \t%f\n", fvalue);
             break;
         case CONSTANT_Long:
             l = (u8) classe->constant_pool[i].info.Long.high_bytes << 32;
@@ -502,10 +515,11 @@ void imprime_constant_pool_file(ClassFile *classe, FILE *file)
         case CONSTANT_Double:
             l = (u8) classe->constant_pool[i].info.Double.high_bytes << 32;
             l = l | classe->constant_pool[i].info.Double.low_bytes;
+            memcpy(&dvalue,&l,sizeof(u8));
             fprintf(file, "[%d]CONSTANT_Double_info:\n", (i + 1));
             fprintf(file, "\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Double.high_bytes);
             fprintf(file, "\tLow bytes:           \t0x%x\n", classe->constant_pool[i].info.Double.low_bytes);
-            fprintf(file, "\tDouble:              \t%f\n", (double)l);
+            fprintf(file, "\tDouble:              \t%f\n", dvalue);
             i++;
             fprintf(file, "[%d](large numeric continued)\n", (i + 1));
             break;
@@ -591,6 +605,8 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
         if (!strcmp(tipoAtributo, "ConstantValue"))
         {
             index = attributeInfo->info.ConstantValue.constantvalue_index - 1;
+            float fvalue;
+            double dvalue;
             switch (classe->constant_pool[index].tag)
             {
             case CONSTANT_Long:
@@ -599,11 +615,12 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
                 break;
             case CONSTANT_Double:
                 l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
-                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, (double)l);
+                memcpy(&dvalue,&l,sizeof(u8));
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
                 break;
             case CONSTANT_Float:
-                f = (float)classe->constant_pool[index].info.Float.bytes;
-                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, f);
+				memcpy(&fvalue,&(classe->constant_pool[index].info.Float.bytes),sizeof(u4));
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
                 break;
             case CONSTANT_Integer:
                 i = (int)classe->constant_pool[index].info.Integer.bytes;

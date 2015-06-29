@@ -194,9 +194,10 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
     atributo->attribute_length = le_u4(arquivo);
     attribute_length = atributo->attribute_length;
     u2 index = atributo->attribute_name_index - 1;
-    tipoAtributo = (char *) malloc(classe->constant_pool[index].info.Utf8.length * sizeof(char));
+    tipoAtributo = (char *) malloc((classe->constant_pool[index].info.Utf8.length+1) * sizeof(char));
     for (int l = 0; l < classe->constant_pool[index].info.Utf8.length; l++)
         tipoAtributo[l] = classe->constant_pool[index].info.Utf8.bytes[l];
+	tipoAtributo[classe->constant_pool[index].info.Utf8.length] = '\0';
 
     if (!strcmp(tipoAtributo, "ConstantValue"))
     {
@@ -263,7 +264,7 @@ void carrega_attribute(FILE *arquivo, ClassFile *classe, attribute_info *atribut
         }
         atributo->tag = ATTRTAG_Innerclasses;
     }
-    else if (!strcmp(tipoAtributo, "SourceFileTable"))
+    else if (!strcmp(tipoAtributo, "SourceFile"))
     {
         atributo->info.Sourcefile.sourcefile_index = le_u2(arquivo);
         atributo->tag = ATTRTAG_Sourcefile;
