@@ -62,11 +62,11 @@
 1435535081 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\carregamento.c
 	"carregamento.h"
 
-1435540936 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\carregamento.h
+1435543556 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\carregamento.h
 	"classloader.h"
 	"../main.h"
 
-1435541030 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\classloader.h
+1435545302 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\classloader.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -81,16 +81,16 @@
 	"classloader.h"
 	"../main.h"
 
-1435535185 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.c
+1435545678 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.c
 	"impressao.h"
 
 1434861921 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_operandos.c
 	"pilha_operandos.h"
 
-1435543085 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_operandos.h
+1435543556 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_operandos.h
 	"../ClassLoader/classloader.h"
 
-1435543383 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_frames.h
+1435548878 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_frames.h
 	"../Heap/heap.h"
 	"pilha_operandos.h"
 
@@ -165,7 +165,7 @@
 	"ClassLoader/classloader.h"
 	"ClassLoader/carregamento.h"
 
-1435540765 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.h
+1435543556 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\areametodos\area_metodos.h
 	"../main.h"
 	"../Pilha/pilha_frames.h"
 
@@ -301,7 +301,7 @@
 	"../ClassLoader/classloader.h"
 	"../ClassLoader/carregamento.h"
 
-1435542840 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\heap.h
+1435543556 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\heap.h
 	"../ClassLoader/classloader.h"
 	"../ClassLoader/carregamento.h"
 
@@ -536,7 +536,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435540477 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\others.h
+1435543546 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\instrucoes\others.h
 	<math.h>
 	"../Pilha/pilha_frames.h"
 

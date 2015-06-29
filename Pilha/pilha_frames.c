@@ -7,7 +7,7 @@
 #include "pilha_frames.h"
 #include "../Heap/heap.h"
 
-Frame *ConstruirFrame(ClassFile *classe, method_info *method)
+Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames)
 {
     Frame *frame;
 
@@ -15,6 +15,7 @@ Frame *ConstruirFrame(ClassFile *classe, method_info *method)
     frame->method = method;
     frame->pc = 0;
     frame->pilhaDeOperandos = NULL;
+    frame->pilhaDeFrames = pilhaDeFrames;
     frame->TamanhoVetorVariaveisLocais = method->attributes->info.CodeAttribute.max_locals;
     frame->VetorVariaveisLocais = (u4 *) malloc(sizeof(u4) * frame->TamanhoVetorVariaveisLocais);
     frame->constant_pool_count = classe->constant_pool_count;

@@ -15,6 +15,7 @@ typedef struct frame{
     method_info             *method;
     u4                      pc;
     PilhaDeOperandos        *pilhaDeOperandos;
+    struct pilhadeframes    *pilhaDeFrames;
     u4                      TamanhoVetorVariaveisLocais;
     u4                      *VetorVariaveisLocais;
     u2                      constant_pool_count;
@@ -66,8 +67,9 @@ void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames);
 *   @brief Funcao que constroi um frame a partir de uma classe e de um metodo.
 *   @param classe Estrutura que contem a classe atual.
 *   @param method Estrutura que contem o metodo atual.
+*   @param pilhaDeFrames Pilha de frames atual.
 */
-Frame *ConstruirFrame(ClassFile *classe, method_info *method);
+Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames);
 
 /**
 *   @fn Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
