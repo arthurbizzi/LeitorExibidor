@@ -33,6 +33,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">JVM
    </div>
+   <div id="projectbrief">Projeto de Software Basico</div>
   </td>
  </tr>
  </tbody>
@@ -106,79 +107,143 @@ $(document).ready(function(){initNavTree('others_8h_source.html','');});
 <div class="title">others.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<a href="others_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by kelvinec on 18/06/15.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../Pilha/pilha_frames.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef OTHERS_H</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define OTHERS_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define TipoReferencia  0</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define TipoBoolean     4</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define TipoChar        5</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define TipoFloat       6</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define TipoDouble      7</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define TipoByte        8</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define TipoShort       9</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define TipoInt         10</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define TipoLong        11</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define AFPuplic    0x0001</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define AFPrivate   0x0002</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define AFProtected 0x0004</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define AFStatic    0x0008</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define AFFinal     0x0010</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define AFSuper     0x0020</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define AFVolatile  0x0040</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define AFTransient 0x0080</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define AFNative    0x0100</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define AFInterface 0x0200</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define AFAbstract  0x0400</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define AFStrict    0x0800</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../Pilha/pilha_frames.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef OTHERS_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define OTHERS_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define TipoReferencia  0</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define TipoBoolean     4</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define TipoChar        5</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define TipoFloat       6</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define TipoDouble      7</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define TipoByte        8</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define TipoShort       9</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define TipoInt         10</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define TipoLong        11</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a3453ee2c3d977646766a4d3b1cb90d47">i_nop</a>();</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> i_nop();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> i_bipush(Frame* frame,u4* n);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> i_sipush(Frame* frame,u2* n);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> i_ldc(Frame* frame,u1 index, <a class="code" href="structcpinfo.html">cp_info</a>* constantPool);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> i_ldc_w(Frame* frame,u1 index,u1 index2, <a class="code" href="structcpinfo.html">cp_info</a>* constantPool);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> i_ldc2_w(Frame* frame,u1 index,u1 index2, <a class="code" href="structcpinfo.html">cp_info</a>* constantPool);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> i_goto(Frame* frame, u1 index1, u1 index2);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> i_jsr(Frame* frame, u1 index, u1 index2);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> i_ret(Frame* frame, u1 index);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> i_newarray(Frame *frame, u1 atype);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> i_arraylength(Frame *frame);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> i_atrhow(Frame *frame);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> i_instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> i_monitorenter(Frame *frame);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> i_monitorexit(Frame *frame);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constbyte2);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> i_ifnull(Frame *frame, u1 branchbyte1, u1 branchbyte2);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> i_ifnonnull(Frame *frame, u1 branchbyte1, u1 branchbyte2);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> i_goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">char</span>* i_dereferencia_instrucoes(u2 index, <a class="code" href="structcpinfo.html">cp_info</a> *cp);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<a class="code" href="structclassfile.html">ClassFile</a> *i_RecuperaClasse(<span class="keywordtype">char</span> *nome, ListaClasses **listadeclasses);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif //OTHERS_H</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#aefec54bdfacd3967a57d46b936eedce0">i_bipush</a>(Frame* frame,u4* n);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#af95d08efce903646ce98bd3257f1549b">i_sipush</a>(Frame* frame,u2* n);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> i_ldc(Frame* frame,u1 index, <a class="code" href="structcpinfo.html">cp_info</a>* constantPool);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> i_ldc_w(Frame* frame,u1 index,u1 index2, <a class="code" href="structcpinfo.html">cp_info</a>* constantPool);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> i_ldc2_w(Frame* frame,u1 index,u1 index2, <a class="code" href="structcpinfo.html">cp_info</a>* constantPool);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#ac8d654ae9f0617db4df0169ed6e620fc">i_goto</a>(Frame* frame, u1 index1, u1 index2);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> i_jsr(Frame* frame, u1 index, u1 index2);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a715ee8be0c5a2115bfbf0afea73425d9">i_ret</a>(Frame* frame, u1 index);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a11c18111086c39f7f8953e3bd63e5cef">i_ireturn</a>(PilhaDeFrames *pilhadeframes);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a8da767b2a9a9bc5acd3590f6edf0fafc">i_lreturn</a>(PilhaDeFrames *pilhadeframes);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#ab565e068efe67b43b63418bd395b3118">i_freturn</a>(PilhaDeFrames *pilhadeframes);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a4b230446b623fee95c3894846859f5cb">i_dreturn</a>(PilhaDeFrames *pilhadeframes);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a977b275d4ddf21225b1665584918a070">i_areturn</a>(PilhaDeFrames *pilhadeframes);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#ad107ba7206bc5eea332082290effecf1">i_return</a>(PilhaDeFrames *pilhadeframes);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#aaf578b384bf0f6b770bd9749378c05df">i_getstatic</a>(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a21d324e3b3b4fa9c3cd16d8e488822db">i_putstatic</a>(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#af0a1895a18a7f89105604a5a3b2013a1">i_getfield</a>(Frame *frame, u1 indexbyte1, u1 indexbyte2);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keywordtype">void</span> i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keywordtype">void</span> i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keywordtype">void</span> i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="keywordtype">void</span> i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keywordtype">void</span> i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero, Heap *heap);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#ac162d08a6536b48794bee75168ee71ab">i_new</a>(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a58acdb47a3c4ed4fe0f77ec7ac29bbcd">i_newarray</a>(Frame *frame, u1 atype);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a0db38ad3be5c12aa2b8ddd0ddc0784ce">i_anewarray</a>(Frame *frame, u1 indexbyte1, u1 indexbyte2);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a2db4bfb3d0e319779747758ba0cba214">i_arraylength</a>(Frame *frame);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#af530a0c3bfa9d5c373c11c9f68db87ea">i_atrhow</a>(Frame *frame);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#ac2412a368599353eab95c81159860c91">i_checkcast</a>(Frame *frame, u1 indexbyte1, u1 indexbyte2);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a5e96ad2bdad2e7d97b3da846e9890ead">i_instanceof</a>(Frame *frame, u1 indexbyte1, u1 indexbyte2);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="keywordtype">void</span> i_monitorenter(Frame *frame);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="keywordtype">void</span> i_monitorexit(Frame *frame);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#aafae40cd568c26205cde0154f551139b">i_wide</a>(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constbyte2);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a35ea37bed9979a28c8626fdcf5733041">i_multianewarray</a>(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a68c2514c76c68be697fdc92858f15c54">i_ifnull</a>(Frame *frame, u1 branchbyte1, u1 branchbyte2);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="keywordtype">void</span> i_ifnonnull(Frame *frame, u1 branchbyte1, u1 branchbyte2);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a17a202cc3cf03b61f625cc184237c256">i_goto_w</a>(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="keywordtype">void</span> <a class="code" href="others_8h.html#a09ff88e08e4794732767ac7c47fa50b0">i_jsr_w</a>(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="others_8h.html#a6f991f7297e8f46ab91de97433b7a06b">i_dereferencia_instrucoes</a>(u2 index, <a class="code" href="structcpinfo.html">cp_info</a> *cp);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;staticField *<a class="code" href="others_8h.html#a5c29d814590d3898b80bd6c63d8f8ba9">i_RecuperaField</a>(<span class="keywordtype">char</span> *nome, ListaStaticField **listadefields);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor">#endif //OTHERS_H</span></div>
+<div class="ttc" id="others_8h_html_ac2412a368599353eab95c81159860c91"><div class="ttname"><a href="others_8h.html#ac2412a368599353eab95c81159860c91">i_checkcast</a></div><div class="ttdeci">void i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)</div><div class="ttdoc">verifica o tipo de um objeto, nome da classe identificado por (indexbyte1<<8 + indexbyte2) indice do ...</div><div class="ttdef"><b>Definition:</b> others.c:934</div></div>
+<div class="ttc" id="others_8h_html_a11c18111086c39f7f8953e3bd63e5cef"><div class="ttname"><a href="others_8h.html#a11c18111086c39f7f8953e3bd63e5cef">i_ireturn</a></div><div class="ttdeci">void i_ireturn(PilhaDeFrames *pilhadeframes)</div><div class="ttdoc">Retorna um inteiro a partir de um método. </div><div class="ttdef"><b>Definition:</b> others.c:103</div></div>
+<div class="ttc" id="others_8h_html_a8da767b2a9a9bc5acd3590f6edf0fafc"><div class="ttname"><a href="others_8h.html#a8da767b2a9a9bc5acd3590f6edf0fafc">i_lreturn</a></div><div class="ttdeci">void i_lreturn(PilhaDeFrames *pilhadeframes)</div><div class="ttdoc">Retorna um long a partir de um método. </div><div class="ttdef"><b>Definition:</b> others.c:117</div></div>
+<div class="ttc" id="others_8h_html_af0a1895a18a7f89105604a5a3b2013a1"><div class="ttname"><a href="others_8h.html#af0a1895a18a7f89105604a5a3b2013a1">i_getfield</a></div><div class="ttdeci">void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)</div><div class="ttdoc">identifica um field de um objeto e coloca na pilha de operandos </div><div class="ttdef"><b>Definition:</b> others.c:282</div></div>
+<div class="ttc" id="others_8h_html_a4b230446b623fee95c3894846859f5cb"><div class="ttname"><a href="others_8h.html#a4b230446b623fee95c3894846859f5cb">i_dreturn</a></div><div class="ttdeci">void i_dreturn(PilhaDeFrames *pilhadeframes)</div><div class="ttdoc">Retorna um double a partir de um método. </div><div class="ttdef"><b>Definition:</b> others.c:145</div></div>
+<div class="ttc" id="others_8h_html_af95d08efce903646ce98bd3257f1549b"><div class="ttname"><a href="others_8h.html#af95d08efce903646ce98bd3257f1549b">i_sipush</a></div><div class="ttdeci">void i_sipush(Frame *frame, u2 *n)</div><div class="ttdoc">Empilha um short. </div><div class="ttdef"><b>Definition:</b> others.c:14</div></div>
+<div class="ttc" id="others_8h_html_a21d324e3b3b4fa9c3cd16d8e488822db"><div class="ttname"><a href="others_8h.html#a21d324e3b3b4fa9c3cd16d8e488822db">i_putstatic</a></div><div class="ttdeci">void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)</div><div class="ttdoc">pega um field da pilha de operandos e coloca na lista de fields </div><div class="ttdef"><b>Definition:</b> others.c:224</div></div>
+<div class="ttc" id="others_8h_html_aaf578b384bf0f6b770bd9749378c05df"><div class="ttname"><a href="others_8h.html#aaf578b384bf0f6b770bd9749378c05df">i_getstatic</a></div><div class="ttdeci">void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)</div><div class="ttdoc">identifica um field e coloca na pilha de operandos </div><div class="ttdef"><b>Definition:</b> others.c:181</div></div>
+<div class="ttc" id="others_8h_html_a3453ee2c3d977646766a4d3b1cb90d47"><div class="ttname"><a href="others_8h.html#a3453ee2c3d977646766a4d3b1cb90d47">i_nop</a></div><div class="ttdeci">void i_nop()</div><div class="ttdoc">Não faz operação alguma. </div><div class="ttdef"><b>Definition:</b> others.c:3</div></div>
+<div class="ttc" id="others_8h_html_a715ee8be0c5a2115bfbf0afea73425d9"><div class="ttname"><a href="others_8h.html#a715ee8be0c5a2115bfbf0afea73425d9">i_ret</a></div><div class="ttdeci">void i_ret(Frame *frame, u1 index)</div><div class="ttdoc">Continua a execução a partir do endereço pego na variável local indicada pelo index. </div><div class="ttdef"><b>Definition:</b> others.c:97</div></div>
+<div class="ttc" id="others_8h_html_ab565e068efe67b43b63418bd395b3118"><div class="ttname"><a href="others_8h.html#ab565e068efe67b43b63418bd395b3118">i_freturn</a></div><div class="ttdeci">void i_freturn(PilhaDeFrames *pilhadeframes)</div><div class="ttdoc">Retorna um float a partir de um método. </div><div class="ttdef"><b>Definition:</b> others.c:131</div></div>
+<div class="ttc" id="others_8h_html_aefec54bdfacd3967a57d46b936eedce0"><div class="ttname"><a href="others_8h.html#aefec54bdfacd3967a57d46b936eedce0">i_bipush</a></div><div class="ttdeci">void i_bipush(Frame *frame, u4 *n)</div><div class="ttdoc">Empilha um byte, como inteiro. </div><div class="ttdef"><b>Definition:</b> others.c:8</div></div>
+<div class="ttc" id="others_8h_html_a5e96ad2bdad2e7d97b3da846e9890ead"><div class="ttname"><a href="others_8h.html#a5e96ad2bdad2e7d97b3da846e9890ead">i_instanceof</a></div><div class="ttdeci">void i_instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2)</div><div class="ttdoc">identifica o tipo do objeto e poe na pilha o resultado </div><div class="ttdef"><b>Definition:</b> others.c:956</div></div>
+<div class="ttc" id="others_8h_html_a6f991f7297e8f46ab91de97433b7a06b"><div class="ttname"><a href="others_8h.html#a6f991f7297e8f46ab91de97433b7a06b">i_dereferencia_instrucoes</a></div><div class="ttdeci">char * i_dereferencia_instrucoes(u2 index, cp_info *cp)</div><div class="ttdoc">retorna o nome que esta em um tipo utf8 de cp que esta em index </div><div class="ttdef"><b>Definition:</b> others.c:1175</div></div>
+<div class="ttc" id="others_8h_html_a0db38ad3be5c12aa2b8ddd0ddc0784ce"><div class="ttname"><a href="others_8h.html#a0db38ad3be5c12aa2b8ddd0ddc0784ce">i_anewarray</a></div><div class="ttdeci">void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)</div><div class="ttdoc">cria um novo array do tipo identificado por (indexbyte1<<8 + indexbyte2) indice do constant_pool do f...</div><div class="ttdef"><b>Definition:</b> others.c:854</div></div>
+<div class="ttc" id="others_8h_html_af530a0c3bfa9d5c373c11c9f68db87ea"><div class="ttname"><a href="others_8h.html#af530a0c3bfa9d5c373c11c9f68db87ea">i_atrhow</a></div><div class="ttdeci">void i_atrhow(Frame *frame)</div><div class="ttdoc">lança um erro ou exceção (aviso de que o restante da pilha é cancelado, deixando apenas uma referênci...</div><div class="ttdef"><b>Definition:</b> others.c:928</div></div>
+<div class="ttc" id="others_8h_html_ac162d08a6536b48794bee75168ee71ab"><div class="ttname"><a href="others_8h.html#ac162d08a6536b48794bee75168ee71ab">i_new</a></div><div class="ttdeci">void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses)</div><div class="ttdoc">cria um objeto do tipo da classe identificado por (indexbyte1<<8 + indexbyte2) indice do constant_poo...</div><div class="ttdef"><b>Definition:</b> others.c:770</div></div>
+<div class="ttc" id="others_8h_html_a68c2514c76c68be697fdc92858f15c54"><div class="ttname"><a href="others_8h.html#a68c2514c76c68be697fdc92858f15c54">i_ifnull</a></div><div class="ttdeci">void i_ifnull(Frame *frame, u1 branchbyte1, u1 branchbyte2)</div><div class="ttdoc">se valor pego na pilha for NULL pula para indice (branchbyte1<<8 + branchbyte2) </div><div class="ttdef"><b>Definition:</b> others.c:1129</div></div>
+<div class="ttc" id="others_8h_html_a977b275d4ddf21225b1665584918a070"><div class="ttname"><a href="others_8h.html#a977b275d4ddf21225b1665584918a070">i_areturn</a></div><div class="ttdeci">void i_areturn(PilhaDeFrames *pilhadeframes)</div><div class="ttdoc">Retorna uma referência a partir de um método. </div><div class="ttdef"><b>Definition:</b> others.c:159</div></div>
+<div class="ttc" id="others_8h_html_aafae40cd568c26205cde0154f551139b"><div class="ttname"><a href="others_8h.html#aafae40cd568c26205cde0154f551139b">i_wide</a></div><div class="ttdeci">void i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constbyte2)</div><div class="ttdoc">a função pega uma função identificada por opcode e extende ela pra receber 16_bits com (constbyte1<<8...</div><div class="ttdef"><b>Definition:</b> others.c:994</div></div>
+<div class="ttc" id="others_8h_html_a2db4bfb3d0e319779747758ba0cba214"><div class="ttname"><a href="others_8h.html#a2db4bfb3d0e319779747758ba0cba214">i_arraylength</a></div><div class="ttdeci">void i_arraylength(Frame *frame)</div><div class="ttdoc">pega a referencia de um array da pilha e empilha o seu tamanho </div><div class="ttdef"><b>Definition:</b> others.c:919</div></div>
 <div class="ttc" id="structcpinfo_html"><div class="ttname"><a href="structcpinfo.html">cpinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:213</div></div>
-<div class="ttc" id="structclassfile_html"><div class="ttname"><a href="structclassfile.html">classfile</a></div><div class="ttdef"><b>Definition:</b> classloader.h:268</div></div>
+<div class="ttc" id="others_8h_html_ad107ba7206bc5eea332082290effecf1"><div class="ttname"><a href="others_8h.html#ad107ba7206bc5eea332082290effecf1">i_return</a></div><div class="ttdeci">void i_return(PilhaDeFrames *pilhadeframes)</div><div class="ttdoc">Retorna void a partir de um método. </div><div class="ttdef"><b>Definition:</b> others.c:173</div></div>
+<div class="ttc" id="others_8h_html_a09ff88e08e4794732767ac7c47fa50b0"><div class="ttname"><a href="others_8h.html#a09ff88e08e4794732767ac7c47fa50b0">i_jsr_w</a></div><div class="ttdeci">void i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4)</div><div class="ttdoc">pula para indice (branchbyte1<<24 + branchbyte2<<16 + branchbyte3<<8 + branchbyte4) e coloca na pilha...</div><div class="ttdef"><b>Definition:</b> others.c:1164</div></div>
+<div class="ttc" id="others_8h_html_a17a202cc3cf03b61f625cc184237c256"><div class="ttname"><a href="others_8h.html#a17a202cc3cf03b61f625cc184237c256">i_goto_w</a></div><div class="ttdeci">void i_goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4)</div><div class="ttdoc">pula para indice (branchbyte1<<24 + branchbyte2<<16 + branchbyte3<<8 + branchbyte4) ...</div><div class="ttdef"><b>Definition:</b> others.c:1155</div></div>
+<div class="ttc" id="others_8h_html_a35ea37bed9979a28c8626fdcf5733041"><div class="ttname"><a href="others_8h.html#a35ea37bed9979a28c8626fdcf5733041">i_multianewarray</a></div><div class="ttdeci">void i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)</div><div class="ttdoc">cria um array multidimensional de dimensão "dimensions" do tipo identificado por (indexbyte1<<8 + ind...</div><div class="ttdef"><b>Definition:</b> others.c:1058</div></div>
+<div class="ttc" id="others_8h_html_ac8d654ae9f0617db4df0169ed6e620fc"><div class="ttname"><a href="others_8h.html#ac8d654ae9f0617db4df0169ed6e620fc">i_goto</a></div><div class="ttdeci">void i_goto(Frame *frame, u1 index1, u1 index2)</div><div class="ttdoc">Pula para outra instrução, tendo seu offset construído pelos 16bits de index. </div><div class="ttdef"><b>Definition:</b> others.c:84</div></div>
+<div class="ttc" id="others_8h_html_a58acdb47a3c4ed4fe0f77ec7ac29bbcd"><div class="ttname"><a href="others_8h.html#a58acdb47a3c4ed4fe0f77ec7ac29bbcd">i_newarray</a></div><div class="ttdeci">void i_newarray(Frame *frame, u1 atype)</div><div class="ttdoc">cria um novo array do tipo identificado por atype e tamanho pego da pilha e coloca o resultado na pil...</div><div class="ttdef"><b>Definition:</b> others.c:799</div></div>
+<div class="ttc" id="others_8h_html_a5c29d814590d3898b80bd6c63d8f8ba9"><div class="ttname"><a href="others_8h.html#a5c29d814590d3898b80bd6c63d8f8ba9">i_RecuperaField</a></div><div class="ttdeci">staticField * i_RecuperaField(char *nome, ListaStaticField **listadefields)</div><div class="ttdoc">retorna um staticField identificado por nome da listadefields </div><div class="ttdef"><b>Definition:</b> others.c:1189</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_0a03a6dd5e48d1aecf2199e82eb22af4.html">Instrucoes</a></li><li class="navelem"><b>others.h</b></li>
-    <li class="footer">Generated on Sat Jun 27 2015 22:49:12 for JVM by
+    <li class="navelem"><a class="el" href="dir_0a03a6dd5e48d1aecf2199e82eb22af4.html">Instrucoes</a></li><li class="navelem"><a class="el" href="others_8h.html">others.h</a></li>
+    <li class="footer">Generated on Mon Jun 29 2015 05:02:30 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

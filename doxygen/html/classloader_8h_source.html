@@ -33,6 +33,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">JVM
    </div>
+   <div id="projectbrief">Projeto de Software Basico</div>
   </td>
  </tr>
  </tbody>
@@ -392,13 +393,14 @@ $(document).ready(function(){initNavTree('classloader_8h_source.html','');});
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;{</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordtype">char</span>            mnemonico[20];</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordtype">int</span>             qtd_operandos;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordtype">int</span>             *operandos;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;} <a class="code" href="structinstrucao.html">Instrucao</a>;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="keywordtype">int</span> carrega_classe(<span class="keywordtype">char</span> *nome_arquivo, <a class="code" href="structclassfile.html">ClassFile</a> *classe);</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="classloader_8h.html#a1a89edc4ce44e3fcfdb59eab13cb139e">recupera_diretorio</a>(<span class="keywordtype">char</span> *caminho);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="preprocessor">#endif // CLASSLOADER_H</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;} <a class="code" href="structinstrucao.html">Instrucao</a>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="keywordtype">int</span> carrega_classe(<span class="keywordtype">char</span> *nome_arquivo, <a class="code" href="structclassfile.html">ClassFile</a>* classe);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="classloader_8h.html#a5802d772859cc1bb6fa94ff04ed6c85d">recupera_nome_diretorio</a>(<span class="keywordtype">char</span> *arquivo);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="classloader_8h.html#a24405d7e5f4ed3c9ec1a7136aa3998b3">recupera_nome_arquivo</a>(<span class="keywordtype">char</span> *arquivo);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="preprocessor">#endif // CLASSLOADER_H</span></div>
 <div class="ttc" id="structconstantfieldrefinfo_html"><div class="ttname"><a href="structconstantfieldrefinfo.html">constantfieldrefinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:72</div></div>
 <div class="ttc" id="structconstantlonginfo_html"><div class="ttname"><a href="structconstantlonginfo.html">constantlonginfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:125</div></div>
 <div class="ttc" id="structlocalvariabletableattribute_1_1lvt_html"><div class="ttname"><a href="structlocalvariabletableattribute_1_1lvt.html">localvariabletableattribute::lvt</a></div><div class="ttdef"><b>Definition:</b> classloader.h:193</div></div>
@@ -412,6 +414,7 @@ $(document).ready(function(){initNavTree('classloader_8h_source.html','');});
 <div class="ttc" id="structconstantnameandtypeinfo_html"><div class="ttname"><a href="structconstantnameandtypeinfo.html">constantnameandtypeinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:79</div></div>
 <div class="ttc" id="structcodeattribute_html_aa53122439ee827a418258d52c51368c6"><div class="ttname"><a href="structcodeattribute.html#aa53122439ee827a418258d52c51368c6">codeattribute::attributes_count</a></div><div class="ttdeci">u2 attributes_count</div><div class="ttdoc">tamanho: exception_table_length </div><div class="ttdef"><b>Definition:</b> classloader.h:153</div></div>
 <div class="ttc" id="structattributeinfo_html"><div class="ttname"><a href="structattributeinfo.html">attributeinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:232</div></div>
+<div class="ttc" id="classloader_8h_html_a5802d772859cc1bb6fa94ff04ed6c85d"><div class="ttname"><a href="classloader_8h.html#a5802d772859cc1bb6fa94ff04ed6c85d">recupera_nome_diretorio</a></div><div class="ttdeci">char * recupera_nome_diretorio(char *arquivo)</div><div class="ttdoc">Funcao que recupera somente o diretorio de um dado caminho. </div><div class="ttdef"><b>Definition:</b> classloader.c:67</div></div>
 <div class="ttc" id="structlinenumbertableattribute_1_1lnt_html"><div class="ttname"><a href="structlinenumbertableattribute_1_1lnt.html">linenumbertableattribute::lnt</a></div><div class="ttdef"><b>Definition:</b> classloader.h:183</div></div>
 <div class="ttc" id="structconstantfloatinfo_html"><div class="ttname"><a href="structconstantfloatinfo.html">constantfloatinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:119</div></div>
 <div class="ttc" id="structconstantutf8info_html"><div class="ttname"><a href="structconstantutf8info.html">constantutf8info</a></div><div class="ttdef"><b>Definition:</b> classloader.h:86</div></div>
@@ -425,8 +428,8 @@ $(document).ready(function(){initNavTree('classloader_8h_source.html','');});
 <div class="ttc" id="structclassfile_html_a8858a4e08f7cc000e0f62459722ecce8"><div class="ttname"><a href="structclassfile.html#a8858a4e08f7cc000e0f62459722ecce8">classfile::methods_count</a></div><div class="ttdeci">u2 methods_count</div><div class="ttdoc">tamanho: fields_count </div><div class="ttdef"><b>Definition:</b> classloader.h:282</div></div>
 <div class="ttc" id="structinstrucao_html"><div class="ttname"><a href="structinstrucao.html">instrucao</a></div><div class="ttdef"><b>Definition:</b> classloader.h:288</div></div>
 <div class="ttc" id="structdefaultattribute_html"><div class="ttname"><a href="structdefaultattribute.html">defaultattribute</a></div><div class="ttdef"><b>Definition:</b> classloader.h:208</div></div>
+<div class="ttc" id="classloader_8h_html_a24405d7e5f4ed3c9ec1a7136aa3998b3"><div class="ttname"><a href="classloader_8h.html#a24405d7e5f4ed3c9ec1a7136aa3998b3">recupera_nome_arquivo</a></div><div class="ttdeci">char * recupera_nome_arquivo(char *arquivo)</div><div class="ttdoc">Funcao que recupera somente o nome do arquivo de um dado caminho. </div><div class="ttdef"><b>Definition:</b> classloader.c:92</div></div>
 <div class="ttc" id="structcodeattribute_1_1et_html"><div class="ttname"><a href="structcodeattribute_1_1et.html">codeattribute::et</a></div><div class="ttdef"><b>Definition:</b> classloader.h:146</div></div>
-<div class="ttc" id="classloader_8h_html_a1a89edc4ce44e3fcfdb59eab13cb139e"><div class="ttname"><a href="classloader_8h.html#a1a89edc4ce44e3fcfdb59eab13cb139e">recupera_diretorio</a></div><div class="ttdeci">char * recupera_diretorio(char *caminho)</div><div class="ttdoc">Funcao que recupera somente o diretorio de um dado caminho. </div><div class="ttdef"><b>Definition:</b> classloader.c:67</div></div>
 <div class="ttc" id="structconstantstringinfo_html"><div class="ttname"><a href="structconstantstringinfo.html">constantstringinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:107</div></div>
 <div class="ttc" id="structclassfile_html"><div class="ttname"><a href="structclassfile.html">classfile</a></div><div class="ttdef"><b>Definition:</b> classloader.h:268</div></div>
 <div class="ttc" id="structinnerclasses_html"><div class="ttname"><a href="structinnerclasses.html">innerclasses</a></div><div class="ttdef"><b>Definition:</b> classloader.h:168</div></div>
@@ -440,7 +443,7 @@ $(document).ready(function(){initNavTree('classloader_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ec38c87c25d3c1c35325ecf5819e098b.html">ClassLoader</a></li><li class="navelem"><a class="el" href="classloader_8h.html">classloader.h</a></li>
-    <li class="footer">Generated on Sat Jun 27 2015 22:49:12 for JVM by
+    <li class="footer">Generated on Mon Jun 29 2015 05:02:30 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
