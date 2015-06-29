@@ -26,9 +26,9 @@ method_info* recupera_main(ClassFile *classe);
 *   @param metodo Metodo a ser preparado.
 *   @param classe Classe que contem o metodo.
 *   @param pilha_de_frames Pilha que armazena os frames.
-*   @param lista_static_field Lista de fields estaticos.
+*   @param heap Heap do programa.
 */
-void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames, ListaStaticField *lista_static_field);
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap);
 
 /**
 *   @fn int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)

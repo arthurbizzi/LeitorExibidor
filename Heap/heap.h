@@ -68,6 +68,15 @@ typedef struct listadeclasses
     struct listadeclasses   *prox;
 } ListaClasses;
 
+typedef struct heap
+{
+    struct listadearrays    *listaDeArrays;
+    struct listastaticfield *listaStaticField;
+    struct listadeobjetos   *listaDeObjetos;
+    struct listadeclasses   *listaDeClasses;
+    PilhaDeFrames           *pilhaDeFrames;
+} Heap;
+
 /**
 *   @fn void InicializaListaDeArrays(ListaArrays **listadearrays)
 *   @brief Funcao que inicializa a lista de arrays carregados na heap.
@@ -182,5 +191,9 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses);
 *   @return Classe com o nome correspondente.
 */
 ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses);
+
+void InicializaHeap(Heap *heap, ListaArrays *listaArrays, ListaStaticField *listaStaticField, ListaClasses *listaClasses, ListaObjetos *listaObjetos);
+
+void desalocaHeap(Heap *heap);
 
 #endif // HEAP_H

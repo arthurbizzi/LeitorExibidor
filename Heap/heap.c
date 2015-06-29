@@ -171,3 +171,21 @@ ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses)
     }
     return NULL;
 }
+
+
+void InicializaHeap(Heap *heap, ListaArrays *listaArrays, ListaStaticField *listaStaticField, ListaClasses *listaClasses, ListaObjetos *listaObjetos) {
+    heap = (Heap *) malloc(sizeof(Heap));
+
+    heap->listaDeArrays = listaArrays;
+    heap->listaStaticField = listaStaticField;
+    heap->listaDeClasses = listaClasses;
+    heap->listaDeObjetos = listaObjetos;
+}
+
+void desalocaHeap(Heap *heap) {
+    desalocaListaDeArrays(heap->listaDeArrays);
+    desalocaListaDeClasses(heap->listaDeClasses);
+    desalocaListaDeObjetos(heap->listaDeObjetos);
+    desalocaListaDeFields(heap->listaStaticField);
+    free(heap);
+}

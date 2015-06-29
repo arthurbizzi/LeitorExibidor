@@ -22,11 +22,11 @@ method_info* recupera_main(ClassFile *classe) {
     return NULL;
 }
 
-void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames, ListaStaticField lista_static_field) {
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap) {
     for(int i = 0; i < metodo->attributes_count; i++) {
         if(metodo->attributes[i].tag == ATTRTAG_Code) {
             if(metodo->attributes_count > 0) {
-                Frame *frame = ConstruirFrame(classe, metodo, pilha_de_frames, lista_static_field);
+                Frame *frame = ConstruirFrame(classe, metodo, pilha_de_frames, heap);
                 EmpilhaFrame(&pilha_de_frames, frame);
                 free(frame);
                 return;

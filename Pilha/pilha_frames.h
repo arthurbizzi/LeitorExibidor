@@ -21,12 +21,10 @@ typedef struct frame{
     u4                      *VetorVariaveisLocais;
     u2                      constant_pool_count;
     cp_info                 *constant_pool;
-    struct listadearrays    *listaArrays;
-    struct listadeobjetos   *listaObjetos;
     u4                      returAddress;
     ClassFile               *classe;
     attribute_info          *codigo;
-    struct listastaticfield *listaStaticField;
+    struct heap             *heap;
 } Frame;
 
 typedef struct pilhadeframes

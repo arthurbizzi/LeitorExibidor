@@ -142,22 +142,27 @@ int executa_programa(ClassFile *classe) {
     method_info *metodo_main;
     ClassFile *classe_inicial;
     ListaStaticField *lista_static_field = NULL;
+    ListaArrays *lista_de_arrays = NULL;
+    ListaObjetos *lista_de_objetos = NULL;
+    Heap *heap;
 
     InicializaListaDeClasses(&lista_de_classes);
     InsereListaDeClasses(&lista_de_classes, classe);
     classe_inicial = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe
     InicializaPilhaDeFrames(&pilha_de_frames);
+    InicializaHeap(heap, lista_de_arrays, lista_static_field, lista_de_classes, lista_de_objetos);
 
     metodo_main = recupera_main(classe_inicial);
     if(!metodo_main) {
         printf("ERRO: Metodo MAIN nao encontrado.\n");
         return ERRO_MAIN;
     }
-    prepara_metodo(metodo_main, classe_inicial, pilha_de_frames, lista_static_field);
+    prepara_metodo(metodo_main, classe_inicial, pilha_de_frames, heap);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
     desalocaListaDeClasses(&lista_de_classes);
     desalocaPilhaFrames(&pilha_de_frames);
+    desalocaHeap(heap);
 
     return SUCESSO;
 }
