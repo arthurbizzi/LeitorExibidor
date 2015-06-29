@@ -89,7 +89,7 @@ void i_lstore_3(Frame* frame)
     frame ->VetorVariaveisLocais[4] = (*value) & 0x00000000FFFFFFFF;
 }
 
-void i_fstore_0(Frame* frame)
+void i_fstore_0(Fra	me* frame)
 {
     u4 *value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     frame->VetorVariaveisLocais[0] = *value;
