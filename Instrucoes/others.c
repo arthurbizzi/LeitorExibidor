@@ -7,20 +7,20 @@ void i_nop()
 
 void i_bipush(Frame* frame,u4* n)
 {
-	frame->pc++;
+
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),n);
 }
 
 void i_sipush(Frame* frame,u2* n)
 {
-	frame->pc++;
+
 	u4 dado = *n;
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&dado);
 }
 
 void i_ldc(Frame* frame,u1 index, cp_info* constantPool)
 {
-	frame->pc++;
+
     u1 tag = constantPool[index-1].tag;
     u4 dado;
     switch (tag)
@@ -43,7 +43,7 @@ void i_ldc(Frame* frame,u1 index, cp_info* constantPool)
 
 void i_ldc_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 {
-	frame->pc++;
+
 	u4 dado=0;
     u1 tag = constantPool[index-1].tag;
     switch (tag)
@@ -64,7 +64,7 @@ void i_ldc_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 
 void i_ldc2_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 {
-	frame->pc++;
+
     u2 indexConcat = (index<<8) | index2;
     u1 tag = constantPool[indexConcat-1].tag;
 
@@ -82,13 +82,13 @@ void i_ldc2_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 }
 
 void i_goto(Frame* frame, u1 index1, u1 index2){
-	frame->pc++;
+
 	int16_t offset = (((u2)index1)<<8)+index2;
 	frame->pc += offset;
 }
 
 void i_jsr(Frame* frame, u1 index, u1 index2){
-	frame->pc++;
+
 	EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(frame->pc));
 	int16_t offset = (((u2)index)<<8)+index2;
 		frame->pc += offset;
@@ -180,7 +180,7 @@ void i_return(PilhaDeFrames *pilhadeframes)
 
 void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     ClassFile *classe;
     staticField *field;
     char *tipo, *name, *nomeclasse, *nome;
@@ -223,7 +223,7 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
 
 void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     ClassFile *classe;
     staticField *field;
     char *tipo, *name, *nomeclasse, *nome;
@@ -281,7 +281,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
 
 void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     Objeto *obj;
     char *tipo, *name, *nome;
     u8 valoru8;
@@ -320,7 +320,7 @@ void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 
 void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     Objeto *obj;
     char *tipo, *name, *nome;
     u8 valor;
@@ -354,7 +354,7 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 
 void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     tArray *array1;
     Frame *frame1;
     ClassFile *classe;
@@ -531,7 +531,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 
 void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     Frame *frame1;
     ClassFile *classe;
     char *nomeclasse, *nomemetodo;
@@ -615,7 +615,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 
 void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     Frame *frame1;
     ClassFile *classe;
     char *nomeclasse, *nomemetodo, *nome;
@@ -711,7 +711,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
 
 void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero)
 {
-	frame->pc++;
+
     ClassFile *classe;
     Frame *frame1;
     char *nome, *nomemetodo, *nomeclasse;
@@ -769,7 +769,7 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
 
 void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses)
 {
-	frame->pc++;
+
     Objeto *obj;
     char *nomeclasse;
     u2 index;
@@ -798,7 +798,7 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
 
 void i_newarray(Frame *frame, u1 atype)
 {
-	frame->pc++;
+
     u4 valor, referencia;
     tArray *a;
     a = (tArray *)malloc(sizeof(tArray));
@@ -853,7 +853,7 @@ void i_newarray(Frame *frame, u1 atype)
 
 void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     char *tipo;
     u2 index;
     u4 i, valor, referencia;
@@ -918,7 +918,7 @@ void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 
 void i_arraylength(Frame *frame)
 {
-	frame->pc++;
+
     tArray *a;
     a = (tArray *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(a->tamanho1));
@@ -927,13 +927,13 @@ void i_arraylength(Frame *frame)
 
 void i_atrhow(Frame *frame)
 {
-	frame->pc++;
+
     return;
 }
 
 void i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     char *nomeclasse, *nomeclasseobjeto;
     Objeto *obj;
     u2 index;
@@ -955,7 +955,7 @@ void i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 
 void i_instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 {
-	frame->pc++;
+
     char *nomeclasse, *nomeclasseobjeto;
     Objeto *obj;
     u2 index;
@@ -981,19 +981,19 @@ void i_instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 
 void i_monitorenter(Frame *frame)
 {
-	frame->pc++;
+
     return;
 }
 
 void i_monitorexit(Frame *frame)
 {
-	frame->pc++;
+
     return;
 }
 
 void i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constbyte2)
 {
-	frame->pc++;
+
 	int16_t valor;
 	u4 value = 0;
     u2 indexConcat = 0;
@@ -1057,7 +1057,7 @@ void i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 cons
 
 void i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)
 {
-	frame->pc++;
+
     u4 valor;
     int i;
     char *tipo;
@@ -1128,7 +1128,7 @@ void i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)
 
 void i_ifnull(Frame *frame, u1 branchbyte1, u1 branchbyte2)
 {
-	frame->pc++;
+
     u4 objref;
     objref = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     if (objref == NULL){
@@ -1141,7 +1141,7 @@ void i_ifnull(Frame *frame, u1 branchbyte1, u1 branchbyte2)
 
 void i_ifnonnull(Frame *frame, u1 branchbyte1, u1 branchbyte2)
 {
-	frame->pc++;
+
     u4 objref;
     objref = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     if (objref != NULL){
@@ -1154,7 +1154,7 @@ void i_ifnonnull(Frame *frame, u1 branchbyte1, u1 branchbyte2)
 
 void i_goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4)
 {
-	frame->pc++;
+
     u4 branchoffset;
     branchoffset = ((u4)branchbyte1 << 24) | ((u4)branchbyte2 << 16) | ((u4)branchbyte3 << 8) | ((u4)branchbyte4);
     frame->pc = frame->pc + branchoffset;
@@ -1163,7 +1163,7 @@ void i_goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 b
 
 void i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4)
 {
-	frame->pc++;
+
     u4 branchoffset, pc;
     branchoffset = ((u4)branchbyte1 << 24) | ((u4)branchbyte2 << 16) | ((u4)branchbyte3 << 8) | ((u4)branchbyte4);
     pc = frame->pc + 5;

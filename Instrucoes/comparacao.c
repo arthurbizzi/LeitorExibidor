@@ -6,7 +6,7 @@
 
 
 void i_lcmp(Frame* frame){
-	frame->pc++;
+
 	u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
@@ -22,7 +22,7 @@ void i_lcmp(Frame* frame){
 }
 
 void i_fcmpl(Frame* frame){
-	frame->pc++;
+
 	float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
@@ -38,7 +38,7 @@ void i_fcmpl(Frame* frame){
 }
 
 void i_fcmpg(Frame* frame){
-	frame->pc++;
+
 	float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
@@ -57,7 +57,7 @@ void i_fcmpg(Frame* frame){
 }
 
 void i_dcmpl(Frame* frame){
-	frame->pc++;
+
 	double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
@@ -73,7 +73,7 @@ void i_dcmpl(Frame* frame){
 }
 
 void i_dcmpg(Frame* frame){
-	frame->pc++;
+
 	double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
