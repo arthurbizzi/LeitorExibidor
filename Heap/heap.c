@@ -183,9 +183,9 @@ void InicializaHeap(Heap *heap, ListaArrays *listaArrays, ListaStaticField *list
 }
 
 void desalocaHeap(Heap *heap) {
-    desalocaListaDeArrays(heap->listaDeArrays);
-    desalocaListaDeClasses(heap->listaDeClasses);
-    desalocaListaDeObjetos(heap->listaDeObjetos);
-    desalocaListaDeFields(heap->listaStaticField);
+    desalocaListaDeArrays(&heap->listaDeArrays);
+    desalocaListaDeClasses(&heap->listaDeClasses);
+    desalocaListaDeObjetos(&heap->listaDeObjetos);
+    desalocaListaDeFields(&heap->listaStaticField);
     free(heap);
 }
