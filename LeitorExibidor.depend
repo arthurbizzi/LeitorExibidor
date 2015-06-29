@@ -271,7 +271,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435531509 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/load.c
+1435532817 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/load.c
 	"load.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
@@ -368,7 +368,7 @@
 	"../ClassLoader/classloader.h"
 	"../ClassLoader/carregamento.h"
 
-1435527035 /home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/heap.h
+1435533249 /home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/heap.h
 	"../ClassLoader/classloader.h"
 	"../ClassLoader/carregamento.h"
 
@@ -376,7 +376,7 @@
 	"area_metodos.h"
 	"../Instrucoes/bridge_arquivosinstrucoes.h"
 
-1435530517 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/heap.c
+1435533277 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/heap.c
 	"heap.h"
 
 1435149776 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Heap/lista_arrays_objetos_classes.c
@@ -474,10 +474,10 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435530234 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/others.c
+1435533249 source:/home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/others.c
 	"others.h"
 
-1435530234 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/others.h
+1435533249 /home/kelvinec/Área de Trabalho/LeitorExibidor/Instrucoes/others.h
 	<math.h>
 	"../Pilha/pilha_frames.h"
 
