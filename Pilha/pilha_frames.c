@@ -77,8 +77,6 @@ Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
 void DestruirFrame(Frame *frame)
 {
     desalocaPilhaOperandos(&frame->pilhaDeOperandos);
-    desalocaListaDeArrays(&frame->listaArrays);
-    desalocaListaDeObjetos(&frame->listaObjetos);
     free(frame->VetorVariaveisLocais);
     free(frame);
 }

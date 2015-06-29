@@ -352,7 +352,7 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     return;
 }
 
-void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
+void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
 
     tArray *array1;
@@ -510,7 +510,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             }
             else
             {
-                prepara_metodo(&classe->methods[i], classe, pilhadeframes);
+                prepara_metodo(&classe->methods[i], classe, pilhadeframes, heap);
                 frame1 = DesempilhaFrame(&pilhadeframes);
                 for (j = numparam; j >= 0; j--)
                 {
@@ -529,7 +529,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     return;
 }
 
-void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
+void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
 
     Frame *frame1;
@@ -600,7 +600,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     }
     else
     {
-        prepara_metodo(&classe->methods[0], classe, pilhadeframes);
+        prepara_metodo(&classe->methods[0], classe, pilhadeframes, heap);
         frame1 = DesempilhaFrame(&pilhadeframes);
         for (j = numparam; j >= 0; j--)
         {
@@ -613,7 +613,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     return;
 }
 
-void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
+void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
 
     Frame *frame1;
@@ -691,7 +691,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
         }
         else
         {
-            prepara_metodo(&classe->methods[i], classe, pilhadeframes);
+            prepara_metodo(&classe->methods[i], classe, pilhadeframes, heap);
             frame1 = DesempilhaFrame(&pilhadeframes);
             for (j = (numparam - 1); j >= 0; j--)
             {
@@ -709,7 +709,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     return;
 }
 
-void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero)
+void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero, Heap *heap)
 {
 
     ClassFile *classe;
@@ -750,7 +750,7 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
     }
     if (i != obj->classe->methods_count)
     {
-        prepara_metodo(&obj->classe->methods[i], obj->classe, pilhadeframes);
+        prepara_metodo(&obj->classe->methods[i], obj->classe, pilhadeframes, heap);
         frame1 = DesempilhaFrame(&pilhadeframes);
         for (j = contagem; j >= 0; j--)
         {

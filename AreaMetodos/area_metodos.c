@@ -35,7 +35,7 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha
                 metodo->attributes_count++;
                 metodo->attributes = (attribute_info *) malloc(sizeof(attribute_info));
                 metodo->attributes[0].info.CodeAttribute.code_length = 0;
-                Frame *frame = ConstruirFrame(classe, metodo, pilha_de_frames);
+                Frame *frame = ConstruirFrame(classe, metodo, pilha_de_frames, heap);
                 EmpilhaFrame(&pilha_de_frames, frame);
                 free(frame);
                 return;
@@ -285,6 +285,7 @@ void decodifica_geral(Frame *frame) {
     u1 index = 0, index2 = 0, index3 = 0, index4 = 0, inc = 0, type = 0, constbyte1 = 0, constbyte2 = 0;
     u1 branch1 = 0, branch2 = 0, branch3 = 0, branch4 = 0, dimensions = 0;
     cp_info *constant_pool = frame->constant_pool;
+    int contagem = 0, zero = 0, opcode1 = 0;
 
     switch(opcode) {
         case 0x10:
@@ -379,24 +380,24 @@ void decodifica_geral(Frame *frame) {
         case 0xB6:
             index = frame->codigo->info.CodeAttribute.code[frame->pc++];
             index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            i_invokevirtual(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2);
+            i_invokevirtual(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, frame->heap);
             break;
         case 0xB7:
             index = frame->codigo->info.CodeAttribute.code[frame->pc++];
             index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            i_invokespecial(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2);
+            i_invokespecial(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, frame->heap);
             break;
         case 0xB8:
             index = frame->codigo->info.CodeAttribute.code[frame->pc++];
             index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            i_invokestatic(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2);
+            i_invokestatic(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, frame->heap);
             break;
         case 0xB9:
             index = frame->codigo->info.CodeAttribute.code[frame->pc++];
             index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
             contagem = frame->codigo->info.CodeAttribute.code[frame->pc++];
             zero = frame->codigo->info.CodeAttribute.code[frame->pc++];
-            i_invokeinterface(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, contagem, zero);
+            i_invokeinterface(frame, frame->pilhaDeFrames, frame->heap->listaDeClasses, index, index2, contagem, zero, frame->heap);
             break;
         case 0xBB:
             index = frame->codigo->info.CodeAttribute.code[frame->pc++];

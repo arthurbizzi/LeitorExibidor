@@ -1,0 +1,658 @@
+>>>General Information<<<
+Minor version:      	0
+Major version:      	46
+Constant pool count:	81
+Access flags:       	0x20
+This class:         	CP INFO #1 < testeArray >
+Super class:        	CP INFO #3 < java/lang/Object >
+Interfaces count:   	0
+Fields count:       	5
+Methods count:      	7
+Attributes count:   	1
+
+
+>>>Constant Pool<<<
+[1]CONSTANT_Class_info:
+	Class name:          	CP INFO #2 < testeArray >
+[2]CONSTANT_Utf8_info:
+	Length of byte array:	10
+	Length of string:    	10
+	String:              	testeArray
+[3]CONSTANT_Class_info:
+	Class name:          	CP INFO #4 < java/lang/Object >
+[4]CONSTANT_Utf8_info:
+	Length of byte array:	16
+	Length of string:    	16
+	String:              	java/lang/Object
+[5]CONSTANT_Utf8_info:
+	Length of byte array:	6
+	Length of string:    	6
+	String:              	vetint
+[6]CONSTANT_Utf8_info:
+	Length of byte array:	2
+	Length of string:    	2
+	String:              	[I
+[7]CONSTANT_Utf8_info:
+	Length of byte array:	7
+	Length of string:    	7
+	String:              	vetlong
+[8]CONSTANT_Utf8_info:
+	Length of byte array:	2
+	Length of string:    	2
+	String:              	[J
+[9]CONSTANT_Utf8_info:
+	Length of byte array:	7
+	Length of string:    	7
+	String:              	vetbyte
+[10]CONSTANT_Utf8_info:
+	Length of byte array:	2
+	Length of string:    	2
+	String:              	[B
+[11]CONSTANT_Utf8_info:
+	Length of byte array:	8
+	Length of string:    	8
+	String:              	vetfloat
+[12]CONSTANT_Utf8_info:
+	Length of byte array:	2
+	Length of string:    	2
+	String:              	[F
+[13]CONSTANT_Utf8_info:
+	Length of byte array:	9
+	Length of string:    	9
+	String:              	vetdouble
+[14]CONSTANT_Utf8_info:
+	Length of byte array:	2
+	Length of string:    	2
+	String:              	[D
+[15]CONSTANT_Utf8_info:
+	Length of byte array:	6
+	Length of string:    	6
+	String:              	<init>
+[16]CONSTANT_Utf8_info:
+	Length of byte array:	3
+	Length of string:    	3
+	String:              	()V
+[17]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	Code
+[18]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #3 < java/lang/Object >
+	Name and type:       	CP INFO #19 < <init>()V >
+[19]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #15 < <init> >
+	Descriptor:          	CP INFO #16 < ()V >
+[20]CONSTANT_Utf8_info:
+	Length of byte array:	15
+	Length of string:    	15
+	String:              	LineNumberTable
+[21]CONSTANT_Utf8_info:
+	Length of byte array:	8
+	Length of string:    	8
+	String:              	printint
+[22]CONSTANT_Utf8_info:
+	Length of byte array:	5
+	Length of string:    	5
+	String:              	([I)V
+[23]CONSTANT_Fieldref_info:
+	Class name:          	CP INFO #24 < java/lang/System >
+	Name and type:       	CP INFO #26 < outLjava/io/PrintStream; >
+[24]CONSTANT_Class_info:
+	Class name:          	CP INFO #25 < java/lang/System >
+[25]CONSTANT_Utf8_info:
+	Length of byte array:	16
+	Length of string:    	16
+	String:              	java/lang/System
+[26]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #27 < out >
+	Descriptor:          	CP INFO #28 < Ljava/io/PrintStream; >
+[27]CONSTANT_Utf8_info:
+	Length of byte array:	3
+	Length of string:    	3
+	String:              	out
+[28]CONSTANT_Utf8_info:
+	Length of byte array:	21
+	Length of string:    	21
+	String:              	Ljava/io/PrintStream;
+[29]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #30 < java/io/PrintStream >
+	Name and type:       	CP INFO #32 < println(I)V >
+[30]CONSTANT_Class_info:
+	Class name:          	CP INFO #31 < java/io/PrintStream >
+[31]CONSTANT_Utf8_info:
+	Length of byte array:	19
+	Length of string:    	19
+	String:              	java/io/PrintStream
+[32]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #33 < println >
+	Descriptor:          	CP INFO #34 < (I)V >
+[33]CONSTANT_Utf8_info:
+	Length of byte array:	7
+	Length of string:    	7
+	String:              	println
+[34]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	(I)V
+[35]CONSTANT_Utf8_info:
+	Length of byte array:	9
+	Length of string:    	9
+	String:              	printlong
+[36]CONSTANT_Utf8_info:
+	Length of byte array:	5
+	Length of string:    	5
+	String:              	([J)V
+[37]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #30 < java/io/PrintStream >
+	Name and type:       	CP INFO #38 < println(J)V >
+[38]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #33 < println >
+	Descriptor:          	CP INFO #39 < (J)V >
+[39]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	(J)V
+[40]CONSTANT_Utf8_info:
+	Length of byte array:	9
+	Length of string:    	9
+	String:              	printbyte
+[41]CONSTANT_Utf8_info:
+	Length of byte array:	5
+	Length of string:    	5
+	String:              	([B)V
+[42]CONSTANT_Utf8_info:
+	Length of byte array:	10
+	Length of string:    	10
+	String:              	printfloat
+[43]CONSTANT_Utf8_info:
+	Length of byte array:	5
+	Length of string:    	5
+	String:              	([F)V
+[44]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #30 < java/io/PrintStream >
+	Name and type:       	CP INFO #45 < println(F)V >
+[45]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #33 < println >
+	Descriptor:          	CP INFO #46 < (F)V >
+[46]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	(F)V
+[47]CONSTANT_Utf8_info:
+	Length of byte array:	11
+	Length of string:    	11
+	String:              	printdouble
+[48]CONSTANT_Utf8_info:
+	Length of byte array:	5
+	Length of string:    	5
+	String:              	([D)V
+[49]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #30 < java/io/PrintStream >
+	Name and type:       	CP INFO #50 < println(D)V >
+[50]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #33 < println >
+	Descriptor:          	CP INFO #51 < (D)V >
+[51]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	(D)V
+[52]CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	main
+[53]CONSTANT_Utf8_info:
+	Length of byte array:	22
+	Length of string:    	22
+	String:              	([Ljava/lang/String;)V
+[54]CONSTANT_Fieldref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #55 < vetint[I >
+[55]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #5 < vetint >
+	Descriptor:          	CP INFO #6 < [I >
+[56]CONSTANT_Fieldref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #57 < vetlong[J >
+[57]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #7 < vetlong >
+	Descriptor:          	CP INFO #8 < [J >
+[58]CONSTANT_Fieldref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #59 < vetfloat[F >
+[59]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #11 < vetfloat >
+	Descriptor:          	CP INFO #12 < [F >
+[60]CONSTANT_Fieldref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #61 < vetbyte[B >
+[61]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #9 < vetbyte >
+	Descriptor:          	CP INFO #10 < [B >
+[62]CONSTANT_Fieldref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #63 < vetdouble[D >
+[63]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #13 < vetdouble >
+	Descriptor:          	CP INFO #14 < [D >
+[64]CONSTANT_Long_info:
+	High bytes:          	0x0
+	Low bytes:           	0xf
+	Long:                	15
+[65](large numeric continued)
+[66]CONSTANT_Float_info:
+	Bytes:               	0x41c80000
+	Float:               	1103626240.000000
+[67]CONSTANT_Double_info:
+	High bytes:          	0x403e0000
+	Low bytes:           	0x0
+	Double:              	4629137466983448576.000000
+[68](large numeric continued)
+[69]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #70 < printint([I)V >
+[70]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #21 < printint >
+	Descriptor:          	CP INFO #22 < ([I)V >
+[71]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #72 < printlong([J)V >
+[72]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #35 < printlong >
+	Descriptor:          	CP INFO #36 < ([J)V >
+[73]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #74 < printbyte([B)V >
+[74]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #40 < printbyte >
+	Descriptor:          	CP INFO #41 < ([B)V >
+[75]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #76 < printfloat([F)V >
+[76]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #42 < printfloat >
+	Descriptor:          	CP INFO #43 < ([F)V >
+[77]CONSTANT_Methodref_info:
+	Class name:          	CP INFO #1 < testeArray >
+	Name and type:       	CP INFO #78 < printdouble([D)V >
+[78]CONSTANT_NameAndType_info:
+	Name:                	CP INFO #47 < printdouble >
+	Descriptor:          	CP INFO #48 < ([D)V >
+[79]CONSTANT_Utf8_info:
+	Length of byte array:	10
+	Length of string:    	10
+	String:              	SourceFile
+[80]CONSTANT_Utf8_info:
+	Length of byte array:	15
+	Length of string:    	15
+	String:              	testeArray.java
+
+>>>Fields<<<
+[0]vetint
+	Access Flags:    	8
+	Name Index:      	CP INFO #5 vetint
+	Descriptor Index:	CP INFO #6 [I
+	Attributes Count:	0
+[1]vetlong
+	Access Flags:    	8
+	Name Index:      	CP INFO #7 vetlong
+	Descriptor Index:	CP INFO #8 [J
+	Attributes Count:	0
+[2]vetbyte
+	Access Flags:    	8
+	Name Index:      	CP INFO #9 vetbyte
+	Descriptor Index:	CP INFO #10 [B
+	Attributes Count:	0
+[3]vetfloat
+	Access Flags:    	8
+	Name Index:      	CP INFO #11 vetfloat
+	Descriptor Index:	CP INFO #12 [F
+	Attributes Count:	0
+[4]vetdouble
+	Access Flags:    	8
+	Name Index:      	CP INFO #13 vetdouble
+	Descriptor Index:	CP INFO #14 [D
+	Attributes Count:	0
+
+>>>Methods<<<
+
+Methods Count: 	7
+[0]<init>
+	Access Flags:    	0
+	Name Index:      	CP INFO #15 < <init> >
+	Descriptor Index:	CP INFO #16 < ()V >
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	CP INFO #17 < Code >
+		Attribute Lenght:	29
+		Max Stack:          	1
+		Max Locals:         	1
+		Code Length:        	5
+		Code:	 
+					0: aload_0	
+					1: invokespecial	0	18	
+					4: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	CP INFO #20 < LineNumberTable >
+		Attribute Lenght:	6
+		Number of Lines:	1
+		Line Number: 	1
+		Start PC:    	0
+[1]printint
+	Access Flags:    	8
+	Name Index:      	CP INFO #21 < printint >
+	Descriptor Index:	CP INFO #22 < ([I)V >
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	CP INFO #17 < Code >
+		Attribute Lenght:	59
+		Max Stack:          	3
+		Max Locals:         	2
+		Code Length:        	23
+		Code:	 
+					0: iconst_0	
+					1: istore_1	
+					2: goto	0	15	
+					5: getstatic	0	23	
+					8: aload_0	
+					9: iload_1	
+					10: iaload	
+					11: invokevirtual	0	29	
+					14: iinc	1	1	
+					17: iload_1	
+					18: iconst_5	
+					19: if_icmplt	255	242	
+					22: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	CP INFO #20 < LineNumberTable >
+		Attribute Lenght:	18
+		Number of Lines:	4
+		Line Number: 	10
+		Start PC:    	0
+		Line Number: 	11
+		Start PC:    	5
+		Line Number: 	10
+		Start PC:    	14
+		Line Number: 	13
+		Start PC:    	22
+[2]printlong
+	Access Flags:    	8
+	Name Index:      	CP INFO #35 < printlong >
+	Descriptor Index:	CP INFO #36 < ([J)V >
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	CP INFO #17 < Code >
+		Attribute Lenght:	59
+		Max Stack:          	3
+		Max Locals:         	2
+		Code Length:        	23
+		Code:	 
+					0: iconst_0	
+					1: istore_1	
+					2: goto	0	15	
+					5: getstatic	0	23	
+					8: aload_0	
+					9: iload_1	
+					10: laload	
+					11: invokevirtual	0	37	
+					14: iinc	1	1	
+					17: iload_1	
+					18: iconst_5	
+					19: if_icmplt	255	242	
+					22: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	CP INFO #20 < LineNumberTable >
+		Attribute Lenght:	18
+		Number of Lines:	4
+		Line Number: 	17
+		Start PC:    	0
+		Line Number: 	18
+		Start PC:    	5
+		Line Number: 	17
+		Start PC:    	14
+		Line Number: 	20
+		Start PC:    	22
+[3]printbyte
+	Access Flags:    	8
+	Name Index:      	CP INFO #40 < printbyte >
+	Descriptor Index:	CP INFO #41 < ([B)V >
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	CP INFO #17 < Code >
+		Attribute Lenght:	59
+		Max Stack:          	3
+		Max Locals:         	2
+		Code Length:        	23
+		Code:	 
+					0: iconst_0	
+					1: istore_1	
+					2: goto	0	15	
+					5: getstatic	0	23	
+					8: aload_0	
+					9: iload_1	
+					10: baload	
+					11: invokevirtual	0	29	
+					14: iinc	1	1	
+					17: iload_1	
+					18: iconst_5	
+					19: if_icmplt	255	242	
+					22: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	CP INFO #20 < LineNumberTable >
+		Attribute Lenght:	18
+		Number of Lines:	4
+		Line Number: 	24
+		Start PC:    	0
+		Line Number: 	25
+		Start PC:    	5
+		Line Number: 	24
+		Start PC:    	14
+		Line Number: 	27
+		Start PC:    	22
+[4]printfloat
+	Access Flags:    	8
+	Name Index:      	CP INFO #42 < printfloat >
+	Descriptor Index:	CP INFO #43 < ([F)V >
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	CP INFO #17 < Code >
+		Attribute Lenght:	59
+		Max Stack:          	3
+		Max Locals:         	2
+		Code Length:        	23
+		Code:	 
+					0: iconst_0	
+					1: istore_1	
+					2: goto	0	15	
+					5: getstatic	0	23	
+					8: aload_0	
+					9: iload_1	
+					10: faload	
+					11: invokevirtual	0	44	
+					14: iinc	1	1	
+					17: iload_1	
+					18: iconst_5	
+					19: if_icmplt	255	242	
+					22: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	CP INFO #20 < LineNumberTable >
+		Attribute Lenght:	18
+		Number of Lines:	4
+		Line Number: 	31
+		Start PC:    	0
+		Line Number: 	32
+		Start PC:    	5
+		Line Number: 	31
+		Start PC:    	14
+		Line Number: 	34
+		Start PC:    	22
+[5]printdouble
+	Access Flags:    	8
+	Name Index:      	CP INFO #47 < printdouble >
+	Descriptor Index:	CP INFO #48 < ([D)V >
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	CP INFO #17 < Code >
+		Attribute Lenght:	59
+		Max Stack:          	3
+		Max Locals:         	2
+		Code Length:        	23
+		Code:	 
+					0: iconst_0	
+					1: istore_1	
+					2: goto	0	15	
+					5: getstatic	0	23	
+					8: aload_0	
+					9: iload_1	
+					10: daload	
+					11: invokevirtual	0	49	
+					14: iinc	1	1	
+					17: iload_1	
+					18: iconst_5	
+					19: if_icmplt	255	242	
+					22: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	CP INFO #20 < LineNumberTable >
+		Attribute Lenght:	18
+		Number of Lines:	4
+		Line Number: 	38
+		Start PC:    	0
+		Line Number: 	39
+		Start PC:    	5
+		Line Number: 	38
+		Start PC:    	14
+		Line Number: 	41
+		Start PC:    	22
+[6]main
+	Access Flags:    	9
+	Name Index:      	CP INFO #52 < main >
+	Descriptor Index:	CP INFO #53 < ([Ljava/lang/String;)V >
+	Attributes Count:	1
+	[0]Code
+		Name Index:      	CP INFO #17 < Code >
+		Attribute Lenght:	203
+		Max Stack:          	4
+		Max Locals:         	2
+		Code Length:        	111
+		Code:	 
+					0: iconst_5	
+					1: newarray	10	
+					3: putstatic	0	54	
+					6: iconst_5	
+					7: newarray	11	
+					9: putstatic	0	56	
+					12: iconst_5	
+					13: newarray	6	
+					15: putstatic	0	58	
+					18: iconst_5	
+					19: newarray	8	
+					21: putstatic	0	60	
+					24: iconst_5	
+					25: newarray	7	
+					27: putstatic	0	62	
+					30: iconst_0	
+					31: istore_1	
+					32: goto	0	43	
+					35: getstatic	0	54	
+					38: iload_1	
+					39: bipush	10	
+					41: iastore	
+					42: getstatic	0	56	
+					45: iload_1	
+					46: ldc2_w	0	64	
+					49: lastore	
+					50: getstatic	0	60	
+					53: iload_1	
+					54: bipush	20	
+					56: bastore	
+					57: getstatic	0	58	
+					60: iload_1	
+					61: ldc	66	
+					63: fastore	
+					64: getstatic	0	62	
+					67: iload_1	
+					68: ldc2_w	0	67	
+					71: dastore	
+					72: iinc	1	1	
+					75: iload_1	
+					76: iconst_5	
+					77: if_icmplt	255	214	
+					80: getstatic	0	54	
+					83: invokestatic	0	69	
+					86: getstatic	0	56	
+					89: invokestatic	0	71	
+					92: getstatic	0	60	
+					95: invokestatic	0	73	
+					98: getstatic	0	58	
+					101: invokestatic	0	75	
+					104: getstatic	0	62	
+					107: invokestatic	0	77	
+					110: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]LineNumberTable
+		Name Index:      	CP INFO #20 < LineNumberTable >
+		Attribute Lenght:	74
+		Number of Lines:	18
+		Line Number: 	45
+		Start PC:    	0
+		Line Number: 	46
+		Start PC:    	6
+		Line Number: 	47
+		Start PC:    	12
+		Line Number: 	48
+		Start PC:    	18
+		Line Number: 	49
+		Start PC:    	24
+		Line Number: 	51
+		Start PC:    	30
+		Line Number: 	52
+		Start PC:    	35
+		Line Number: 	53
+		Start PC:    	42
+		Line Number: 	54
+		Start PC:    	50
+		Line Number: 	55
+		Start PC:    	57
+		Line Number: 	56
+		Start PC:    	64
+		Line Number: 	51
+		Start PC:    	72
+		Line Number: 	58
+		Start PC:    	80
+		Line Number: 	59
+		Start PC:    	86
+		Line Number: 	60
+		Start PC:    	92
+		Line Number: 	61
+		Start PC:    	98
+		Line Number: 	62
+		Start PC:    	104
+		Line Number: 	64
+		Start PC:    	110
+
+>>>Attributes<<<
+
+Attributes Count: 	1
+	[0]SourceFile
+		Name Index:      	CP INFO #79 < SourceFile >
+		Attribute Lenght:	2
+		Source File Index: 	CP INFO #80 < testeArray.java >

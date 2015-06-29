@@ -74,7 +74,7 @@ typedef struct heap
     struct listastaticfield *listaStaticField;
     struct listadeobjetos   *listaDeObjetos;
     struct listadeclasses   *listaDeClasses;
-    PilhaDeFrames           *pilhaDeFrames;
+    struct pilhadeframes    *pilhaDeFrames;
 } Heap;
 
 /**

@@ -203,7 +203,7 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2);
 *   @param indexbyte2
 *   @return
 */
-void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
+void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap);
 
 /**
 *   @fn void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
@@ -215,7 +215,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 *   @param indexbyte2
 *   @return
 */
-void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
+void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap);
 
 /**
 *   @fn void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
@@ -227,7 +227,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 *   @param indexbyte2
 *   @return
 */
-void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2);
+void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap);
 
 /**
 *   @fn void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero)
@@ -241,7 +241,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
 *   @param zero
 *   @return
 */
-void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero);
+void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero, Heap *heap);
 
 /**
 *   @fn void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses)

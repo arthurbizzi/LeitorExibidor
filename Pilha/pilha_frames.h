@@ -70,7 +70,7 @@ void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames);
 *   @param listaStaticField Lista de fields estaticos.
 *   @param pilhaDeFrames Pilha de frames atual.
 */
-Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames, ListaStaticField *listaStaticField);
+Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames, Heap *listaStaticField);
 
 /**
 *   @fn Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
