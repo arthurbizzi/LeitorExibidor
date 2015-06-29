@@ -288,9 +288,16 @@ void decodifica_geral(Frame *frame) {
 
     switch(opcode) {
         case 0x10:
+            index1 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index3 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index4 = frame->codigo->info.CodeAttribute.code[frame->pc];
+            *nu4 = (u4)(index1 << 24 | index2 << 16 | index3 << 8 | index4);
             i_bipush(frame, nu4);
             break;
         case 0x11:
+            index1 = frame->codigo->info.CodeAttribute.code[++frame->pc];
+            index2 = frame->codigo->info.CodeAttribute.code[frame->pc];
             i_sipush(frame, nu2);
             break;
         case 0x12:
