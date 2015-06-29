@@ -141,6 +141,7 @@ int executa_programa(ClassFile *classe) {
     ListaClasses *lista_de_classes; /// Lista de classes carregadas no programa
     method_info *metodo_main;
     ClassFile *classe_inicial;
+    ListaStaticField *lista_static_field = NULL;
 
     InicializaListaDeClasses(&lista_de_classes);
     InsereListaDeClasses(&lista_de_classes, classe);
@@ -152,7 +153,7 @@ int executa_programa(ClassFile *classe) {
         printf("ERRO: Metodo MAIN nao encontrado.\n");
         return ERRO_MAIN;
     }
-    prepara_metodo(metodo_main, classe_inicial, pilha_de_frames);
+    prepara_metodo(metodo_main, classe_inicial, pilha_de_frames, lista_static_field);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
     desalocaListaDeClasses(&lista_de_classes);

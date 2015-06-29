@@ -8,6 +8,7 @@
 #include "../Heap/heap.h"
 #include "pilha_operandos.h"
 
+
 #ifndef PILHA_FRAMES_H
 #define PILHA_FRAMES_H
 
@@ -25,6 +26,7 @@ typedef struct frame{
     u4                      returAddress;
     ClassFile               *classe;
     attribute_info          *codigo;
+    struct listastaticfield *listaStaticField;
 } Frame;
 
 typedef struct pilhadeframes
@@ -67,9 +69,10 @@ void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames);
 *   @brief Funcao que constroi um frame a partir de uma classe e de um metodo.
 *   @param classe Estrutura que contem a classe atual.
 *   @param method Estrutura que contem o metodo atual.
+*   @param listaStaticField Lista de fields estaticos.
 *   @param pilhaDeFrames Pilha de frames atual.
 */
-Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames);
+Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames, ListaStaticField *listaStaticField);
 
 /**
 *   @fn Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
