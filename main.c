@@ -13,9 +13,13 @@
 *
 *    Chamar com um dos comandos:
 *    jvm.exe <arquivo da classe>
-*       Nao sera gerado o arquivo do relatorio (somente impressao na tela).
+*       Chamada da JVM: executa a classe, sem exibi-la.
 *    jvm.exe <arquivo da classe> <opcao de impressao>
 *       Chamada do class loader: nao executara o programa, somente exibira a classe.
+*
+*    Opções de impressao: t - tela, a - arquivo, s - ambos, n - nenhum, x - debug
+*                         Observação: a opcao de impressao 'n' corresponde aa chamada
+*                                     da JVM.
 *    A chamada sem argumentos pedira ao usuario os dados necessarios para rodar o programa.
 */
 

@@ -1,0 +1,16 @@
+Trabalho da Disciplina Software Basico, 2015-1
+Alunos:	Bruno Ribeiro das Virgens (11/0111141)
+        Guilherme de Sousa Castro (11/0148746)
+        Kelvin William Moreira Lima (11/0159560)
+
+Compilar com o IDE DevC++.
+
+Chamar com um dos comandos:
+	jvm.exe
+		Pedirá ao usuario os dados necessarios para rodar o programa.
+	jvm.exe <arquivo da classe>
+		Modo JVM: executa a classe, sem exibi-la.
+	jvm.exe <arquivo da classe> <opcao de impressao>
+		Modo class loader: nao executara o programa, somente exibira a classe.
+	Opções de impressao: 't' - tela, 'a' - arquivo, 's' - ambos, 'n' - nenhum, 'x' - debug
+    Observação: a opcao de impressao 'n' corresponde à chamada da JVM.
