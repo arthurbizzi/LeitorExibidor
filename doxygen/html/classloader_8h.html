@@ -33,6 +33,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">JVM
    </div>
+   <div id="projectbrief">Projeto de Software Basico</div>
   </td>
  </tr>
  </tbody>
@@ -391,23 +392,51 @@ Functions</h2></td></tr>
 <tr class="memitem:a83b59d0d24fdbfc7d95cc8c5c921598f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83b59d0d24fdbfc7d95cc8c5c921598f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>carrega_classe</b> (char *nome_arquivo, <a class="el" href="structclassfile.html">ClassFile</a> *classe)</td></tr>
 <tr class="separator:a83b59d0d24fdbfc7d95cc8c5c921598f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a89edc4ce44e3fcfdb59eab13cb139e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classloader_8h.html#a1a89edc4ce44e3fcfdb59eab13cb139e">recupera_diretorio</a> (char *caminho)</td></tr>
-<tr class="memdesc:a1a89edc4ce44e3fcfdb59eab13cb139e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que recupera somente o diretorio de um dado caminho.  <a href="#a1a89edc4ce44e3fcfdb59eab13cb139e">More...</a><br /></td></tr>
-<tr class="separator:a1a89edc4ce44e3fcfdb59eab13cb139e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5802d772859cc1bb6fa94ff04ed6c85d"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classloader_8h.html#a5802d772859cc1bb6fa94ff04ed6c85d">recupera_nome_diretorio</a> (char *arquivo)</td></tr>
+<tr class="memdesc:a5802d772859cc1bb6fa94ff04ed6c85d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que recupera somente o diretorio de um dado caminho.  <a href="#a5802d772859cc1bb6fa94ff04ed6c85d">More...</a><br /></td></tr>
+<tr class="separator:a5802d772859cc1bb6fa94ff04ed6c85d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24405d7e5f4ed3c9ec1a7136aa3998b3"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classloader_8h.html#a24405d7e5f4ed3c9ec1a7136aa3998b3">recupera_nome_arquivo</a> (char *arquivo)</td></tr>
+<tr class="memdesc:a24405d7e5f4ed3c9ec1a7136aa3998b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que recupera somente o nome do arquivo de um dado caminho.  <a href="#a24405d7e5f4ed3c9ec1a7136aa3998b3">More...</a><br /></td></tr>
+<tr class="separator:a24405d7e5f4ed3c9ec1a7136aa3998b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Arquivo com as definicoes de constantes e estruturas do Class Loader. </p>
 <dl class="section author"><dt>Author</dt><dd>Bruno, Guilherme, Kelvin </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a1a89edc4ce44e3fcfdb59eab13cb139e"></a>
+<a class="anchor" id="a24405d7e5f4ed3c9ec1a7136aa3998b3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* recupera_diretorio </td>
+          <td class="memname">char* recupera_nome_arquivo </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>caminho</em></td><td>)</td>
+          <td class="paramname"><em>arquivo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao que recupera somente o nome do arquivo de um dado caminho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arquivo</td><td>Caminho completo para o arquivo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Diretorio onde se encontra o arquivo. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5802d772859cc1bb6fa94ff04ed6c85d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* recupera_nome_diretorio </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>arquivo</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -416,7 +445,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>carrega_classe</b> (ch
 <p>Funcao que recupera somente o diretorio de um dado caminho. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">caminho</td><td>Caminho completo para o arquivo. </td></tr>
+    <tr><td class="paramname">arquivo</td><td>Caminho completo para o arquivo. </td></tr>
   </table>
   </dd>
 </dl>
@@ -430,7 +459,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>carrega_classe</b> (ch
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ec38c87c25d3c1c35325ecf5819e098b.html">ClassLoader</a></li><li class="navelem"><a class="el" href="classloader_8h.html">classloader.h</a></li>
-    <li class="footer">Generated on Sat Jun 27 2015 22:49:12 for JVM by
+    <li class="footer">Generated on Mon Jun 29 2015 05:02:30 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

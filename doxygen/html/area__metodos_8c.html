@@ -33,6 +33,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">JVM
    </div>
+   <div id="projectbrief">Projeto de Software Basico</div>
   </td>
  </tr>
  </tbody>
@@ -120,9 +121,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad87dee67dfdfcde535571429d68edb39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad87dee67dfdfcde535571429d68edb39"></a>
 <a class="el" href="structmethodinfo.html">method_info</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>recupera_main</b> (<a class="el" href="structclassfile.html">ClassFile</a> *classe)</td></tr>
 <tr class="separator:ad87dee67dfdfcde535571429d68edb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adef5e3ae46f7d79b490e76195f4cf534"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adef5e3ae46f7d79b490e76195f4cf534"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>prepara_metodo</b> (<a class="el" href="structmethodinfo.html">method_info</a> *metodo, <a class="el" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames *pilha_de_frames)</td></tr>
-<tr class="separator:adef5e3ae46f7d79b490e76195f4cf534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8a5416aea9be6571e5fadc264f4e79b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8a5416aea9be6571e5fadc264f4e79b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>prepara_metodo</b> (<a class="el" href="structmethodinfo.html">method_info</a> *metodo, <a class="el" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames **pilha_de_frames, Heap *heap)</td></tr>
+<tr class="separator:ac8a5416aea9be6571e5fadc264f4e79b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5334609d1f72cc87014230764b4cbcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5334609d1f72cc87014230764b4cbcb"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>executa_metodo</b> (<a class="el" href="structmethodinfo.html">method_info</a> *metodo, <a class="el" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames *pilha_de_frames)</td></tr>
 <tr class="separator:ab5334609d1f72cc87014230764b4cbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,9 +148,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>decodifica_if</b> (Fr
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aef977f87a16a81dfadc70c7df350769c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef977f87a16a81dfadc70c7df350769c"></a>
-void(*&#160;</td><td class="memItemRight" valign="bottom"><b>instrucao</b> [0xC9])(Frame *frame)</td></tr>
-<tr class="separator:aef977f87a16a81dfadc70c7df350769c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285dd132607a8685c1bbe41de9d0d127"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a285dd132607a8685c1bbe41de9d0d127"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>instrucao</b> [0xCA])(Frame *frame)</td></tr>
+<tr class="separator:a285dd132607a8685c1bbe41de9d0d127"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4520b6336b94820a47d89a0394fddbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4520b6336b94820a47d89a0394fddbe"></a>
 u1&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 <tr class="separator:ab4520b6336b94820a47d89a0394fddbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,7 +164,7 @@ u1&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_2987f88da1d76ce60061e56cdad5b4ab.html">AreaMetodos</a></li><li class="navelem"><a class="el" href="area__metodos_8c.html">area_metodos.c</a></li>
-    <li class="footer">Generated on Sat Jun 27 2015 22:49:12 for JVM by
+    <li class="footer">Generated on Mon Jun 29 2015 05:02:30 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

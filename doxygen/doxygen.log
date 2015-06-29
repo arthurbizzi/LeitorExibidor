@@ -3,4 +3,16 @@ warning: source ..\carregamento.c is not a readable file or directory... skippin
 warning: source ..\carregamento.h is not a readable file or directory... skipping.
 C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/const.h:25: warning: documented symbol `void i_aconst_m1' was not declared or defined.
 C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/const.h:113: warning: documented symbol `void i_lconst_2' was not declared or defined.
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/others.h:349: warning: documented symbol `void i_ifnannull' was not declared or defined.
 C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/load.h:62: warning: argument 'index' of command @param is not found in the argument list of i_iload_0(Frame *frame)
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/others.h:36: warning: The following parameters of i_bipush(Frame *frame, u4 *n) are not documented:
+  parameter 'frame'
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/others.h:88: warning: The following parameters of i_goto(Frame *frame, u1 index1, u1 index2) are not documented:
+  parameter 'frame'
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/others.h:97: warning: argument 'index1' of command @param is not found in the argument list of i_ret(Frame *frame, u1 index)
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/others.h:97: warning: argument 'index2' of command @param is not found in the argument list of i_ret(Frame *frame, u1 index)
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/others.h:97: warning: The following parameters of i_ret(Frame *frame, u1 index) are not documented:
+  parameter 'frame'
+  parameter 'index'
+C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Instrucoes/others.h:44: warning: The following parameters of i_sipush(Frame *frame, u2 *n) are not documented:
+  parameter 'frame'

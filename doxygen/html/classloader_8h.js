@@ -96,5 +96,6 @@ var classloader_8h =
     [ "u4", "classloader_8h.html#ae5be1f726785414dd1b77d60df074c9d", null ],
     [ "u8", "classloader_8h.html#ae4d1c3d548028e31400378ec81026110", null ],
     [ "carrega_classe", "classloader_8h.html#a83b59d0d24fdbfc7d95cc8c5c921598f", null ],
-    [ "recupera_diretorio", "classloader_8h.html#a1a89edc4ce44e3fcfdb59eab13cb139e", null ]
+    [ "recupera_nome_arquivo", "classloader_8h.html#a24405d7e5f4ed3c9ec1a7136aa3998b3", null ],
+    [ "recupera_nome_diretorio", "classloader_8h.html#a5802d772859cc1bb6fa94ff04ed6c85d", null ]
 ];

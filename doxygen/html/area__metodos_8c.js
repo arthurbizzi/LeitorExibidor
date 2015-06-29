@@ -7,8 +7,8 @@ var area__metodos_8c =
     [ "decodifica_store", "area__metodos_8c.html#ad4383fd7ffddbf99658654f669f5887c", null ],
     [ "executa_instrucoes", "area__metodos_8c.html#a7e784cf77818362f932f7f9a4354fafb", null ],
     [ "executa_metodo", "area__metodos_8c.html#ab5334609d1f72cc87014230764b4cbcb", null ],
-    [ "prepara_metodo", "area__metodos_8c.html#adef5e3ae46f7d79b490e76195f4cf534", null ],
+    [ "prepara_metodo", "area__metodos_8c.html#ac8a5416aea9be6571e5fadc264f4e79b", null ],
     [ "recupera_main", "area__metodos_8c.html#ad87dee67dfdfcde535571429d68edb39", null ],
-    [ "instrucao", "area__metodos_8c.html#aef977f87a16a81dfadc70c7df350769c", null ],
+    [ "instrucao", "area__metodos_8c.html#a285dd132607a8685c1bbe41de9d0d127", null ],
     [ "opcode", "area__metodos_8c.html#ab4520b6336b94820a47d89a0394fddbe", null ]
 ];

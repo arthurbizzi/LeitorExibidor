@@ -19,7 +19,7 @@ var files =
     [ "logico_aritimeticas.h", "logico__aritimeticas_8h_source.html", null ],
     [ "main.c", "main_8c.html", "main_8c" ],
     [ "main.h", "main_8h.html", "main_8h" ],
-    [ "others.h", "others_8h_source.html", null ],
+    [ "others.h", "others_8h.html", "others_8h" ],
     [ "pilha_frames.c", "pilha__frames_8c.html", "pilha__frames_8c" ],
     [ "pilha_frames.h", "pilha__frames_8h.html", null ],
     [ "pilha_operandos.c", "pilha__operandos_8c.html", "pilha__operandos_8c" ],
