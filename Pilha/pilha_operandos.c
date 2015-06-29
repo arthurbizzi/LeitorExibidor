@@ -61,7 +61,7 @@ u8 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos)
     u8 op64;
     op32_1 = DesempilhaOperando32bits(pilhaOperandos);
     op32_2 = DesempilhaOperando32bits(pilhaOperandos);
-    op64 = (u8)(op32_1 << 32) | (u8)op32_2;
+    op64 = (((u8)op32_1) << 32) | op32_2;
     return op64;
 }
 

@@ -5,20 +5,24 @@
 #include <math.h>
 
 void i_pop(Frame* frame){
+	frame->pc++;
     DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 }
 
 void i_pop2(Frame* frame){
+	frame->pc++;
     DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 }
 
 void i_dup(Frame* frame){
+	frame->pc++;
     u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void i_dup_x1(Frame* frame){
+	frame->pc++;
     u4 valueTop = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
@@ -27,6 +31,7 @@ void i_dup_x1(Frame* frame){
 }
 
 void i_dup_x2(Frame* frame){
+	frame->pc++;
     u4 valueTop = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 valuefloor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -38,6 +43,7 @@ void i_dup_x2(Frame* frame){
 
 
 void i_dup2(Frame* frame){
+	frame->pc++;
     u4 valueTop = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
@@ -47,6 +53,7 @@ void i_dup2(Frame* frame){
 }
 
 void i_dup2_x1(Frame* frame){
+	frame->pc++;
     u4 valueTop = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 valueFloor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -59,6 +66,7 @@ void i_dup2_x1(Frame* frame){
 
 
 void i_dup2_x2(Frame* frame){
+	frame->pc++;
     u4 value4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value3 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -72,6 +80,7 @@ void i_dup2_x2(Frame* frame){
 }
 
 void i_swap(Frame* frame){
+	frame->pc++;
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value2);

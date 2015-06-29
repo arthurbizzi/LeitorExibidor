@@ -6,6 +6,7 @@
 
 
 void i_iadd(Frame* frame){
+	frame->pc++;
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = value1+value2;
@@ -13,6 +14,7 @@ void i_iadd(Frame* frame){
 }
 
 void i_ladd(Frame* frame){
+	frame->pc++;
     u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u8 result = value1+value2;
@@ -20,6 +22,7 @@ void i_ladd(Frame* frame){
 }
 
 void i_fadd(Frame* frame){
+	frame->pc++;
     u4 result;
     u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -33,7 +36,7 @@ void i_fadd(Frame* frame){
 }
 
 void i_dadd(Frame* frame){
-
+	frame->pc++;
     u8 result;
     u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
@@ -48,6 +51,7 @@ void i_dadd(Frame* frame){
 }
 
 void i_isub(Frame* frame){
+	frame->pc++;
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = value1-value2;
@@ -55,6 +59,7 @@ void i_isub(Frame* frame){
 }
 
 void i_lsub(Frame* frame){
+	frame->pc++;
     u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u8 result = value1-value2;
@@ -62,6 +67,7 @@ void i_lsub(Frame* frame){
 }
 
 void i_fsub(Frame* frame){
+	frame->pc++;
     u4 result;
     u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -75,6 +81,7 @@ void i_fsub(Frame* frame){
 }
 
 void i_dsub(Frame* frame){
+	frame->pc++;
 	u8 result;
     u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
@@ -88,6 +95,7 @@ void i_dsub(Frame* frame){
 }
 
 void i_imul(Frame* frame){
+	frame->pc++;
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = value1*value2;
@@ -95,6 +103,7 @@ void i_imul(Frame* frame){
 }
 
 void i_lmul(Frame* frame){
+	frame->pc++;
     u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u8 result = value1*value2;
@@ -102,6 +111,7 @@ void i_lmul(Frame* frame){
 }
 
 void i_fmul(Frame* frame){
+	frame->pc++;
     u4 result;
     u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -115,6 +125,7 @@ void i_fmul(Frame* frame){
 }
 
 void i_dmul(Frame* frame){
+	frame->pc++;
 	u8 result;
     u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
@@ -128,6 +139,7 @@ void i_dmul(Frame* frame){
 }
 
 void i_idiv(Frame* frame){
+	frame->pc++;
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = value1/value2;
@@ -135,6 +147,7 @@ void i_idiv(Frame* frame){
 }
 
 void i_ldiv(Frame* frame){
+	frame->pc++;
     u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u8 result = value1/value2;
@@ -143,6 +156,7 @@ void i_ldiv(Frame* frame){
 
 
 void i_fdiv(Frame* frame){
+	frame->pc++;
     u4 result;
     u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -156,6 +170,7 @@ void i_fdiv(Frame* frame){
 }
 
 void i_ddiv(Frame* frame){
+	frame->pc++;
    u8 result;
     u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
@@ -169,6 +184,7 @@ void i_ddiv(Frame* frame){
 }
 
 void i_irem(Frame* frame){
+	frame->pc++;
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = value1%value2;
@@ -176,6 +192,7 @@ void i_irem(Frame* frame){
 }
 
 void i_lrem(Frame* frame){
+	frame->pc++;
     u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u8 result = value1%value2;
@@ -183,6 +200,7 @@ void i_lrem(Frame* frame){
 }
 
 void i_frem(Frame* frame){
+	frame->pc++;
     u4 result;
     u4 aux2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 aux1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -196,6 +214,7 @@ void i_frem(Frame* frame){
 }
 
 void i_drem(Frame* frame){
+	frame->pc++;
    u8 result;
     u8 aux2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 aux1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
@@ -209,18 +228,21 @@ void i_drem(Frame* frame){
 }
 
 void i_ineg(Frame* frame){
+	frame->pc++;
     u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 result = ~value;
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_lneg(Frame* frame){
+	frame->pc++;
     u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 result = ~value;
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
 void i_fneg(Frame* frame){
+	frame->pc++;
 	u4 result;
     u4 aux = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     float fvalue;
@@ -231,6 +253,7 @@ void i_fneg(Frame* frame){
 }
 
 void i_dneg(Frame* frame){
+	frame->pc++;
 	u8 result;
     u8 aux = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     double fvalue;
@@ -241,6 +264,7 @@ void i_dneg(Frame* frame){
 }
 
 void i_ishl(Frame* frame){
+	frame->pc++;
 	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     u4 signal = value >> 31;
@@ -254,6 +278,7 @@ void i_ishl(Frame* frame){
 }
 
 void i_lshl(Frame* frame){
+	frame->pc++;
 	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     u4 signal = value >> 63;
@@ -267,6 +292,7 @@ void i_lshl(Frame* frame){
 }
 
 void i_ishr(Frame* frame){
+	frame->pc++;
 	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     u4 signal = value >> 31;
@@ -281,6 +307,7 @@ void i_ishr(Frame* frame){
 }
 
 void i_lshr(Frame* frame){
+	frame->pc++;
 	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     u4 signal = value >> 63;
@@ -295,6 +322,7 @@ void i_lshr(Frame* frame){
 }
 
 void i_iushr(Frame* frame){
+	frame->pc++;
 	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     value = (value >> shifter);
@@ -303,6 +331,7 @@ void i_iushr(Frame* frame){
 }
 
 void i_lushr(Frame* frame){
+	frame->pc++;
 	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
     value = (value >> shifter);
@@ -311,6 +340,7 @@ void i_lushr(Frame* frame){
 }
 
 void i_iand(Frame* frame){
+	frame->pc++;
 	u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 result = (value1 & value2);
@@ -319,6 +349,7 @@ void i_iand(Frame* frame){
 }
 
 void i_land(Frame* frame){
+	frame->pc++;
 	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u8 result = (value1 & value2);
@@ -327,6 +358,7 @@ void i_land(Frame* frame){
 }
 
 void i_ior(Frame* frame){
+	frame->pc++;
 	u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 result = (value1 | value2);
@@ -335,6 +367,7 @@ void i_ior(Frame* frame){
 }
 
 void i_lor(Frame* frame){
+	frame->pc++;
 	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u8 result = (value1 | value2);
@@ -343,6 +376,7 @@ void i_lor(Frame* frame){
 }
 
 void i_ixor(Frame* frame){
+	frame->pc++;
 	u4 value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 result = (value1 ^ value2);
@@ -351,6 +385,7 @@ void i_ixor(Frame* frame){
 }
 
 void i_lxor(Frame* frame){
+	frame->pc++;
 	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     u8 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u8 result = (value1 ^ value2);
@@ -359,5 +394,6 @@ void i_lxor(Frame* frame){
 }
 
 void i_iinc(Frame* frame, u1 index, u1 inc){
+	frame->pc++;
 	frame->VetorVariaveisLocais[index] += inc;
 }
