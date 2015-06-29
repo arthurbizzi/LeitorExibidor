@@ -285,7 +285,6 @@ void decodifica_geral(Frame *frame) {
     u1 index = 0, index2 = 0, inc = 0, type = 0, constbyte1 = 0, constbyte2 = 0;
     u1 branch1 = 0, branch2 = 0, branch3 = 0, branch4 = 0, dimensions = 0;
     cp_info *constant_pool = frame->constant_pool;
-    opcode = frame->pc;
 
     switch(opcode) {
         case 0x10:
@@ -335,11 +334,12 @@ void decodifica_geral(Frame *frame) {
             index = frame->codigo->info.CodeAttribute.code[frame->pc++];
             i_ret(frame, index);
             break;
-        /*case 0xAA:
+        case 0xAA:
             break;
         case 0xAB:
             break;
         case 0xAC:
+            frame->
             i_ireturn();
             break;
         case 0xAD:
@@ -448,7 +448,7 @@ void decodifica_geral(Frame *frame) {
 }
 
 void decodifica_load(Frame *frame) {
-    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc + 1];
+    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc++];
     switch(opcode) {
         case 0x15:
             i_iload(frame, index);
@@ -469,7 +469,7 @@ void decodifica_load(Frame *frame) {
 }
 
 void decodifica_store(Frame *frame) {
-    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc + 1];
+    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc++];
     switch(opcode) {
     case 0x36:
         i_istore(frame, index);
@@ -490,8 +490,8 @@ void decodifica_store(Frame *frame) {
 }
 
 void decodifica_if(Frame *frame) {
-    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc + 1];
-    u1 index2 = frame->codigo->info.CodeAttribute.code[frame->pc + 2];
+    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc++];
+    u1 index2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
     switch(opcode) {
         case 0x99:
             i_ifeq(frame, index, index2);
