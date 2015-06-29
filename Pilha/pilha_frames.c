@@ -11,17 +11,28 @@ Frame *ConstruirFrame(ClassFile *classe, method_info *method)
 {
     Frame *frame;
 
-    frame = (Frame *)malloc(sizeof(Frame));
+    frame = (Frame *) malloc(sizeof(Frame));
     frame->method = method;
     frame->pc = 0;
     frame->pilhaDeOperandos = NULL;
     frame->TamanhoVetorVariaveisLocais = method->attributes->info.CodeAttribute.max_locals;
-    frame->VetorVariaveisLocais = (u4 *)malloc(sizeof(u4) * frame->TamanhoVetorVariaveisLocais);
+    frame->VetorVariaveisLocais = (u4 *) malloc(sizeof(u4) * frame->TamanhoVetorVariaveisLocais);
     frame->constant_pool_count = classe->constant_pool_count;
     frame->constant_pool = classe->constant_pool;
     frame->listaArrays = NULL;
     frame->listaObjetos = NULL;
     frame->returAddress = 0;
+    frame->classe = classe;
+
+    attribute_info *codigo = NULL;
+    for(int i = 0; i < method->attributes_count; i++) {
+        if(method->attributes[i].tag == ATTRTAG_Code) {
+            codigo = &(method->attributes[i]);
+            break;
+        }
+    }
+
+    frame->codigo = codigo;
 
     return frame;
 }

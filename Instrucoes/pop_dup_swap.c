@@ -37,7 +37,7 @@ void i_dup_x2(Frame* frame){
 }
 
 
-void dup2(Frame* frame){
+void i_dup2(Frame* frame){
     u4 valueTop = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
@@ -46,7 +46,7 @@ void dup2(Frame* frame){
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valueTop);
 }
 
-void dup2_x1(Frame* frame){
+void i_dup2_x1(Frame* frame){
     u4 valueTop = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 valueFloor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
@@ -58,7 +58,7 @@ void dup2_x1(Frame* frame){
 }
 
 
-void dup2_x2(Frame* frame){
+void i_dup2_x2(Frame* frame){
     u4 value4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value3 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));

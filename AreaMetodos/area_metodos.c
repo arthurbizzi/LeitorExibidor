@@ -28,7 +28,7 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha
             if(metodo->attributes_count > 0) {
                 Frame *frame = ConstruirFrame(classe, metodo);
                 EmpilhaFrame(&pilha_de_frames, frame);
-                DestruirFrame(frame);
+                free(frame);
                 return;
             }
             else {
@@ -37,7 +37,7 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha
                 metodo->attributes[0].info.CodeAttribute.code_length = 0;
                 Frame *frame = ConstruirFrame(classe, metodo);
                 EmpilhaFrame(&pilha_de_frames, frame);
-                DestruirFrame(frame);
+                free(frame);
                 return;
             }
         }
@@ -68,17 +68,11 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
 }
 
 int executa_instrucoes(method_info *metodo, Frame *frame) {
-    for(int i = 0; i < metodo->attributes_count; i++) {
-        if(metodo->attributes[i].tag == ATTRTAG_Code) {
-            attribute_info *codigo = &(metodo->attributes[i]);
-            for(int j = 0; j < codigo->info.CodeAttribute.code_length; j++) {
-                opcode = codigo->info.CodeAttribute.code[j];
-                instrucao[opcode](frame);
-            }
-            return 1;
-        }
+    for(int i = 0; i < frame->codigo->info.CodeAttribute.code_length; i++) {
+        opcode = frame->codigo->info.CodeAttribute.code[i];
+        instrucao[opcode](frame);
     }
-    return ERRO_INSTRUCAO;
+    return 1;
 }
 
 void carrega_instrucoes() {
@@ -174,9 +168,9 @@ void carrega_instrucoes() {
 	instrucao[0x59] = i_dup;
 	instrucao[0x5A] = i_dup_x1;
 	instrucao[0x5B] = i_dup_x2;
-//	instrucao[0x5C] = i_dup2; // NAO IMPLEMENTADO
-//	instrucao[0x5D] = i_dup2_x1; // NAO IMPLEMENTADO
-//	instrucao[0x5E] = i_dup2_x2; // NAO IMPLEMENTADO
+	instrucao[0x5C] = i_dup2;
+	instrucao[0x5D] = i_dup2_x1;
+	instrucao[0x5E] = i_dup2_x2;
 	instrucao[0x5F] = i_swap;
 	instrucao[0x60] = i_iadd;
 	instrucao[0x61] = i_ladd;
@@ -254,19 +248,19 @@ void carrega_instrucoes() {
 	instrucao[0xA9] = decodifica_geral;
 //	instrucao[0xAA] = i_tableswitch; // NAO IMPLEMENTADO
 //	instrucao[0xAB] = i_lookupswitch; // NAO IMPLEMENTADO
-//	instrucao[0xAC] = i_ireturn; // NAO IMPLEMENTADO
-//	instrucao[0xAD] = i_lreturn; // NAO IMPLEMENTADO
-//	instrucao[0xAE] = i_freturn; // NAO IMPLEMENTADO
-//	instrucao[0xAF] = i_dreturn; // NAO IMPLEMENTADO
-//	instrucao[0xB0] = i_areturn; // NAO IMPLEMENTADO
-//	instrucao[0xB1] = i_return; // NAO IMPLEMENTADO
-//	instrucao[0xB2] = i_getstatic; // NAO IMPLEMENTADO
-//	instrucao[0xB3] = i_putstatic; // NAO IMPLEMENTADO
-//	instrucao[0xB4] = i_getfield; // NAO IMPLEMENTADO
-//	instrucao[0xB5] = i_putfield; // NAO IMPLEMENTADO
-//	instrucao[0xB6] = i_invokevirtual; // NAO IMPLEMENTADO
-//	instrucao[0xB7] = i_invokespecial; // NAO IMPLEMENTADO
-//	instrucao[0xB8] = i_invokestatic; // NAO IMPLEMENTADO
+	instrucao[0xAC] = decodifica_geral;
+	instrucao[0xAD] = decodifica_geral;
+	instrucao[0xAE] = decodifica_geral;
+	instrucao[0xAF] = decodifica_geral;
+	instrucao[0xB0] = decodifica_geral;
+	instrucao[0xB1] = decodifica_geral;
+	instrucao[0xB2] = decodifica_geral;
+	instrucao[0xB3] = decodifica_geral;
+	instrucao[0xB4] = decodifica_geral;
+	instrucao[0xB5] = decodifica_geral;
+	instrucao[0xB6] = decodifica_geral;
+	instrucao[0xB7] = decodifica_geral;
+	instrucao[0xB8] = decodifica_geral;
 	instrucao[0xB9] = decodifica_geral;
 	instrucao[0xBB] = decodifica_geral;
 	instrucao[0xBC] = decodifica_geral;
@@ -286,8 +280,8 @@ void carrega_instrucoes() {
 }
 
 void decodifica_geral(Frame *frame) {
-    u4 *nu4 = NULL;
-    u2 *nu2 = NULL;
+    u4 *nu4 = 0;
+    u2 *nu2 = 0;
     u1 index = 0, index2 = 0, inc = 0, type = 0, constbyte1 = 0, constbyte2 = 0;
     u1 branch1 = 0, branch2 = 0, branch3 = 0, branch4 = 0, dimensions = 0;
     cp_info *constant_pool = frame->constant_pool;
@@ -325,30 +319,43 @@ void decodifica_geral(Frame *frame) {
         case 0xAB:
             break;
         case 0xAC:
+            i_ireturn();
             break;
         case 0xAD:
+            i_lreturn();
             break;
         case 0xAE:
+            i_freturn();
             break;
         case 0xAF:
+            i_dreturn();
             break;
         case 0xB0:
+            i_areturn();
             break;
         case 0xB1:
+            i_return();
             break;
         case 0xB2:
+            i_getstatic();
             break;
         case 0xB3:
+            i_putstatic();
             break;
         case 0xB4:
+            i_getfield();
             break;
         case 0xB5:
+            i_putfield();
             break;
         case 0xB6:
+            i_invokevirtual();
             break;
         case 0xB7:
+            i_invokespecial();
             break;
         case 0xB8:
+            i_invokestatic();
             break;
         case 0xB9:
             i_invokeinterface(frame, pilha);
@@ -393,13 +400,92 @@ void decodifica_geral(Frame *frame) {
 }
 
 void decodifica_load(Frame *frame) {
-
+    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc + 1];
+    switch(opcode) {
+        case 0x15:
+            i_iload(frame, index);
+            break;
+        case 0x16:
+            i_lload(frame, index);
+            break;
+        case 0x17:
+            i_fload(frame, index);
+            break;
+        case 0x18:
+            i_dload(frame, index);
+            break;
+        case 0x19:
+            i_aload(frame, index);
+            break;
+    }
 }
 
 void decodifica_store(Frame *frame) {
-
+    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc + 1];
+    switch(opcode) {
+    case 0x36:
+        i_istore(frame, index);
+        break;
+    case 0x37:
+        i_lstore(frame, index);
+        break;
+    case 0x38:
+        i_fstore(frame, index);
+        break;
+    case 0x39:
+        i_dstore(frame, index);
+        break;
+    case 0x3A:
+        i_astore(frame, index);
+        break;
+    }
 }
 
 void decodifica_if(Frame *frame) {
-
+    u1 index = frame->codigo->info.CodeAttribute.code[frame->pc + 1];
+    u1 index2 = frame->codigo->info.CodeAttribute.code[frame->pc + 2];
+    switch(opcode) {
+        case 0x99:
+            i_ifeq(frame, index, index2);
+            break;
+        case 0x9A:
+            i_ifne(frame, index, index2);
+            break;
+        case 0x9B:
+            i_iflt(frame, index, index2);
+            break;
+        case 0x9C:
+            i_ifge(frame, index, index2);
+            break;
+        case 0x9D:
+            i_ifgt(frame, index, index2);
+            break;
+        case 0x9E:
+            i_ifle(frame, index, index2);
+            break;
+        case 0x9F:
+            i_if_icmpeq(frame, index, index2);
+            break;
+        case 0xA0:
+            i_if_icmpne(frame, index, index2);
+            break;
+        case 0xA1:
+            i_if_icmplt(frame, index, index2);
+            break;
+        case 0xA2:
+            i_if_icmpge(frame, index, index2);
+            break;
+        case 0xA3:
+            i_if_icmpgt(frame, index, index2);
+            break;
+        case 0xA4:
+            i_if_icmple(frame, index, index2);
+            break;
+        case 0xA5:
+            i_if_acmpeq(frame, index, index2);
+            break;
+        case 0xA6:
+            i_if_acmpne(frame, index, index2);
+            break;
+    }
 }

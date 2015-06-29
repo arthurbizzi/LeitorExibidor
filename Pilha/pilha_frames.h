@@ -22,6 +22,8 @@ typedef struct frame{
     struct listadearrays    *listaArrays;
     struct listadeobjetos   *listaObjetos;
     u4                      returAddress;
+    ClassFile               *classe;
+    attribute_info          *codigo;
 } Frame;
 
 typedef struct pilhadeframes
