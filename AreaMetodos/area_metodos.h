@@ -13,12 +13,13 @@
 #define ERRO_INSTRUCAO 30
 
 /**
-*   @fn method_info* recupera_main(ClassFile *classe)
+*   @fn method_info* recupera_metodo(ClassFile *classe, char *nome_metodo)
 *   @brief Funcao que recupera o metodo main de uma classe.
 *   @param classe Classe carregada.
+*	@param nome_metodo Nome do metodo a ser recuperado.
 *   @return Metodo main, se encontrado, NULL, caso contrario.
 */
-method_info* recupera_main(ClassFile *classe);
+method_info* recupera_metodo(ClassFile *classe, char *nome_metodo);
 
 /**
 *   @fn void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)
@@ -28,7 +29,7 @@ method_info* recupera_main(ClassFile *classe);
 *   @param pilha_de_frames Pilha que armazena os frames.
 *   @param heap Heap do programa.
 */
-void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap *heap);
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap **heap);
 
 /**
 *   @fn int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)

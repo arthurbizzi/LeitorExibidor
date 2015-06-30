@@ -10,23 +10,23 @@
 void (*instrucao[0xCA])(Frame *frame);
 u1 opcode;
 
-method_info* recupera_main(ClassFile *classe) {
+method_info* recupera_metodo(ClassFile *classe, char *nome_metodo) {
     for(int i = 0; i < classe->methods_count; i++) { // Para cada metodo dentro da classe
         u1 *nome;
         int index_nome = classe->methods[i].name_index - 1;
         nome = (u1*) dereferencia(index_nome, classe);
-        if(!strcmp("main", (char *) nome)) { // Se o nome do metodo for main
+        if(!strcmp(nome_metodo, (char *) nome)) { // Se o nome do metodo for main
             return &classe->methods[i];
         }
     }
     return NULL;
 }
 
-void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap *heap) {
+void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap **heap) {
     for(int i = 0; i < metodo->attributes_count; i++) {
         if(metodo->attributes[i].tag == ATTRTAG_Code) {
             if(metodo->attributes_count > 0) {
-                Frame *frame = ConstruirFrame(classe, metodo, pilha_de_frames, heap);
+                Frame *frame = ConstruirFrame(classe, metodo, *pilha_de_frames, *heap);
                 EmpilhaFrame(pilha_de_frames, frame);
                 //free(frame);
                 return;
@@ -35,9 +35,9 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilh
                 metodo->attributes_count++;
                 metodo->attributes = (attribute_info *) malloc(sizeof(attribute_info));
                 metodo->attributes[0].info.CodeAttribute.code_length = 0;
-                Frame *frame = ConstruirFrame(classe, metodo, pilha_de_frames, heap);
+                Frame *frame = ConstruirFrame(classe, metodo, *pilha_de_frames, *heap);
                 EmpilhaFrame(pilha_de_frames, frame);
-                free(frame);
+               // free(frame);
                 return;
             }
         }

@@ -77,20 +77,29 @@ void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
     ListaClasses *lc1;
     lc1 = (ListaClasses *)malloc(sizeof(ListaClasses));
     lc1->dado = dado;
-    lc1->prox = *listadeclasses;
+    ClassFile* lc2 = lc1->dado;
+    if((*listadeclasses) == NULL)
+		lc1->prox = NULL;
+	else
+		lc1->prox = *listadeclasses;
     *listadeclasses = lc1;
+    ListaClasses* teste = *listadeclasses;
     return;
 }
 
 void desalocaListaDeClasses(ListaClasses **listadeclasses)
 {
-    ListaClasses *lc1;
-    while (*listadeclasses != NULL)
+    ListaClasses *ponteiroAuxiliar = *listadeclasses;
+    ListaClasses* lc1 = ponteiroAuxiliar->prox;
+    ClassFile* classe = (ponteiroAuxiliar)->dado;
+    while (ponteiroAuxiliar != NULL)
     {
-        free((*listadeclasses)->dado);
-        lc1 = *listadeclasses;
-        *listadeclasses = lc1->prox;
-        free(lc1);
+        free(classe);
+        lc1 = ponteiroAuxiliar->prox;
+        free(ponteiroAuxiliar);
+		ponteiroAuxiliar = *listadeclasses;
+		if(ponteiroAuxiliar!=NULL)
+			classe = ponteiroAuxiliar->dado;
     }
     return;
 }
@@ -185,9 +194,9 @@ void InicializaHeap(Heap *heap, ListaArrays *listaArrays, ListaStaticField *list
 }
 
 void desalocaHeap(Heap *heap) {
-    //desalocaListaDeArrays(&heap->listaDeArrays);
-    desalocaListaDeClasses(&heap->listaDeClasses);
-    desalocaListaDeObjetos(&heap->listaDeObjetos);
-    desalocaListaDeFields(&heap->listaStaticField);
+    //desalocaListaDeArrays(&heap->listaDeAŝrrays);
+    desalocaListaDeClasses(&(heap->listaDeClasses));
+    //desalocaListaDeObjetos(&heap->listaDeObjetos);
+    desalocaListaDeFields(&(heap->listaStaticField));
     free(heap);
 }

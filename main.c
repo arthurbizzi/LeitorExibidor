@@ -138,32 +138,47 @@ int verifica_impressao(ClassFile *classe, char opcao) {
 
 int executa_programa(ClassFile *classe) {
     PilhaDeFrames *pilha_de_frames; /// Pilha de frames do programa
-    ListaClasses *lista_de_classes; /// Lista de classes carregadas no programa
-    method_info *metodo_main;
+    ListaClasses *lista_de_classes = NULL; /// Lista de classes carregadas no programa
+    method_info *metodo_main, *metodo_init;
     ClassFile *classe_inicial;
-    ListaStaticField *lista_static_field = NULL;
-    ListaArrays *lista_de_arrays = NULL;
-    ListaObjetos *lista_de_objetos = NULL;
+   // ListaStaticField *lista_static_field = NULL;
     Heap *heap;
 
-    InicializaListaDeClasses(&lista_de_classes);
+    //InicializaListaDeClasses(&lista_de_classes);
     InsereListaDeClasses(&lista_de_classes, classe);
+    ListaClasses* lc1 = heap->listaDeClasses;
+    ListaClasses* teste = lc1->dado;
     classe_inicial = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe
     InicializaPilhaDeFrames(&pilha_de_frames);
-    InicializaHeap(heap, lista_de_arrays, lista_static_field, lista_de_classes, lista_de_objetos);
+    InicializaHeap(heap, NULL, NULL, lista_de_classes, NULL);
+    carrega_instrucoes();
 
-    metodo_main = recupera_main(classe_inicial);
+#warning Criar Função recupera INIT.
+//    metodo_init = recupera_metodo(classe_inicial, "<init>");
+//    if(!metodo_init) {
+//        printf("ERRO: Metodo <init> nao encontrado.\n");
+//        return ERRO_MAIN;
+//    }
+//    prepara_metodo(metodo_init, classe_inicial, &pilha_de_frames, heap);
+//   executa_metodo(metodo_init, classe_inicial, pilha_de_frames);
+
+    metodo_main = recupera_metodo(classe_inicial, "main");
     if(!metodo_main) {
         printf("ERRO: Metodo MAIN nao encontrado.\n");
         return ERRO_MAIN;
     }
-    carrega_instrucoes();
-    prepara_metodo(metodo_main, classe_inicial, &pilha_de_frames, heap);
+    prepara_metodo(metodo_main, classe_inicial, &pilha_de_frames, &heap);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
-    desalocaListaDeClasses(&lista_de_classes);
-    desalocaPilhaFrames(&pilha_de_frames);
-    desalocaHeap(heap);
+	if(heap !=NULL){
+		//ListaClasses* lc1 = heap->listaDeClasses->prox;
+		desalocaHeap(&heap);
+
+	}
+
+	if(pilha_de_frames != NULL)
+		desalocaPilhaFrames(&pilha_de_frames);
+
 
     return SUCESSO;
 }
