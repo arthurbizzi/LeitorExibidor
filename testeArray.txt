@@ -245,7 +245,7 @@ Attributes count:   	1
 [67]CONSTANT_Double_info:
 	High bytes:          	0x403e0000
 	Low bytes:           	0x0
-	Double:              	0.000000
+	Double:              	30.000000
 [68](large numeric continued)
 [69]CONSTANT_Methodref_info:
 	Class name:          	CP INFO #1 <testeArray>
@@ -548,7 +548,7 @@ Methods Count: 	7
 	[0]Code
 		Name Index:      	CP INFO #17 <Code>
 		Attribute Lenght:	203
-		Default Data: 	7a1701eeffeeff1000a8020a802000200020d200885200d0220fd10010000000f0ff20f0ff20080000000000000100d4eebb6a7a17009e7182d00000fe00ffeeffee00100020000200020004b1f00ffeffd7f30381000000000000e8ff20e8ff20f000f8ffffffa0020a0020100201002000000000501200000000090520905203812
+		Default Data: 	f47c01eeffeeff1000a8020a802000200020d200885200d0220fd10010000000f0ff20f0ff200800000000000001006ef35117f47c00649f615600000fe00ffeeffee00100020000200020004b1f00ffeffd7f30381000000000000e8ff20e8ff20f000f8ffffffa0020a0020100201002000000000501200000000090520905203812
 
 >>>Attributes<<<
 

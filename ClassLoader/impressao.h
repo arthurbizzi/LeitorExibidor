@@ -15,8 +15,9 @@
 #define REQ_METHODREF_1 61
 #define REQ_METHODREF_2 62
 #define REQ_FIELDREF 63
-#define REQ_LDCREF 64
-#define REQ_JMPREF 65
+#define REQ_LDCREF_1 64
+#define REQ_LDCREF_2 65
+#define REQ_JMPREF 66
 
 /* Protótipos */
 // Imprime Stdout
