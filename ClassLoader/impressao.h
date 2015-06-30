@@ -12,6 +12,12 @@
 #ifndef IMPRESSAO_H
 #define IMPRESSAO_H
 
+#define REQ_METHODREF_1 61
+#define REQ_METHODREF_2 62
+#define REQ_FIELDREF 63
+#define REQ_LDCREF 64
+#define REQ_JMPREF 65
+
 /* Protótipos */
 // Imprime Stdout
 /**
@@ -124,7 +130,23 @@ void carrega_mnemonicos(Instrucao *mapa);
 */
 char* dereferencia(u2 index, ClassFile *classe);
 
-char* dereferencia_methodinfo(u4 index, ClassFile *classe);
+/**
+*   @fn char* dereferencia_methodinfo(u2 index, ClassFile *classe)
+*   @brief Funcao que recupera o valor de uma string no pool de constantes a partir de um methodinfo.
+*   @param index Indice onde o methodinfo se encontra.
+*   @param classe Estrutura que contem a informacao da classe.
+*   @return Retorna uma string asciiz contendo o nome da classe e metodo dereferenciado.
+*/
+char* dereferencia_methodinfo(u2 index, ClassFile *classe);
+
+/**
+*   @fn char* dereferencia_fieldrefinfo(u2 index, ClassFile *classe)
+*   @brief Funcao que recupera o valor de uma string no pool de constantes a partir de um methodinfo.
+*   @param index Indice onde o methodinfo se encontra.
+*   @param classe Estrutura que contem a informacao da classe.
+*   @return Retorna uma string asciiz contendo o nome da classe e metodo dereferenciado.
+*/
+char* dereferencia_fieldrefinfo(u2 index, ClassFile *classe);
 
 /**
 *   @fn int verifica_match(ClassFile *classe, char *nome)

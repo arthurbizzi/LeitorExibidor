@@ -76,12 +76,12 @@
 	"classloader.h"
 	"carregamento.h"
 
-1435639780 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.h
+1435686090 c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.h
 	<stdio.h>
 	"classloader.h"
 	"../main.h"
 
-1435640018 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.c
+1435678389 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\classloader\impressao.c
 	"impressao.h"
 
 1435548071 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\pilha\pilha_operandos.c

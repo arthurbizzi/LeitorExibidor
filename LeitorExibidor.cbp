@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/Hello.class x" />
+				<Option parameters="C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/testeArray.class x" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -49,7 +49,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ClassLoader/impressao.h" />
-		<Unit filename="ClassLoader/mapa.txt" />
 		<Unit filename="Heap/heap.c">
 			<Option compilerVar="CC" />
 		</Unit>
