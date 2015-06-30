@@ -36,7 +36,7 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilh
                 metodo->attributes = (attribute_info *) malloc(sizeof(attribute_info));
                 metodo->attributes[0].info.CodeAttribute.code_length = 0;
                 Frame *frame = ConstruirFrame(classe, metodo, pilha_de_frames, heap);
-                EmpilhaFrame(&pilha_de_frames, frame);
+                EmpilhaFrame(pilha_de_frames, frame);
                 free(frame);
                 return;
             }

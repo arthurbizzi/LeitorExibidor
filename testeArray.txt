@@ -241,11 +241,11 @@ Attributes count:   	1
 [65](large numeric continued)
 [66]CONSTANT_Float_info:
 	Bytes:               	0x41c80000
-	Float:               	1103626240.000000
+	Float:               	25.000000
 [67]CONSTANT_Double_info:
 	High bytes:          	0x403e0000
 	Low bytes:           	0x0
-	Double:              	4629137466983448576.000000
+	Double:              	30.000000
 [68](large numeric continued)
 [69]CONSTANT_Methodref_info:
 	Class name:          	CP INFO #1 < testeArray >

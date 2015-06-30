@@ -124,6 +124,8 @@ void carrega_mnemonicos(Instrucao *mapa);
 */
 char* dereferencia(u2 index, ClassFile *classe);
 
+char* dereferencia_methodinfo(u4 index, ClassFile *classe);
+
 /**
 *   @fn int verifica_match(ClassFile *classe, char *nome)
 *   @brief Funcao que verifica se o nome do arquivo e da classe batem.

@@ -288,7 +288,8 @@ typedef struct classfile
 typedef struct instrucao
 {
     char            mnemonico[20];
-    int             qtd_operandos;
+    int             operandos;
+    int             req_cp;
 } Instrucao;
 
 /**
