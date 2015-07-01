@@ -156,13 +156,10 @@ int executa_programa(ClassFile *classe) {
     carrega_instrucoes();
 
 #warning Criar Função recupera INIT.
-//    metodo_init = recupera_metodo(classe_inicial, "<init>");
-//    if(!metodo_init) {
-//        printf("ERRO: Metodo <init> nao encontrado.\n");
-//        return ERRO_MAIN;
-//    }
-//    prepara_metodo(metodo_init, classe_inicial, &pilha_de_frames, heap);
-//   executa_metodo(metodo_init, classe_inicial, pilha_de_frames);
+    if(!executa_inits(classe, pilha_de_frames, heap)) {
+        printf("ERRO: Metodo <init> nao encontrado.\n");
+        return ERRO_MAIN;
+    }
 
     metodo_main = recupera_metodo(classe_inicial, "main");
     if(!metodo_main) {

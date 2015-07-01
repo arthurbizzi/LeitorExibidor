@@ -22,6 +22,22 @@ method_info* recupera_metodo(ClassFile *classe, char *nome_metodo) {
     return NULL;
 }
 
+int executa_inits(ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap) {
+    int status = 0;
+    for(int i = 0; i < classe->methods_count; i++) {
+        u1 *nome;
+        int index_nome = classe->methods[i].name_index - 1;
+        nome = (u1*) dereferencia(index_nome, classe);
+        if(!strcmp("<init>", (char *) nome) || !strcmp("<clinit>", (char *) nome)) { // clinit?
+            method_info *init = &classe->methods[i];
+            prepara_metodo(init, classe, &pilha_de_frames, &heap);
+            executa_metodo(init, classe, pilha_de_frames);
+            status = 1;
+        }
+    }
+    return status;
+}
+
 void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap **heap) {
     for(int i = 0; i < metodo->attributes_count; i++) {
         if(metodo->attributes[i].tag == ATTRTAG_Code) {
