@@ -18,6 +18,8 @@
 #define REQ_LDCREF_1 64
 #define REQ_LDCREF_2 65
 #define REQ_JMPREF 66
+#define REQ_ARRAYREF 67
+#define REQ_IINCREF 68
 
 /* Protótipos */
 // Imprime Stdout
