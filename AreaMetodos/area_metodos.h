@@ -22,6 +22,16 @@
 method_info* recupera_metodo(ClassFile *classe, char *nome_metodo);
 
 /**
+*   @fn int executa_inits(ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap)
+*   @brief Funcao que executa os metodos inicializadores de uma classe.
+*   @param classe Classe carregada.
+*	@param pilha_de_frames Pilha de frames atual.
+*	@param heap Heap do programa.
+*   @return Metodo main, se encontrado, NULL, caso contrario.
+*/
+int executa_inits(ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap);
+
+/**
 *   @fn void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)
 *   @brief Funcao que prepara um metodo de uma classe.
 *   @param metodo Metodo a ser preparado.
