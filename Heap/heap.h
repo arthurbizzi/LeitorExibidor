@@ -192,7 +192,7 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses);
 */
 ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses);
 
-void InicializaHeap(Heap *heap, ListaArrays *listaArrays, ListaStaticField *listaStaticField, ListaClasses *listaClasses, ListaObjetos *listaObjetos);
+Heap* InicializaHeap();
 
 void desalocaHeap(Heap *heap);
 

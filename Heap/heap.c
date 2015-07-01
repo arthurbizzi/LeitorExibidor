@@ -90,16 +90,19 @@ void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
 void desalocaListaDeClasses(ListaClasses *listadeclasses)
 {
     ListaClasses *ponteiroAuxiliar = listadeclasses;
-    ListaClasses* lc1 = ponteiroAuxiliar->prox;
-    ClassFile* classe = (ponteiroAuxiliar)->dado;
-    while (ponteiroAuxiliar != NULL)
+    if(ponteiroAuxiliar!=NULL)
     {
-        free(classe);
-        lc1 = ponteiroAuxiliar->prox;
-        free(ponteiroAuxiliar);
-		ponteiroAuxiliar = lc1;
-		if(ponteiroAuxiliar!=NULL)
-			classe = ponteiroAuxiliar->dado;
+        ListaClasses* lc1 = ponteiroAuxiliar->prox;
+        ClassFile* classe = (ponteiroAuxiliar)->dado;
+        while (ponteiroAuxiliar != NULL)
+        {
+            free(classe);
+            lc1 = ponteiroAuxiliar->prox;
+            free(ponteiroAuxiliar);
+            ponteiroAuxiliar = lc1;
+            if(ponteiroAuxiliar!=NULL)
+                classe = ponteiroAuxiliar->dado;
+        }
     }
     return;
 }
@@ -126,20 +129,21 @@ void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado)
 
 void desalocaListaDeFields(ListaStaticField *listadefields)
 {
-	ListaStaticField *ponteiroAuxiliar = listadefields;
-	staticField* field;
-	if(ponteiroAuxiliar->dado !=NULL){
-		field = (ponteiroAuxiliar)->dado;
-	}
-    ListaStaticField* lc1 = ponteiroAuxiliar->prox;
-    while (ponteiroAuxiliar != NULL)
+    ListaStaticField *ponteiroAuxiliar = listadefields;
+    if(ponteiroAuxiliar!=NULL)
     {
-        free(field);
-        lc1 = ponteiroAuxiliar->prox;
-        free(ponteiroAuxiliar);
-		ponteiroAuxiliar = lc1;
-		if(ponteiroAuxiliar!=NULL)
-			field = ponteiroAuxiliar->dado;
+        staticField* field;
+        field = (ponteiroAuxiliar)->dado;
+        ListaStaticField* lc1 = ponteiroAuxiliar->prox;
+        while (ponteiroAuxiliar != NULL)
+        {
+            free(field);
+            lc1 = ponteiroAuxiliar->prox;
+            free(ponteiroAuxiliar);
+            ponteiroAuxiliar = lc1;
+            if(ponteiroAuxiliar!=NULL)
+                field = ponteiroAuxiliar->dado;
+        }
     }
     return;
 }
@@ -195,13 +199,15 @@ ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses)
 }
 
 
-void InicializaHeap(Heap *heap, ListaArrays *listaArrays, ListaStaticField *listaStaticField, ListaClasses *listaClasses, ListaObjetos *listaObjetos) {
-    heap = (Heap *) malloc(sizeof(Heap));
+Heap* InicializaHeap() {
+    Heap* heap = (Heap *) malloc(sizeof(Heap));
 
-    heap->listaDeArrays = listaArrays;
-    heap->listaStaticField = listaStaticField;
-    heap->listaDeClasses = listaClasses;
-    heap->listaDeObjetos = listaObjetos;
+    heap->listaDeArrays = NULL;
+    //heap->listaStaticField = listaStaticField;
+    heap->listaStaticField = NULL;
+    heap->listaDeClasses = NULL;
+    heap->listaDeObjetos = NULL;
+    return heap;;
 }
 
 void desalocaHeap(Heap *heap) {

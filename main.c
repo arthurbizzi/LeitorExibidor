@@ -60,7 +60,6 @@ int main(int argc, char **argv) {
         status = executa_programa(classe); // Executa o codigo da classe a partir de main
     }
 
-    free(classe);
 
     if(status == SUCESSO) {
         printf("Fim da execucao.\n");
@@ -142,12 +141,13 @@ int executa_programa(ClassFile *classe) {
     method_info *metodo_main, *metodo_init;
     ClassFile *classe_inicial;
    // ListaStaticField *lista_static_field = NULL;
-    Heap *heap;
+    Heap *heap= NULL;
 
     //InicializaListaDeClasses(&lista_de_classes);
     InicializaPilhaDeFrames(&pilha_de_frames);
-    InicializaHeap(heap, NULL, NULL, NULL, NULL);
-	ListaStaticField* teste = heap->listaStaticField;
+    heap = InicializaHeap();
+    //Forçamento da Lista de StaticField pra Null.
+    ListaStaticField* teste = heap->listaStaticField;
 	InsereListaDeClasses(&lista_de_classes, classe);
 	ListaClasses* lista = lista_de_classes;
 	heap->listaDeClasses = lista_de_classes;
