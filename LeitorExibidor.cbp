@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="C:/Users/Ceres/Documents/GitHub/LeitorExibidor/LeitorExibidor/testeArray.class x" />
+				<Option parameters="HelloWorldApp.class" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
