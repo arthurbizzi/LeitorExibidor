@@ -102,6 +102,7 @@ void i_ret(Frame* frame, u1 index){
 #pragma mark - SMURF PART
 void i_tableswitch(Frame *frame)
 {
+
     int32_t defaultbyte, high, low, index;
 	int32_t *tableswitch;
 	u4 byte1, byte2, byte3, byte4;
@@ -121,7 +122,7 @@ void i_tableswitch(Frame *frame)
 	byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
 	byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
 	byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
-	defautbyte = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+	defaultbyte = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
 
 	byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
 	byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
@@ -147,7 +148,7 @@ void i_tableswitch(Frame *frame)
 	}
 
 	if(index < low || index > high) {
-		target = enderecotable + defautbyte;
+		target = enderecotable + defaultbyte;
 	} else {
 		offset = tableswitch[index - low];
 		target = enderecotable + offset;
