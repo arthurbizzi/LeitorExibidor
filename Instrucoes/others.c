@@ -100,6 +100,124 @@ void i_ret(Frame* frame, u1 index){
 
 
 #pragma mark - SMURF PART
+void i_tableswitch(Frame *frame)
+{
+    int32_t defaultbyte, high, low, index;
+	int32_t *tableswitch;
+	u4 byte1, byte2, byte3, byte4;
+	u4 enderecotable;
+	u4 target, tableSize;
+	u4 i, offset;
+
+	index = (int32_t)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	enderecotable = frame->pc;
+
+	while((frame->pc + 1) % 4 != 0) {
+		frame->pc++;
+	}
+	frame->pc++;
+
+	byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	defautbyte = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+
+	byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	low = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+
+	byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	high = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+
+	tableSize = high - low + 1;
+	tableswitch = calloc(sizeof(u4), tableSize);
+
+	for(i = 0; i < tableSize; i++) 	{
+		byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		tableswitch[i] = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+	}
+
+	if(index < low || index > high) {
+		target = enderecotable + defautbyte;
+	} else {
+		offset = tableswitch[index - low];
+		target = enderecotable + offset;
+	}
+	frame->pc = target;
+    return;
+}
+
+void i_lookupswitch(Frame *frame)
+{
+    int32_t defaultbyte, npairs, key;
+	int32_t *match, *offset;
+	u4 byte1, byte2, byte3, byte4;
+	u4 target, enderecolookup;
+	u4 i;
+	u1 encontrado;
+
+	key = (int32_t)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	enderecolookup = frame->pc;
+
+	while((frame->pc + 1) % 4 != 0) {
+		frame->pc++;
+	}
+	frame->pc++;
+
+	byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	defaultbyte = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+
+	byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+	npairs = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+
+	match = calloc(sizeof(int32_t), npairs);
+	offset = calloc(sizeof(int32_t), npairs);
+	for(i = 0; i < npairs; i++) {
+		byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		match[i] = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+		byte1 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte2 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte3 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		byte4 = frame->codigo->info.CodeAttribute.code[frame->pc++];
+		offset[i] = (int32_t)(((byte1) << 24) |((byte2) << 16) |((byte3) << 8) |(byte4));
+	}
+
+	i = 0;
+	encontrado = 0;
+	while((i < npairs) &&(!encontrado)) {
+		if(match[i] == key)
+			encontrado = 1;
+		i++;
+	}
+	i--;
+
+	if(encontrado) {
+		target = offset[i] + enderecolookup;
+	} else {
+		target = defaultbyte + enderecolookup;
+	}
+	frame->pc = target;
+    return;
+}
+
 void i_ireturn(PilhaDeFrames *pilhadeframes)
 {
     Frame *frame;
