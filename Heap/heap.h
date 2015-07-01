@@ -141,14 +141,14 @@ void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado);
 *   @brief Funcao que desaloca completamente uma lista de classes.
 *   @param listadeclasses Lista a ser destruida.
 */
-void desalocaListaDeClasses(ListaClasses **listadeclasses);
+void desalocaListaDeClasses(ListaClasses *listadeclasses);
 
 /**
 *   @fn void InicializaListaDeFields(ListaStaticField **listadefields)
 *   @brief Funcao que inicializa a lista de fields carregados na heap.
 *   @param listadefields Estrutura que contera a lista de fields.
 */
-void InicializaListaDeFields(ListaStaticField **listadefields);
+void InicializaListaDeFields(ListaStaticField *listadefields);
 
 /**
 *   @fn void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado)
@@ -163,7 +163,7 @@ void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado);
 *   @brief Funcao que desaloca completamente uma lista de fields.
 *   @param listadefields Lista a ser destruida.
 */
-void desalocaListaDeFields(ListaStaticField **listadefields);
+void desalocaListaDeFields(ListaStaticField *listadefields);
 
 /**
 *   @fn u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)

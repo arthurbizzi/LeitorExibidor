@@ -145,12 +145,14 @@ int executa_programa(ClassFile *classe) {
     Heap *heap;
 
     //InicializaListaDeClasses(&lista_de_classes);
-    InsereListaDeClasses(&lista_de_classes, classe);
-    ListaClasses* lc1 = heap->listaDeClasses;
-    ListaClasses* teste = lc1->dado;
-    classe_inicial = RecuperaIesimaClasse(0, &lista_de_classes); // Recupera a primeira classe
     InicializaPilhaDeFrames(&pilha_de_frames);
-    InicializaHeap(heap, NULL, NULL, lista_de_classes, NULL);
+    InicializaHeap(heap, NULL, NULL, NULL, NULL);
+	ListaStaticField* teste = heap->listaStaticField;
+	InsereListaDeClasses(&lista_de_classes, classe);
+	ListaClasses* lista = lista_de_classes;
+	heap->listaDeClasses = lista_de_classes;
+
+	classe_inicial = RecuperaIesimaClasse(0, &(heap->listaDeClasses)); // Recupera a primeira classe
     carrega_instrucoes();
 
 #warning Criar Função recupera INIT.
@@ -170,11 +172,8 @@ int executa_programa(ClassFile *classe) {
     prepara_metodo(metodo_main, classe_inicial, &pilha_de_frames, &heap);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
-	if(heap !=NULL){
-		//ListaClasses* lc1 = heap->listaDeClasses->prox;
-		desalocaHeap(&heap);
-
-	}
+	if(heap !=NULL)
+		desalocaHeap(heap);
 
 	if(pilha_de_frames != NULL)
 		desalocaPilhaFrames(&pilha_de_frames);
