@@ -216,20 +216,20 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
             {
             case CONSTANT_Long:
                 l = (u8)classe->constant_pool[index].info.Long.high_bytes<<32|classe->constant_pool[index].info.Long.low_bytes;
-                printf("\t\tConstant Value Index: \tCP INFO #%d < %ld >", attributeInfo->info.ConstantValue.constantvalue_index, l);
+                printf("\t\tConstant Value Index: \tCP INFO #%d <%ld>", attributeInfo->info.ConstantValue.constantvalue_index, l);
                 break;
             case CONSTANT_Double:
                 l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
 				memcpy(&dvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u8));
-                printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
+                printf("\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
                 break;
             case CONSTANT_Float:
 				memcpy(&fvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u4));
-                printf("\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
+                printf("\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
                 break;
             case CONSTANT_Integer:
                 i = (int)classe->constant_pool[index].info.Integer.bytes;
-                printf("\t\tConstant Value Index: \tCP INFO #%d < %d >", attributeInfo->info.ConstantValue.constantvalue_index, i);
+                printf("\t\tConstant Value Index: \tCP INFO #%d <%d>", attributeInfo->info.ConstantValue.constantvalue_index, i);
                 break;
             case CONSTANT_String:
                 index1 = classe->constant_pool[index].info.String.string_index - 1;
@@ -330,6 +330,46 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
                                 printf("<%f>\t", dvalue);
                                 break;
                         }
+                        break;
+                    case REQ_ARRAYREF:
+                        instrIndex = attributeInfo->info.CodeAttribute.code[++i];
+                        printf("%hu\t", instrIndex);
+                        switch(instrIndex) {
+                            case 0:
+                                printf("(ref)\t");
+                                break;
+                            case 4:
+                                printf("(boolean)\t");
+                                break;
+                            case 5:
+                                printf("(char)\t");
+                                break;
+                            case 6:
+                                printf("(float)\t");
+                                break;
+                            case 7:
+                                printf("(double)\t");
+                                break;
+                            case 8:
+                                printf("(byte)\t");
+                                break;
+                            case 9:
+                                printf("(short)\t");
+                                break;
+                            case 10:
+                                printf("(int)\t");
+                                break;
+                            case 11:
+                                printf("(long)\t");
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case REQ_IINCREF:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        printf("%hu by %hu\t", instrIndex1, instrIndex2);
                         break;
                     default:
                         for(j = 0; j < mapa[opcode].operandos; j++) {
@@ -691,20 +731,20 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             {
             case CONSTANT_Long:
                 l = (u8)classe->constant_pool[index].info.Long.high_bytes<<32|classe->constant_pool[index].info.Long.low_bytes;
-                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %ld >", attributeInfo->info.ConstantValue.constantvalue_index, l);
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%ld>", attributeInfo->info.ConstantValue.constantvalue_index, l);
                 break;
             case CONSTANT_Double:
                 l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
                 memcpy(&dvalue,&l,sizeof(u8));
-                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
                 break;
             case CONSTANT_Float:
 				memcpy(&fvalue,&(classe->constant_pool[index].info.Float.bytes),sizeof(u4));
-                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %f >", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
                 break;
             case CONSTANT_Integer:
                 i = (int)classe->constant_pool[index].info.Integer.bytes;
-                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d < %d >", attributeInfo->info.ConstantValue.constantvalue_index, i);
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%d>", attributeInfo->info.ConstantValue.constantvalue_index, i);
                 break;
             case CONSTANT_String:
                 index = classe->constant_pool[index].info.String.string_index - 1;
@@ -722,16 +762,140 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++)
             {
                 Instrucao mapa[0xCA];
-                u1 opcode = attributeInfo->info.CodeAttribute.code[i];
+                u1 opcode = attributeInfo->info.CodeAttribute.code[i], instrIndex1, instrIndex2;
+                u2 instrIndex;
+                int16_t offset;
+                char *instrRef;
                 carrega_mnemonicos(mapa);
                 fprintf(file, "\t\t\t\t\t%d: %s\t", i, mapa[opcode].mnemonico);
-                for(int j = 0; j < mapa[opcode].operandos; j++) {
-                    fprintf(file, "%hu\t", attributeInfo->info.CodeAttribute.code[++i]);
+                int j;
+                double dvalue;
+                float fvalue;
+                switch(mapa[opcode].req_cp) {
+                    case REQ_METHODREF_1:
+                        instrIndex = attributeInfo->info.CodeAttribute.code[++i];
+                        instrRef = dereferencia_methodinfo(instrIndex - 1, classe);
+                        fprintf(file, "#%hu\t<%s>\t", instrIndex, instrRef);
+                        break;
+                    case REQ_METHODREF_2:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex = (instrIndex2 | (instrIndex1 << 8));
+                        instrRef = dereferencia_methodinfo(instrIndex - 1, classe);
+                        fprintf(file, "#%hu\t<%s>\t", instrIndex, instrRef);
+                        break;
+                    case REQ_FIELDREF:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex = (instrIndex2 | (instrIndex1 << 8));
+                        instrRef = dereferencia_fieldrefinfo(instrIndex - 1, classe);
+                        fprintf(file, "#%hu\t<%s>\t", instrIndex, instrRef);
+                        break;
+                    case REQ_JMPREF:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        offset = (int16_t) (instrIndex2 | (instrIndex1 << 8));
+                        fprintf(file, "%d\t(%d)\t", (offset - 2) + i, offset);
+                        break;
+                    case REQ_LDCREF_1:
+                        instrIndex = attributeInfo->info.CodeAttribute.code[++i] - 1;
+                        fprintf(file, "%hu\t", instrIndex + 1);
+                        switch(classe->constant_pool[instrIndex].tag) {
+                            case CONSTANT_Integer:
+                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer);
+                                break;
+                            case CONSTANT_Float:
+                                memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
+                                fprintf(file, "<%f>\t", fvalue);
+                                break;
+                            case CONSTANT_Long:
+                                l = (u8) classe->constant_pool[instrIndex].info.Long.high_bytes << 32;
+                                l = l | classe->constant_pool[instrIndex].info.Long.low_bytes;
+                                fprintf(file, "<%ld>\t", l);
+                                break;
+                            case CONSTANT_Double:
+                                l = (u8) classe->constant_pool[instrIndex].info.Double.high_bytes << 32;
+                                l = l | classe->constant_pool[instrIndex].info.Double.low_bytes;
+                                memcpy(&dvalue,&l,sizeof(u8));
+                                fprintf(file, "<%f>\t", dvalue);
+                                break;
+                        }
+                        break;
+                    case REQ_LDCREF_2:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex = (instrIndex2 | (instrIndex1 << sizeof(u1))) - 1;
+                        fprintf(file, "%hu\t", instrIndex + 1);
+                        switch(classe->constant_pool[instrIndex].tag) {
+                            case CONSTANT_Integer:
+                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer);
+                                break;
+                            case CONSTANT_Float:
+                                memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
+                                fprintf(file, "<%f>\t", fvalue);
+                                break;
+                            case CONSTANT_Long:
+                                l = (u8) classe->constant_pool[instrIndex].info.Long.high_bytes << 32;
+                                l = l | classe->constant_pool[instrIndex].info.Long.low_bytes;
+                                fprintf(file, "<%ld>\t", l);
+                                break;
+                            case CONSTANT_Double:
+                                l = (u8) classe->constant_pool[instrIndex].info.Double.high_bytes << 32;
+                                l = l | classe->constant_pool[instrIndex].info.Double.low_bytes;
+                                memcpy(&dvalue,&l,sizeof(u8));
+                                fprintf(file, "<%f>\t", dvalue);
+                                break;
+                        }
+                        break;
+                    case REQ_ARRAYREF:
+                        instrIndex = attributeInfo->info.CodeAttribute.code[++i];
+                        fprintf(file, "%hu\t", instrIndex);
+                        switch(instrIndex) {
+                            case 0:
+                                fprintf(file, "(ref)\t");
+                                break;
+                            case 4:
+                                fprintf(file, "(boolean)\t");
+                                break;
+                            case 5:
+                                fprintf(file, "(char)\t");
+                                break;
+                            case 6:
+                                fprintf(file, "(float)\t");
+                                break;
+                            case 7:
+                                fprintf(file, "(double)\t");
+                                break;
+                            case 8:
+                                fprintf(file, "(byte)\t");
+                                break;
+                            case 9:
+                                fprintf(file, "(short)\t");
+                                break;
+                            case 10:
+                                fprintf(file, "(int)\t");
+                                break;
+                            case 11:
+                                fprintf(file, "(long)\t");
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case REQ_IINCREF:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        fprintf(file, "%hu by %hu\t", instrIndex1, instrIndex2);
+                        break;
+                    default:
+                        for(j = 0; j < mapa[opcode].operandos; j++) {
+                            fprintf(file, "%hu\t", attributeInfo->info.CodeAttribute.code[++i]);
+                        }
+                        break;
                 }
                 fprintf(file, "\n");
             }
-            fprintf(file, "\n\t\tException Table Length: \t%d\n",
-                    attributeInfo->info.CodeAttribute.exception_table_length);
+            fprintf(file, "\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
             for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++)
             {
                 fprintf(file, "\t\tStart PC:  \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].start_pc);
@@ -743,7 +907,7 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             for (int k = 0; k < attributeInfo->info.CodeAttribute.attributes_count; k++)
             {
                 fprintf(file, "\t\t[%d]", k);
-                imprime_attribute_file(&(attributeInfo->info.CodeAttribute.attributes[k]), classe, file);
+                imprime_attribute(&(attributeInfo->info.CodeAttribute.attributes[k]), classe);
             }
         }
         else if (!strcmp(tipoAtributo, "Exceptions"))
@@ -1276,7 +1440,7 @@ void carrega_mnemonicos(Instrucao *mapa)
     mapa[0x83].req_cp = 0;
     strcpy(mapa[0x84].mnemonico, "iinc");
     mapa[0x84].operandos = 2;
-    mapa[0x84].req_cp = 0;
+    mapa[0x84].req_cp = REQ_IINCREF;
     strcpy(mapa[0x85].mnemonico, "i2l");
     mapa[0x85].operandos = 0;
     mapa[0x85].req_cp = 0;
@@ -1441,7 +1605,7 @@ void carrega_mnemonicos(Instrucao *mapa)
     mapa[0xBA].req_cp = 0;
     strcpy(mapa[0xBC].mnemonico, "newarray");
     mapa[0xBC].operandos = 1;
-    mapa[0xBC].req_cp = 0;
+    mapa[0xBC].req_cp = REQ_ARRAYREF;
     strcpy(mapa[0xBD].mnemonico, "anewarray");
     mapa[0xBD].operandos = 2;
     mapa[0xBD].req_cp = 0;

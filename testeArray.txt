@@ -329,18 +329,12 @@ Methods Count: 	7
 		Code Length:        	5
 		Code:	 
 					0: aload_0	
-					1: invokespecial	0	18	
+					1: invokespecial	#18	<java/lang/Object.<init>>	
 					4: return	
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
-		[0]LineNumberTable
-		Name Index:      	CP INFO #20 <LineNumberTable>
-		Attribute Lenght:	6
-		Number of Lines:	1
-		Line Number: 	1
-		Start PC:    	0
-[1]printint
+		[0][1]printint
 	Access Flags:    	8
 	Name Index:      	CP INFO #21 <printint>
 	Descriptor Index:	CP INFO #22 <([I)V>
@@ -354,33 +348,21 @@ Methods Count: 	7
 		Code:	 
 					0: iconst_0	
 					1: istore_1	
-					2: goto	0	15	
-					5: getstatic	0	23	
+					2: goto	17	(15)	
+					5: getstatic	#23	<java/lang/System.out>	
 					8: aload_0	
 					9: iload_1	
 					10: iaload	
-					11: invokevirtual	0	29	
-					14: iinc	1	1	
+					11: invokevirtual	#29	<java/io/PrintStream.println>	
+					14: iinc	1 by 1	
 					17: iload_1	
 					18: iconst_5	
-					19: if_icmplt	255	242	
+					19: if_icmplt	5	(-14)	
 					22: return	
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
-		[0]LineNumberTable
-		Name Index:      	CP INFO #20 <LineNumberTable>
-		Attribute Lenght:	18
-		Number of Lines:	4
-		Line Number: 	10
-		Start PC:    	0
-		Line Number: 	11
-		Start PC:    	5
-		Line Number: 	10
-		Start PC:    	14
-		Line Number: 	13
-		Start PC:    	22
-[2]printlong
+		[0][2]printlong
 	Access Flags:    	8
 	Name Index:      	CP INFO #35 <printlong>
 	Descriptor Index:	CP INFO #36 <([J)V>
@@ -394,33 +376,21 @@ Methods Count: 	7
 		Code:	 
 					0: iconst_0	
 					1: istore_1	
-					2: goto	0	15	
-					5: getstatic	0	23	
+					2: goto	17	(15)	
+					5: getstatic	#23	<java/lang/System.out>	
 					8: aload_0	
 					9: iload_1	
 					10: laload	
-					11: invokevirtual	0	37	
-					14: iinc	1	1	
+					11: invokevirtual	#37	<java/io/PrintStream.println>	
+					14: iinc	1 by 1	
 					17: iload_1	
 					18: iconst_5	
-					19: if_icmplt	255	242	
+					19: if_icmplt	5	(-14)	
 					22: return	
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
-		[0]LineNumberTable
-		Name Index:      	CP INFO #20 <LineNumberTable>
-		Attribute Lenght:	18
-		Number of Lines:	4
-		Line Number: 	17
-		Start PC:    	0
-		Line Number: 	18
-		Start PC:    	5
-		Line Number: 	17
-		Start PC:    	14
-		Line Number: 	20
-		Start PC:    	22
-[3]printbyte
+		[0][3]printbyte
 	Access Flags:    	8
 	Name Index:      	CP INFO #40 <printbyte>
 	Descriptor Index:	CP INFO #41 <([B)V>
@@ -434,33 +404,21 @@ Methods Count: 	7
 		Code:	 
 					0: iconst_0	
 					1: istore_1	
-					2: goto	0	15	
-					5: getstatic	0	23	
+					2: goto	17	(15)	
+					5: getstatic	#23	<java/lang/System.out>	
 					8: aload_0	
 					9: iload_1	
 					10: baload	
-					11: invokevirtual	0	29	
-					14: iinc	1	1	
+					11: invokevirtual	#29	<java/io/PrintStream.println>	
+					14: iinc	1 by 1	
 					17: iload_1	
 					18: iconst_5	
-					19: if_icmplt	255	242	
+					19: if_icmplt	5	(-14)	
 					22: return	
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
-		[0]LineNumberTable
-		Name Index:      	CP INFO #20 <LineNumberTable>
-		Attribute Lenght:	18
-		Number of Lines:	4
-		Line Number: 	24
-		Start PC:    	0
-		Line Number: 	25
-		Start PC:    	5
-		Line Number: 	24
-		Start PC:    	14
-		Line Number: 	27
-		Start PC:    	22
-[4]printfloat
+		[0][4]printfloat
 	Access Flags:    	8
 	Name Index:      	CP INFO #42 <printfloat>
 	Descriptor Index:	CP INFO #43 <([F)V>
@@ -468,38 +426,7 @@ Methods Count: 	7
 	[0]Code
 		Name Index:      	CP INFO #17 <Code>
 		Attribute Lenght:	59
-		Max Stack:          	3
-		Max Locals:         	2
-		Code Length:        	23
-		Code:	 
-					0: iconst_0	
-					1: istore_1	
-					2: goto	0	15	
-					5: getstatic	0	23	
-					8: aload_0	
-					9: iload_1	
-					10: faload	
-					11: invokevirtual	0	44	
-					14: iinc	1	1	
-					17: iload_1	
-					18: iconst_5	
-					19: if_icmplt	255	242	
-					22: return	
-
-		Exception Table Length: 	0
-		Code Attributes Count:	1
-		[0]LineNumberTable
-		Name Index:      	CP INFO #20 <LineNumberTable>
-		Attribute Lenght:	18
-		Number of Lines:	4
-		Line Number: 	31
-		Start PC:    	0
-		Line Number: 	32
-		Start PC:    	5
-		Line Number: 	31
-		Start PC:    	14
-		Line Number: 	34
-		Start PC:    	22
+		Default Data: 	88c3a601eeffeeff1000a8020a802000200020d200885200d0220fd10010000000f0ff20f0ff
 [5]printdouble
 	Access Flags:    	8
 	Name Index:      	CP INFO #47 <printdouble>
@@ -514,33 +441,21 @@ Methods Count: 	7
 		Code:	 
 					0: iconst_0	
 					1: istore_1	
-					2: goto	0	15	
-					5: getstatic	0	23	
+					2: goto	17	(15)	
+					5: getstatic	#23	<java/lang/System.out>	
 					8: aload_0	
 					9: iload_1	
 					10: daload	
-					11: invokevirtual	0	49	
-					14: iinc	1	1	
+					11: invokevirtual	#49	<java/io/PrintStream.println>	
+					14: iinc	1 by 1	
 					17: iload_1	
 					18: iconst_5	
-					19: if_icmplt	255	242	
+					19: if_icmplt	5	(-14)	
 					22: return	
 
 		Exception Table Length: 	0
 		Code Attributes Count:	1
-		[0]LineNumberTable
-		Name Index:      	CP INFO #20 <LineNumberTable>
-		Attribute Lenght:	18
-		Number of Lines:	4
-		Line Number: 	38
-		Start PC:    	0
-		Line Number: 	39
-		Start PC:    	5
-		Line Number: 	38
-		Start PC:    	14
-		Line Number: 	41
-		Start PC:    	22
-[6]main
+		[0][6]main
 	Access Flags:    	9
 	Name Index:      	CP INFO #52 <main>
 	Descriptor Index:	CP INFO #53 <([Ljava/lang/String;)V>
@@ -548,8 +463,67 @@ Methods Count: 	7
 	[0]Code
 		Name Index:      	CP INFO #17 <Code>
 		Attribute Lenght:	203
-		Default Data: 	f47c01eeffeeff1000a8020a802000200020d200885200d0220fd10010000000f0ff20f0ff200800000000000001006ef35117f47c00649f615600000fe00ffeeffee00100020000200020004b1f00ffeffd7f30381000000000000e8ff20e8ff20f000f8ffffffa0020a0020100201002000000000501200000000090520905203812
+		Max Stack:          	4
+		Max Locals:         	2
+		Code Length:        	111
+		Code:	 
+					0: iconst_5	
+					1: newarray	10	(int)	
+					3: putstatic	#54	<testeArray.vetint>	
+					6: iconst_5	
+					7: newarray	11	(long)	
+					9: putstatic	#56	<testeArray.vetlong>	
+					12: iconst_5	
+					13: newarray	6	(float)	
+					15: putstatic	#58	<testeArray.vetfloat>	
+					18: iconst_5	
+					19: newarray	8	(byte)	
+					21: putstatic	#60	<testeArray.vetbyte>	
+					24: iconst_5	
+					25: newarray	7	(double)	
+					27: putstatic	#62	<testeArray.vetdouble>	
+					30: iconst_0	
+					31: istore_1	
+					32: goto	75	(43)	
+					35: getstatic	#54	<testeArray.vetint>	
+					38: iload_1	
+					39: bipush	10	
+					41: iastore	
+					42: getstatic	#56	<testeArray.vetlong>	
+					45: iload_1	
+					46: ldc2_w	64	<15>	
+					49: lastore	
+					50: getstatic	#60	<testeArray.vetbyte>	
+					53: iload_1	
+					54: bipush	20	
+					56: bastore	
+					57: getstatic	#58	<testeArray.vetfloat>	
+					60: iload_1	
+					61: ldc	66	<25.000000>	
+					63: fastore	
+					64: getstatic	#62	<testeArray.vetdouble>	
+					67: iload_1	
+					68: ldc2_w	67	<30.000000>	
+					71: dastore	
+					72: iinc	1 by 1	
+					75: iload_1	
+					76: iconst_5	
+					77: if_icmplt	35	(-42)	
+					80: getstatic	#54	<testeArray.vetint>	
+					83: invokestatic	#69	<testeArray.printint>	
+					86: getstatic	#56	<testeArray.vetlong>	
+					89: invokestatic	#71	<testeArray.printlong>	
+					92: getstatic	#60	<testeArray.vetbyte>	
+					95: invokestatic	#73	<testeArray.printbyte>	
+					98: getstatic	#58	<testeArray.vetfloat>	
+					101: invokestatic	#75	<testeArray.printfloat>	
+					104: getstatic	#62	<testeArray.vetdouble>	
+					107: invokestatic	#77	<testeArray.printdouble>	
+					110: return	
 
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0]
 >>>Attributes<<<
 
 Attributes Count: 	1
