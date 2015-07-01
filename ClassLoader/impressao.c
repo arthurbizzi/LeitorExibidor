@@ -1667,7 +1667,8 @@ char* dereferencia_methodinfo(u2 index, ClassFile *classe)
     int i;
     u2 class_index, name_and_type_index, method_index;
 
-    class_index = classe->constant_pool[index].info.Methodref.class_index;
+    class_index = classe->constant_pool[index].info.Methodref.class_index - 1;
+    class_index = classe->constant_pool[class_index].info.Class.name_index - 1;
     name_and_type_index = classe->constant_pool[index].info.Methodref.name_and_type_index - 1;
     method_index = classe->constant_pool[name_and_type_index].info.NameAndType.name_index - 1;
     class_name = dereferencia(class_index, classe);
@@ -1685,7 +1686,8 @@ char* dereferencia_fieldrefinfo(u2 index, ClassFile *classe)
     int i;
     u2 class_index, name_and_type_index, method_index;
 
-    class_index = classe->constant_pool[index].info.Fieldref.class_index;
+    class_index = classe->constant_pool[index].info.Fieldref.class_index - 1;
+    class_index = classe->constant_pool[class_index].info.Class.name_index - 1;
     name_and_type_index = classe->constant_pool[index].info.Fieldref.name_and_type_index - 1;
     method_index = classe->constant_pool[name_and_type_index].info.NameAndType.name_index - 1;
     class_name = dereferencia(class_index, classe);

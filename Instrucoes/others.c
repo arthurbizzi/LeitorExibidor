@@ -476,10 +476,10 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     Frame *frame1;
     ClassFile *classe;
     float valorf;
-    char *nomeclasse, *nomemetodo, *metododesc, *nome;
+    char *nomeclasse, *nomemetodo, *metododesc, *nome, *nomedesc;
     u8 valoru8;
     u4 numparam, i, j, valoru4, *argumentos;
-    u2 index, classindex, descriptorindex, metodoindex, length;
+    u2 index, index1, classindex, descriptorindex, metodoindex, length;
     u1 *bytes;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
@@ -607,7 +607,9 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         for(i = 0; i < classe->methods_count; i++) {
             index = classe->methods[i].name_index - 1;
             nome = i_dereferencia_instrucoes(index, classe->constant_pool);
-            if(!strcmp(nomemetodo, nome))
+            index1 = classe->methods[i].descriptor_index - 1;
+            nomedesc = i_dereferencia_instrucoes(index1, classe->constant_pool);
+            if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
                 break;
         }
         if (i != classe->methods_count)
@@ -648,7 +650,6 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 
 void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
-
     Frame *frame1;
     ClassFile *classe;
     char *nomeclasse, *nomemetodo;
@@ -706,7 +707,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     if (classe->methods[0].access_flags & ACC_NATIVE)
     {
         u4 zerou4 = 0;
-        u8 zerou8 = zerou4;
+        u8 zerou8 = 0;
         bytes = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.bytes;
         length = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.length;
         if(bytes[length - 1] == 'D' || bytes[length - 1] == 'J') {
@@ -735,9 +736,9 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
 
     Frame *frame1;
     ClassFile *classe;
-    char *nomeclasse, *nomemetodo, *nome;
+    char *nomeclasse, *nomemetodo, *metododesc, *nome, *nomedesc;
     u4 numparam, i, j, *argumentos;
-    u2 index, classindex, descriptorindex, metodoindex, length;
+    u2 index, index1, classindex, descriptorindex, metodoindex, length;
     u1 *bytes;
     index = (u4)indexbyte1 << 8 | (u4)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
@@ -757,6 +758,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
     metodoindex = frame->constant_pool[descriptorindex].info.NameAndType.name_index - 1;
     descriptorindex = frame->constant_pool[descriptorindex].info.NameAndType.descriptor_index - 1;
+    metododesc = i_dereferencia_instrucoes(descriptorindex, frame->constant_pool);
     bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
     length = frame->constant_pool[descriptorindex].info.Utf8.length;
 
@@ -790,9 +792,12 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     for(i = 0; i < classe->methods_count; i++) {
         index = classe->methods[i].name_index - 1;
         nome = i_dereferencia_instrucoes(index, classe->constant_pool);
-        if(!strcmp(nomemetodo, nome))
+        index1 = classe->methods[i].descriptor_index - 1;
+        nomedesc = i_dereferencia_instrucoes(index1, classe->constant_pool);
+        if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
             break;
     }
+
     if (i != classe->methods_count)
     {
         if (classe->methods[i].access_flags & ACC_NATIVE)
@@ -831,8 +836,8 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
 
     ClassFile *classe;
     Frame *frame1;
-    char *nome, *nomemetodo, *nomeclasse;
-    u2 index, classeindex;
+    char *nome, *nomemetodo, *nomeclasse, *nomedesc, *metododesc;
+    u2 index, index1, classeindex, descriptorindex;
     u4 *argumentos, i, j;
     Objeto *obj;
     argumentos = (u4 *)malloc(sizeof(u4) * (contagem + 1));
@@ -843,6 +848,7 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
         argumentos[i] = DesempilhaOperando32bits(&frame->pilhaDeOperandos);
     }
     index = frame->constant_pool[index - 1].info.InterfaceMethodref.name_and_type_index - 1;
+    descriptorindex = frame->constant_pool[index].info.NameAndType.descriptor_index - 1;
     index = frame->constant_pool[index].info.NameAndType.name_index - 1;
     classeindex = frame->constant_pool[classeindex - 1].info.InterfaceMethodref.class_index - 1;
     classeindex = frame->constant_pool[classeindex].info.Class.name_index - 1;
@@ -858,11 +864,14 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
         carrega_classe(nomearquivo, classe);
         InsereListaDeClasses(&listadeclasses, classe);
     }
+    metododesc = i_dereferencia_instrucoes(descriptorindex, frame->constant_pool);
     nomemetodo = i_dereferencia_instrucoes(index,frame->constant_pool);
     for(i = 0; i < classe->methods_count; i++) {
         index = classe->methods[i].name_index - 1;
         nome = i_dereferencia_instrucoes(index, classe->constant_pool);
-        if(!strcmp(nomemetodo, nome))
+        index1 = classe->methods[i].descriptor_index - 1;
+        nomedesc = i_dereferencia_instrucoes(index1, classe->constant_pool);
+        if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
             break;
     }
     if (i != obj->classe->methods_count)
