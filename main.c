@@ -30,16 +30,13 @@ int main(int argc, char **argv) {
     char nome_classe[21];
     char opcao; /// Modo de impressao (t - tela, a - arquivo, s - ambos, n - nenhum)
     int status;
-    printf("HERE");
     switch(argc) {
         case 2:
             status = carrega_classe(argv[1], classe);
             opcao = 'n';
             break;
         case 3:
-            printf("HERE");
             status = carrega_classe(argv[1], classe);
-            printf("HERE");
             opcao = argv[2][0];
             break;
         default:
@@ -55,9 +52,7 @@ int main(int argc, char **argv) {
         printf("Carregamento interrompido.\n");
         return status;
     }
-    int result = verifica_impressao(classe,opcao);
-    printf("\nHERE\n");
-    if(result == ERRO_ARQUIVO) { // Verifica onde imprimir o conteudo da classe
+    if(verifica_impressao(classe,opcao) == ERRO_ARQUIVO) { // Verifica onde imprimir o conteudo da classe
 
         printf("ERRO: arquivo nao pode ser criado.\n");
         return ERRO_ARQUIVO;
@@ -80,10 +75,12 @@ int main(int argc, char **argv) {
 
 int verifica_impressao(ClassFile *classe, char opcao) {
     FILE *arquivo_saida;
-    char *nome_arquivo;
+    char *nome_arquivo, *nome;
     int index;
     index = classe->constant_pool[classe->this_class - 1].info.Class.name_index - 1;
-    nome_arquivo = dereferencia(index, classe); // Recupera nome da classe
+    nome = dereferencia(index, classe); // Recupera nome da classe
+    nome_arquivo = (char *)malloc(sizeof(char) * (strlen(nome)+5));
+    strcpy(nome_arquivo, nome);
     strcat(nome_arquivo, ".txt"); // Adiciona extensao txt
     switch(opcao) {
         case 'n':

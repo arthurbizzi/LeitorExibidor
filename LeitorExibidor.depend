@@ -202,7 +202,7 @@
 1435757392 e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.h
 	"../ClassLoader/classloader.h"
 
-1435757392 e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.h
+1435776322 e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.h
 	"../main.h"
 	"../Pilha/pilha_frames.h"
 
@@ -210,7 +210,7 @@
 	"classloader.h"
 	"carregamento.h"
 
-1435774280 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\impressao.c
+1435776322 source:e:\guilherme\area\gui\sb\leitorexibidor\classloader\impressao.c
 	"impressao.h"
 
 1434817998 source:e:\guilherme\area\gui\sb\leitorexibidor\lista_arrays_objetos_classes.c
@@ -311,7 +311,7 @@
 1434861921 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
 
-1435757392 source:e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.c
+1435776322 source:e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
 	"../Instrucoes/bridge_arquivosinstrucoes.h"
 
@@ -441,7 +441,7 @@
 1435757392 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.c
 	"pilha_operandos.h"
 
-1435771783 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
+1435776322 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
 	"others.h"
 
 1435757392 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.h
