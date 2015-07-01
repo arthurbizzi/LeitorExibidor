@@ -141,7 +141,7 @@ int verifica_impressao(ClassFile *classe, char opcao) {
 int executa_programa(ClassFile *classe) {
     PilhaDeFrames *pilha_de_frames = NULL; /// Pilha de frames do programa
     ListaClasses *lista_de_classes = NULL; /// Lista de classes carregadas no programa
-    method_info *metodo_main = NULL, *metodo_init = NULL;
+    method_info *metodo_main = NULL;
     ClassFile *classe_inicial = NULL;
    // ListaStaticField *lista_static_field = NULL;
     Heap *heap= NULL;
@@ -150,15 +150,12 @@ int executa_programa(ClassFile *classe) {
     InicializaPilhaDeFrames(&pilha_de_frames);
     heap = InicializaHeap();
     //Forçamento da Lista de StaticField pra Null.
-    ListaStaticField* teste = heap->listaStaticField;
 	InsereListaDeClasses(&lista_de_classes, classe);
-	ListaClasses* lista = lista_de_classes;
 	heap->listaDeClasses = lista_de_classes;
 
 	classe_inicial = RecuperaIesimaClasse(0, &(heap->listaDeClasses)); // Recupera a primeira classe
     carrega_instrucoes();
 
-#warning Criar Função recupera INIT.
     if(!executa_inits(classe, pilha_de_frames, heap)) {
         printf("ERRO: Metodo <init> nao encontrado.\n");
         return ERRO_MAIN;

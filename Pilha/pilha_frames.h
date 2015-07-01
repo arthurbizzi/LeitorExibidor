@@ -46,7 +46,7 @@ void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames);
 *   @param pilhaFrame Estrutura que contem a pilha de frames.
 *   @param frame Dado a ser empilhado.
 */
-void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame);
+PilhaDeFrames* EmpilhaFrame(PilhaDeFrames *pilhaFrame, Frame *frame);
 
 /**
 *   @fn void DestruirFrame(Frame *frame)

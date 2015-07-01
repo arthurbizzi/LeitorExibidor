@@ -220,15 +220,15 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
                 break;
             case CONSTANT_Double:
                 l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
-				memcpy(&dvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u8));
+				memcpy(&dvalue,&(classe->constant_pool[index].info.Float.bytes),sizeof(u8));
                 printf("\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
                 break;
             case CONSTANT_Float:
-				memcpy(&fvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u4));
+				memcpy(&fvalue,&(classe->constant_pool[index].info.Float.bytes),sizeof(u4));
                 printf("\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
                 break;
             case CONSTANT_Integer:
-                i = (int)classe->constant_pool[index].info.Integer.bytes;
+                i = (int32_t)classe->constant_pool[index].info.Integer.bytes;
                 printf("\t\tConstant Value Index: \tCP INFO #%d <%d>", attributeInfo->info.ConstantValue.constantvalue_index, i);
                 break;
             case CONSTANT_String:
@@ -286,7 +286,7 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
                         printf("%hu\t", instrIndex + 1);
                         switch(classe->constant_pool[instrIndex].tag) {
                             case CONSTANT_Integer:
-                                printf("<%d>\t", classe->constant_pool[instrIndex].info.Integer);
+                                printf("<%d>\t", classe->constant_pool[instrIndex].info.Integer.bytes);
                                 break;
                             case CONSTANT_Float:
                                 memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
@@ -312,7 +312,7 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
                         printf("%hu\t", instrIndex + 1);
                         switch(classe->constant_pool[instrIndex].tag) {
                             case CONSTANT_Integer:
-                                printf("<%d>\t", classe->constant_pool[instrIndex].info.Integer);
+                                printf("<%d>\t", classe->constant_pool[instrIndex].info.Integer.bytes);
                                 break;
                             case CONSTANT_Float:
                                 memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
@@ -803,7 +803,7 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
                         fprintf(file, "%hu\t", instrIndex + 1);
                         switch(classe->constant_pool[instrIndex].tag) {
                             case CONSTANT_Integer:
-                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer);
+                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer.bytes);
                                 break;
                             case CONSTANT_Float:
                                 memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
@@ -829,7 +829,7 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
                         fprintf(file, "%hu\t", instrIndex + 1);
                         switch(classe->constant_pool[instrIndex].tag) {
                             case CONSTANT_Integer:
-                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer);
+                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer.bytes);
                                 break;
                             case CONSTANT_Float:
                                 memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
@@ -1664,7 +1664,6 @@ char* dereferencia(u2 index, ClassFile *classe)
 char* dereferencia_methodinfo(u2 index, ClassFile *classe)
 {
     char *class_name, *method_name, *nome;
-    int i;
     u2 class_index, name_and_type_index, method_index;
 
     class_index = classe->constant_pool[index].info.Methodref.class_index - 1;
@@ -1683,7 +1682,6 @@ char* dereferencia_methodinfo(u2 index, ClassFile *classe)
 char* dereferencia_fieldrefinfo(u2 index, ClassFile *classe)
 {
     char *class_name, *method_name, *nome;
-    int i;
     u2 class_index, name_and_type_index, method_index;
 
     class_index = classe->constant_pool[index].info.Fieldref.class_index - 1;

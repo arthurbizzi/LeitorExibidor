@@ -98,8 +98,6 @@ void i_ret(Frame* frame, u1 index){
 	frame->pc = frame->VetorVariaveisLocais[index];
 }
 
-
-#pragma mark - SMURF PART
 void i_tableswitch(Frame *frame)
 {
 
@@ -228,7 +226,7 @@ void i_ireturn(PilhaDeFrames *pilhadeframes)
     DestruirFrame(frame);
     frame = DesempilhaFrame(&pilhadeframes);
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
-    EmpilhaFrame(&pilhadeframes, frame);
+    pilhadeframes = EmpilhaFrame(pilhadeframes, frame);
 
     return;
 }
@@ -242,7 +240,7 @@ void i_lreturn(PilhaDeFrames *pilhadeframes)
     DestruirFrame(frame);
     frame = DesempilhaFrame(&pilhadeframes);
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valor);
-    EmpilhaFrame(&pilhadeframes, frame);
+	pilhadeframes = EmpilhaFrame(pilhadeframes, frame);
 
     return;
 }
@@ -256,7 +254,7 @@ void i_freturn(PilhaDeFrames *pilhadeframes)
     DestruirFrame(frame);
     frame = DesempilhaFrame(&pilhadeframes);
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
-    EmpilhaFrame(&pilhadeframes, frame);
+    pilhadeframes = EmpilhaFrame(pilhadeframes, frame);
 
     return;
 }
@@ -270,7 +268,7 @@ void i_dreturn(PilhaDeFrames *pilhadeframes)
     DestruirFrame(frame);
     frame = DesempilhaFrame(&pilhadeframes);
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valor);
-    EmpilhaFrame(&pilhadeframes, frame);
+    pilhadeframes = EmpilhaFrame(pilhadeframes, frame);
 
     return;
 }
@@ -284,7 +282,7 @@ void i_areturn(PilhaDeFrames *pilhadeframes)
     DestruirFrame(frame);
     frame = DesempilhaFrame(&pilhadeframes);
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
-    EmpilhaFrame(&pilhadeframes, frame);
+    pilhadeframes = EmpilhaFrame(pilhadeframes, frame);
 
     return;
 }
@@ -411,7 +409,7 @@ void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
     name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
 
-    obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
     for (fieldindex = 0; fieldindex < obj->tamanhotipoField; fieldindex++)
     {
@@ -454,7 +452,7 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     else
         valor = (u8)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
-    obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
     for (fieldindex = 0; fieldindex < obj->tamanhotipoField; fieldindex++)
     {
@@ -478,6 +476,8 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     float valorf;
     char *nomeclasse, *nomemetodo, *metododesc, *nome, *nomedesc;
     u8 valoru8;
+    char* cpointer;
+    void* ppointer;
     u4 numparam, i, j, valoru4, *argumentos;
     u2 index, index1, classindex, descriptorindex, metodoindex, length;
     u1 *bytes;
@@ -497,13 +497,16 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         if (strstr(metododesc, "J") != NULL)
         {
             valoru8 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-            printf("%l", (int64_t)valoru8);
+            int64_t value = valoru8;
+            printf("%ld", value);
 
         }//Double
         else if (strstr(metododesc, "D") != NULL)
         {
             valoru8 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-            printf("%.15f", (int64_t)valoru8);
+            double value =0;
+            memcpy(&value,&valoru8,sizeof(u8));
+            printf("%f", value);
 
         }//Boolean
         else if (strstr(metododesc, "Z") != NULL)
@@ -519,16 +522,16 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             //Array
             if (strstr(metododesc, "[C") != NULL)
             {
-                array1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+                array1 = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
                 for (i = 0; i < array1->tamanho1; i++)
                 {
-                    printf("%c", (int16_t)array1->info.tipoChar[i]);
+                    printf("%c", array1->info.tipoChar[i]);
                 }
 
             }//Char
             else
             {
-                printf("%c", (int16_t)DesempilhaOperando32bits(&(frame->pilhaDeOperandos)));
+                printf("%c", DesempilhaOperando32bits(&(frame->pilhaDeOperandos)));
             }
 
         }//Inteiro
@@ -547,12 +550,15 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         else if (strstr(metododesc, "Ljava/lang/String") != NULL)
         {
             valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-            printf("%s", (char *)valoru4);
+            cpointer = (void*)(long)valoru4;
+            printf("%s", cpointer);
 
         }//Object
         else if (strstr(metododesc, "Ljava/lang/Object") != NULL)
         {
-            printf("%p", (void *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos)));
+			valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+            ppointer = (void*)(long)valoru4;
+            printf("%p",ppointer);
         }
 
         if (strstr(nomemetodo, "println") != NULL)
@@ -616,26 +622,28 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         {
             if (classe->methods[i].access_flags & ACC_NATIVE)
             {
-                u4 zero = 0;
+                u8 zero64 = 0;
+                u4 zero32 = 0;
+
                 bytes = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.bytes;
                 length = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.length;
                 if(bytes[length - 1] == 'D' || bytes[length - 1] == 'J') {
-                    EmpilhaOperando64bits(&frame->pilhaDeOperandos, &zero);
+                    EmpilhaOperando64bits(&frame->pilhaDeOperandos, &zero64);
                 }
                 else if(bytes[length-1] != 'V')
                 {
-                    EmpilhaOperando32bits(&frame->pilhaDeOperandos, &zero);
+                    EmpilhaOperando32bits(&frame->pilhaDeOperandos, &zero32);
                 }
             }
             else
             {
-                prepara_metodo(&classe->methods[i], classe, pilhadeframes, heap);
+                prepara_metodo(&classe->methods[i], classe,&pilhadeframes, &heap);
                 frame1 = DesempilhaFrame(&pilhadeframes);
                 for (j = numparam; j >= 0; j--)
                 {
                     frame1->VetorVariaveisLocais[j] = argumentos[j];
                 }
-                EmpilhaFrame(&pilhadeframes, frame1);
+                pilhadeframes = EmpilhaFrame(pilhadeframes, frame1);
                 executa_metodo(&classe->methods[i], classe, pilhadeframes);
             }
         }
@@ -652,9 +660,9 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 {
     Frame *frame1;
     ClassFile *classe;
-    char *nomeclasse, *nomemetodo;
+    char *nomeclasse;
     u4 numparam, i, j, *argumentos;
-    u2 index, classindex, descriptorindex, metodoindex, length;
+    u2 index, classindex, descriptorindex, length;
     u1 *bytes;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
@@ -672,7 +680,6 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         InsereListaDeClasses(&listadeclasses, classe);
     }
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
-    metodoindex = frame->constant_pool[descriptorindex].info.NameAndType.name_index - 1;
     descriptorindex = frame->constant_pool[descriptorindex].info.NameAndType.descriptor_index - 1;
     bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
     length = frame->constant_pool[descriptorindex].info.Utf8.length;
@@ -702,8 +709,6 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         argumentos[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     }
 
-    nomemetodo = i_dereferencia_instrucoes(metodoindex, frame->constant_pool);
-
     if (classe->methods[0].access_flags & ACC_NATIVE)
     {
         u4 zerou4 = 0;
@@ -718,13 +723,13 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     }
     else
     {
-        prepara_metodo(&classe->methods[0], classe, pilhadeframes, heap);
+        prepara_metodo(&classe->methods[0], classe,&pilhadeframes, &heap);
         frame1 = DesempilhaFrame(&pilhadeframes);
         for (j = numparam; j >= 0; j--)
         {
             frame1->VetorVariaveisLocais[j] = argumentos[j];
         }
-        EmpilhaFrame(&pilhadeframes, frame1);
+        pilhadeframes = EmpilhaFrame(pilhadeframes, frame1);
         executa_metodo(&classe->methods[0], classe, pilhadeframes);
     }
 
@@ -802,24 +807,25 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     {
         if (classe->methods[i].access_flags & ACC_NATIVE)
         {
-            u4 zero = 0;
+            u4 zero32 = 0;
+            u8 zero64 = 0;
             bytes = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.bytes;
             length = classe->constant_pool[classe->methods[i].descriptor_index - 1].info.Utf8.length;
             if(bytes[length - 1] == 'D' || bytes[length - 1] == 'J') {
-                EmpilhaOperando64bits(&frame->pilhaDeOperandos, &zero);
+                EmpilhaOperando64bits(&frame->pilhaDeOperandos, &zero64);
             } else if(bytes[length-1] != 'V') {
-                EmpilhaOperando32bits(&frame->pilhaDeOperandos, &zero);
+                EmpilhaOperando32bits(&frame->pilhaDeOperandos, &zero32);
             }
         }
         else
         {
-            prepara_metodo(&classe->methods[i], classe, pilhadeframes, heap);
+            prepara_metodo(&classe->methods[i], classe, &pilhadeframes, &heap);
             frame1 = DesempilhaFrame(&pilhadeframes);
             for (j = (numparam - 1); j >= 0; j--)
             {
                 frame1->VetorVariaveisLocais[j] = argumentos[j];
             }
-            EmpilhaFrame(&pilhadeframes, frame1);
+            pilhadeframes = EmpilhaFrame(pilhadeframes, frame1);
             executa_metodo(&classe->methods[i], classe, pilhadeframes);
         }
     }
@@ -876,13 +882,13 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
     }
     if (i != obj->classe->methods_count)
     {
-        prepara_metodo(&obj->classe->methods[i], obj->classe, pilhadeframes, heap);
+        prepara_metodo(&obj->classe->methods[i], obj->classe, &pilhadeframes, &heap);
         frame1 = DesempilhaFrame(&pilhadeframes);
         for (j = contagem; j >= 0; j--)
         {
             frame1->VetorVariaveisLocais[j] = argumentos[j];
         }
-        EmpilhaFrame(&pilhadeframes, frame1);
+        pilhadeframes = EmpilhaFrame(pilhadeframes, frame1);
         executa_metodo(&obj->classe->methods[i], obj->classe, pilhadeframes);
     }
     else
@@ -972,7 +978,7 @@ void i_newarray(Frame *frame, u1 atype)
         a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
         break;
     }
-    referencia = a;
+    referencia = (int)(long)a;
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(referencia));
     return;
 }
@@ -1037,7 +1043,7 @@ void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
         a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
         break;
     }
-    referencia = a;
+    referencia = (int)(long)a;
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &referencia);
     return;
 }
@@ -1046,7 +1052,7 @@ void i_arraylength(Frame *frame)
 {
 
     tArray *a;
-    a = (tArray *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    a = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(a->tamanho1));
     return;
 }
@@ -1064,7 +1070,7 @@ void i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     Objeto *obj;
     u2 index;
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
-    obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
     nomeclasseobjeto = i_dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
@@ -1087,7 +1093,7 @@ void i_instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     u2 index;
     u4 valor = 0;
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
-    obj = (Objeto *)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
     nomeclasseobjeto = i_dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
@@ -1184,7 +1190,7 @@ void i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 cons
 void i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)
 {
 
-    u4 valor;
+    u4 valor,referencia;
     int i;
     char *tipo;
     u2 index;
@@ -1248,16 +1254,17 @@ void i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)
         a->info.tipoReferencia = (u4 *)malloc(sizeof(u4) * valor);
         break;
     }
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &a);
+    referencia = (int)(long)a;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &referencia);
     return;
 }
 
 void i_ifnull(Frame *frame, u1 branchbyte1, u1 branchbyte2)
 {
 
-    u4 objref;
+    u4 objref = 0;
     objref = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    if (objref == NULL){
+    if (objref == 0x0){
         int16_t offset = (((u2)branchbyte1)<<8)+branchbyte2;
 		frame->pc += offset;
 	}
@@ -1270,7 +1277,7 @@ void i_ifnonnull(Frame *frame, u1 branchbyte1, u1 branchbyte2)
 
     u4 objref;
     objref = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    if (objref != NULL){
+    if (objref != 0x0){
         int16_t offset = (((u2)branchbyte1)<<8)+branchbyte2;
 		frame->pc += offset;
 	}
@@ -1315,7 +1322,6 @@ char* i_dereferencia_instrucoes(u2 index, cp_info *cp)
 staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields)
 {
     ListaStaticField *lsf1;
-    int index;
     lsf1 = *listadefields;
     while (lsf1 != NULL)
     {

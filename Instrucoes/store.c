@@ -193,7 +193,7 @@ void i_iastore(Frame* frame)
 {
 
 	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4* arrayRef =(void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     arrayRef[index] = value;
 }
@@ -202,7 +202,7 @@ void i_lastore(Frame* frame)
 {
 
 	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u8* arrayRef =(u8*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8* arrayRef =(void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u8 value =  DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     arrayRef[index] = value;
 }
@@ -211,7 +211,7 @@ void i_fastore(Frame* frame)
 {
 
 	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4* arrayRef =(void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     arrayRef[index] = value;
 }
@@ -220,7 +220,7 @@ void i_dastore(Frame* frame)
 {
 
 	u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u8* arrayRef =(u8*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u8* arrayRef =(void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u8 value =  DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     arrayRef[index] = value;
 }
@@ -229,7 +229,7 @@ void i_aastore(Frame* frame)
 {
 
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u4* arrayRef =(u4*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u4* arrayRef =(void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 value =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     arrayRef[index] = value;
 }
@@ -238,7 +238,7 @@ void i_bastore(Frame* frame)
 {
 
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u1* arrayRef =(u1*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u1* arrayRef =(void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u1 value =  (u1)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     arrayRef[index] = value;
 }
@@ -247,7 +247,7 @@ void i_castore(Frame* frame)
 {
 
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u2* arrayRef =(u2*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u2* arrayRef =(void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u2 value =  (u2)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     arrayRef[index] = value;
 }
@@ -256,7 +256,7 @@ void i_sastore(Frame* frame)
 {
 
     u4 index =  DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    u2* arrayRef =(u2*)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+    u2* arrayRef =(void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u2 value =  (u2)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     arrayRef[index] = value;
 }

@@ -51,19 +51,20 @@ u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame)
         return 0;
 }
 
-void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame)
+PilhaDeFrames* EmpilhaFrame(PilhaDeFrames *pilhaFrame, Frame *frame)
 {
     PilhaDeFrames *pf1;
+    PilhaDeFrames *interat = pilhaFrame;
 	pf1 = (PilhaDeFrames *)malloc(sizeof(PilhaDeFrames));
 	pf1->dado = frame;
-	if(*pilhaFrame == NULL){
+	if(pilhaFrame == NULL){
 		pf1->prox = NULL;
-		*pilhaFrame = pf1;
-		return;
+		interat = pf1;
+		return interat;
 	}
-    pf1->prox = *pilhaFrame;
-    *pilhaFrame = pf1;
-    return;
+    pf1->prox = interat;
+    interat = pf1;
+    return interat;
 }
 
 Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)

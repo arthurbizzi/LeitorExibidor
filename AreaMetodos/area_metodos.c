@@ -43,7 +43,7 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilh
         if(metodo->attributes[i].tag == ATTRTAG_Code) {
             if(metodo->attributes_count > 0) {
                 Frame *frame = ConstruirFrame(classe, metodo, *pilha_de_frames, *heap);
-                EmpilhaFrame(pilha_de_frames, frame);
+                *pilha_de_frames = EmpilhaFrame(*pilha_de_frames, frame);
                 //free(frame);
                 return;
             }
@@ -52,7 +52,7 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilh
                 metodo->attributes = (attribute_info *) malloc(sizeof(attribute_info));
                 metodo->attributes[0].info.CodeAttribute.code_length = 0;
                 Frame *frame = ConstruirFrame(classe, metodo, *pilha_de_frames, *heap);
-                EmpilhaFrame(pilha_de_frames, frame);
+				*pilha_de_frames = EmpilhaFrame(*pilha_de_frames, frame);
                // free(frame);
                 return;
             }
@@ -73,7 +73,7 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
             return ERRO_INSTRUCAO;
         }
         if(!fim) {
-            EmpilhaFrame(&pilha_de_frames, atual);
+            pilha_de_frames = EmpilhaFrame(pilha_de_frames, atual);
         }
         else {
             DestruirFrame(atual);

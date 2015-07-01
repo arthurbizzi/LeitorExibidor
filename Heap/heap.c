@@ -77,13 +77,11 @@ void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
     ListaClasses *lc1;
     lc1 = (ListaClasses *)malloc(sizeof(ListaClasses));
     lc1->dado = dado;
-    ClassFile* lc2 = lc1->dado;
     if((*listadeclasses) == NULL)
 		lc1->prox = NULL;
 	else
 		lc1->prox = *listadeclasses;
     *listadeclasses = lc1;
-    ListaClasses* teste = *listadeclasses;
     return;
 }
 
