@@ -188,18 +188,18 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
 {
     char *derreferencia = NULL;
     u8 l;
-    char *tipoAtributo;
-    u2 index = attributeInfo->attribute_name_index - 1, index1;
-    int i;
+    char *tipoAtributo = NULL;
+    u2 index = attributeInfo->attribute_name_index - 1,index1;
+    int i,iterat;
     tipoAtributo = (char *) malloc((classe->constant_pool[index].info.Utf8.length+1) * sizeof(char));
     float fvalue;
     double dvalue;
-    for (int l = 0; l < classe->constant_pool[index].info.Utf8.length; l++)
+    for (iterat = 0; iterat < classe->constant_pool[index].info.Utf8.length; iterat++)
     {
-        printf("%c", classe->constant_pool[index].info.Utf8.bytes[l]);
-        tipoAtributo[l] = classe->constant_pool[index].info.Utf8.bytes[l];
+        printf("%c", classe->constant_pool[index].info.Utf8.bytes[iterat]);
+        tipoAtributo[iterat] = classe->constant_pool[index].info.Utf8.bytes[iterat];
     }
-    tipoAtributo[classe->constant_pool[index].info.Utf8.length] = '\0';
+    tipoAtributo[iterat] = '\0';
     index = attributeInfo->attribute_name_index - 1;
     derreferencia = dereferencia(index,classe);
     printf("\n");
@@ -704,16 +704,17 @@ void imprime_fields_file(ClassFile *classe, FILE *file)
 void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FILE *file)
 {
     char *derreferencia = NULL;
-    char *tipoAtributo;
+    char *tipoAtributo=NULL;
     u2 index = attributeInfo->attribute_name_index - 1;
     u8 l;
-    int i;
-    tipoAtributo = (char *) malloc(classe->constant_pool[index].info.Utf8.length * sizeof(char));
-    for (int l = 0; l < classe->constant_pool[index].info.Utf8.length; l++)
+    int i,iterat;
+    tipoAtributo = (char *) malloc((classe->constant_pool[index].info.Utf8.length + 1) * sizeof(char));
+    for (iterat = 0; iterat < classe->constant_pool[index].info.Utf8.length; iterat++)
     {
-        fprintf(file, "%c", classe->constant_pool[index].info.Utf8.bytes[l]);
-        tipoAtributo[l] = classe->constant_pool[index].info.Utf8.bytes[l];
+        fprintf(file, "%c", classe->constant_pool[index].info.Utf8.bytes[iterat]);
+        tipoAtributo[iterat] = classe->constant_pool[index].info.Utf8.bytes[iterat];
     }
+    tipoAtributo[iterat] = '\0';
     index = attributeInfo->attribute_name_index - 1;
     derreferencia = dereferencia(index,classe);
     fprintf(file, "\n");

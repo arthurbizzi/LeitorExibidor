@@ -30,13 +30,16 @@ int main(int argc, char **argv) {
     char nome_classe[21];
     char opcao; /// Modo de impressao (t - tela, a - arquivo, s - ambos, n - nenhum)
     int status;
+    printf("HERE");
     switch(argc) {
         case 2:
             status = carrega_classe(argv[1], classe);
             opcao = 'n';
             break;
         case 3:
+            printf("HERE");
             status = carrega_classe(argv[1], classe);
+            printf("HERE");
             opcao = argv[2][0];
             break;
         default:
@@ -52,7 +55,10 @@ int main(int argc, char **argv) {
         printf("Carregamento interrompido.\n");
         return status;
     }
-    if(verifica_impressao(classe, opcao) == ERRO_ARQUIVO) { // Verifica onde imprimir o conteudo da classe
+    int result = verifica_impressao(classe,opcao);
+    printf("\nHERE\n");
+    if(result == ERRO_ARQUIVO) { // Verifica onde imprimir o conteudo da classe
+
         printf("ERRO: arquivo nao pode ser criado.\n");
         return ERRO_ARQUIVO;
     }
@@ -62,6 +68,7 @@ int main(int argc, char **argv) {
 
 
     if(status == SUCESSO) {
+            printf("HERE");
         printf("Fim da execucao.\n");
         return SUCESSO;
     }
@@ -136,10 +143,10 @@ int verifica_impressao(ClassFile *classe, char opcao) {
 }
 
 int executa_programa(ClassFile *classe) {
-    PilhaDeFrames *pilha_de_frames; /// Pilha de frames do programa
+    PilhaDeFrames *pilha_de_frames = NULL; /// Pilha de frames do programa
     ListaClasses *lista_de_classes = NULL; /// Lista de classes carregadas no programa
-    method_info *metodo_main, *metodo_init;
-    ClassFile *classe_inicial;
+    method_info *metodo_main = NULL, *metodo_init = NULL;
+    ClassFile *classe_inicial = NULL;
    // ListaStaticField *lista_static_field = NULL;
     Heap *heap= NULL;
 
