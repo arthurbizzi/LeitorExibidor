@@ -26,7 +26,7 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
         strcpy(nome_arquivo, nome_completo);
     }
     if(raiz) {
-        caminho_arquivo = (char *) malloc(strlen(nome_completo) * sizeof(char));
+        caminho_arquivo = (char *) malloc((strlen(nome_completo) + 1) * sizeof(char));
         strcpy(caminho_arquivo, nome_completo);
         strcpy(diretorio, "RAIZ");
     }
@@ -39,6 +39,7 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
     if(!(arq_classe = fopen(caminho_arquivo, "rb")))
     {
         printf("ERRO: arquivo \"%s\" nao existe em \"%s\".\n", nome_arquivo, diretorio);
+        free(caminho_arquivo);
         return ERRO_ARQUIVO;
     }
     /* Carregamento do Magic Number e da versao, juntamente com suas verificacoes */
@@ -47,10 +48,12 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
     case ERRO_MAGIC:
         printf("ERRO: magic number invalido.\n");
         fclose(arq_classe);
+        free(caminho_arquivo);
         return ERRO_MAGIC;
     case ERRO_VERSION:
         printf("ERRO: versao invalida.\n");
         fclose(arq_classe);
+        free(caminho_arquivo);
         return ERRO_VERSION;
     default:
         break;
@@ -69,11 +72,12 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
         return ERRO_MATCHING;
     }
     fclose(arq_classe);
+    free(caminho_arquivo);
     return SUCESSO;
 }
 
 char* recupera_nome_diretorio(char *arquivo) {
-    int tamanho = strlen(arquivo), barras = 0;
+    int tamanho = strlen(arquivo), barras = 0, i = 0;
     char *diretorio = (char *) malloc((tamanho + 1) * sizeof(char));
 
     for(int i = 0; i < tamanho; i++) {
@@ -81,7 +85,7 @@ char* recupera_nome_diretorio(char *arquivo) {
             barras++;
     }
 
-    int i = 0;
+    i = 0;
 
     if(barras > 0) {
         raiz = 0; // Nao esta na raiz
