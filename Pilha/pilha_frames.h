@@ -30,7 +30,7 @@ typedef struct frame{
 typedef struct pilhadeframes
 {
     Frame *dado;
-    struct pilhaframes *prox;
+    struct pilhadeframes *prox;
 } PilhaDeFrames;
 
 /**
