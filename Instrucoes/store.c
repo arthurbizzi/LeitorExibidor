@@ -142,7 +142,7 @@ void i_dstore_1(Frame* frame)
 {
     u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     frame->VetorVariaveisLocais[1] = (value) >> 32;
-    frame ->VetorVariaveisLocais[2] = (value) & 0x00000000FFFFFFFF;
+    frame->VetorVariaveisLocais[2] = (value) & 0x00000000FFFFFFFF;
 }
 
 void i_dstore_2(Frame* frame)

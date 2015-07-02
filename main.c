@@ -167,11 +167,6 @@ int executa_programa(ClassFile *classe) {
         return ERRO_MAIN;
     }
 
-    metodo_main = recupera_metodo(classe_inicial, "main");
-    if(!metodo_main) {
-        printf("ERRO: Metodo MAIN nao encontrado.\n");
-        return ERRO_MAIN;
-    }
     prepara_metodo(metodo_main, classe_inicial, &pilha_de_frames, &heap);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
@@ -179,8 +174,7 @@ int executa_programa(ClassFile *classe) {
 		desalocaHeap(heap);
 
 	if(pilha_de_frames != NULL)
-		desalocaPilhaFrames(&pilha_de_frames);
-
+        free(pilha_de_frames);
 
     return SUCESSO;
 }
