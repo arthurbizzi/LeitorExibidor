@@ -134,7 +134,7 @@ void InicializaListaDeClasses(ListaClasses **listadeclasses);
 *   @param listadeclasses Lista que recebera o elemento.
 *   @param dado Dado a ser inserido.
 */
-void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado);
+ListaClasses * InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado);
 
 /**
 *   @fn void desalocaListaDeClasses(ListaClasses *listadeclasses)

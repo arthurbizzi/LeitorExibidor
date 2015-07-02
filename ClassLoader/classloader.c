@@ -72,7 +72,7 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
         return ERRO_MATCHING;
     }
     fclose(arq_classe);
-    free(caminho_arquivo);
+    //free(caminho_arquivo);
     return SUCESSO;
 }
 

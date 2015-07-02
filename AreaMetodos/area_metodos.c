@@ -79,7 +79,6 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
             DestruirFrame(atual);
         }
     }
-
     return SUCESSO;
 }
 
