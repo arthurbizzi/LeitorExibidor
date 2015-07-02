@@ -295,8 +295,8 @@ void carrega_instrucoes() {
 }
 
 void decodifica_geral(Frame *frame) {
-    u4 *nu4 = 0;
-    u2 *nu2 = 0;
+    u4 nu4 = 0;
+    u2 nu2 = 0;
     u1 index = 0, index2 = 0, index3 = 0, index4 = 0, inc = 0, type = 0, constbyte1 = 0, constbyte2 = 0;
     u1 branch1 = 0, branch2 = 0, branch3 = 0, branch4 = 0, dimensions = 0;
     cp_info *constant_pool = frame->constant_pool;
@@ -308,14 +308,14 @@ void decodifica_geral(Frame *frame) {
             index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             index3 = frame->codigo->info.CodeAttribute.code[++frame->pc];
             index4 = frame->codigo->info.CodeAttribute.code[++frame->pc];
-            *nu4 = (u4)(index << 24 | index2 << 16 | index3 << 8 | index4);
-            i_bipush(frame, nu4);
+            nu4 = (u4) (index << 24 | index2 << 16 | index3 << 8 | index4);
+            i_bipush(frame, &nu4);
             break;
         case 0x11:
             index = frame->codigo->info.CodeAttribute.code[++frame->pc];
             index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
-            *nu2 = (u4)(index << 8 | index2);
-            i_sipush(frame, nu2);
+            nu2 = (u2) (index << 8 | index2);
+            i_sipush(frame, &nu2);
             break;
         case 0x12:
             index = frame->codigo->info.CodeAttribute.code[++frame->pc];
