@@ -137,14 +137,14 @@ void InicializaListaDeClasses(ListaClasses **listadeclasses);
 void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado);
 
 /**
-*   @fn void desalocaListaDeClasses(ListaClasses **listadeclasses)
+*   @fn void desalocaListaDeClasses(ListaClasses *listadeclasses)
 *   @brief Funcao que desaloca completamente uma lista de classes.
 *   @param listadeclasses Lista a ser destruida.
 */
 void desalocaListaDeClasses(ListaClasses *listadeclasses);
 
 /**
-*   @fn void InicializaListaDeFields(ListaStaticField **listadefields)
+*   @fn void InicializaListaDeFields(ListaStaticField *listadefields)
 *   @brief Funcao que inicializa a lista de fields carregados na heap.
 *   @param listadefields Estrutura que contera a lista de fields.
 */
@@ -159,7 +159,7 @@ void InicializaListaDeFields(ListaStaticField *listadefields);
 void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado);
 
 /**
-*   @fn void desalocaListaDeFields(ListaStaticField **listadefields)
+*   @fn void desalocaListaDeFields(ListaStaticField *listadefields)
 *   @brief Funcao que desaloca completamente uma lista de fields.
 *   @param listadefields Lista a ser destruida.
 */
@@ -190,10 +190,20 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses);
 *   @param listadeclasses Lista que contem as classes carregadas.
 *   @return Classe com o nome correspondente.
 */
-ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses);
+ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses);
 
+/**
+*   @fn Heap* InicializaHeap()
+*   @brief Funcao que inicializa a Heap do programa.
+*   @return Heap alocada.
+*/
 Heap* InicializaHeap();
 
+/**
+*   @fn void desalocaHeap(Heap *heap)
+*   @brief Funcao que inicializa a Heap do programa.
+*   @param Heap a ser desalocada.
+*/
 void desalocaHeap(Heap *heap);
 
 #endif // HEAP_H

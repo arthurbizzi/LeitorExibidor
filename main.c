@@ -156,6 +156,12 @@ int executa_programa(ClassFile *classe) {
 	classe_inicial = RecuperaIesimaClasse(0, &(heap->listaDeClasses)); // Recupera a primeira classe
     carrega_instrucoes();
 
+    metodo_main = recupera_metodo(classe_inicial, "main");
+    if(!metodo_main) {
+        printf("ERRO: Metodo MAIN nao encontrado.\n");
+        return ERRO_MAIN;
+    }
+
     if(!executa_inits(classe, pilha_de_frames, heap)) {
         printf("ERRO: Metodo <init> nao encontrado.\n");
         return ERRO_MAIN;

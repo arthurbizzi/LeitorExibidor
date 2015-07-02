@@ -179,7 +179,7 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses)
     return NULL;
 }
 
-ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses)
+ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses)
 {
     ListaClasses *lc1;
     int index;

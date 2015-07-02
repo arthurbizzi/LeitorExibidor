@@ -16,8 +16,9 @@
 
 /* Defines */
 /* Controle do Programa */
-#define MAGIC_NUMBER 0xCAFEBABE
-#define VERSION 46
+#define MAGIC_NUMBER 0xCAFEBABE /// Numero definido pelo Java
+#define VERSION_MAX 46 /// Maior versao java2
+#define VERSION_MIN 45 /// Menor versao java2
 #define ERRO_MAGIC -20 /// Magic Number invalido.
 #define ERRO_VERSION -21 /// Versao nao suportada.
 #define ERRO_MATCHING -22 /// Nome do arquivo diferente do nome da classe.
@@ -33,6 +34,7 @@
 #define CONSTANT_Double 6
 #define CONSTANT_NameAndType 12
 #define CONSTANT_Utf8 1
+/* Tags de Atributos */
 #define ATTRTAG_Constantvalue 0
 #define ATTRTAG_Code 1
 #define ATTRTAG_Exception 2
@@ -313,7 +315,7 @@ char* recupera_nome_diretorio(char *arquivo);
 *   @fn char* recupera_nome_arquivo(char *arquivo)
 *   @brief Funcao que recupera somente o nome do arquivo de um dado caminho.
 *   @param arquivo Caminho completo para o arquivo.
-*   @return Diretorio onde se encontra o arquivo.
+*   @return Nome do arquivo.
 */
 char* recupera_nome_arquivo(char *arquivo);
 #endif // CLASSLOADER_H

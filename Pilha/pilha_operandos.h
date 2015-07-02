@@ -31,7 +31,7 @@ void InicializaPilhaDeOperandos(PilhaDeOperandos **pilhaOperandos);
 void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 *dado);
 
 /**
-*   @fn void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u4 *dado)
+*   @fn void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 *dado)
 *   @brief Funcao que empilha um operando de 64 bits na pilha de operandos.
 *   @param pilhaOperandos Estrutura que contem a pilha de operandos.
 *   @param dado Dado a ser empilhado.
@@ -61,7 +61,7 @@ u1 PilhaDeOperandosVazia(PilhaDeOperandos *pilhaOperandos);
 u4 DesempilhaOperando32bits(PilhaDeOperandos **pilhaOperandos);
 
 /**
-*   @fn u4 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos)
+*   @fn u8 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos)
 *   @brief Funcao que desempilha um operando de 64 bits da pilha de operandos.
 *   @param pilhaOperandos Estrutura que contem a pilha de operandos.
 *   @return Topo (u8) da pilha de operandos.

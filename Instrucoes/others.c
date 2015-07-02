@@ -311,7 +311,7 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
     name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
     nomeclasse = i_dereferencia_instrucoes(nomeclasseindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     field = i_RecuperaField(nomeclasse, &listadefields);
 
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
@@ -353,7 +353,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
     name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
     nomeclasse = i_dereferencia_instrucoes(nomeclasseindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
         char *nomearquivo;
@@ -566,7 +566,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     }
     else
     {
-        classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+        classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
         if (classe == NULL)
         {
             char *nomearquivo;
@@ -668,7 +668,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
     classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
         char *nomearquivo;
@@ -749,7 +749,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
     classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
         char *nomearquivo;
@@ -859,7 +859,7 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
     classeindex = frame->constant_pool[classeindex - 1].info.InterfaceMethodref.class_index - 1;
     classeindex = frame->constant_pool[classeindex].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(classeindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
         char *nomearquivo;
@@ -909,7 +909,7 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
     obj = (Objeto *)malloc(sizeof(Objeto));
-    obj->classe = i_RecuperaClasse(nomeclasse,&listadeclasses);
+    obj->classe = RecuperaClassePorNome(nomeclasse,&listadeclasses);
     if (obj->classe == NULL)
     {
         ClassFile *classe;
