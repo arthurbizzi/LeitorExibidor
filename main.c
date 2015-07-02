@@ -150,11 +150,17 @@ int executa_programa(ClassFile *classe) {
     InicializaPilhaDeFrames(&pilha_de_frames);
     heap = InicializaHeap();
     //Forçamento da Lista de StaticField pra Null.
-	InsereListaDeClasses(&lista_de_classes, classe);
+	lista_de_classes = InsereListaDeClasses(&lista_de_classes, classe);
 	heap->listaDeClasses = lista_de_classes;
 
 	classe_inicial = RecuperaIesimaClasse(0, &(heap->listaDeClasses)); // Recupera a primeira classe
     carrega_instrucoes();
+
+    metodo_main = recupera_metodo(classe_inicial, "main");
+    if(!metodo_main) {
+        printf("ERRO: Metodo MAIN nao encontrado.\n");
+        return ERRO_MAIN;
+    }
 
     if(!executa_inits(classe, pilha_de_frames, heap)) {
         printf("ERRO: Metodo <init> nao encontrado.\n");

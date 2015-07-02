@@ -295,13 +295,12 @@ void i_return(Frame* frame)
 
 void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)
 {
-
-    ClassFile *classe;
-    staticField *field;
-    char *tipo, *name, *nomeclasse, *nome;
-    u8 valoru8;
-    u4 valoru4;
-    u2 index, tipoindex, nameindex, fieldindex, nomeclasseindex, nomeindex;
+    ClassFile *classe = NULL;
+    staticField *field = NULL;
+    char *tipo = NULL, *name = NULL, *nomeclasse = NULL, *nome = NULL;
+    u8 valoru8 = 0;
+    u4 valoru4 = 0;
+    u2 index = 0, tipoindex = 0, nameindex = 0, fieldindex = 0, nomeclasseindex = 0, nomeindex = 0;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     nomeclasseindex = frame->constant_pool[index - 1].info.Fieldref.class_index - 1;
     nomeclasseindex = frame->constant_pool[nomeclasseindex].info.Class.name_index - 1;
@@ -311,9 +310,21 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
     name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
     nomeclasse = i_dereferencia_instrucoes(nomeclasseindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
+    if (classe == NULL)
+    {
+        char *nomearquivo;
+        classe = (ClassFile *)malloc(sizeof(ClassFile));
+        nomearquivo = (char *)malloc(sizeof(char) * (strlen(nomeclasse) + 7));
+        strcpy(nomearquivo, nomeclasse);
+        strcat(nomearquivo, ".class");
+        carrega_classe(nomearquivo, classe);
+        listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
+        frame->heap->listaDeClasses = listadeclasses;
+        if (!executa_inits(classe,frame->pilhaDeFrames,frame->heap))
+            return;
+    }
     field = i_RecuperaField(nomeclasse, &listadefields);
-
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
         nomeindex = classe->fields[fieldindex].name_index - 1;
@@ -353,7 +364,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
     name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
     nomeclasse = i_dereferencia_instrucoes(nomeclasseindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
         char *nomearquivo;
@@ -362,7 +373,10 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
         strcpy(nomearquivo, nomeclasse);
         strcat(nomearquivo, ".class");
         carrega_classe(nomearquivo, classe);
-        InsereListaDeClasses(&listadeclasses, classe);
+        listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
+        frame->heap->listaDeClasses = listadeclasses;
+        if (!executa_inits(classe,frame->pilhaDeFrames,frame->heap))
+            return;
     }
 
     if (tipo[0] == 'J' || tipo[0] == 'D')
@@ -453,8 +467,7 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
         valor = (u8)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
     obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-
-    for (fieldindex = 0; fieldindex < obj->tamanhotipoField; fieldindex++)
+    for (fieldindex = 0; fieldindex < obj->classe->fields_count; fieldindex++)
     {
         nomeindex = obj->classe->fields[fieldindex].name_index - 1;
         nome = i_dereferencia_instrucoes(nomeindex, obj->classe->constant_pool);
@@ -469,17 +482,17 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 
 void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
-
-    tArray *array1;
-    Frame *frame1;
-    ClassFile *classe;
-    float valorf;
-    char *nomeclasse, *nomemetodo, *metododesc, *nome, *nomedesc;
-    u8 valoru8;
-    char* cpointer;
-    void* ppointer;
-    u4 numparam, i, j, valoru4, *argumentos;
-    u2 index, index1, classindex, descriptorindex, metodoindex, length;
+    int i = 0, j = 0;
+    tArray *array1 = NULL;
+    Frame *frame1 = NULL;
+    ClassFile *classe = NULL;
+    float valorf = 0;
+    char *nomeclasse = NULL, *nomemetodo = NULL, *metododesc = NULL, *nome = NULL, *nomedesc = NULL;
+    u8 valoru8 = 0;
+    char* cpointer = NULL;
+    void* ppointer = NULL;
+    u4 numparam = 0, valoru4 = 0, *argumentos = NULL;
+    u2 index = 0, index1 = 0, classindex = 0, descriptorindex = 0, metodoindex = 0, length = 0;
     u1 *bytes;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
@@ -566,7 +579,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     }
     else
     {
-        classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+        classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
         if (classe == NULL)
         {
             char *nomearquivo;
@@ -575,7 +588,10 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             strcpy(nomearquivo, nomeclasse);
             strcat(nomearquivo, ".class");
             carrega_classe(nomearquivo, classe);
-            InsereListaDeClasses(&listadeclasses, classe);
+            listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
+            frame->heap->listaDeClasses = listadeclasses;
+            if (!executa_inits(classe,pilhadeframes,frame->heap))
+                return;
         }
 
         bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
@@ -658,17 +674,18 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 
 void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
-    Frame *frame1;
-    ClassFile *classe;
-    char *nomeclasse;
-    u4 numparam, i, j, *argumentos;
-    u2 index, classindex, descriptorindex, length;
-    u1 *bytes;
+    int i = 0, j = 0;
+    Frame *frame1 = NULL;
+    ClassFile *classe = NULL;
+    char *nomeclasse = NULL;
+    u4 numparam = 0, *argumentos = NULL;
+    u2 index = 0, classindex = 0, descriptorindex = 0, length = 0;
+    u1 *bytes = NULL;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
     classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
         char *nomearquivo;
@@ -677,7 +694,10 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         strcpy(nomearquivo, nomeclasse);
         strcat(nomearquivo, ".class");
         carrega_classe(nomearquivo, classe);
-        InsereListaDeClasses(&listadeclasses, classe);
+        listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
+        frame->heap->listaDeClasses = listadeclasses;
+        if (!executa_inits(classe,pilhadeframes,frame->heap))
+            return;
     }
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
     descriptorindex = frame->constant_pool[descriptorindex].info.NameAndType.descriptor_index - 1;
@@ -702,7 +722,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 		}
 	}
 
-	argumentos = (u4 *)malloc(sizeof(u4) * numparam);
+	argumentos = (u4 *)malloc(sizeof(u4) * (numparam + 1));
 
 	for (i = numparam; i >= 0; i--)
     {
@@ -738,18 +758,18 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 
 void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
-
-    Frame *frame1;
-    ClassFile *classe;
-    char *nomeclasse, *nomemetodo, *metododesc, *nome, *nomedesc;
-    u4 numparam, i, j, *argumentos;
-    u2 index, index1, classindex, descriptorindex, metodoindex, length;
-    u1 *bytes;
+    int i = 0, j = 0;
+    Frame *frame1 = NULL;
+    ClassFile *classe = NULL;
+    char *nomeclasse = NULL, *nomemetodo = NULL, *metododesc = NULL, *nome = NULL, *nomedesc = NULL;
+    u4 numparam = 0, *argumentos = NULL;
+    u2 index = 0, index1 = 0, classindex = 0, descriptorindex = 0, metodoindex = 0, length = 0;
+    u1 *bytes = NULL;
     index = (u4)indexbyte1 << 8 | (u4)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
     classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
         char *nomearquivo;
@@ -758,7 +778,10 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
         strcpy(nomearquivo, nomeclasse);
         strcat(nomearquivo, ".class");
         carrega_classe(nomearquivo, classe);
-        InsereListaDeClasses(&listadeclasses, classe);
+        listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
+        frame->heap->listaDeClasses = listadeclasses;
+        if (!executa_inits(classe,pilhadeframes,frame->heap))
+            return;
     }
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
     metodoindex = frame->constant_pool[descriptorindex].info.NameAndType.name_index - 1;
@@ -840,12 +863,13 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
 void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero, Heap *heap)
 {
 
+    int i = 0, j = 0;
     ClassFile *classe;
     Frame *frame1;
-    char *nome, *nomemetodo, *nomeclasse, *nomedesc, *metododesc;
-    u2 index, index1, classeindex, descriptorindex;
-    u4 *argumentos, i, j;
-    Objeto *obj;
+    char *nome = NULL, *nomemetodo = NULL, *nomeclasse = NULL, *nomedesc = NULL, *metododesc = NULL;
+    u2 index = 0, index1 = 0, classeindex = 0, descriptorindex = 0;
+    u4 *argumentos;
+    Objeto *obj = NULL;
     argumentos = (u4 *)malloc(sizeof(u4) * (contagem + 1));
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classeindex = index;
@@ -859,7 +883,7 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
     classeindex = frame->constant_pool[classeindex - 1].info.InterfaceMethodref.class_index - 1;
     classeindex = frame->constant_pool[classeindex].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(classeindex, frame->constant_pool);
-    classe = i_RecuperaClasse(nomeclasse, &listadeclasses);
+    classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
         char *nomearquivo;
@@ -868,7 +892,10 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
         strcpy(nomearquivo, nomeclasse);
         strcat(nomearquivo, ".class");
         carrega_classe(nomearquivo, classe);
-        InsereListaDeClasses(&listadeclasses, classe);
+        listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
+        frame->heap->listaDeClasses = listadeclasses;
+        if (!executa_inits(classe,pilhadeframes,frame->heap))
+            return;
     }
     metododesc = i_dereferencia_instrucoes(descriptorindex, frame->constant_pool);
     nomemetodo = i_dereferencia_instrucoes(index,frame->constant_pool);
@@ -902,6 +929,7 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
 void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclasses)
 {
 
+    u4 valor;
     Objeto *obj;
     char *nomeclasse;
     u2 index;
@@ -909,7 +937,7 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
     nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
     obj = (Objeto *)malloc(sizeof(Objeto));
-    obj->classe = i_RecuperaClasse(nomeclasse,&listadeclasses);
+    obj->classe = RecuperaClassePorNome(nomeclasse,&listadeclasses);
     if (obj->classe == NULL)
     {
         ClassFile *classe;
@@ -920,10 +948,15 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
         strcat(nomearquivo, ".class");
         carrega_classe(nomearquivo, classe);
         obj->classe = classe;
-        InsereListaDeClasses(&listadeclasses, classe);
+        listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
+        frame->heap->listaDeClasses = listadeclasses;
+        if (!executa_inits(classe,frame->pilhaDeFrames,frame->heap))
+            return;
     }
     obj->tamanhotipoField = obj->classe->fields_count;
     obj->tipofield = (u8 *)malloc(sizeof(u8) * obj->tamanhotipoField);
+    valor = (u4)(long)obj;
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
 
     return;
 }

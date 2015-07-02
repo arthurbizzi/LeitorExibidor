@@ -35,6 +35,7 @@ var others_8h =
     [ "i_ldc", "others_8h.html#a3e88b2f0a14e2baae7a3a14fff1e6a91", null ],
     [ "i_ldc2_w", "others_8h.html#a6bdc498245fe970c245e3f6523561273", null ],
     [ "i_ldc_w", "others_8h.html#a683d69bfc3da8ee36216db779961c37a", null ],
+    [ "i_lookupswitch", "others_8h.html#a591de8d521d5ab49ac03daaae79c1bda", null ],
     [ "i_lreturn", "others_8h.html#a8da767b2a9a9bc5acd3590f6edf0fafc", null ],
     [ "i_monitorenter", "others_8h.html#a8bb3bcfbba72b9e2e316750e52620ae1", null ],
     [ "i_monitorexit", "others_8h.html#a81241461a7bc4065ced55d797e217e5b", null ],
@@ -46,7 +47,8 @@ var others_8h =
     [ "i_putstatic", "others_8h.html#a21d324e3b3b4fa9c3cd16d8e488822db", null ],
     [ "i_RecuperaField", "others_8h.html#a5c29d814590d3898b80bd6c63d8f8ba9", null ],
     [ "i_ret", "others_8h.html#a715ee8be0c5a2115bfbf0afea73425d9", null ],
-    [ "i_return", "others_8h.html#ad107ba7206bc5eea332082290effecf1", null ],
+    [ "i_return", "others_8h.html#a2d3c889fa44309dcb5f9767af6696b07", null ],
     [ "i_sipush", "others_8h.html#af95d08efce903646ce98bd3257f1549b", null ],
+    [ "i_tableswitch", "others_8h.html#a98fde5f9a71068ec49c8547ab7d76171", null ],
     [ "i_wide", "others_8h.html#aafae40cd568c26205cde0154f551139b", null ]
 ];

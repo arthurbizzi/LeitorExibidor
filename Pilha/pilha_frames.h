@@ -41,10 +41,11 @@ typedef struct pilhadeframes
 void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames);
 
 /**
-*   @fn void EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame)
+*   @fn PilhaDeFrames* EmpilhaFrame(PilhaDeFrames *pilhaFrame, Frame *frame)
 *   @brief Funcao que empilha um frame pilha de frames.
 *   @param pilhaFrame Estrutura que contem a pilha de frames.
 *   @param frame Dado a ser empilhado.
+*   @return Referencia atualizada da pilha.
 */
 PilhaDeFrames* EmpilhaFrame(PilhaDeFrames *pilhaFrame, Frame *frame);
 
@@ -63,14 +64,15 @@ void DestruirFrame(Frame *frame);
 void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames);
 
 /**
-*   @fn Frame *ConstruirFrame(ClassFile *classe, method_info *method)
+*   @fn Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames, Heap *heap)
 *   @brief Funcao que constroi um frame a partir de uma classe e de um metodo.
 *   @param classe Estrutura que contem a classe atual.
 *   @param method Estrutura que contem o metodo atual.
-*   @param listaStaticField Lista de fields estaticos.
+*   @param heap Heap do programa.
 *   @param pilhaDeFrames Pilha de frames atual.
+*   @return Referencia atualizada do frame.
 */
-Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames, Heap *listaStaticField);
+Frame *ConstruirFrame(ClassFile *classe, method_info *method, PilhaDeFrames *pilhaDeFrames, Heap *heap);
 
 /**
 *   @fn Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
@@ -84,6 +86,7 @@ Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame);
 *   @fn u1 PilhaDeFramesVazia(PilhaDeOperandos *pilhaFrames)
 *   @brief Funcao que verifica se a pilha de frames esta vazia.
 *   @param pilhaFrames Estrutura que contem a pilha de frames.
+*   @return 1 se estiver vazia, 0 caso contrario.
 */
 u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame);
 

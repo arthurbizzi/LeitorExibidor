@@ -31,7 +31,7 @@ int carrega_header(FILE *arquivo, ClassFile *classe)
         return ERRO_MAGIC;
     classe->minor_version = le_u2(arquivo);
     classe->major_version = le_u2(arquivo);
-    if (classe->major_version != VERSION)
+    if (classe->major_version < VERSION_MIN || classe->major_version > VERSION_MAX)
         return ERRO_VERSION;
 
     return SUCESSO;

@@ -397,5 +397,8 @@ char* i_dereferencia_instrucoes(u2 index, cp_info *cp);
 */
 staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields);
 
+void i_tableswitch(Frame *frame);
+
+void i_lookupswitch(Frame *frame);
 
 #endif //OTHERS_H

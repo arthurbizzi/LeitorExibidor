@@ -1,7 +1,17 @@
 var impressao_8h =
 [
+    [ "REQ_ARRAYREF", "impressao_8h.html#a31373e6402861815885b5292f644ce12", null ],
+    [ "REQ_FIELDREF", "impressao_8h.html#a0cd8ea27491975df154fd59128a3ca59", null ],
+    [ "REQ_IINCREF", "impressao_8h.html#ad4e408cf1a29e303c9043bf29971b7ad", null ],
+    [ "REQ_JMPREF", "impressao_8h.html#a686e45edc81fe78c91a31a1b5f15772d", null ],
+    [ "REQ_LDCREF_1", "impressao_8h.html#a294c5201621f3eda124b3303a6c43385", null ],
+    [ "REQ_LDCREF_2", "impressao_8h.html#a0f24c8346d83b429912006672b0bc9a7", null ],
+    [ "REQ_METHODREF_1", "impressao_8h.html#a9537e80190afc3cb7d33bbd373f694f2", null ],
+    [ "REQ_METHODREF_2", "impressao_8h.html#aa5db737a9b4f228fe1417fa8e91aad67", null ],
     [ "carrega_mnemonicos", "impressao_8h.html#a9da878cd77e02039024061409eb95659", null ],
     [ "dereferencia", "impressao_8h.html#a5b79b24988b1c6e52f71392cd047addf", null ],
+    [ "dereferencia_fieldrefinfo", "impressao_8h.html#a5fc7366bfc57c50236d81014b038c7cd", null ],
+    [ "dereferencia_methodinfo", "impressao_8h.html#a12a1bab19aa0998814e72f6374b580f3", null ],
     [ "imprime_attribute", "impressao_8h.html#afc1f9eb4377c66132b3e7cedf502e1d5", null ],
     [ "imprime_attribute_file", "impressao_8h.html#a36317b6299a703bba0a28f74f7054e4c", null ],
     [ "imprime_attributes", "impressao_8h.html#a15277fbfe7a7741905e84632c7f2e3d3", null ],

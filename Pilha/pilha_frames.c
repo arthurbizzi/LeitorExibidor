@@ -83,7 +83,8 @@ Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
 void DestruirFrame(Frame *frame)
 {
     desalocaPilhaOperandos(&frame->pilhaDeOperandos);
-    free(frame->VetorVariaveisLocais);
+    if (frame->TamanhoVetorVariaveisLocais != 0)
+        free(frame->VetorVariaveisLocais);
     free(frame);
 }
 

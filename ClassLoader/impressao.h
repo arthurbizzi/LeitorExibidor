@@ -52,7 +52,7 @@ void imprime_attributes(ClassFile *classe);
 void imprime_methods(ClassFile *classe);
 
 /**
-*   @fn void imprime_attribute(ClassFile *classe)
+*   @fn void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
 *   @brief Funcao que imprime um unico atributo na tela.
 *   @param attributeInfo Estrutura que contem O atributo a ser impresso.
 *   @param classe Estrutura que contem a informacao da classe.
@@ -100,7 +100,7 @@ void imprime_attributes_file(ClassFile *classe, FILE *file);
 void imprime_methods_file(ClassFile *classe, FILE *file);
 
 /**
-*   @fn void imprime_attribute_file(ClassFile *classe)
+*   @fn void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe)
 *   @brief Funcao que imprime um unico atributo no arquivo.
 *   @param attributeInfo Estrutura que contem O atributo a ser impresso.
 *   @param classe Estrutura que contem a informacao da classe.
@@ -120,7 +120,7 @@ void imprime_fields_file(ClassFile *classe, FILE *file);
 /**
 *   @fn void carrega_instrucoes(Instrucao *mapa)
 *   @brief Funcao que organiza um mapa com mnemonicos e argumentos de instrucoes.
-*   @param mapa Referencia do mapa que sera preenchido.
+*   @param mapa Mapa que sera preenchido.
 */
 void carrega_mnemonicos(Instrucao *mapa);
 
@@ -144,7 +144,7 @@ char* dereferencia_methodinfo(u2 index, ClassFile *classe);
 
 /**
 *   @fn char* dereferencia_fieldrefinfo(u2 index, ClassFile *classe)
-*   @brief Funcao que recupera o valor de uma string no pool de constantes a partir de um methodinfo.
+*   @brief Funcao que recupera o valor de uma string no pool de constantes a partir de um fieldrefinfo.
 *   @param index Indice onde o methodinfo se encontra.
 *   @param classe Estrutura que contem a informacao da classe.
 *   @return Retorna uma string asciiz contendo o nome da classe e metodo dereferenciado.
@@ -156,7 +156,7 @@ char* dereferencia_fieldrefinfo(u2 index, ClassFile *classe);
 *   @brief Funcao que verifica se o nome do arquivo e da classe batem.
 *   @param classe Estrutura que contem a informacao da classe.
 *   @param nome Nome do arquivo.
-*   @return Status de execução: SUCESSO, ERRO_MAGIC, ERRO_VERSION ou ERRO_ARQUIVO
+*   @return Status de execução.
 */
 int verifica_match(ClassFile *classe, char *nome);
 

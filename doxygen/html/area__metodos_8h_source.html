@@ -33,7 +33,6 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">JVM
    </div>
-   <div id="projectbrief">Projeto de Software Basico</div>
   </td>
  </tr>
  </tbody>
@@ -116,37 +115,39 @@ $(document).ready(function(){initNavTree('area__metodos_8h_source.html','');});
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define ERRO_INSTRUCAO 30</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="structmethodinfo.html">method_info</a>* recupera_main(<a class="code" href="structclassfile.html">ClassFile</a> *classe);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> prepara_metodo(<a class="code" href="structmethodinfo.html">method_info</a> *metodo, <a class="code" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames **pilha_de_frames, Heap *heap);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">int</span> executa_metodo(<a class="code" href="structmethodinfo.html">method_info</a> *metodo, <a class="code" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames *pilha_de_frames);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">int</span> executa_instrucoes(<a class="code" href="structmethodinfo.html">method_info</a> *metodo, Frame *frame);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">int</span> executa_instrucao(u4 opcode);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> decodifica_geral(Frame *frame);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> decodifica_load(Frame *frame);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> decodifica_store(Frame *frame);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> decodifica_if(Frame *frame);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> carrega_instrucoes();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif // AREA_METODOS_H</span></div>
-<div class="ttc" id="structmethodinfo_html"><div class="ttname"><a href="structmethodinfo.html">methodinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:250</div></div>
-<div class="ttc" id="structclassfile_html"><div class="ttname"><a href="structclassfile.html">classfile</a></div><div class="ttdef"><b>Definition:</b> classloader.h:268</div></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="structmethodinfo.html">method_info</a>* recupera_metodo(<a class="code" href="structclassfile.html">ClassFile</a> *classe, <span class="keywordtype">char</span> *nome_metodo);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">int</span> executa_inits(<a class="code" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames *pilha_de_frames, Heap *heap);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> prepara_metodo(<a class="code" href="structmethodinfo.html">method_info</a> *metodo, <a class="code" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames **pilha_de_frames, Heap **heap);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> executa_metodo(<a class="code" href="structmethodinfo.html">method_info</a> *metodo, <a class="code" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames *pilha_de_frames);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">int</span> executa_instrucoes(<a class="code" href="structmethodinfo.html">method_info</a> *metodo, Frame *frame);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">int</span> executa_instrucao(u4 opcode);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> decodifica_geral(Frame *frame);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> decodifica_load(Frame *frame);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> decodifica_store(Frame *frame);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> decodifica_if(Frame *frame);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> carrega_instrucoes();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif // AREA_METODOS_H</span></div>
+<div class="ttc" id="structmethodinfo_html"><div class="ttname"><a href="structmethodinfo.html">methodinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:252</div></div>
+<div class="ttc" id="structclassfile_html"><div class="ttname"><a href="structclassfile.html">classfile</a></div><div class="ttdef"><b>Definition:</b> classloader.h:270</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_2987f88da1d76ce60061e56cdad5b4ab.html">AreaMetodos</a></li><li class="navelem"><a class="el" href="area__metodos_8h.html">area_metodos.h</a></li>
-    <li class="footer">Generated on Mon Jun 29 2015 05:02:30 for JVM by
+    <li class="footer">Generated on Thu Jul 2 2015 00:49:29 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

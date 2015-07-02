@@ -79,7 +79,6 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
             DestruirFrame(atual);
         }
     }
-
     return SUCESSO;
 }
 
@@ -262,8 +261,8 @@ void carrega_instrucoes() {
 	instrucao[0xA7] = decodifica_geral;
 	instrucao[0xA8] = decodifica_geral;
 	instrucao[0xA9] = decodifica_geral;
-//	instrucao[0xAA] = i_tableswitch; // NAO IMPLEMENTADO
-//	instrucao[0xAB] = i_lookupswitch; // NAO IMPLEMENTADO
+	instrucao[0xAA] = i_tableswitch;
+	instrucao[0xAB] = i_lookupswitch;
 	instrucao[0xAC] = decodifica_geral;
 	instrucao[0xAD] = decodifica_geral;
 	instrucao[0xAE] = decodifica_geral;
@@ -350,10 +349,6 @@ void decodifica_geral(Frame *frame) {
         case 0xA9:
             index = frame->codigo->info.CodeAttribute.code[++frame->pc];
             i_ret(frame, index);
-            break;
-        case 0xAA:
-            break;
-        case 0xAB:
             break;
         case 0xAC:
             i_ireturn(frame->pilhaDeFrames);

@@ -14,10 +14,10 @@
 
 /**
 *   @fn method_info* recupera_metodo(ClassFile *classe, char *nome_metodo)
-*   @brief Funcao que recupera o metodo main de uma classe.
+*   @brief Funcao que recupera um metodo main de uma classe.
 *   @param classe Classe carregada.
 *	@param nome_metodo Nome do metodo a ser recuperado.
-*   @return Metodo main, se encontrado, NULL, caso contrario.
+*   @return Metodo correspondente a nome_metodo, se encontrado, NULL, caso contrario.
 */
 method_info* recupera_metodo(ClassFile *classe, char *nome_metodo);
 
@@ -27,12 +27,12 @@ method_info* recupera_metodo(ClassFile *classe, char *nome_metodo);
 *   @param classe Classe carregada.
 *	@param pilha_de_frames Pilha de frames atual.
 *	@param heap Heap do programa.
-*   @return Metodo main, se encontrado, NULL, caso contrario.
+*   @return Status de execucao.
 */
 int executa_inits(ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap);
 
 /**
-*   @fn void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames)
+*   @fn void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap **heap)
 *   @brief Funcao que prepara um metodo de uma classe.
 *   @param metodo Metodo a ser preparado.
 *   @param classe Classe que contem o metodo.

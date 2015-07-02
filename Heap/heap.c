@@ -72,7 +72,7 @@ void InicializaListaDeClasses(ListaClasses **listadeclasses)
     return;
 }
 
-void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
+ListaClasses* InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
 {
     ListaClasses *lc1;
     lc1 = (ListaClasses *)malloc(sizeof(ListaClasses));
@@ -81,8 +81,7 @@ void InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
 		lc1->prox = NULL;
 	else
 		lc1->prox = *listadeclasses;
-    *listadeclasses = lc1;
-    return;
+    return lc1;
 }
 
 void desalocaListaDeClasses(ListaClasses *listadeclasses)
@@ -179,7 +178,7 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses)
     return NULL;
 }
 
-ClassFile *i_RecuperaClasse(char *nome, ListaClasses **listadeclasses)
+ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses)
 {
     ListaClasses *lc1;
     int index;
