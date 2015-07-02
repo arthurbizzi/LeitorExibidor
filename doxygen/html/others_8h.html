@@ -33,7 +33,6 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">JVM
    </div>
-   <div id="projectbrief">Projeto de Software Basico</div>
   </td>
  </tr>
  </tbody>
@@ -192,9 +191,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>i_jsr</b> (Frame *fra
 <tr class="memitem:a977b275d4ddf21225b1665584918a070"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="others_8h.html#a977b275d4ddf21225b1665584918a070">i_areturn</a> (PilhaDeFrames *pilhadeframes)</td></tr>
 <tr class="memdesc:a977b275d4ddf21225b1665584918a070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna uma referência a partir de um método.  <a href="#a977b275d4ddf21225b1665584918a070">More...</a><br /></td></tr>
 <tr class="separator:a977b275d4ddf21225b1665584918a070"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad107ba7206bc5eea332082290effecf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="others_8h.html#ad107ba7206bc5eea332082290effecf1">i_return</a> (PilhaDeFrames *pilhadeframes)</td></tr>
-<tr class="memdesc:ad107ba7206bc5eea332082290effecf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna void a partir de um método.  <a href="#ad107ba7206bc5eea332082290effecf1">More...</a><br /></td></tr>
-<tr class="separator:ad107ba7206bc5eea332082290effecf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d3c889fa44309dcb5f9767af6696b07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d3c889fa44309dcb5f9767af6696b07"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>i_return</b> (Frame *frame)</td></tr>
+<tr class="separator:a2d3c889fa44309dcb5f9767af6696b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf578b384bf0f6b770bd9749378c05df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="others_8h.html#aaf578b384bf0f6b770bd9749378c05df">i_getstatic</a> (Frame *frame, ListaStaticField *listadefields, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2)</td></tr>
 <tr class="memdesc:aaf578b384bf0f6b770bd9749378c05df"><td class="mdescLeft">&#160;</td><td class="mdescRight">identifica um field e coloca na pilha de operandos  <a href="#aaf578b384bf0f6b770bd9749378c05df">More...</a><br /></td></tr>
 <tr class="separator:aaf578b384bf0f6b770bd9749378c05df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,6 +269,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>i_ifnonnull</b> (Fram
 <tr class="memitem:a5c29d814590d3898b80bd6c63d8f8ba9"><td class="memItemLeft" align="right" valign="top">staticField *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="others_8h.html#a5c29d814590d3898b80bd6c63d8f8ba9">i_RecuperaField</a> (char *nome, ListaStaticField **listadefields)</td></tr>
 <tr class="memdesc:a5c29d814590d3898b80bd6c63d8f8ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">retorna um staticField identificado por nome da listadefields  <a href="#a5c29d814590d3898b80bd6c63d8f8ba9">More...</a><br /></td></tr>
 <tr class="separator:a5c29d814590d3898b80bd6c63d8f8ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98fde5f9a71068ec49c8547ab7d76171"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98fde5f9a71068ec49c8547ab7d76171"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>i_tableswitch</b> (Frame *frame)</td></tr>
+<tr class="separator:a98fde5f9a71068ec49c8547ab7d76171"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a591de8d521d5ab49ac03daaae79c1bda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a591de8d521d5ab49ac03daaae79c1bda"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>i_lookupswitch</b> (Frame *frame)</td></tr>
+<tr class="separator:a591de8d521d5ab49ac03daaae79c1bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Arquivo com definição de protótipos pras funções que implementam as instruções que não se classificaram em nenhum dos outros arquivos.s. </p>
@@ -1234,31 +1239,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>i_ifnonnull</b> (Fram
 
 </div>
 </div>
-<a class="anchor" id="ad107ba7206bc5eea332082290effecf1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void i_return </td>
-          <td>(</td>
-          <td class="paramtype">PilhaDeFrames *&#160;</td>
-          <td class="paramname"><em>pilhadeframes</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Retorna void a partir de um método. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pilhadeframes</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="af95d08efce903646ce98bd3257f1549b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1364,7 +1344,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>i_ifnonnull</b> (Fram
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_0a03a6dd5e48d1aecf2199e82eb22af4.html">Instrucoes</a></li><li class="navelem"><a class="el" href="others_8h.html">others.h</a></li>
-    <li class="footer">Generated on Mon Jun 29 2015 05:02:30 for JVM by
+    <li class="footer">Generated on Thu Jul 2 2015 00:49:30 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

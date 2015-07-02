@@ -5,5 +5,6 @@ var classloader_8c =
     [ "recupera_nome_diretorio", "classloader_8c.html#a7dcbbf3bef6b903221c15a1ada4b31d1", null ],
     [ "diretorio", "classloader_8c.html#a3ccb6ca748a235aa0971d8904da5a93f", null ],
     [ "nome_arquivo", "classloader_8c.html#a4a38aa8f6e1aea1d661b8593b2d17028", null ],
+    [ "primeira", "classloader_8c.html#a5b93f1b26aba4ad5cbecbf642d6f9944", null ],
     [ "raiz", "classloader_8c.html#a319dc288b02cbb5ee62d7de1f1b9eeb8", null ]
 ];

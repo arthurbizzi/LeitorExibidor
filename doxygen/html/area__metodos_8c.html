@@ -33,7 +33,6 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">JVM
    </div>
-   <div id="projectbrief">Projeto de Software Basico</div>
   </td>
  </tr>
  </tbody>
@@ -118,12 +117,15 @@ $(document).ready(function(){initNavTree('area__metodos_8c.html','');});
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad87dee67dfdfcde535571429d68edb39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad87dee67dfdfcde535571429d68edb39"></a>
-<a class="el" href="structmethodinfo.html">method_info</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>recupera_main</b> (<a class="el" href="structclassfile.html">ClassFile</a> *classe)</td></tr>
-<tr class="separator:ad87dee67dfdfcde535571429d68edb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8a5416aea9be6571e5fadc264f4e79b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8a5416aea9be6571e5fadc264f4e79b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>prepara_metodo</b> (<a class="el" href="structmethodinfo.html">method_info</a> *metodo, <a class="el" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames **pilha_de_frames, Heap *heap)</td></tr>
-<tr class="separator:ac8a5416aea9be6571e5fadc264f4e79b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34c58c8604275dee1dfa471668f4d793"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34c58c8604275dee1dfa471668f4d793"></a>
+<a class="el" href="structmethodinfo.html">method_info</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>recupera_metodo</b> (<a class="el" href="structclassfile.html">ClassFile</a> *classe, char *nome_metodo)</td></tr>
+<tr class="separator:a34c58c8604275dee1dfa471668f4d793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a012ad571a113ca33e86f768cdc806d06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a012ad571a113ca33e86f768cdc806d06"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>executa_inits</b> (<a class="el" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames *pilha_de_frames, Heap *heap)</td></tr>
+<tr class="separator:a012ad571a113ca33e86f768cdc806d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f7ecd1fecad2b7c0cc5ef632c08339"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68f7ecd1fecad2b7c0cc5ef632c08339"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>prepara_metodo</b> (<a class="el" href="structmethodinfo.html">method_info</a> *metodo, <a class="el" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames **pilha_de_frames, Heap **heap)</td></tr>
+<tr class="separator:a68f7ecd1fecad2b7c0cc5ef632c08339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5334609d1f72cc87014230764b4cbcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5334609d1f72cc87014230764b4cbcb"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>executa_metodo</b> (<a class="el" href="structmethodinfo.html">method_info</a> *metodo, <a class="el" href="structclassfile.html">ClassFile</a> *classe, PilhaDeFrames *pilha_de_frames)</td></tr>
 <tr class="separator:ab5334609d1f72cc87014230764b4cbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,7 +166,7 @@ u1&#160;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_2987f88da1d76ce60061e56cdad5b4ab.html">AreaMetodos</a></li><li class="navelem"><a class="el" href="area__metodos_8c.html">area_metodos.c</a></li>
-    <li class="footer">Generated on Mon Jun 29 2015 05:02:30 for JVM by
+    <li class="footer">Generated on Thu Jul 2 2015 00:49:29 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

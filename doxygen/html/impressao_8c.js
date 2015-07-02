@@ -2,6 +2,8 @@ var impressao_8c =
 [
     [ "carrega_mnemonicos", "impressao_8c.html#a9da878cd77e02039024061409eb95659", null ],
     [ "dereferencia", "impressao_8c.html#a8ba5d36cda32a068c0d91e36b92eea4a", null ],
+    [ "dereferencia_fieldrefinfo", "impressao_8c.html#a0ccbaf4c019023d0d8658c9fed2d68ec", null ],
+    [ "dereferencia_methodinfo", "impressao_8c.html#a7f324532491e710375728a5bc071aa02", null ],
     [ "imprime_attribute", "impressao_8c.html#afc1f9eb4377c66132b3e7cedf502e1d5", null ],
     [ "imprime_attribute_file", "impressao_8c.html#a36317b6299a703bba0a28f74f7054e4c", null ],
     [ "imprime_attributes", "impressao_8c.html#a15277fbfe7a7741905e84632c7f2e3d3", null ],

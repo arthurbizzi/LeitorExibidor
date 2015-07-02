@@ -33,7 +33,6 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">JVM
    </div>
-   <div id="projectbrief">Projeto de Software Basico</div>
   </td>
  </tr>
  </tbody>
@@ -138,24 +137,24 @@ $(document).ready(function(){initNavTree('pilha__frames_8h_source.html','');});
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> EmpilhaFrame(PilhaDeFrames **pilhaFrame, Frame *frame);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> DestruirFrame(Frame *frame);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> desalocaPilhaFrames(PilhaDeFrames **pilhaFrames);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;Frame *ConstruirFrame(<a class="code" href="structclassfile.html">ClassFile</a> *classe, <a class="code" href="structmethodinfo.html">method_info</a> *method, PilhaDeFrames *pilhaDeFrames, Heap *listaStaticField);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif // PILHA_FRAMES_H</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;PilhaDeFrames* EmpilhaFrame(PilhaDeFrames *pilhaFrame, Frame *frame);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> DestruirFrame(Frame *frame);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> desalocaPilhaFrames(PilhaDeFrames **pilhaFrames);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;Frame *ConstruirFrame(<a class="code" href="structclassfile.html">ClassFile</a> *classe, <a class="code" href="structmethodinfo.html">method_info</a> *method, PilhaDeFrames *pilhaDeFrames, Heap *heap);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif // PILHA_FRAMES_H</span></div>
 <div class="ttc" id="structpilhadeoperandos_html"><div class="ttname"><a href="structpilhadeoperandos.html">pilhadeoperandos</a></div><div class="ttdef"><b>Definition:</b> pilha_operandos.h:12</div></div>
-<div class="ttc" id="structattributeinfo_html"><div class="ttname"><a href="structattributeinfo.html">attributeinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:232</div></div>
-<div class="ttc" id="structcpinfo_html"><div class="ttname"><a href="structcpinfo.html">cpinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:213</div></div>
-<div class="ttc" id="structmethodinfo_html"><div class="ttname"><a href="structmethodinfo.html">methodinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:250</div></div>
-<div class="ttc" id="structclassfile_html"><div class="ttname"><a href="structclassfile.html">classfile</a></div><div class="ttdef"><b>Definition:</b> classloader.h:268</div></div>
+<div class="ttc" id="structattributeinfo_html"><div class="ttname"><a href="structattributeinfo.html">attributeinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:234</div></div>
+<div class="ttc" id="structcpinfo_html"><div class="ttname"><a href="structcpinfo.html">cpinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:215</div></div>
+<div class="ttc" id="structmethodinfo_html"><div class="ttname"><a href="structmethodinfo.html">methodinfo</a></div><div class="ttdef"><b>Definition:</b> classloader.h:252</div></div>
+<div class="ttc" id="structclassfile_html"><div class="ttname"><a href="structclassfile.html">classfile</a></div><div class="ttdef"><b>Definition:</b> classloader.h:270</div></div>
 <div class="ttc" id="pilha__operandos_8h_html"><div class="ttname"><a href="pilha__operandos_8h.html">pilha_operandos.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -163,7 +162,7 @@ $(document).ready(function(){initNavTree('pilha__frames_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c36b3819d34686d53b7106fbdb731653.html">Pilha</a></li><li class="navelem"><a class="el" href="pilha__frames_8h.html">pilha_frames.h</a></li>
-    <li class="footer">Generated on Mon Jun 29 2015 05:02:30 for JVM by
+    <li class="footer">Generated on Thu Jul 2 2015 00:49:29 for JVM by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

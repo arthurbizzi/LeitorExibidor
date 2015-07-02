@@ -19,7 +19,6 @@ var annotated =
     [ "defaultattribute", "structdefaultattribute.html", "structdefaultattribute" ],
     [ "exceptionsattribute", "structexceptionsattribute.html", "structexceptionsattribute" ],
     [ "fieldinfo", "structfieldinfo.html", "structfieldinfo" ],
-    [ "Hello", "class_hello.html", "class_hello" ],
     [ "innerclasses", "structinnerclasses.html", "structinnerclasses" ],
     [ "instrucao", "structinstrucao.html", "structinstrucao" ],
     [ "linenumbertableattribute", "structlinenumbertableattribute.html", "structlinenumbertableattribute" ],
