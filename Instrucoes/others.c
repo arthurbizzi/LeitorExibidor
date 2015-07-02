@@ -84,14 +84,14 @@ void i_ldc2_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 void i_goto(Frame* frame, u1 index1, u1 index2){
 
 	int16_t offset = (((u2)index1)<<8)+index2;
-	frame->pc += offset;
+	frame->pc += offset - 3;
 }
 
 void i_jsr(Frame* frame, u1 index, u1 index2){
 
 	EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &(frame->pc));
 	int16_t offset = (((u2)index)<<8)+index2;
-		frame->pc += offset;
+		frame->pc += offset - 3;
 }
 
 void i_ret(Frame* frame, u1 index){
@@ -1323,7 +1323,7 @@ void i_goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 b
 
     u4 branchoffset;
     branchoffset = ((u4)branchbyte1 << 24) | ((u4)branchbyte2 << 16) | ((u4)branchbyte3 << 8) | ((u4)branchbyte4);
-    frame->pc = frame->pc + branchoffset;
+    frame->pc = frame->pc + branchoffset - 3;
     return;
 }
 
@@ -1334,7 +1334,7 @@ void i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 br
     branchoffset = ((u4)branchbyte1 << 24) | ((u4)branchbyte2 << 16) | ((u4)branchbyte3 << 8) | ((u4)branchbyte4);
     pc = frame->pc + 5;
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &pc);
-    frame->pc = frame->pc + branchoffset;
+    frame->pc = frame->pc + branchoffset - 3;
     return;
 }
 
