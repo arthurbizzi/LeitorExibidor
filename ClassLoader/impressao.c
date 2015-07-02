@@ -149,6 +149,9 @@ void imprime_constant_pool(ClassFile *classe)
             break;
         }
     }
+    free(derreferencia);
+    free(derreferencia2);
+    free(derreferencia3);
     printf("\n");
 }
 
@@ -474,6 +477,9 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
             printf("\n");
         }
     }
+    free(derreferencia);
+    free(tipoAtributo);
+
 }
 
 void imprime_methods(ClassFile *classe)
@@ -540,6 +546,7 @@ void imprime_general_information_file(ClassFile *classe, FILE *file)
     fprintf(file, "Methods count:      \t%d\n", classe->methods_count);
     fprintf(file, "Attributes count:   \t%d\n", classe->attributes_count);
     fprintf(file, "\n");
+    free(derreferencia);
 }
 
 void imprime_constant_pool_file(ClassFile *classe, FILE *file)
@@ -667,6 +674,9 @@ void imprime_constant_pool_file(ClassFile *classe, FILE *file)
         }
     }
     fprintf(file, "\n");
+    free(derreferencia);
+    free(derreferencia2);
+    free(derreferencia3);
 }
 
 void imprime_fields_file(ClassFile *classe, FILE *file)
@@ -699,6 +709,8 @@ void imprime_fields_file(ClassFile *classe, FILE *file)
             imprime_attribute_file(&classe->fields[i].attributes[j], classe, file);
         }
     }
+    free(derreferencia2);
+    free(derreferencia);
 }
 
 void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FILE *file)
@@ -995,6 +1007,8 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             fprintf(file, "\n");
         }
     }
+    free(derreferencia);
+    free(tipoAtributo);
 }
 
 void imprime_methods_file(ClassFile *classe, FILE *file)
@@ -1026,6 +1040,7 @@ void imprime_methods_file(ClassFile *classe, FILE *file)
             imprime_attribute_file(&(classe->methods[i].attributes[j]), classe, file);
         }
     }
+    free(derreferencia);
 }
 
 void imprime_attributes_file(ClassFile *classe, FILE *file)
@@ -1676,6 +1691,10 @@ char* dereferencia_methodinfo(u2 index, ClassFile *classe)
     strcpy(nome, class_name);
     strcat(nome, ".");
     strcat(nome, method_name);
+
+    free(class_name);
+    free(method_name);
+
     return nome;
 }
 
@@ -1694,6 +1713,10 @@ char* dereferencia_fieldrefinfo(u2 index, ClassFile *classe)
     strcpy(nome, class_name);
     strcat(nome, ".");
     strcat(nome, method_name);
+
+    free(class_name);
+    free(method_name);
+
     return nome;
 }
 
@@ -1717,5 +1740,8 @@ int verifica_match(ClassFile *classe, char *nome)
     {
         return ERRO_MATCHING;
     }
+
+    free(temp);
+    free(nomeThisClass);
     return SUCESSO;
 }
