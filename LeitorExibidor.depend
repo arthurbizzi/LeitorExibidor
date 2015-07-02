@@ -634,15 +634,15 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435832489 source:c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.c
+1435866573 source:c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
 	"../Instrucoes/bridge_arquivosinstrucoes.h"
 
-1435799900 c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.h
+1435866586 c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.h
 	"../main.h"
 	"../Pilha/pilha_frames.h"
 
-1435797541 c:\users\ceres\documents\github\leitorexibidor\main.h
+1435867734 c:\users\ceres\documents\github\leitorexibidor\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -675,7 +675,7 @@
 	"classloader.h"
 	"../main.h"
 
-1435800755 c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.h
+1435867133 c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.h
 	"../Heap/heap.h"
 	"pilha_operandos.h"
 
@@ -723,7 +723,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435802324 c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.h
+1435868182 c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.h
 	<math.h>
 	"../Pilha/pilha_frames.h"
 
@@ -792,7 +792,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435834913 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.c
+1435868123 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.c
 	"others.h"
 
 1435797535 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\pop_dup_swap.c
@@ -809,10 +809,10 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435836608 source:c:\users\ceres\documents\github\leitorexibidor\main.c
+1435867736 source:c:\users\ceres\documents\github\leitorexibidor\main.c
 	"main.h"
 
-1435832489 source:c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.c
+1435867108 source:c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.c
 	"pilha_frames.h"
 	"../Heap/heap.h"
 

@@ -48,19 +48,21 @@ int main(int argc, char **argv) {
             scanf("%c", &opcao);
             break;
     }
+
     if(status != SUCESSO) {
         printf("Carregamento interrompido.\n");
         return status;
     }
-    if(verifica_impressao(classe,opcao) == ERRO_ARQUIVO) { // Verifica onde imprimir o conteudo da classe
+
+    if(verifica_impressao(classe, opcao) == ERRO_ARQUIVO) { // Verifica onde imprimir o conteudo da classe
 
         printf("ERRO: arquivo nao pode ser criado.\n");
         return ERRO_ARQUIVO;
     }
+
     if(opcao == 'n') { // Modo classloader se op != n
         status = executa_programa(classe); // Executa o codigo da classe a partir de main
     }
-
 
     if(status == SUCESSO) {
         printf("Fim da execucao.\n");
@@ -102,7 +104,7 @@ int verifica_impressao(ClassFile *classe, char opcao) {
             imprime_methods(classe);
             imprime_attributes(classe);
             break;
-        case 'x':
+        case 'x':// DEBUG
             arquivo_saida = fopen(nome_arquivo, "w");
             if (!arquivo_saida)
                 return ERRO_ARQUIVO;
@@ -143,13 +145,10 @@ int executa_programa(ClassFile *classe) {
     ListaClasses *lista_de_classes = NULL; /// Lista de classes carregadas no programa
     method_info *metodo_main = NULL;
     ClassFile *classe_inicial = NULL;
-   // ListaStaticField *lista_static_field = NULL;
     Heap *heap= NULL;
 
-    //InicializaListaDeClasses(&lista_de_classes);
     InicializaPilhaDeFrames(&pilha_de_frames);
     heap = InicializaHeap();
-    //Forçamento da Lista de StaticField pra Null.
 	lista_de_classes = InsereListaDeClasses(&lista_de_classes, classe);
 	heap->listaDeClasses = lista_de_classes;
 
@@ -170,7 +169,7 @@ int executa_programa(ClassFile *classe) {
     prepara_metodo(metodo_main, classe_inicial, &pilha_de_frames, &heap);
     executa_metodo(metodo_main, classe_inicial, pilha_de_frames);
 
-	if(heap !=NULL)
+	if(heap != NULL)
 		desalocaHeap(heap);
 
 	if(pilha_de_frames != NULL)

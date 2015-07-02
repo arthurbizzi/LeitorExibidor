@@ -380,25 +380,35 @@ void i_goto_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 b
 void i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 branchbyte4);
 
 /**
-*   @fn char* i_dereferencia_instrucoes(u2 index, cp_info *cp)
+*   @fn void i_tableswitch(Frame *frame)
+*   @brief
+*	@param frame
+*/
+void i_tableswitch(Frame *frame);
+
+/**
+*   @fn void i_lookupswitch(Frame *frame)
+*   @brief
+*	@param frame
+*/
+void i_lookupswitch(Frame *frame);
+
+/**
+*   @fn char* dereferencia_instrucao(u2 index, cp_info *cp)
 *   @brief retorna o nome que esta em um tipo utf8 de cp que esta em index
 *	@param index
 *	@param cp
 *   @return
 */
-char* i_dereferencia_instrucoes(u2 index, cp_info *cp);
+char* dereferencia_instrucao(u2 index, cp_info *cp);
 
 /**
-*   @fn staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields)
+*   @fn staticField *recupera_field(char *nome, ListaStaticField **listadefields)
 *   @brief retorna um staticField identificado por nome da listadefields
 *	@param nome
 *	@param listadefields
 *   @return
 */
-staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields);
-
-void i_tableswitch(Frame *frame);
-
-void i_lookupswitch(Frame *frame);
+staticField *recupera_field(char *nome, ListaStaticField **listadefields);
 
 #endif //OTHERS_H

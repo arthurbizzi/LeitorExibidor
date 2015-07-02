@@ -307,11 +307,11 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     tipoindex = frame->constant_pool[index - 1].info.Fieldref.name_and_type_index - 1;
     nameindex = frame->constant_pool[tipoindex].info.NameAndType.name_index - 1;
     tipoindex = frame->constant_pool[tipoindex].info.NameAndType.descriptor_index - 1;
-    tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
-    name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
-    nomeclasse = i_dereferencia_instrucoes(nomeclasseindex, frame->constant_pool);
+    tipo = dereferencia_instrucao(tipoindex, frame->constant_pool);
+    name = dereferencia_instrucao(nameindex, frame->constant_pool);
+    nomeclasse = dereferencia_instrucao(nomeclasseindex, frame->constant_pool);
     classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
-    if (classe == NULL)
+    /*if (classe == NULL)
     {
         char *nomearquivo;
         classe = (ClassFile *)malloc(sizeof(ClassFile));
@@ -323,12 +323,12 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
         frame->heap->listaDeClasses = listadeclasses;
         if (!executa_init(classe,frame->pilhaDeFrames,frame->heap))
             return;
-    }
-    field = i_RecuperaField(nomeclasse, &listadefields);
+    }*/
+    field = recupera_field(nomeclasse, &listadefields);
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
         nomeindex = classe->fields[fieldindex].name_index - 1;
-        nome = i_dereferencia_instrucoes(nomeindex, classe->constant_pool);
+        nome = dereferencia_instrucao(nomeindex, classe->constant_pool);
         if (!strcmp(name, nome))
             break;
     }
@@ -361,11 +361,11 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     tipoindex = frame->constant_pool[index - 1].info.Fieldref.name_and_type_index - 1;
     nameindex = frame->constant_pool[tipoindex].info.NameAndType.name_index - 1;
     tipoindex = frame->constant_pool[tipoindex].info.NameAndType.descriptor_index - 1;
-    tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
-    name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
-    nomeclasse = i_dereferencia_instrucoes(nomeclasseindex, frame->constant_pool);
+    tipo = dereferencia_instrucao(tipoindex, frame->constant_pool);
+    name = dereferencia_instrucao(nameindex, frame->constant_pool);
+    nomeclasse = dereferencia_instrucao(nomeclasseindex, frame->constant_pool);
     classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
-    if (classe == NULL)
+    /*if (classe == NULL)
     {
         char *nomearquivo;
         classe = (ClassFile *)malloc(sizeof(ClassFile));
@@ -377,7 +377,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
         frame->heap->listaDeClasses = listadeclasses;
         if (!executa_init(classe,frame->pilhaDeFrames,frame->heap))
             return;
-    }
+    }*/
 
     if (tipo[0] == 'J' || tipo[0] == 'D')
         valor = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
@@ -387,12 +387,12 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
         nomeindex = classe->fields[fieldindex].name_index - 1;
-        nome = i_dereferencia_instrucoes(nomeindex, classe->constant_pool);
+        nome = dereferencia_instrucao(nomeindex, classe->constant_pool);
         if (!strcmp(name, nome))
             break;
     }
 
-    field = i_RecuperaField(nomeclasse, &listadefields);
+    field = recupera_field(nomeclasse, &listadefields);
     if (field == NULL)
     {
         field = (staticField *)malloc(sizeof(staticField));
@@ -420,15 +420,15 @@ void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     tipoindex = frame->constant_pool[index - 1].info.Fieldref.name_and_type_index - 1;
     nameindex = frame->constant_pool[tipoindex].info.NameAndType.name_index - 1;
     tipoindex = frame->constant_pool[tipoindex].info.NameAndType.descriptor_index - 1;
-    tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
-    name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
+    tipo = dereferencia_instrucao(tipoindex, frame->constant_pool);
+    name = dereferencia_instrucao(nameindex, frame->constant_pool);
 
     obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
     for (fieldindex = 0; fieldindex < obj->tamanhotipoField; fieldindex++)
     {
         nomeindex = obj->classe->fields[fieldindex].name_index - 1;
-        nome = i_dereferencia_instrucoes(nomeindex, obj->classe->constant_pool);
+        nome = dereferencia_instrucao(nomeindex, obj->classe->constant_pool);
         if (!strcmp(name, nome))
             break;
     }
@@ -458,8 +458,8 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     tipoindex = frame->constant_pool[index - 1].info.Fieldref.name_and_type_index - 1;
     nameindex = frame->constant_pool[tipoindex].info.NameAndType.name_index - 1;
     tipoindex = frame->constant_pool[tipoindex].info.NameAndType.descriptor_index - 1;
-    tipo = i_dereferencia_instrucoes(tipoindex, frame->constant_pool);
-    name = i_dereferencia_instrucoes(nameindex, frame->constant_pool);
+    tipo = dereferencia_instrucao(tipoindex, frame->constant_pool);
+    name = dereferencia_instrucao(nameindex, frame->constant_pool);
 
     if (tipo[0] == 'J' || tipo[0] == 'D')
         valor = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
@@ -470,7 +470,7 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     for (fieldindex = 0; fieldindex < obj->classe->fields_count; fieldindex++)
     {
         nomeindex = obj->classe->fields[fieldindex].name_index - 1;
-        nome = i_dereferencia_instrucoes(nomeindex, obj->classe->constant_pool);
+        nome = dereferencia_instrucao(nomeindex, obj->classe->constant_pool);
         if (!strcmp(name, nome))
             break;
     }
@@ -497,12 +497,12 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
     classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
-    nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
+    nomeclasse = dereferencia_instrucao(classindex, frame->constant_pool);
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
     metodoindex = frame->constant_pool[descriptorindex].info.NameAndType.name_index - 1;
     descriptorindex = frame->constant_pool[descriptorindex].info.NameAndType.descriptor_index - 1;
-    nomemetodo = i_dereferencia_instrucoes(metodoindex, frame->constant_pool);
-    metododesc = i_dereferencia_instrucoes(descriptorindex, frame->constant_pool);
+    nomemetodo = dereferencia_instrucao(metodoindex, frame->constant_pool);
+    metododesc = dereferencia_instrucao(descriptorindex, frame->constant_pool);
 
     if (!strcmp(nomeclasse, "java/io/PrintStream") && (!strcmp(nomemetodo, "print") || !strcmp(nomemetodo, "println")))
     {
@@ -624,13 +624,13 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             argumentos[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
         }
 
-        nomemetodo = i_dereferencia_instrucoes(metodoindex, frame->constant_pool);
+        nomemetodo = dereferencia_instrucao(metodoindex, frame->constant_pool);
 
         for(i = 0; i < classe->methods_count; i++) {
             index = classe->methods[i].name_index - 1;
-            nome = i_dereferencia_instrucoes(index, classe->constant_pool);
+            nome = dereferencia_instrucao(index, classe->constant_pool);
             index1 = classe->methods[i].descriptor_index - 1;
-            nomedesc = i_dereferencia_instrucoes(index1, classe->constant_pool);
+            nomedesc = dereferencia_instrucao(index1, classe->constant_pool);
             if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
                 break;
         }
@@ -684,7 +684,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
     classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
-    nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
+    nomeclasse = dereferencia_instrucao(classindex, frame->constant_pool);
     classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
@@ -768,7 +768,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     index = (u4)indexbyte1 << 8 | (u4)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
     classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
-    nomeclasse = i_dereferencia_instrucoes(classindex, frame->constant_pool);
+    nomeclasse = dereferencia_instrucao(classindex, frame->constant_pool);
     classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
@@ -786,7 +786,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
     metodoindex = frame->constant_pool[descriptorindex].info.NameAndType.name_index - 1;
     descriptorindex = frame->constant_pool[descriptorindex].info.NameAndType.descriptor_index - 1;
-    metododesc = i_dereferencia_instrucoes(descriptorindex, frame->constant_pool);
+    metododesc = dereferencia_instrucao(descriptorindex, frame->constant_pool);
     bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
     length = frame->constant_pool[descriptorindex].info.Utf8.length;
 
@@ -815,13 +815,13 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
         argumentos[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     }
 
-    nomemetodo = i_dereferencia_instrucoes(metodoindex, frame->constant_pool);
+    nomemetodo = dereferencia_instrucao(metodoindex, frame->constant_pool);
 
     for(i = 0; i < classe->methods_count; i++) {
         index = classe->methods[i].name_index - 1;
-        nome = i_dereferencia_instrucoes(index, classe->constant_pool);
+        nome = dereferencia_instrucao(index, classe->constant_pool);
         index1 = classe->methods[i].descriptor_index - 1;
-        nomedesc = i_dereferencia_instrucoes(index1, classe->constant_pool);
+        nomedesc = dereferencia_instrucao(index1, classe->constant_pool);
         if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
             break;
     }
@@ -882,7 +882,7 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
     index = frame->constant_pool[index].info.NameAndType.name_index - 1;
     classeindex = frame->constant_pool[classeindex - 1].info.InterfaceMethodref.class_index - 1;
     classeindex = frame->constant_pool[classeindex].info.Class.name_index - 1;
-    nomeclasse = i_dereferencia_instrucoes(classeindex, frame->constant_pool);
+    nomeclasse = dereferencia_instrucao(classeindex, frame->constant_pool);
     classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     if (classe == NULL)
     {
@@ -897,13 +897,13 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
         if (!executa_init(classe,pilhadeframes,frame->heap))
             return;
     }
-    metododesc = i_dereferencia_instrucoes(descriptorindex, frame->constant_pool);
-    nomemetodo = i_dereferencia_instrucoes(index,frame->constant_pool);
+    metododesc = dereferencia_instrucao(descriptorindex, frame->constant_pool);
+    nomemetodo = dereferencia_instrucao(index,frame->constant_pool);
     for(i = 0; i < classe->methods_count; i++) {
         index = classe->methods[i].name_index - 1;
-        nome = i_dereferencia_instrucoes(index, classe->constant_pool);
+        nome = dereferencia_instrucao(index, classe->constant_pool);
         index1 = classe->methods[i].descriptor_index - 1;
-        nomedesc = i_dereferencia_instrucoes(index1, classe->constant_pool);
+        nomedesc = dereferencia_instrucao(index1, classe->constant_pool);
         if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
             break;
     }
@@ -935,7 +935,7 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
     u2 index;
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
-    nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
+    nomeclasse = dereferencia_instrucao(index, frame->constant_pool);
     obj = (Objeto *)malloc(sizeof(Objeto));
     obj->classe = RecuperaClassePorNome(nomeclasse,&listadeclasses);
     if (obj->classe == NULL)
@@ -1026,7 +1026,7 @@ void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     a = (tArray *)malloc(sizeof(tArray));
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
-    tipo = i_dereferencia_instrucoes(index, frame->constant_pool);
+    tipo = dereferencia_instrucao(index, frame->constant_pool);
     valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     i = 0;
     while (tipo[i] == '[')
@@ -1105,8 +1105,8 @@ void i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
-    nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
-    nomeclasseobjeto = i_dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
+    nomeclasse = dereferencia_instrucao(index, frame->constant_pool);
+    nomeclasseobjeto = dereferencia_instrucao(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
     if (obj == NULL)
     {
         printf("Erro: Referencia nula\n");
@@ -1128,8 +1128,8 @@ void i_instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     index = (u2)(indexbyte1 << 8) | (u2)(indexbyte2);
     obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     index = frame->constant_pool[index - 1].info.Class.name_index - 1;
-    nomeclasse = i_dereferencia_instrucoes(index, frame->constant_pool);
-    nomeclasseobjeto = i_dereferencia_instrucoes(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
+    nomeclasse = dereferencia_instrucao(index, frame->constant_pool);
+    nomeclasseobjeto = dereferencia_instrucao(obj->classe->constant_pool[obj->classe->this_class - 1].info.Class.name_index - 1, obj->classe->constant_pool);
     if (obj == NULL)
     {
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
@@ -1231,7 +1231,7 @@ void i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)
     a = (tArray *)malloc(sizeof(tArray));
     index = (u2)(indexbyte1 << 8 | indexbyte2);
     index = ((frame->constant_pool[index - 1].info.Class.name_index) - 1);
-    tipo = i_dereferencia_instrucoes(index, frame->constant_pool);
+    tipo = dereferencia_instrucao(index, frame->constant_pool);
     valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     a->tamanho1 = valor;
     for (i = 1; i < dimensions; i++)
@@ -1338,7 +1338,7 @@ void i_jsr_w(Frame *frame, u1 branchbyte1, u1 branchbyte2, u1 branchbyte3, u1 br
     return;
 }
 
-char* i_dereferencia_instrucoes(u2 index, cp_info *cp)
+char* dereferencia_instrucao(u2 index, cp_info *cp)
 {
     char *nome;
     int i;
@@ -1352,7 +1352,7 @@ char* i_dereferencia_instrucoes(u2 index, cp_info *cp)
     return nome;
 }
 
-staticField *i_RecuperaField(char *nome, ListaStaticField **listadefields)
+staticField *recupera_field(char *nome, ListaStaticField **listadefields)
 {
     ListaStaticField *lsf1;
     lsf1 = *listadefields;
