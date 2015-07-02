@@ -29,7 +29,7 @@ method_info* recupera_metodo(ClassFile *classe, char *nome_metodo);
 *	@param heap Heap do programa.
 *   @return Status de execucao.
 */
-int executa_inits(ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap);
+int executa_init(ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap);
 
 /**
 *   @fn void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap **heap)

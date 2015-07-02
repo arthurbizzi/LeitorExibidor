@@ -321,7 +321,7 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
         carrega_classe(nomearquivo, classe);
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_inits(classe,frame->pilhaDeFrames,frame->heap))
+        if (!executa_init(classe,frame->pilhaDeFrames,frame->heap))
             return;
     }
     field = i_RecuperaField(nomeclasse, &listadefields);
@@ -375,7 +375,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
         carrega_classe(nomearquivo, classe);
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_inits(classe,frame->pilhaDeFrames,frame->heap))
+        if (!executa_init(classe,frame->pilhaDeFrames,frame->heap))
             return;
     }
 
@@ -590,7 +590,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             carrega_classe(nomearquivo, classe);
             listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
             frame->heap->listaDeClasses = listadeclasses;
-            if (!executa_inits(classe,pilhadeframes,frame->heap))
+            if (!executa_init(classe,pilhadeframes,frame->heap))
                 return;
         }
 
@@ -696,7 +696,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         carrega_classe(nomearquivo, classe);
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_inits(classe,pilhadeframes,frame->heap))
+        if (!executa_init(classe,pilhadeframes,frame->heap))
             return;
     }
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
@@ -780,7 +780,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
         carrega_classe(nomearquivo, classe);
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_inits(classe,pilhadeframes,frame->heap))
+        if (!executa_init(classe,pilhadeframes,frame->heap))
             return;
     }
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
@@ -894,7 +894,7 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
         carrega_classe(nomearquivo, classe);
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_inits(classe,pilhadeframes,frame->heap))
+        if (!executa_init(classe,pilhadeframes,frame->heap))
             return;
     }
     metododesc = i_dereferencia_instrucoes(descriptorindex, frame->constant_pool);
@@ -950,7 +950,7 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
         obj->classe = classe;
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_inits(classe,frame->pilhaDeFrames,frame->heap))
+        if (!executa_init(classe,frame->pilhaDeFrames,frame->heap))
             return;
     }
     obj->tamanhotipoField = obj->classe->fields_count;

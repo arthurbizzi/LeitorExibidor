@@ -162,7 +162,7 @@ int executa_programa(ClassFile *classe) {
         return ERRO_MAIN;
     }
 
-    if(!executa_inits(classe, pilha_de_frames, heap)) {
+    if(!executa_init(classe, pilha_de_frames, heap)) {
         printf("ERRO: Metodo <init> nao encontrado.\n");
         return ERRO_MAIN;
     }

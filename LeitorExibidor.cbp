@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="C:/Users/Ceres/Documents/GitHub/LeitorExibidor/Testes/HelloWorldApp.class n" />
+				<Option parameters="C:/Users/Ceres/Documents/GitHub/LeitorExibidor/Testes/testeLogArit.class n" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
