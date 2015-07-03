@@ -3,6 +3,10 @@
 *.dev
 *.layout
 *.depend
+LeitorExibidor.layout
+LeitorExibidor.dev
+LeitorExibidor.depend
+LeitorExibidor.cbp
 bin/Debug/LeitorExibidor.exe
 bin/Release/LeitorExibidor.exe
 obj/Debug/main.o
