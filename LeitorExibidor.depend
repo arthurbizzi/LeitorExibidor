@@ -634,7 +634,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435877005 source:c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.c
+1435932068 source:c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
 	"../Instrucoes/bridge_arquivosinstrucoes.h"
 
@@ -670,7 +670,7 @@
 	"classloader.h"
 	"../main.h"
 
-1435877005 c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.h
+1435931809 c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.h
 	<stdio.h>
 	"classloader.h"
 	"../main.h"
@@ -723,7 +723,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.h
+1435929573 c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.h
 	<math.h>
 	"../Pilha/pilha_frames.h"
 
@@ -748,7 +748,7 @@
 1435877005 source:c:\users\ceres\documents\github\leitorexibidor\classloader\carregamento.c
 	"carregamento.h"
 
-1435886592 source:c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.c
+1435931948 source:c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.c
 	"impressao.h"
 
 1435883709 source:c:\users\ceres\documents\github\leitorexibidor\heap\heap.c
@@ -792,7 +792,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435883865 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.c
+1435931005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.c
 	"others.h"
 
 1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\pop_dup_swap.c
@@ -809,7 +809,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435884625 source:c:\users\ceres\documents\github\leitorexibidor\main.c
+1435931955 source:c:\users\ceres\documents\github\leitorexibidor\main.c
 	"main.h"
 
 1435884388 source:c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.c

@@ -107,7 +107,7 @@ void i_ret(Frame* frame, u1 index);
 *	@param pilhadeframes
 *   @return
 */
-void i_ireturn(PilhaDeFrames *pilhadeframes);
+void i_ireturn(PilhaDeFrames **pilhadeframes);
 
 /**
 *   @fn void i_lreturn(PilhaDeFrames *pilhadeframes)
@@ -115,7 +115,7 @@ void i_ireturn(PilhaDeFrames *pilhadeframes);
 *	@param pilhadeframes
 *   @return
 */
-void i_lreturn(PilhaDeFrames *pilhadeframes);
+void i_lreturn(PilhaDeFrames **pilhadeframes);
 
 /**
 *   @fn void i_freturn(PilhaDeFrames *pilhadeframes)
@@ -123,7 +123,7 @@ void i_lreturn(PilhaDeFrames *pilhadeframes);
 *	@param pilhadeframes
 *   @return
 */
-void i_freturn(PilhaDeFrames *pilhadeframes);
+void i_freturn(PilhaDeFrames **pilhadeframes);
 
 /**
 *   @fn void i_dreturn(PilhaDeFrames *pilhadeframes)
@@ -131,7 +131,7 @@ void i_freturn(PilhaDeFrames *pilhadeframes);
 *	@param pilhadeframes
 *   @return
 */
-void i_dreturn(PilhaDeFrames *pilhadeframes);
+void i_dreturn(PilhaDeFrames **pilhadeframes);
 
 /**
 *   @fn void i_areturn(PilhaDeFrames *pilhadeframes)
@@ -139,7 +139,7 @@ void i_dreturn(PilhaDeFrames *pilhadeframes);
 *	@param pilhadeframes
 *   @return
 */
-void i_areturn(PilhaDeFrames *pilhadeframes);
+void i_areturn(PilhaDeFrames **pilhadeframes);
 
 /**
 *   @fn void i_return(PilhaDeFrames *pilhadeframes)

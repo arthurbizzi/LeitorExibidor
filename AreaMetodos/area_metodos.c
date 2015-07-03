@@ -27,7 +27,7 @@ int executa_init(ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap) 
         u1 *nome;
         int index_nome = classe->methods[i].name_index - 1;
         nome = (u1*) dereferencia(index_nome, classe);
-        if(!strcmp("<init>", (char *) nome)) { // clinit?
+        if(!strcmp("<init>", (char *) nome)) {
             method_info *init = &classe->methods[i];
             prepara_metodo(init, classe, &pilha_de_frames, &heap);
             executa_metodo(init, classe, pilha_de_frames);
@@ -63,6 +63,10 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilh
 
 int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames) {
     int fim = 0;
+    #warning DEBUG - REMOVER NO FINAL
+    int index_nome = metodo->name_index - 1;
+    char *nome = dereferencia(index_nome, classe);
+    printf("Metodo: %s\n", nome);
     while(!fim) {
         Frame *atual = DesempilhaFrame(&pilha_de_frames); // Recupera frame atual
         fim = executa_instrucoes(metodo, atual);
@@ -82,8 +86,12 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
 }
 
 int executa_instrucoes(method_info *metodo, Frame *frame) {
+    #warning DEBUG - REMOVER NO FINAL
+    Instrucao mapa[0xCA];
+    carrega_mnemonicos(mapa);
     for( ;frame->pc < frame->codigo->info.CodeAttribute.code_length; frame->pc++) {
         opcode = frame->codigo->info.CodeAttribute.code[frame->pc];
+		printf("\tInstrucao: %s\n", mapa[opcode].mnemonico);
 		instrucao[opcode](frame);
     }
     return 1;
@@ -350,19 +358,19 @@ void decodifica_geral(Frame *frame) {
             i_ret(frame, index);
             break;
         case 0xAC:
-            i_ireturn(frame->pilhaDeFrames);
+            i_ireturn(&(frame->pilhaDeFrames));
             break;
         case 0xAD:
-            i_lreturn(frame->pilhaDeFrames);
+            i_lreturn(&(frame->pilhaDeFrames));
             break;
         case 0xAE:
-            i_freturn(frame->pilhaDeFrames);
+            i_freturn(&(frame->pilhaDeFrames));
             break;
         case 0xAF:
-            i_dreturn(frame->pilhaDeFrames);
+            i_dreturn(&(frame->pilhaDeFrames));
             break;
         case 0xB0:
-            i_areturn(frame->pilhaDeFrames);
+            i_areturn(&(frame->pilhaDeFrames));
             break;
         case 0xB1:
             i_return(frame);

@@ -251,11 +251,11 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++)
             {
                 Instrucao mapa[0xCA];
+                carrega_mnemonicos(mapa);
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i], instrIndex1, instrIndex2;
                 u2 instrIndex;
                 int16_t offset;
                 char *instrRef;
-                carrega_mnemonicos(mapa);
                 printf("\t\t\t\t\t%d: %s\t", i, mapa[opcode].mnemonico);
                 int j;
                 double dvalue;
@@ -780,11 +780,11 @@ void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FI
             for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++)
             {
                 Instrucao mapa[0xCA];
+                carrega_mnemonicos(mapa);
                 u1 opcode = attributeInfo->info.CodeAttribute.code[i], instrIndex1, instrIndex2;
                 u2 instrIndex;
                 int16_t offset;
                 char *instrRef;
-                carrega_mnemonicos(mapa);
                 fprintf(file, "\t\t\t\t\t%d: %s\t", i, mapa[opcode].mnemonico);
                 int j;
                 double dvalue;

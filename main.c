@@ -124,23 +124,7 @@ int verifica_impressao(ClassFile *classe, char opcao) {
             imprime_attributes_file(classe, arquivo_saida);
             fclose(arquivo_saida);
             break;
-        default: // Impressao em Arquivo e em Tela
-            imprime_general_information(classe);
-            imprime_constant_pool(classe);
-            imprime_fields(classe);
-            imprime_methods(classe);
-            imprime_attributes(classe);
-            arquivo_saida = fopen(nome_arquivo, "w");
-            if (!arquivo_saida) {
-                free(nome_arquivo);
-                return ERRO_ARQUIVO;
-            }
-            imprime_general_information_file(classe, arquivo_saida);
-            imprime_constant_pool_file(classe, arquivo_saida);
-            imprime_fields_file(classe, arquivo_saida);
-            imprime_methods_file(classe, arquivo_saida);
-            imprime_attributes_file(classe, arquivo_saida);
-            fclose(arquivo_saida);
+        default:
             break;
     }
     free(nome_arquivo);

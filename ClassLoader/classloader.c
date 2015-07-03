@@ -16,7 +16,6 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
 {
     FILE *arq_classe;
     char *caminho_arquivo;
-
     if(primeira) {
         diretorio = recupera_nome_diretorio(nome_completo);
         nome_arquivo = recupera_nome_arquivo(nome_completo);
