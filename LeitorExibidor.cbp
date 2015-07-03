@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="LeitorExibidor" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/LeitorExibidor" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="C:/Users/Ceres/Documents/GitHub/LeitorExibidor/Testes/testeLogArit.class n" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/LeitorExibidor" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c99" />
+		</Compiler>
+		<Unit filename="AreaMetodos/area_metodos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="AreaMetodos/area_metodos.h" />
+		<Unit filename="ClassLoader/carregamento.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ClassLoader/carregamento.h" />
+		<Unit filename="ClassLoader/classloader.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ClassLoader/classloader.h" />
+		<Unit filename="ClassLoader/impressao.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ClassLoader/impressao.h" />
+		<Unit filename="Heap/heap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Heap/heap.h" />
+		<Unit filename="Instrucoes/bridge_arquivosinstrucoes.h" />
+		<Unit filename="Instrucoes/cast.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/cast.h" />
+		<Unit filename="Instrucoes/comparacao.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/comparacao.h" />
+		<Unit filename="Instrucoes/const.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/const.h" />
+		<Unit filename="Instrucoes/ifs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/ifs.h" />
+		<Unit filename="Instrucoes/load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/load.h" />
+		<Unit filename="Instrucoes/logico_aritimeticas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/logico_aritimeticas.h" />
+		<Unit filename="Instrucoes/others.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/others.h" />
+		<Unit filename="Instrucoes/pop_dup_swap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/pop_dup_swap.h" />
+		<Unit filename="Instrucoes/store.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Instrucoes/store.h" />
+		<Unit filename="Pilha/pilha_frames.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Pilha/pilha_frames.h" />
+		<Unit filename="Pilha/pilha_operandos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Pilha/pilha_operandos.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
