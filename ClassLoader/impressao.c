@@ -486,7 +486,6 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
     }
     free(derreferencia);
     free(tipoAtributo);
-
 }
 
 void imprime_methods(ClassFile *classe)
@@ -533,531 +532,540 @@ void imprime_attributes(ClassFile *classe)
 
 void imprime_general_information_file(ClassFile *classe, FILE *file)
 {
-//    char *nomeThisClass, *nomeSuperClass;
-//    int index = classe->constant_pool[classe->this_class - 1].info.Class.name_index - 1;
-//    nomeThisClass = dereferencia(index, classe);
-//    index = classe->constant_pool[classe->super_class - 1].info.Class.name_index - 1;
-//    nomeSuperClass = dereferencia(index, classe);
-//    fprintf(file, "\n");
-//    fprintf(file, ">>>General Information<<<\n");
-//    fprintf(file, "Minor version:      \t%d\n", classe->minor_version);
-//    fprintf(file, "Major version:      \t%d\n", classe->major_version);
-//    fprintf(file, "Constant pool count:\t%d\n", classe->constant_pool_count);
-//    fprintf(file, "Access flags:       \t0x%x\n", classe->access_flags);
-//    fprintf(file, "This class:         \tCP INFO #%d <%s>\n", classe->this_class, nomeThisClass);
-//    fprintf(file, "Super class:        \tCP INFO #%d <%s>\n", classe->super_class, nomeSuperClass);
-//    fprintf(file, "Interfaces count:   \t%d\n", classe->interfaces_count);
-//    fprintf(file, "Fields count:       \t%d\n", classe->fields_count);
-//    fprintf(file, "Methods count:      \t%d\n", classe->methods_count);
-//    fprintf(file, "Attributes count:   \t%d\n", classe->attributes_count);
-//    fprintf(file, "\n");
+    char *nomeThisClass, *nomeSuperClass;
+    int index = classe->constant_pool[classe->this_class - 1].info.Class.name_index - 1;
+    nomeThisClass = dereferencia(index, classe);
+    index = classe->constant_pool[classe->super_class - 1].info.Class.name_index - 1;
+    nomeSuperClass = dereferencia(index, classe);
+    fprintf(file, ">>>General Information<<<\n");
+    fprintf(file, "Minor version:      \t%d\n", classe->minor_version);
+    fprintf(file, "Major version:      \t%d\n", classe->major_version);
+    fprintf(file, "Constant pool count:\t%d\n", classe->constant_pool_count);
+    fprintf(file, "Access flags:       \t0x%x\n", classe->access_flags);
+    fprintf(file, "This class:         \tCP INFO #%d <%s>\n", classe->this_class, nomeThisClass);
+    fprintf(file, "Super class:        \tCP INFO #%d <%s>\n", classe->super_class, nomeSuperClass);
+    fprintf(file, "Interfaces count:   \t%d\n", classe->interfaces_count);
+    fprintf(file, "Fields count:       \t%d\n", classe->fields_count);
+    fprintf(file, "Methods count:      \t%d\n", classe->methods_count);
+    fprintf(file, "Attributes count:   \t%d\n", classe->attributes_count);
+    fprintf(file, "\n");
+    free(nomeThisClass);
+    free(nomeSuperClass);
 }
 
 void imprime_constant_pool_file(ClassFile *classe, FILE *file)
 {
-//    char *derreferencia = NULL, *derreferencia2 = NULL, *derreferencia3 = NULL;
-//    int index = 0;
-//    u8 l;
-//    fprintf(file, "\n");
-//    fprintf(file, ">>>Constant Pool<<<\n");
-//    for (int i = 0;
-//            i < (classe->constant_pool_count - 1); i++)   /* Armazena os valores de cada elemento do constant pool */
-//    {
-//    float fvalue;
-//    double dvalue;
-//        switch (classe->constant_pool[i].tag)   /* Existem respostas diferentes para cada tag */
-//        {
-//        case CONSTANT_Class:
-//            index = classe->constant_pool[i].info.Class.name_index - 1;
-//            derreferencia = dereferencia(index, classe);
-//            fprintf(file, "[%d] CONSTANT_Class_info:\n", (i + 1));
-//            fprintf(file, "\tClass name:          \tCP INFO #%d <%s>\n", classe->constant_pool[i].info.Class.name_index, derreferencia);
-//            break;
-//        case CONSTANT_Fieldref:
-//            index = classe->constant_pool[i].info.Fieldref.class_index - 1;
-//            index = classe->constant_pool[index].info.Class.name_index - 1;
-//            derreferencia = dereferencia(index, classe);
-//            fprintf(file, "[%d] CONSTANT_Fieldref_info:\n", (i + 1));
-//            fprintf(file, "\tClass name:          \tCP INFO #%d <%s>\n",
-//                    classe->constant_pool[i].info.Fieldref.class_index, derreferencia);
-//            index = classe->constant_pool[i].info.Fieldref.name_and_type_index - 1;
-//            derreferencia = dereferencia(classe->constant_pool[index].info.NameAndType.name_index - 1, classe);
-//            derreferencia2 = dereferencia(classe->constant_pool[index].info.NameAndType.descriptor_index - 1,
-//                                          classe);
-//            fprintf(file, "\tName and type:       \tCP INFO #%d <%s%s>\n",
-//                    classe->constant_pool[i].info.Fieldref.name_and_type_index, derreferencia, derreferencia2);
-//            break;
-//        case CONSTANT_Methodref:
-//            index = classe->constant_pool[i].info.Fieldref.class_index - 1;
-//            index = classe->constant_pool[index].info.Class.name_index - 1;
-//            derreferencia = dereferencia(index, classe);
-//            fprintf(file, "[%d] CONSTANT_Methodref_info:\n", (i + 1));
-//            fprintf(file, "\tClass name:          \tCP INFO #%d <%s>\n",
-//                    classe->constant_pool[i].info.Methodref.class_index, derreferencia);
-//            index = classe->constant_pool[i].info.Fieldref.name_and_type_index - 1;
-//            derreferencia = dereferencia(classe->constant_pool[index].info.NameAndType.name_index - 1, classe);
-//            derreferencia2 = dereferencia(classe->constant_pool[index].info.NameAndType.descriptor_index - 1,
-//                                          classe);
-//            fprintf(file, "\tName and type:       \tCP INFO #%d <%s%s>\n",
-//                    classe->constant_pool[i].info.Methodref.name_and_type_index, derreferencia, derreferencia2);
-//            break;
-//        case CONSTANT_InterfaceMethodref:
-//            index = classe->constant_pool[classe->constant_pool[i].info.InterfaceMethodref.class_index - 1].info.Class.name_index - 1;
-//            derreferencia = dereferencia(index, classe);
-//            index = classe->constant_pool[classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index - 1].info.NameAndType.name_index - 1;
-//            derreferencia2 = dereferencia(index, classe);
-//            index = classe->constant_pool[classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index - 1].info.NameAndType.descriptor_index - 1;
-//            derreferencia3 = dereferencia(index, classe);
-//            derreferencia2 = strcat(derreferencia2,derreferencia3);
-//            fprintf(file, "[%d] CONSTANT_InterceMethodref_info:\n", (i + 1));
-//            fprintf(file, "\tClass name:          \tCP INFO #%d <%s>\n",
-//                    classe->constant_pool[i].info.InterfaceMethodref.class_index, derreferencia);
-//            fprintf(file, "\tName and type:       \tCP INFO #%d <%s>\n",
-//                    classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index, derreferencia2);
-//            break;
-//        case CONSTANT_String:
-//            index = classe->constant_pool[i].info.String.string_index - 1;
-//            derreferencia = dereferencia(index, classe);
-//            fprintf(file, "[%d] CONSTANT_String_info:\n", (i + 1));
-//            fprintf(file, "\tString:              \tCP INFO #%d <%s>\n",
-//                    classe->constant_pool[i].info.String.string_index, derreferencia);
-//            break;
-//        case CONSTANT_Integer:
-//            fprintf(file, "[%d] CONSTANT_Integer_info:\n", (i + 1));
-//            fprintf(file, "\tBytes:               \t0x%x\n", classe->constant_pool[i].info.Integer.bytes);
-//            fprintf(file, "\tInteger:             \t%d\n", classe->constant_pool[i].info.Integer.bytes);
-//            break;
-//        case CONSTANT_Float:
-//
-//            memcpy(&fvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u4));
-//            fprintf(file, "[%d] CONSTANT_Float_info:\n", (i + 1));
-//            fprintf(file, "\tBytes:               \t0x%x\n", classe->constant_pool[i].info.Float.bytes);
-//            fprintf(file, "\tFloat:               \t%f\n", fvalue);
-//            break;
-//        case CONSTANT_Long:
-//            l = (u8) classe->constant_pool[i].info.Long.high_bytes << 32;
-//            l = l | classe->constant_pool[i].info.Long.low_bytes;
-//            fprintf(file, "[%d] CONSTANT_Long_info:\n", (i + 1));
-//            fprintf(file, "\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Long.high_bytes);
-//            fprintf(file, "\tLow bytes:           \t0x%x\n", classe->constant_pool[i].info.Long.low_bytes);
-//            fprintf(file, "\tLong:                \t%ld\n", l);
-//            i++;
-//            fprintf(file, "[%d] (large numeric continued)\n", (i + 1));
-//            break;
-//        case CONSTANT_Double:
-//            l = (u8) classe->constant_pool[i].info.Double.high_bytes << 32;
-//            l = l | classe->constant_pool[i].info.Double.low_bytes;
-//            memcpy(&dvalue,&l,sizeof(u8));
-//            fprintf(file, "[%d] CONSTANT_Double_info:\n", (i + 1));
-//            fprintf(file, "\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Double.high_bytes);
-//            fprintf(file, "\tLow bytes:           \t0x%x\n", classe->constant_pool[i].info.Double.low_bytes);
-//            fprintf(file, "\tDouble:              \t%f\n", dvalue);
-//            i++;
-//            fprintf(file, "[%d] (large numeric continued)\n", (i + 1));
-//            break;
-//        case CONSTANT_NameAndType:
-//            index = classe->constant_pool[i].info.NameAndType.name_index - 1;
-//            derreferencia = dereferencia(index, classe);
-//            index = classe->constant_pool[i].info.NameAndType.descriptor_index - 1;
-//            derreferencia2 = dereferencia(index, classe);
-//            fprintf(file, "[%d] CONSTANT_NameAndType_info:\n", (i + 1));
-//            fprintf(file, "\tName:                \tCP INFO #%d <%s>\n",
-//                    classe->constant_pool[i].info.NameAndType.name_index, derreferencia);
-//            fprintf(file, "\tDescriptor:          \tCP INFO #%d <%s>\n",
-//                    classe->constant_pool[i].info.NameAndType.descriptor_index, derreferencia2);
-//            break;
-//        case CONSTANT_Utf8:
-//            fprintf(file, "[%d] CONSTANT_Utf8_info:\n", (i + 1));
-//            fprintf(file, "\tLength of byte array:\t%d\n", classe->constant_pool[i].info.Utf8.length);
-//            fprintf(file, "\tLength of string:    \t%d\n", classe->constant_pool[i].info.Utf8.length);
-//            fprintf(file, "\tString:              \t");
-//            for (int j = 0; j < classe->constant_pool[i].info.Utf8.length; j++)
-//                fprintf(file, "%c", classe->constant_pool[i].info.Utf8.bytes[j]);
-//            fprintf(file, "\n");
-//            break;
-//        }
-//    }
-//    fprintf(file, "\n");
-//    free(derreferencia);
-//    free(derreferencia2);
-//    free(derreferencia3);
+    u8 l;
+    char *derreferencia = NULL, *derreferencia2 = NULL, *derreferencia3 = NULL;
+    fprintf(file, "\n");
+    fprintf(file, ">>>Constant Pool<<<\n");
+    int index = 0;
+    float fvalue;
+    double dvalue;
+    for (int i = 0;  i < (classe->constant_pool_count - 1); i++)   /* Armazena os valores de cada elemento do constant pool */
+    {
+        switch (classe->constant_pool[i].tag)   /* Existem respostas diferentes para cada tag */
+        {
+        case CONSTANT_Class:
+            index = classe->constant_pool[i].info.Class.name_index - 1;
+            derreferencia = dereferencia(index, classe);
+            fprintf(file, "[%d] CONSTANT_Class_info:\n", (i + 1));
+            fprintf(file, "\tClass name:          \tCP INFO #%d <%s>\n", classe->constant_pool[i].info.Class.name_index,
+                   derreferencia);
+            break;
+        case CONSTANT_Fieldref:
+            index = classe->constant_pool[i].info.Fieldref.class_index - 1;
+            index = classe->constant_pool[index].info.Class.name_index - 1;
+            derreferencia = dereferencia(index, classe);
+            fprintf(file, "[%d] CONSTANT_Fieldref_info:\n", (i + 1));
+            fprintf(file, "\tClass name:          \tCP INFO #%d <%s>\n",
+                   classe->constant_pool[i].info.Fieldref.class_index, derreferencia);
+            index = classe->constant_pool[i].info.Fieldref.name_and_type_index - 1;
+            free(derreferencia);
+            derreferencia = dereferencia(classe->constant_pool[index].info.NameAndType.name_index - 1, classe);
+            derreferencia2 = dereferencia(classe->constant_pool[index].info.NameAndType.descriptor_index - 1,
+                                          classe);
+            fprintf(file, "\tName and type:       \tCP INFO #%d  <%s%s>\n",
+                   classe->constant_pool[i].info.Fieldref.name_and_type_index, derreferencia, derreferencia2);
+            break;
+        case CONSTANT_Methodref:
+            index = classe->constant_pool[i].info.Fieldref.class_index - 1;
+            index = classe->constant_pool[index].info.Class.name_index - 1;
+            derreferencia = dereferencia(index, classe);
+            fprintf(file, "[%d] CONSTANT_Methodref_info:\n", (i + 1));
+            fprintf(file, "\tClass name:          \tCP INFO #%d <%s>\n",
+                   classe->constant_pool[i].info.Methodref.class_index, derreferencia);
+            index = classe->constant_pool[i].info.Fieldref.name_and_type_index - 1;
+            free(derreferencia);
+            derreferencia = dereferencia(classe->constant_pool[index].info.NameAndType.name_index - 1, classe);
+            derreferencia2 = dereferencia(classe->constant_pool[index].info.NameAndType.descriptor_index - 1,
+                                          classe);
+            fprintf(file, "\tName and type:       \tCP INFO #%d <%s%s>\n",
+                   classe->constant_pool[i].info.Methodref.name_and_type_index, derreferencia, derreferencia2);
+            break;
+        case CONSTANT_InterfaceMethodref:
+            index = classe->constant_pool[classe->constant_pool[i].info.InterfaceMethodref.class_index - 1].info.Class.name_index - 1;
+            derreferencia = dereferencia(index, classe);
+            index = classe->constant_pool[classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index - 1].info.NameAndType.name_index - 1;
+            derreferencia2 = dereferencia(index, classe);
+            index = classe->constant_pool[classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index - 1].info.NameAndType.descriptor_index - 1;
+            derreferencia3 = dereferencia(index, classe);
+            derreferencia2 = strcat(derreferencia2,derreferencia3);
+            fprintf(file, "[%d] CONSTANT_InterceMethodref_info:\n", (i + 1));
+            fprintf(file, "\tClass name:          \tCP INFO #%d <%s>\n",
+                   classe->constant_pool[i].info.InterfaceMethodref.class_index, derreferencia);
+            fprintf(file, "\tName and type:       \tCP INFO #%d <%s>\n",
+                   classe->constant_pool[i].info.InterfaceMethodref.name_and_type_index, derreferencia2);
+            break;
+        case CONSTANT_String:
+            index = classe->constant_pool[i].info.String.string_index - 1;
+            derreferencia = dereferencia(index, classe);
+            fprintf(file, "[%d] CONSTANT_String_info:\n", (i + 1));
+            fprintf(file, "\tString:              \tCP INFO #%d <%s>\n", classe->constant_pool[i].info.String.string_index, derreferencia);
+            break;
+        case CONSTANT_Integer:
+            fprintf(file, "[%d] CONSTANT_Integer_info:\n", (i + 1));
+            fprintf(file, "\tBytes:               \t0x%x\n", classe->constant_pool[i].info.Integer.bytes);
+            fprintf(file, "\tInteger:             \t%d\n", classe->constant_pool[i].info.Integer.bytes);
+            break;
+        case CONSTANT_Float:
+			memcpy(&fvalue,&(classe->constant_pool[i].info.Float.bytes),sizeof(u4));
+            fprintf(file, "[%d] CONSTANT_Float_info:\n", (i + 1));
+            fprintf(file, "\tBytes:               \t0x%x\n", classe->constant_pool[i].info.Float.bytes);
+            fprintf(file, "\tFloat:               \t%f\n", fvalue);
+            break;
+        case CONSTANT_Long:
+            l = (u8) classe->constant_pool[i].info.Long.high_bytes << 32;
+            l = l | classe->constant_pool[i].info.Long.low_bytes;
+            fprintf(file, "[%d] CONSTANT_Long_info:\n", (i + 1));
+            fprintf(file, "\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Long.high_bytes);
+            fprintf(file, "\tLow bytes:           \t0x%x\n", classe->constant_pool[i].info.Long.low_bytes);
+            fprintf(file, "\tLong:                \t%lld\n", l);
+            i++;
+            fprintf(file, "[%d] (large numeric continued)\n", (i + 1));
+            break;
+        case CONSTANT_Double:
+            l = (u8) classe->constant_pool[i].info.Double.high_bytes << 32;
+            l = l | classe->constant_pool[i].info.Double.low_bytes;
+            memcpy(&dvalue,&l,sizeof(u8));
+            fprintf(file, "[%d] CONSTANT_Double_info:\n", (i + 1));
+            fprintf(file, "\tHigh bytes:          \t0x%x\n", classe->constant_pool[i].info.Double.high_bytes);
+            fprintf(file, "\tLow bytes:           \t0x%x\n", classe->constant_pool[i].info.Double.low_bytes);
+            fprintf(file, "\tDouble:              \t%f\n",dvalue);
+            i++;
+            fprintf(file, "[%d] (large numeric continued)\n", (i + 1));
+            break;
+        case CONSTANT_NameAndType:
+            index = classe->constant_pool[i].info.NameAndType.name_index - 1;
+            derreferencia = dereferencia(index, classe);
+            index = classe->constant_pool[i].info.NameAndType.descriptor_index - 1;
+            derreferencia2 = dereferencia(index, classe);
+            fprintf(file, "[%d] CONSTANT_NameAndType_info:\n", (i + 1));
+            fprintf(file, "\tName:                \tCP INFO #%d <%s>\n", classe->constant_pool[i].info.NameAndType.name_index, derreferencia);
+            fprintf(file, "\tDescriptor:          \tCP INFO #%d <%s>\n",
+                   classe->constant_pool[i].info.NameAndType.descriptor_index, derreferencia2);
+            break;
+        case CONSTANT_Utf8:
+            fprintf(file, "[%d] CONSTANT_Utf8_info:\n", (i + 1));
+            fprintf(file, "\tLength of byte array:\t%d\n", classe->constant_pool[i].info.Utf8.length);
+            fprintf(file, "\tLength of string:    \t%d\n", classe->constant_pool[i].info.Utf8.length);
+            fprintf(file, "\tString:              \t");
+            for (int j = 0; j < classe->constant_pool[i].info.Utf8.length; j++)
+                fprintf(file, "%c", classe->constant_pool[i].info.Utf8.bytes[j]);
+            fprintf(file, "\n");
+            break;
+        }
+    }
+    free(derreferencia);
+    free(derreferencia2);
+    free(derreferencia3);
+    fprintf(file, "\n");
 }
 
 void imprime_fields_file(ClassFile *classe, FILE *file)
 {
-//    char *derreferencia = NULL, *derreferencia2 = NULL;
-//    int index = 0;
-//    fprintf(file, ">>>Fields<<<\n");
-//    for (int i = 0; i < classe->fields_count; i++)
-//    {
-//        index = classe->fields[i].name_index - 1;
-//        derreferencia = dereferencia(index, classe);
-//        index = classe->fields[i].descriptor_index - 1;
-//        derreferencia2 = dereferencia(index, classe);
-//        fprintf(file, "[%d] ", i);
-//        for (int j = 0; j < classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.length; j++)
-//            fprintf(file, "%c", classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.bytes[j]);
-//        fprintf(file, "\n");
-//        fprintf(file, "\tAccess Flags:    \t%d\n", classe->fields[i].access_flags);
-//        fprintf(file, "\tName Index:      \tCP INFO #%d %s\n", classe->fields[i].name_index, derreferencia);
-//        fprintf(file, "\tDescriptor Index:\tCP INFO #%d %s\n", classe->fields[i].descriptor_index, derreferencia2);
-//        fprintf(file, "\tAttributes Count:\t%d\n", classe->fields[i].attributes_count);
-//        for (int j = 0; j < classe->fields[i].attributes_count; j++)
-//        {
-//            fprintf(file, "\t[%d] ", j);
-//            for (int k = 0; k < classe->constant_pool[classe->fields[i].attributes[j].attribute_name_index -
-//                    1].info.Utf8.length; k++)
-//                fprintf(file, "%c", classe->constant_pool[classe->fields[i].attributes[j].attribute_name_index -
-//                        1].info.Utf8.bytes[k]);
-//            fprintf(file, "\n");
-//            imprime_attribute_file(&classe->fields[i].attributes[j], classe, file);
-//        }
-//    }
-//    free(derreferencia2);
-//    free(derreferencia);
+    fprintf(file, ">>>Fields<<<\n");
+    for (int i = 0; i < classe->fields_count; i++)
+    {
+        int index = 0;
+        char *derreferencia = NULL, *derreferencia2 = NULL;
+        fprintf(file, "[%d] ", i);
+        for (int j = 0; j < classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.length; j++)
+            fprintf(file, "%c", classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.bytes[j]);
+        fprintf(file, "\n");
+        index = classe->fields[i].name_index - 1;
+        derreferencia = dereferencia(index, classe);
+        index = classe->fields[i].descriptor_index - 1;
+        derreferencia2 = dereferencia(index, classe);
+        fprintf(file, "\tAccess Flags:    \t%d\n", classe->fields[i].access_flags);
+        fprintf(file, "\tName Index:      \tCP INFO #%d <%s>\n", classe->fields[i].name_index, derreferencia);
+        fprintf(file, "\tDescriptor Index:\tCP INFO #%d <%s>\n", classe->fields[i].descriptor_index, derreferencia2);
+        fprintf(file, "\tAttributes Count:\t%d\n", classe->fields[i].attributes_count);
+        for (int j = 0; j < classe->fields[i].attributes_count; j++)
+        {
+            fprintf(file, "\t[%d] ", j);
+            for (int k = 0; k < classe->constant_pool[classe->fields[i].attributes[j].attribute_name_index -
+                    1].info.Utf8.length; k++)
+                fprintf(file, "%c", classe->constant_pool[classe->fields[i].attributes[j].attribute_name_index -
+                                                   1].info.Utf8.bytes[k]);
+            fprintf(file, "\n");
+            imprime_attribute_file(&classe->fields[i].attributes[j], classe, file);
+        }
+        free(derreferencia);
+        free(derreferencia2);
+    }
 }
 
 void imprime_attribute_file(attribute_info *attributeInfo, ClassFile *classe, FILE *file)
 {
-//    char *derreferencia = NULL;
-//    char *tipoAtributo=NULL;
-//    u2 index = attributeInfo->attribute_name_index - 1;
-//    u8 l;
-//    int i,iterat;
-//    tipoAtributo = (char *) malloc((classe->constant_pool[index].info.Utf8.length + 1) * sizeof(char));
-//    for (iterat = 0; iterat < classe->constant_pool[index].info.Utf8.length; iterat++)
-//    {
-//        fprintf(file, "%c", classe->constant_pool[index].info.Utf8.bytes[iterat]);
-//        tipoAtributo[iterat] = classe->constant_pool[index].info.Utf8.bytes[iterat];
-//    }
-//    tipoAtributo[iterat] = '\0';
-//    index = attributeInfo->attribute_name_index - 1;
-//    derreferencia = dereferencia(index,classe);
-//    fprintf(file, "\n");
-//    fprintf(file, "\t\tName Index:      \tCP INFO #%d <%s>\n", attributeInfo->attribute_name_index, derreferencia);
-//    fprintf(file, "\t\tAttribute Lenght:\t%d\n", attributeInfo->attribute_length);
-//
-//    if (attributeInfo->attribute_length > 0)
-//    {
-//        if (!strcmp(tipoAtributo, "ConstantValue"))
-//        {
-//            index = attributeInfo->info.ConstantValue.constantvalue_index - 1;
-//            float fvalue;
-//            double dvalue;
-//            switch (classe->constant_pool[index].tag)
-//            {
-//            case CONSTANT_Long:
-//                l = (u8)classe->constant_pool[index].info.Long.high_bytes<<32|classe->constant_pool[index].info.Long.low_bytes;
-//                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%ld>", attributeInfo->info.ConstantValue.constantvalue_index, l);
-//                break;
-//            case CONSTANT_Double:
-//                l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
-//                memcpy(&dvalue,&l,sizeof(u8));
-//                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
-//                break;
-//            case CONSTANT_Float:
-//				memcpy(&fvalue,&(classe->constant_pool[index].info.Float.bytes),sizeof(u4));
-//                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
-//                break;
-//            case CONSTANT_Integer:
-//                i = (int)classe->constant_pool[index].info.Integer.bytes;
-//                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%d>", attributeInfo->info.ConstantValue.constantvalue_index, i);
-//                break;
-//            case CONSTANT_String:
-//                index = classe->constant_pool[index].info.String.string_index - 1;
-//                derreferencia = dereferencia(index,classe);
-//                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%s>", attributeInfo->info.ConstantValue.constantvalue_index, derreferencia);
-//                break;
-//            }
-//        }
-//        else if (!strcmp(tipoAtributo, "Code"))
-//        {
-//            fprintf(file, "\t\tMax Stack:          \t%d\n", attributeInfo->info.CodeAttribute.max_stack);
-//            fprintf(file, "\t\tMax Locals:         \t%d\n", attributeInfo->info.CodeAttribute.max_locals);
-//            fprintf(file, "\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
-//            fprintf(file, "\t\tCode:\t \n");
-//            for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++)
-//            {
-//                Instrucao mapa[0xCA];
-//                u1 opcode = attributeInfo->info.CodeAttribute.code[i], instrIndex1, instrIndex2;
-//                u2 instrIndex;
-//                int16_t offset;
-//                char *instrRef;
-//                carrega_mnemonicos(mapa);
-//                fprintf(file, "\t\t\t\t\t%d: %s\t", i, mapa[opcode].mnemonico);
-//                int j;
-//                double dvalue;
-//                float fvalue;
-//                switch(mapa[opcode].req_cp) {
-//                    case REQ_METHODREF_1:
-//                        instrIndex = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrRef = dereferencia_methodinfo(instrIndex - 1, classe);
-//                        fprintf(file, "#%hu\t<%s>\t", instrIndex, instrRef);
-//                        break;
-//                    case REQ_METHODREF_2:
-//                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrIndex = (instrIndex2 | (instrIndex1 << 8));
-//                        instrRef = dereferencia_methodinfo(instrIndex - 1, classe);
-//                        fprintf(file, "#%hu\t<%s>\t", instrIndex, instrRef);
-//                        break;
-//                    case REQ_FIELDREF:
-//                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrIndex = (instrIndex2 | (instrIndex1 << 8));
-//                        instrRef = dereferencia_fieldrefinfo(instrIndex - 1, classe);
-//                        fprintf(file, "#%hu\t<%s>\t", instrIndex, instrRef);
-//                        break;
-//                    case REQ_JMPREF:
-//                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
-//                        offset = (int16_t) (instrIndex2 | (instrIndex1 << 8));
-//                        fprintf(file, "%d\t(%d)\t", (offset - 2) + i, offset);
-//                        break;
-//                    case REQ_LDCREF_1:
-//                        instrIndex = attributeInfo->info.CodeAttribute.code[++i] - 1;
-//                        fprintf(file, "%hu\t", instrIndex + 1);
-//                        switch(classe->constant_pool[instrIndex].tag) {
-//                            case CONSTANT_Integer:
-//                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer.bytes);
-//                                break;
-//                            case CONSTANT_Float:
-//                                memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
-//                                fprintf(file, "<%f>\t", fvalue);
-//                                break;
-//                            case CONSTANT_Long:
-//                                l = (u8) classe->constant_pool[instrIndex].info.Long.high_bytes << 32;
-//                                l = l | classe->constant_pool[instrIndex].info.Long.low_bytes;
-//                                fprintf(file, "<%ld>\t", l);
-//                                break;
-//                            case CONSTANT_Double:
-//                                l = (u8) classe->constant_pool[instrIndex].info.Double.high_bytes << 32;
-//                                l = l | classe->constant_pool[instrIndex].info.Double.low_bytes;
-//                                memcpy(&dvalue,&l,sizeof(u8));
-//                                fprintf(file, "<%f>\t", dvalue);
-//                                break;
-//                        }
-//                        break;
-//                    case REQ_LDCREF_2:
-//                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrIndex = (instrIndex2 | (instrIndex1 << sizeof(u1))) - 1;
-//                        fprintf(file, "%hu\t", instrIndex + 1);
-//                        switch(classe->constant_pool[instrIndex].tag) {
-//                            case CONSTANT_Integer:
-//                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer.bytes);
-//                                break;
-//                            case CONSTANT_Float:
-//                                memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
-//                                fprintf(file, "<%f>\t", fvalue);
-//                                break;
-//                            case CONSTANT_Long:
-//                                l = (u8) classe->constant_pool[instrIndex].info.Long.high_bytes << 32;
-//                                l = l | classe->constant_pool[instrIndex].info.Long.low_bytes;
-//                                fprintf(file, "<%ld>\t", l);
-//                                break;
-//                            case CONSTANT_Double:
-//                                l = (u8) classe->constant_pool[instrIndex].info.Double.high_bytes << 32;
-//                                l = l | classe->constant_pool[instrIndex].info.Double.low_bytes;
-//                                memcpy(&dvalue,&l,sizeof(u8));
-//                                fprintf(file, "<%f>\t", dvalue);
-//                                break;
-//                        }
-//                        break;
-//                    case REQ_ARRAYREF:
-//                        instrIndex = attributeInfo->info.CodeAttribute.code[++i];
-//                        fprintf(file, "%hu\t", instrIndex);
-//                        switch(instrIndex) {
-//                            case 0:
-//                                fprintf(file, "(ref)\t");
-//                                break;
-//                            case 4:
-//                                fprintf(file, "(boolean)\t");
-//                                break;
-//                            case 5:
-//                                fprintf(file, "(char)\t");
-//                                break;
-//                            case 6:
-//                                fprintf(file, "(float)\t");
-//                                break;
-//                            case 7:
-//                                fprintf(file, "(double)\t");
-//                                break;
-//                            case 8:
-//                                fprintf(file, "(byte)\t");
-//                                break;
-//                            case 9:
-//                                fprintf(file, "(short)\t");
-//                                break;
-//                            case 10:
-//                                fprintf(file, "(int)\t");
-//                                break;
-//                            case 11:
-//                                fprintf(file, "(long)\t");
-//                                break;
-//                            default:
-//                                break;
-//                        }
-//                        break;
-//                    case REQ_IINCREF:
-//                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
-//                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
-//                        fprintf(file, "%hu by %hu\t", instrIndex1, instrIndex2);
-//                        break;
-//                    default:
-//                        for(j = 0; j < mapa[opcode].operandos; j++) {
-//                            fprintf(file, "%hu\t", attributeInfo->info.CodeAttribute.code[++i]);
-//                        }
-//                        break;
-//                }
-//                fprintf(file, "\n");
-//            }
-//            fprintf(file, "\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
-//            for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++)
-//            {
-//                fprintf(file, "\t\tStart PC:  \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].start_pc);
-//                fprintf(file, "\t\tEnd PC:    \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].end_pc);
-//                fprintf(file, "\t\tHandler PC:\t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].handler_pc);
-//                fprintf(file, "\t\tEnd PC:    \t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].catch_type);
-//            }
-//            fprintf(file, "\t\tCode Attributes Count:\t%d\n", attributeInfo->info.CodeAttribute.attributes_count);
-//            for (int k = 0; k < attributeInfo->info.CodeAttribute.attributes_count; k++)
-//            {
-//                fprintf(file, "\t\t[%d] ", k);
-//                imprime_attribute(&(attributeInfo->info.CodeAttribute.attributes[k]), classe);
-//            }
-//        }
-//        else if (!strcmp(tipoAtributo, "Exceptions"))
-//        {
-//            fprintf(file, "\t\tNumber of Exceptions:\t%d\n", attributeInfo->info.Exception.number_of_exceptions);
-//            for (int i = 0; i < attributeInfo->info.Exception.number_of_exceptions; i++)
-//            {
-//                index = attributeInfo->info.Exception.exception_index_table[i] - 1;
-//                index = classe->constant_pool[index].info.Class.name_index - 1;
-//                derreferencia = dereferencia(index,classe);
-//                fprintf(file, "\t\tException Index:\tCP INFO #%d <%s>\n",
-//                        attributeInfo->info.Exception.exception_index_table[i], derreferencia);
-//            }
-//        }
-//        else if (!strcmp(tipoAtributo, "InnerClasses"))
-//        {
-//            fprintf(file, "\t\tNumber of Classes:\t%d\n", attributeInfo->info.InnerClasses.number_of_classes);
-//            for (int i = 0; i < attributeInfo->info.InnerClasses.number_of_classes; i++)
-//            {
-//                index = attributeInfo->info.InnerClasses.classes[i].inner_class_info_index - 1;
-//                index = classe->constant_pool[index].info.Class.name_index - 1;
-//                derreferencia = dereferencia(index,classe);
-//                fprintf(file, "\t\tInner Class Index:       \tCP INFO #%d <%s>\n",
-//                        attributeInfo->info.InnerClasses.classes[i].inner_class_info_index, derreferencia);
-//                index = attributeInfo->info.InnerClasses.classes[i].outer_class_info_index - 1;
-//                index = classe->constant_pool[index].info.Class.name_index - 1;
-//                derreferencia = dereferencia(index,classe);
-//                fprintf(file, "\t\tOuter Class Index:       \tCP INFO #%d <%s>\n",
-//                        attributeInfo->info.InnerClasses.classes[i].outer_class_info_index, derreferencia);
-//                index = attributeInfo->info.InnerClasses.classes[i].inner_class_info_index - 1;
-//                derreferencia = dereferencia(index,classe);
-//                fprintf(file, "\t\tInner Name Index:        \tCP INFO #%d <%s>\n",
-//                        attributeInfo->info.InnerClasses.classes[i].inner_name_index, derreferencia);
-//                fprintf(file, "\t\tInner Class Access Flags:\t%d\n",
-//                        attributeInfo->info.InnerClasses.classes[i].inner_class_access_flags);
-//            }
-//        }
-//        else if (!strcmp(tipoAtributo, "SourceFile"))
-//        {
-//            index = attributeInfo->info.Sourcefile.sourcefile_index - 1;
-//            derreferencia = dereferencia(index,classe);
-//            fprintf(file, "\t\tSource File Index: \tCP INFO #%d <%s>\n", attributeInfo->info.Sourcefile.sourcefile_index, derreferencia);
-//        }
-//        else if (!strcmp(tipoAtributo, "LineNumberTable"))
-//        {
-//            fprintf(file, "\t\tNumber of Lines:\t%d\n", attributeInfo->info.LineNumberTable.line_number_table_length);
-//            for (int i = 0; i < attributeInfo->info.LineNumberTable.line_number_table_length; i++)
-//            {
-//                fprintf(file, "\t\tLine Number: \t%d\n",
-//                        attributeInfo->info.LineNumberTable.line_number_table[i].line_number);
-//                fprintf(file, "\t\tStart PC:    \t%d\n",
-//                        attributeInfo->info.LineNumberTable.line_number_table[i].start_pc);
-//            }
-//        }
-//        else if (!strcmp(tipoAtributo, "LocalVariableTable"))
-//        {
-//            fprintf(file, "\t\tTable Length:    \t%d\n",
-//                    attributeInfo->info.LocalVariableTable.local_variable_table_length);
-//            for (int i = 0; i < attributeInfo->info.LocalVariableTable.local_variable_table_length; i++)
-//            {
-//                fprintf(file, "\t\tStart PC:        \t%d\n",
-//                        attributeInfo->info.LocalVariableTable.local_variable_table[i].start_pc);
-//                fprintf(file, "\t\tLength:          \t%d\n",
-//                        attributeInfo->info.LocalVariableTable.local_variable_table[i].length);
-//                index = attributeInfo->info.LocalVariableTable.local_variable_table[i].name_index - 1;
-//                derreferencia = dereferencia(index,classe);
-//                fprintf(file, "\t\tName Index:      \tCP INFO #%d <%s>\n",
-//                        attributeInfo->info.LocalVariableTable.local_variable_table[i].name_index, derreferencia);
-//                index = attributeInfo->info.LocalVariableTable.local_variable_table[i].descriptor_index - 1;
-//                derreferencia = dereferencia(index,classe);
-//                fprintf(file, "\t\tDescriptor Index:\tCP INFO #%d <%s>\n",
-//                        attributeInfo->info.LocalVariableTable.local_variable_table[i].descriptor_index, derreferencia);
-//                fprintf(file, "\t\tIndex:           \t%d\n",
-//                        attributeInfo->info.LocalVariableTable.local_variable_table[i].index);
-//            }
-//        }
-//        else
-//        {
-//            fprintf(file, "\t\tDefault Data: \t");
-//            for (int i = 0; i < attributeInfo->attribute_length; i++)
-//            {
-//                fprintf(file, "%x", attributeInfo->info.Default.data[i]);
-//            }
-//            fprintf(file, "\n");
-//        }
-//    }
-//    free(derreferencia);
-//    free(tipoAtributo);
+    char *derreferencia = NULL;
+    u8 l;
+    char *tipoAtributo = NULL;
+    u2 index = attributeInfo->attribute_name_index - 1;
+    int iterat;
+    tipoAtributo = (char *) malloc((classe->constant_pool[index].info.Utf8.length+1) * sizeof(char));
+    float fvalue;
+    double dvalue;
+    for (iterat = 0; iterat < classe->constant_pool[index].info.Utf8.length; iterat++)
+    {
+        fprintf(file, "%c", classe->constant_pool[index].info.Utf8.bytes[iterat]);
+        tipoAtributo[iterat] = classe->constant_pool[index].info.Utf8.bytes[iterat];
+    }
+    tipoAtributo[iterat] = '\0';
+    index = attributeInfo->attribute_name_index - 1;
+    derreferencia = dereferencia(index,classe);
+    fprintf(file, "\n");
+    fprintf(file, "\t\tName Index:      \tCP INFO #%d <%s>\n", attributeInfo->attribute_name_index, derreferencia);
+    fprintf(file, "\t\tAttribute Lenght:\t%d\n", attributeInfo->attribute_length);
+    free(derreferencia);
+    if (attributeInfo->attribute_length > 0)
+    {
+        if (!strcmp(tipoAtributo, "ConstantValue"))
+        {
+            int i;
+            u2 index1;
+            index = attributeInfo->info.ConstantValue.constantvalue_index - 1;
+            switch (classe->constant_pool[index].tag)
+            {
+            case CONSTANT_Long:
+                l = (u8)classe->constant_pool[index].info.Long.high_bytes<<32|classe->constant_pool[index].info.Long.low_bytes;
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%ld>", attributeInfo->info.ConstantValue.constantvalue_index, l);
+                break;
+            case CONSTANT_Double:
+                l = (u8)classe->constant_pool[index].info.Double.high_bytes<<32|classe->constant_pool[index].info.Double.low_bytes;
+				memcpy(&dvalue,&(classe->constant_pool[index].info.Float.bytes),sizeof(u8));
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, dvalue);
+                break;
+            case CONSTANT_Float:
+				memcpy(&fvalue,&(classe->constant_pool[index].info.Float.bytes),sizeof(u4));
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%f>", attributeInfo->info.ConstantValue.constantvalue_index, fvalue);
+                break;
+            case CONSTANT_Integer:
+                i = (int32_t)classe->constant_pool[index].info.Integer.bytes;
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%d>", attributeInfo->info.ConstantValue.constantvalue_index, i);
+                break;
+            case CONSTANT_String:
+                index1 = classe->constant_pool[index].info.String.string_index - 1;
+                derreferencia = dereferencia(index1,classe);
+                fprintf(file, "\t\tConstant Value Index: \tCP INFO #%d <%s>", attributeInfo->info.ConstantValue.constantvalue_index, derreferencia);
+                break;
+            }
+        }
+        else if (!strcmp(tipoAtributo, "Code"))
+        {   fprintf(file, "\t\tMisc\n");
+            fprintf(file, "\t\tMax Stack:          \t%d\n", attributeInfo->info.CodeAttribute.max_stack);
+            fprintf(file, "\t\tMax Locals:         \t%d\n", attributeInfo->info.CodeAttribute.max_locals);
+            fprintf(file, "\t\tCode Length:        \t%d\n", attributeInfo->info.CodeAttribute.code_length);
+            fprintf(file, "\t\tCode:\t \n");
+            for (int i = 0; i < attributeInfo->info.CodeAttribute.code_length; i++)
+            {
+                Instrucao mapa[0xCA];
+                u1 opcode = attributeInfo->info.CodeAttribute.code[i], instrIndex1, instrIndex2;
+                u2 instrIndex;
+                int16_t offset;
+                char *instrRef;
+                carrega_mnemonicos(mapa);
+                fprintf(file, "\t\t\t\t\t%d: %s\t", i, mapa[opcode].mnemonico);
+                int j;
+                double dvalue;
+                switch(mapa[opcode].req_cp) {
+                    case REQ_METHODREF_1:
+                        instrIndex = attributeInfo->info.CodeAttribute.code[++i];
+                        instrRef = dereferencia_methodinfo(instrIndex - 1, classe);
+                        fprintf(file, "#%d\t<%s>\t", instrIndex, instrRef);
+                        break;
+                    case REQ_METHODREF_2:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex = (instrIndex2 | (instrIndex1 << 8));
+                        instrRef = dereferencia_methodinfo(instrIndex - 1, classe);
+                        fprintf(file, "#%d\t<%s>\t", instrIndex, instrRef);
+                        break;
+                    case REQ_FIELDREF:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex = (instrIndex2 | (instrIndex1 << 8));
+                        instrRef = dereferencia_fieldrefinfo(instrIndex - 1, classe);
+                        fprintf(file, "#%d\t<%s>\t", instrIndex, instrRef);
+                        break;
+                    case REQ_JMPREF:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        offset = (int16_t) (instrIndex2 | (instrIndex1 << 8));
+                        fprintf(file, "%d\t(%d)\t", (offset - 2) + i, offset);
+                        break;
+                    case REQ_LDCREF_1:
+                        instrIndex = attributeInfo->info.CodeAttribute.code[++i] - 1;
+                        fprintf(file, "%d\t", instrIndex + 1);
+                        switch(classe->constant_pool[instrIndex].tag) {
+                            case CONSTANT_Integer:
+                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer.bytes);
+                                break;
+                            case CONSTANT_Float:
+                                memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
+                                fprintf(file, "<%f>\t", fvalue);
+                                break;
+                            case CONSTANT_Long:
+                                l = (u8) classe->constant_pool[instrIndex].info.Long.high_bytes << 32;
+                                l = l | classe->constant_pool[instrIndex].info.Long.low_bytes;
+                                fprintf(file, "<%ld>\t", l);
+                                break;
+                            case CONSTANT_Double:
+                                l = (u8) classe->constant_pool[instrIndex].info.Double.high_bytes << 32;
+                                l = l | classe->constant_pool[instrIndex].info.Double.low_bytes;
+                                memcpy(&dvalue,&l,sizeof(u8));
+                                fprintf(file, "<%f>\t", dvalue);
+                                break;
+                        }
+                        break;
+                    case REQ_LDCREF_2:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex = (instrIndex2 | (instrIndex1 << sizeof(u1))) - 1;
+                        fprintf(file, "%d\t", instrIndex + 1);
+                        switch(classe->constant_pool[instrIndex].tag) {
+                            case CONSTANT_Integer:
+                                fprintf(file, "<%d>\t", classe->constant_pool[instrIndex].info.Integer.bytes);
+                                break;
+                            case CONSTANT_Float:
+                                memcpy(&fvalue, &(classe->constant_pool[instrIndex].info.Float.bytes), sizeof(u4));
+                                fprintf(file, "<%f>\t", fvalue);
+                                break;
+                            case CONSTANT_Long:
+                                l = (u8) classe->constant_pool[instrIndex].info.Long.high_bytes << 32;
+                                l = l | classe->constant_pool[instrIndex].info.Long.low_bytes;
+                                fprintf(file, "<%ld>\t", l);
+                                break;
+                            case CONSTANT_Double:
+                                l = (u8) classe->constant_pool[instrIndex].info.Double.high_bytes << 32;
+                                l = l | classe->constant_pool[instrIndex].info.Double.low_bytes;
+                                memcpy(&dvalue,&l,sizeof(u8));
+                                fprintf(file, "<%f>\t", dvalue);
+                                break;
+                        }
+                        break;
+                    case REQ_ARRAYREF:
+                        instrIndex = attributeInfo->info.CodeAttribute.code[++i];
+                        fprintf(file, "%d\t", instrIndex);
+                        switch(instrIndex) {
+                            case 0:
+                                fprintf(file, "(ref)\t");
+                                break;
+                            case 4:
+                                fprintf(file, "(boolean)\t");
+                                break;
+                            case 5:
+                                fprintf(file, "(char)\t");
+                                break;
+                            case 6:
+                                fprintf(file, "(float)\t");
+                                break;
+                            case 7:
+                                fprintf(file, "(double)\t");
+                                break;
+                            case 8:
+                                fprintf(file, "(byte)\t");
+                                break;
+                            case 9:
+                                fprintf(file, "(short)\t");
+                                break;
+                            case 10:
+                                fprintf(file, "(int)\t");
+                                break;
+                            case 11:
+                                fprintf(file, "(long)\t");
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case REQ_IINCREF:
+                        instrIndex1 = attributeInfo->info.CodeAttribute.code[++i];
+                        instrIndex2 = attributeInfo->info.CodeAttribute.code[++i];
+                        fprintf(file, "%d by %d\t", instrIndex1, instrIndex2);
+                        break;
+                    default:
+                        for(j = 0; j < mapa[opcode].operandos; j++) {
+                            fprintf(file, "%d\t", attributeInfo->info.CodeAttribute.code[++i]);
+                        }
+                        break;
+                }
+                fprintf(file, "\n");
+            }
+            fprintf(file, "\n\t\tException Table Length: \t%d\n", attributeInfo->info.CodeAttribute.exception_table_length);
+            if(attributeInfo->info.CodeAttribute.exception_table_length > 0) {
+                fprintf(file, "\t\t\t\t\t   Start PC\t\tEnd PC\t\tHandler PC\t\tCatch Type\n");
+                for (int i = 0; i < attributeInfo->info.CodeAttribute.exception_table_length; i++)
+                {
+                    fprintf(file, "\t\t\t\t\t%d: \t\t%d", i, attributeInfo->info.CodeAttribute.exception_table[i].start_pc);
+                    fprintf(file, "\t\t\t%d", attributeInfo->info.CodeAttribute.exception_table[i].end_pc);
+                    fprintf(file, "\t\t\t%d", attributeInfo->info.CodeAttribute.exception_table[i].handler_pc);
+                    fprintf(file, "\t\t\t%d\n", attributeInfo->info.CodeAttribute.exception_table[i].catch_type);
+                }
+            }
+            fprintf(file, "\t\tCode Attributes Count:\t%d\n", attributeInfo->info.CodeAttribute.attributes_count);
+            for (int k = 0; k < attributeInfo->info.CodeAttribute.attributes_count; k++)
+            {
+                fprintf(file, "\t\t[%d] ", k);
+                imprime_attribute_file(&(attributeInfo->info.CodeAttribute.attributes[k]), classe, file);
+            }
+        }
+        else if (!strcmp(tipoAtributo, "Exceptions"))
+        {
+            fprintf(file, "\t\tNumber of Exceptions:\t%d\n", attributeInfo->info.Exception.number_of_exceptions);
+            for (int i = 0; i < attributeInfo->info.Exception.number_of_exceptions; i++)
+            {
+                index = attributeInfo->info.Exception.exception_index_table[i] - 1;
+                index = classe->constant_pool[index].info.Class.name_index - 1;
+                derreferencia = dereferencia(index,classe);
+                fprintf(file, "\t\tException Index:\tCP INFO #%d <%s>\n", attributeInfo->info.Exception.exception_index_table[i], derreferencia);
+                free(derreferencia);
+            }
+        }
+        else if (!strcmp(tipoAtributo, "InnerClasses"))
+        {
+            fprintf(file, "\t\tNumber of Classes:\t%d\n", attributeInfo->info.InnerClasses.number_of_classes);
+            for (int i = 0; i < attributeInfo->info.InnerClasses.number_of_classes; i++)
+            {
+                free(derreferencia);
+                index = attributeInfo->info.InnerClasses.classes[i].inner_class_info_index - 1;
+                index = classe->constant_pool[index].info.Class.name_index - 1;
+                derreferencia = dereferencia(index,classe);
+                fprintf(file, "\t\tInner Class Index:       \tCP INFO #%d <%s>\n",
+                       attributeInfo->info.InnerClasses.classes[i].inner_class_info_index, derreferencia);
+                index = attributeInfo->info.InnerClasses.classes[i].outer_class_info_index - 1;
+                index = classe->constant_pool[index].info.Class.name_index - 1;
+                free(derreferencia);
+                derreferencia = dereferencia(index,classe);
+                fprintf(file, "\t\tOuter Class Index:       \tCP INFO #%d <%s>\n",
+                       attributeInfo->info.InnerClasses.classes[i].outer_class_info_index, derreferencia);
+                index = attributeInfo->info.InnerClasses.classes[i].inner_class_info_index - 1;
+                free(derreferencia);
+                derreferencia = dereferencia(index,classe);
+                fprintf(file, "\t\tInner Name Index:  \tCP INFO #%d <%s>\n",
+                       attributeInfo->info.InnerClasses.classes[i].inner_name_index, derreferencia);
+                fprintf(file, "\t\tInner Class Access Flags:\t%d\n",
+                       attributeInfo->info.InnerClasses.classes[i].inner_class_access_flags);
+            }
+        }
+        else if (!strcmp(tipoAtributo, "SourceFile"))
+        {
+            index = attributeInfo->info.Sourcefile.sourcefile_index - 1;
+            derreferencia = dereferencia(index,classe);
+            fprintf(file, "\t\tSource File Index: \tCP INFO #%d <%s>\n", attributeInfo->info.Sourcefile.sourcefile_index, derreferencia);
+            free(derreferencia);
+        }
+        else if (!strcmp(tipoAtributo, "LineNumberTable"))
+        {
+            fprintf(file, "\t\tNumber of Lines:\t%d\n", attributeInfo->info.LineNumberTable.line_number_table_length);
+            if(attributeInfo->info.LineNumberTable.line_number_table_length > 0) {
+                fprintf(file, "\t\t\t\t\t   Start PC\t\tLine Number\n");
+                for (int i = 0; i < attributeInfo->info.LineNumberTable.line_number_table_length; i++)
+                {
+                    fprintf(file, "\t\t\t\t\t%d: %d", i, attributeInfo->info.LineNumberTable.line_number_table[i].start_pc);
+                    fprintf(file, "\t\t\t%d\n", attributeInfo->info.LineNumberTable.line_number_table[i].line_number);
+                }
+            }
+        }
+        else if (!strcmp(tipoAtributo, "LocalVariableTable"))
+        {
+            fprintf(file, "\t\tTable Length:    \t%d\n", attributeInfo->info.LocalVariableTable.local_variable_table_length);
+            for (int i = 0; i < attributeInfo->info.LocalVariableTable.local_variable_table_length; i++)
+            {
+                free(derreferencia);
+                fprintf(file, "\t\tStart PC:        \t%d\n",
+                       attributeInfo->info.LocalVariableTable.local_variable_table[i].start_pc);
+                fprintf(file, "\t\tLength:          \t%d\n",
+                       attributeInfo->info.LocalVariableTable.local_variable_table[i].length);
+                index = attributeInfo->info.LocalVariableTable.local_variable_table[i].name_index - 1;
+                derreferencia = dereferencia(index,classe);
+                fprintf(file, "\t\tName Index:      \tCP INFO #%d <%s>\n",
+                       attributeInfo->info.LocalVariableTable.local_variable_table[i].name_index, derreferencia);
+                index = attributeInfo->info.LocalVariableTable.local_variable_table[i].descriptor_index - 1;
+                free(derreferencia);
+                derreferencia = dereferencia(index,classe);
+                fprintf(file, "\t\tDescriptor Index:\tCP INFO #%d <%s>\n",
+                       attributeInfo->info.LocalVariableTable.local_variable_table[i].descriptor_index, derreferencia);
+                fprintf(file, "\t\tIndex:           \t%d\n",
+                       attributeInfo->info.LocalVariableTable.local_variable_table[i].index);
+            }
+        }
+        else
+        {
+            fprintf(file, "\t\tDefault Data: \t");
+            for (int i = 0; i < attributeInfo->attribute_length; i++)
+            {
+                fprintf(file, "%x", attributeInfo->info.Default.data[i]);
+            }
+            fprintf(file, "\n");
+        }
+    }
+    free(derreferencia);
+    free(tipoAtributo);
 }
 
 void imprime_methods_file(ClassFile *classe, FILE *file)
 {
-//    char *derreferencia = NULL;
-//    int index = 0;
-//    fprintf(file, "\n");
-//    fprintf(file, ">>>Methods<<<\n");
-//    fprintf(file, "\n");
-//    fprintf(file, "Methods Count: \t%d\n", classe->methods_count);
-//
-//    for (int i = 0; i < classe->methods_count; i++)
-//    {
-//        fprintf(file, "[%d] ", i);
-//        for (int j = 0; j < classe->constant_pool[classe->methods[i].name_index - 1].info.Utf8.length; j++)
-//            fprintf(file, "%c", classe->constant_pool[classe->methods[i].name_index - 1].info.Utf8.bytes[j]);
-//        fprintf(file, "\n");
-//        fprintf(file, "\tAccess Flags:    \t%d\n", classe->methods[i].access_flags);
-//        index = classe->methods[i].name_index - 1;
-//        derreferencia = dereferencia(index,classe);
-//        fprintf(file, "\tName Index:      \tCP INFO #%d <%s>\n", classe->methods[i].name_index, derreferencia);
-//        index = classe->methods[i].descriptor_index - 1;
-//        derreferencia = dereferencia(index,classe);
-//        fprintf(file, "\tDescriptor Index:\tCP INFO #%d <%s>\n", classe->methods[i].descriptor_index, derreferencia);
-//        fprintf(file, "\tAttributes Count:\t%d\n", classe->methods[i].attributes_count);
-//        for (int j = 0; j < classe->methods[i].attributes_count; j++)
-//        {
-//            fprintf(file, "\t[%d] ", j);
-//            imprime_attribute_file(&(classe->methods[i].attributes[j]), classe, file);
-//        }
-//    }
-//    free(derreferencia);
+    fprintf(file, "\n");
+    fprintf(file, ">>>Methods<<<\n");
+    fprintf(file, "Methods Count: \t%d\n", classe->methods_count);
+
+    for (int i = 0; i < classe->methods_count; i++)
+    {
+        int index = 0;
+        char *derreferencia = NULL;
+        fprintf(file, "[%d] ", i);
+        for (int j = 0; j < classe->constant_pool[classe->methods[i].name_index - 1].info.Utf8.length; j++)
+            fprintf(file, "%c", classe->constant_pool[classe->methods[i].name_index - 1].info.Utf8.bytes[j]);
+        fprintf(file, "\n");
+        index = classe->methods[i].name_index - 1;
+        derreferencia = dereferencia(index,classe);
+        fprintf(file, "\tName:      \tCP INFO #%d <%s>\n", classe->methods[i].name_index, derreferencia);
+        index = classe->methods[i].descriptor_index - 1;
+        free(derreferencia);
+        derreferencia = dereferencia(index,classe);
+        fprintf(file, "\tDescriptor:\tCP INFO #%d <%s>\n", classe->methods[i].descriptor_index, derreferencia);
+        fprintf(file, "\tAccess Flags:    \t0x%x\n", classe->methods[i].access_flags);
+        fprintf(file, "\tAttributes Count:\t%d\n", classe->methods[i].attributes_count);
+        for (int j = 0; j < classe->methods[i].attributes_count; j++)
+        {
+            fprintf(file, "\t[%d] ", j);
+            imprime_attribute_file(&(classe->methods[i].attributes[j]), classe, file);
+        }
+        free(derreferencia);
+    }
 }
 
 void imprime_attributes_file(ClassFile *classe, FILE *file)
 {
-//    fprintf(file, "\n");
-//    fprintf(file, ">>>Attributes<<<\n");
-//    fprintf(file, "\n");
-//    fprintf(file, "Attributes Count: \t%d\n", classe->attributes_count);
-//    for (int i = 0; i < classe->attributes_count; i++)
-//    {
-//        fprintf(file, "\t[%d] ", i);
-//        imprime_attribute_file(&(classe->attributes[i]), classe, file);
-//    }
+    fprintf(file, "\n");
+    fprintf(file, ">>>Attributes<<<\n");
+    fprintf(file, "Attributes Count: \t%d\n", classe->attributes_count);
+    for (int i = 0; i < classe->attributes_count; i++)
+    {
+        fprintf(file, "\t[%d] ", i);
+        imprime_attribute_file(&(classe->attributes[i]), classe, file);
+    }
 }
 
 void carrega_mnemonicos(Instrucao *mapa)

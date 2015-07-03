@@ -69,13 +69,9 @@ PilhaDeFrames* EmpilhaFrame(PilhaDeFrames *pilhaFrame, Frame *frame)
 
 Frame *DesempilhaFrame(PilhaDeFrames **pilhaFrame)
 {
-    PilhaDeFrames *pf1;
-    Frame *frame;
-    pf1 = (PilhaDeFrames *)malloc(sizeof(PilhaDeFrames));
-    frame = (Frame *)malloc(sizeof(Frame));
-    pf1 = *pilhaFrame;
+    PilhaDeFrames *pf1 = *pilhaFrame;
+    Frame *frame = pf1->dado;
     *pilhaFrame = pf1->prox;
-    frame = pf1->dado;
     free(pf1);
     return frame;
 }

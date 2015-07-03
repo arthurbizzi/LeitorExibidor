@@ -45,12 +45,9 @@ void EmpilhaOperando64bits(PilhaDeOperandos **pilhaOperandos, u8 *dado)
 
 u4 DesempilhaOperando32bits(PilhaDeOperandos **pilhaOperandos)
 {
-    PilhaDeOperandos *po1;
-    u4 op;
-    po1 = (PilhaDeOperandos *)malloc(sizeof(PilhaDeOperandos));
-    po1 = *pilhaOperandos;
+    PilhaDeOperandos *po1 = *pilhaOperandos;
+    u4 op = po1->dado;
     *pilhaOperandos = po1->prox;
-    op = po1->dado;
     free(po1);
     return op;
 }

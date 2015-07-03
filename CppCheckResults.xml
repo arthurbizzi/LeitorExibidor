@@ -10,14 +10,5 @@
     <error file="Instrucoes\others.c" line="936" id="nullPointer" severity="error" msg="Possible null pointer dereference: obj" />
     <error file="Instrucoes\others.c" line="1134" id="nullPointer" severity="style" msg="Possible null pointer dereference: obj - otherwise it is redundant to check it against null." />
     <error file="Instrucoes\others.c" line="1159" id="nullPointer" severity="style" msg="Possible null pointer dereference: obj - otherwise it is redundant to check it against null." />
-    <error file="Pilha\pilha_frames.c" line="76" id="redundantAssignment" severity="style" msg="Variable &apos;pf1&apos; is reassigned a value before the old one has been used." />
-    <error file="Pilha\pilha_frames.c" line="78" id="redundantAssignment" severity="style" msg="Variable &apos;frame&apos; is reassigned a value before the old one has been used." />
-    <error file="Pilha\pilha_frames.c" line="76" id="memleak" severity="error" msg="Memory leak: pf1" />
-    <error file="Pilha\pilha_frames.c" line="78" id="memleak" severity="error" msg="Memory leak: frame" />
-    <error file="Pilha\pilha_operandos.c" line="51" id="redundantAssignment" severity="style" msg="Variable &apos;po1&apos; is reassigned a value before the old one has been used." />
-    <error file="Pilha\pilha_operandos.c" line="51" id="memleak" severity="error" msg="Memory leak: po1" />
-    <error file="main.c" line="92" id="memleak" severity="error" msg="Memory leak: nome_arquivo" />
-    <error file="main.c" line="45" id="obsoleteFunctionsgets" severity="style" msg="The obsolete function &apos;gets&apos; is called. With &apos;gets&apos; you&apos;ll get a buffer overrun if the input data exceeds the size of the buffer. It is recommended to use the function &apos;fgets&apos; instead." />
-    <error file="ClassLoader\impressao.c" line="720" id="unusedFunction" severity="style" msg="The function &apos;imprime_attribute_file&apos; is never used." />
     <error id="missingIncludeSystem" severity="style" msg="Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project&apos;s include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config." />
 </results>

@@ -35,7 +35,6 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
         strcpy(caminho_arquivo, diretorio);
         strcat(caminho_arquivo, nome_arquivo);
     }
-    printf("%s\n", caminho_arquivo);
     if(!(arq_classe = fopen(caminho_arquivo, "rb")))
     {
         printf("ERRO: arquivo \"%s\" nao existe em \"%s\".\n", nome_arquivo, diretorio);

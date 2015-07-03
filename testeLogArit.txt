@@ -1,0 +1,627 @@
+>>>General Information<<<
+Minor version:      	0
+Major version:      	46
+Constant pool count:	54
+Access flags:       	0x20
+This class:         	CP INFO #1 <testeLogArit>
+Super class:        	CP INFO #3 <java/lang/Object>
+Interfaces count:   	0
+Fields count:       	0
+Methods count:      	2
+Attributes count:   	1
+
+
+>>>Constant Pool<<<
+[1] CONSTANT_Class_info:
+	Class name:          	CP INFO #2 <testeLogArit>
+[2] CONSTANT_Utf8_info:
+	Length of byte array:	12
+	Length of string:    	12
+	String:              	testeLogArit
+[3] CONSTANT_Class_info:
+	Class name:          	CP INFO #4 <java/lang/Object>
+[4] CONSTANT_Utf8_info:
+	Length of byte array:	16
+	Length of string:    	16
+	String:              	java/lang/Object
+[5] CONSTANT_Utf8_info:
+	Length of byte array:	6
+	Length of string:    	6
+	String:              	<init>
+[6] CONSTANT_Utf8_info:
+	Length of byte array:	3
+	Length of string:    	3
+	String:              	()V
+[7] CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	Code
+[8] CONSTANT_Methodref_info:
+	Class name:          	CP INFO #3 <java/lang/Object>
+	Name and type:       	CP INFO #9 <<init>()V>
+[9] CONSTANT_NameAndType_info:
+	Name:                	CP INFO #5 <<init>>
+	Descriptor:          	CP INFO #6 <()V>
+[10] CONSTANT_Utf8_info:
+	Length of byte array:	15
+	Length of string:    	15
+	String:              	LineNumberTable
+[11] CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	main
+[12] CONSTANT_Utf8_info:
+	Length of byte array:	22
+	Length of string:    	22
+	String:              	([Ljava/lang/String;)V
+[13] CONSTANT_Fieldref_info:
+	Class name:          	CP INFO #14 <java/lang/System>
+	Name and type:       	CP INFO #16  <outLjava/io/PrintStream;>
+[14] CONSTANT_Class_info:
+	Class name:          	CP INFO #15 <java/lang/System>
+[15] CONSTANT_Utf8_info:
+	Length of byte array:	16
+	Length of string:    	16
+	String:              	java/lang/System
+[16] CONSTANT_NameAndType_info:
+	Name:                	CP INFO #17 <out>
+	Descriptor:          	CP INFO #18 <Ljava/io/PrintStream;>
+[17] CONSTANT_Utf8_info:
+	Length of byte array:	3
+	Length of string:    	3
+	String:              	out
+[18] CONSTANT_Utf8_info:
+	Length of byte array:	21
+	Length of string:    	21
+	String:              	Ljava/io/PrintStream;
+[19] CONSTANT_String_info:
+	String:              	CP INFO #20 <Passou >>
+[20] CONSTANT_Utf8_info:
+	Length of byte array:	8
+	Length of string:    	8
+	String:              	Passou >
+[21] CONSTANT_Methodref_info:
+	Class name:          	CP INFO #22 <java/io/PrintStream>
+	Name and type:       	CP INFO #24 <println(Ljava/lang/String;)V>
+[22] CONSTANT_Class_info:
+	Class name:          	CP INFO #23 <java/io/PrintStream>
+[23] CONSTANT_Utf8_info:
+	Length of byte array:	19
+	Length of string:    	19
+	String:              	java/io/PrintStream
+[24] CONSTANT_NameAndType_info:
+	Name:                	CP INFO #25 <println>
+	Descriptor:          	CP INFO #26 <(Ljava/lang/String;)V>
+[25] CONSTANT_Utf8_info:
+	Length of byte array:	7
+	Length of string:    	7
+	String:              	println
+[26] CONSTANT_Utf8_info:
+	Length of byte array:	21
+	Length of string:    	21
+	String:              	(Ljava/lang/String;)V
+[27] CONSTANT_String_info:
+	String:              	CP INFO #28 <Passou <>
+[28] CONSTANT_Utf8_info:
+	Length of byte array:	8
+	Length of string:    	8
+	String:              	Passou <
+[29] CONSTANT_String_info:
+	String:              	CP INFO #30 <Passou ==>
+[30] CONSTANT_Utf8_info:
+	Length of byte array:	9
+	Length of string:    	9
+	String:              	Passou ==
+[31] CONSTANT_String_info:
+	String:              	CP INFO #32 <Passou <=>
+[32] CONSTANT_Utf8_info:
+	Length of byte array:	9
+	Length of string:    	9
+	String:              	Passou <=
+[33] CONSTANT_String_info:
+	String:              	CP INFO #34 <Passou !(<=)>
+[34] CONSTANT_Utf8_info:
+	Length of byte array:	12
+	Length of string:    	12
+	String:              	Passou !(<=)
+[35] CONSTANT_String_info:
+	String:              	CP INFO #36 <Agora com long>
+[36] CONSTANT_Utf8_info:
+	Length of byte array:	14
+	Length of string:    	14
+	String:              	Agora com long
+[37] CONSTANT_Long_info:
+	High bytes:          	0x0
+	Low bytes:           	0x2
+	Long:                	2
+[38] (large numeric continued)
+[39] CONSTANT_Long_info:
+	High bytes:          	0x0
+	Low bytes:           	0x3
+	Long:                	3
+[40] (large numeric continued)
+[41] CONSTANT_Long_info:
+	High bytes:          	0xffffffff
+	Low bytes:           	0xffffffff
+	Long:                	-1
+[42] (large numeric continued)
+[43] CONSTANT_String_info:
+	String:              	CP INFO #44 <Agora com float>
+[44] CONSTANT_Utf8_info:
+	Length of byte array:	15
+	Length of string:    	15
+	String:              	Agora com float
+[45] CONSTANT_String_info:
+	String:              	CP INFO #46 <Agora com double>
+[46] CONSTANT_Utf8_info:
+	Length of byte array:	16
+	Length of string:    	16
+	String:              	Agora com double
+[47] CONSTANT_Double_info:
+	High bytes:          	0x40000000
+	Low bytes:           	0x0
+	Double:              	2.000000
+[48] (large numeric continued)
+[49] CONSTANT_Methodref_info:
+	Class name:          	CP INFO #22 <java/io/PrintStream>
+	Name and type:       	CP INFO #50 <println(Z)V>
+[50] CONSTANT_NameAndType_info:
+	Name:                	CP INFO #25 <println>
+	Descriptor:          	CP INFO #51 <(Z)V>
+[51] CONSTANT_Utf8_info:
+	Length of byte array:	4
+	Length of string:    	4
+	String:              	(Z)V
+[52] CONSTANT_Utf8_info:
+	Length of byte array:	10
+	Length of string:    	10
+	String:              	SourceFile
+[53] CONSTANT_Utf8_info:
+	Length of byte array:	17
+	Length of string:    	17
+	String:              	testeLogArit.java
+
+>>>Fields<<<
+
+>>>Methods<<<
+Methods Count: 	2
+[0] <init>
+	Name:      	CP INFO #5 <<init>>
+	Descriptor:	CP INFO #6 <()V>
+	Access Flags:    	0x0
+	Attributes Count:	1
+	[0] Code
+		Name Index:      	CP INFO #7 <Code>
+		Attribute Lenght:	29
+		Misc
+		Max Stack:          	1
+		Max Locals:         	1
+		Code Length:        	5
+		Code:	 
+					0: aload_0	
+					1: invokespecial	#8	<java/lang/Object.<init>>	
+					4: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0] LineNumberTable
+		Name Index:      	CP INFO #10 <LineNumberTable>
+		Attribute Lenght:	6
+		Number of Lines:	1
+					   Start PC		Line Number
+					0: 0			1
+[1] main
+	Name:      	CP INFO #11 <main>
+	Descriptor:	CP INFO #12 <([Ljava/lang/String;)V>
+	Access Flags:    	0x9
+	Attributes Count:	1
+	[0] Code
+		Name Index:      	CP INFO #7 <Code>
+		Attribute Lenght:	922
+		Misc
+		Max Stack:          	5
+		Max Locals:         	13
+		Code Length:        	562
+		Code:	 
+					0: iconst_2	
+					1: istore_1	
+					2: iload_1	
+					3: iload_1	
+					4: iadd	
+					5: istore_2	
+					6: iload_2	
+					7: iload_1	
+					8: if_icmple	19	(11)	
+					11: getstatic	#13	<java/lang/System.out>	
+					14: ldc	19	
+					16: invokevirtual	#21	<java/io/PrintStream.println>	
+					19: iload_1	
+					20: iload_1	
+					21: isub	
+					22: istore_2	
+					23: iload_2	
+					24: iload_1	
+					25: if_icmpge	36	(11)	
+					28: getstatic	#13	<java/lang/System.out>	
+					31: ldc	27	
+					33: invokevirtual	#21	<java/io/PrintStream.println>	
+					36: iload_1	
+					37: iload_1	
+					38: imul	
+					39: istore_2	
+					40: iload_2	
+					41: iload_2	
+					42: if_icmpne	53	(11)	
+					45: getstatic	#13	<java/lang/System.out>	
+					48: ldc	29	
+					50: invokevirtual	#21	<java/io/PrintStream.println>	
+					53: iload_1	
+					54: iload_1	
+					55: idiv	
+					56: istore_2	
+					57: iload_2	
+					58: iconst_1	
+					59: ishl	
+					60: istore_2	
+					61: iload_2	
+					62: iconst_1	
+					63: ior	
+					64: istore_2	
+					65: iload_2	
+					66: iconst_3	
+					67: iand	
+					68: istore_2	
+					69: iload_2	
+					70: iconst_m1	
+					71: ixor	
+					72: istore_2	
+					73: iload_2	
+					74: iconst_m1	
+					75: ixor	
+					76: istore_2	
+					77: iload_2	
+					78: iconst_3	
+					79: ixor	
+					80: istore_2	
+					81: iload_2	
+					82: iload_1	
+					83: if_icmpgt	94	(11)	
+					86: getstatic	#13	<java/lang/System.out>	
+					89: ldc	31	
+					91: invokevirtual	#21	<java/io/PrintStream.println>	
+					94: iload_1	
+					95: iload_1	
+					96: irem	
+					97: istore_2	
+					98: iload_2	
+					99: iload_1	
+					100: if_icmpge	111	(11)	
+					103: getstatic	#13	<java/lang/System.out>	
+					106: ldc	33	
+					108: invokevirtual	#21	<java/io/PrintStream.println>	
+					111: getstatic	#13	<java/lang/System.out>	
+					114: ldc	35	
+					116: invokevirtual	#21	<java/io/PrintStream.println>	
+					119: ldc2_w	37	<2>	
+					122: lstore_3	
+					123: lload_3	
+					124: lload_3	
+					125: ladd	
+					126: lstore	5	
+					128: lload	5	
+					130: lload_3	
+					131: lcmp	
+					132: ifle	143	(11)	
+					135: getstatic	#13	<java/lang/System.out>	
+					138: ldc	19	
+					140: invokevirtual	#21	<java/io/PrintStream.println>	
+					143: lload_3	
+					144: lload_3	
+					145: lsub	
+					146: lstore	5	
+					148: lload	5	
+					150: lload_3	
+					151: lcmp	
+					152: ifge	163	(11)	
+					155: getstatic	#13	<java/lang/System.out>	
+					158: ldc	27	
+					160: invokevirtual	#21	<java/io/PrintStream.println>	
+					163: lload_3	
+					164: lload_3	
+					165: lmul	
+					166: lstore	5	
+					168: lload	5	
+					170: lload	5	
+					172: lcmp	
+					173: ifne	184	(11)	
+					176: getstatic	#13	<java/lang/System.out>	
+					179: ldc	29	
+					181: invokevirtual	#21	<java/io/PrintStream.println>	
+					184: lload_3	
+					185: lload_3	
+					186: ldiv	
+					187: lstore	5	
+					189: lload	5	
+					191: iconst_1	
+					192: lshl	
+					193: lstore	5	
+					195: lload	5	
+					197: lconst_1	
+					198: lor	
+					199: lstore	5	
+					201: lload	5	
+					203: ldc2_w	39	<3>	
+					206: land	
+					207: lstore	5	
+					209: lload	5	
+					211: ldc2_w	41	<-1>	
+					214: lxor	
+					215: lstore	5	
+					217: lload	5	
+					219: ldc2_w	41	<-1>	
+					222: lxor	
+					223: lstore	5	
+					225: lload	5	
+					227: ldc2_w	39	<3>	
+					230: lxor	
+					231: lstore	5	
+					233: lload	5	
+					235: lload_3	
+					236: lcmp	
+					237: ifgt	248	(11)	
+					240: getstatic	#13	<java/lang/System.out>	
+					243: ldc	31	
+					245: invokevirtual	#21	<java/io/PrintStream.println>	
+					248: lload_3	
+					249: lload_3	
+					250: lrem	
+					251: lstore	5	
+					253: lload	5	
+					255: lload_3	
+					256: lcmp	
+					257: ifge	268	(11)	
+					260: getstatic	#13	<java/lang/System.out>	
+					263: ldc	33	
+					265: invokevirtual	#21	<java/io/PrintStream.println>	
+					268: getstatic	#13	<java/lang/System.out>	
+					271: ldc	43	
+					273: invokevirtual	#21	<java/io/PrintStream.println>	
+					276: fconst_2	
+					277: fstore	7	
+					279: fload	7	
+					281: fload	7	
+					283: fadd	
+					284: fstore	8	
+					286: fload	8	
+					288: fload	7	
+					290: fcmpl	
+					291: ifle	302	(11)	
+					294: getstatic	#13	<java/lang/System.out>	
+					297: ldc	19	
+					299: invokevirtual	#21	<java/io/PrintStream.println>	
+					302: fload	7	
+					304: fload	7	
+					306: fsub	
+					307: fstore	8	
+					309: fload	8	
+					311: fload	7	
+					313: fcmpg	
+					314: ifge	325	(11)	
+					317: getstatic	#13	<java/lang/System.out>	
+					320: ldc	27	
+					322: invokevirtual	#21	<java/io/PrintStream.println>	
+					325: fload	7	
+					327: fload	7	
+					329: fmul	
+					330: fstore	8	
+					332: fload	8	
+					334: fload	8	
+					336: fcmpl	
+					337: ifne	348	(11)	
+					340: getstatic	#13	<java/lang/System.out>	
+					343: ldc	29	
+					345: invokevirtual	#21	<java/io/PrintStream.println>	
+					348: fload	7	
+					350: fload	7	
+					352: fdiv	
+					353: fstore	8	
+					355: fload	8	
+					357: fneg	
+					358: fstore	8	
+					360: fload	8	
+					362: fneg	
+					363: fstore	8	
+					365: fload	8	
+					367: fload	7	
+					369: fcmpg	
+					370: ifgt	381	(11)	
+					373: getstatic	#13	<java/lang/System.out>	
+					376: ldc	31	
+					378: invokevirtual	#21	<java/io/PrintStream.println>	
+					381: fload	7	
+					383: fload	7	
+					385: frem	
+					386: fstore	8	
+					388: fload	8	
+					390: fload	7	
+					392: fcmpl	
+					393: ifge	404	(11)	
+					396: getstatic	#13	<java/lang/System.out>	
+					399: ldc	33	
+					401: invokevirtual	#21	<java/io/PrintStream.println>	
+					404: getstatic	#13	<java/lang/System.out>	
+					407: ldc	45	
+					409: invokevirtual	#21	<java/io/PrintStream.println>	
+					412: ldc2_w	47	<2.000000>	
+					415: dstore	9	
+					417: dload	9	
+					419: dload	9	
+					421: dadd	
+					422: dstore	11	
+					424: dload	11	
+					426: dload	9	
+					428: dcmpl	
+					429: ifle	440	(11)	
+					432: getstatic	#13	<java/lang/System.out>	
+					435: ldc	19	
+					437: invokevirtual	#21	<java/io/PrintStream.println>	
+					440: dload	9	
+					442: dload	9	
+					444: dsub	
+					445: dstore	11	
+					447: getstatic	#13	<java/lang/System.out>	
+					450: dload	11	
+					452: dload	9	
+					454: dcmpg	
+					455: ifge	462	(7)	
+					458: iconst_1	
+					459: goto	463	(4)	
+					462: iconst_0	
+					463: invokevirtual	#49	<java/io/PrintStream.println>	
+					466: dload	11	
+					468: dload	9	
+					470: dcmpg	
+					471: ifge	482	(11)	
+					474: getstatic	#13	<java/lang/System.out>	
+					477: ldc	27	
+					479: invokevirtual	#21	<java/io/PrintStream.println>	
+					482: dload	9	
+					484: dload	9	
+					486: dmul	
+					487: dstore	11	
+					489: dload	11	
+					491: dload	11	
+					493: dcmpl	
+					494: ifne	505	(11)	
+					497: getstatic	#13	<java/lang/System.out>	
+					500: ldc	29	
+					502: invokevirtual	#21	<java/io/PrintStream.println>	
+					505: dload	9	
+					507: dload	9	
+					509: ddiv	
+					510: dstore	11	
+					512: dload	11	
+					514: dneg	
+					515: dstore	11	
+					517: dload	11	
+					519: dneg	
+					520: dstore	11	
+					522: dload	11	
+					524: dload	9	
+					526: dcmpg	
+					527: ifgt	538	(11)	
+					530: getstatic	#13	<java/lang/System.out>	
+					533: ldc	31	
+					535: invokevirtual	#21	<java/io/PrintStream.println>	
+					538: dload	9	
+					540: dload	9	
+					542: drem	
+					543: dstore	11	
+					545: dload	11	
+					547: dload	9	
+					549: dcmpl	
+					550: ifge	561	(11)	
+					553: getstatic	#13	<java/lang/System.out>	
+					556: ldc	33	
+					558: invokevirtual	#21	<java/io/PrintStream.println>	
+					561: return	
+
+		Exception Table Length: 	0
+		Code Attributes Count:	1
+		[0] LineNumberTable
+		Name Index:      	CP INFO #10 <LineNumberTable>
+		Attribute Lenght:	342
+		Number of Lines:	85
+					   Start PC		Line Number
+					0: 0			3
+					1: 2			5
+					2: 6			6
+					3: 11			7
+					4: 19			9
+					5: 23			10
+					6: 28			11
+					7: 36			13
+					8: 40			14
+					9: 45			15
+					10: 53			17
+					11: 57			18
+					12: 61			19
+					13: 65			20
+					14: 69			21
+					15: 73			22
+					16: 77			23
+					17: 81			24
+					18: 86			25
+					19: 94			27
+					20: 98			28
+					21: 103			29
+					22: 111			32
+					23: 119			33
+					24: 123			35
+					25: 128			36
+					26: 135			37
+					27: 143			39
+					28: 148			40
+					29: 155			41
+					30: 163			43
+					31: 168			44
+					32: 176			45
+					33: 184			47
+					34: 189			48
+					35: 195			49
+					36: 201			50
+					37: 209			51
+					38: 217			52
+					39: 225			53
+					40: 233			54
+					41: 240			55
+					42: 248			57
+					43: 253			58
+					44: 260			59
+					45: 268			62
+					46: 276			63
+					47: 279			65
+					48: 286			66
+					49: 294			67
+					50: 302			69
+					51: 309			70
+					52: 317			71
+					53: 325			73
+					54: 332			74
+					55: 340			75
+					56: 348			77
+					57: 355			78
+					58: 360			79
+					59: 365			80
+					60: 373			81
+					61: 381			83
+					62: 388			84
+					63: 396			85
+					64: 404			88
+					65: 412			89
+					66: 417			91
+					67: 424			92
+					68: 432			93
+					69: 440			95
+					70: 447			96
+					71: 466			97
+					72: 474			98
+					73: 482			100
+					74: 489			101
+					75: 497			102
+					76: 505			104
+					77: 512			105
+					78: 517			106
+					79: 522			107
+					80: 530			108
+					81: 538			110
+					82: 545			111
+					83: 553			112
+					84: 561			114
+
+>>>Attributes<<<
+Attributes Count: 	1
+	[0] SourceFile
+		Name Index:      	CP INFO #52 <SourceFile>
+		Attribute Lenght:	2
+		Source File Index: 	CP INFO #53 <testeLogArit.java>

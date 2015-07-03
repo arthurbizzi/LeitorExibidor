@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
         default:
             printf("Quantidade incompativel de argumentos.\n");
             printf("Digite o nome do arquivo com a classe a ser carregada, com extensao:\n");
-            gets(nome_classe);
+            fgets(nome_classe, 21, stdin);
             status = carrega_classe(nome_classe, classe);
             printf("Deseja imprimir as classes em tela (t), arquivo (a), ambos (s) ou nenhum (n)?\n");
             scanf("%c", &opcao);
@@ -88,8 +88,10 @@ int verifica_impressao(ClassFile *classe, char opcao) {
             break;
         case 'a': // Impressao em Arquivo
             arquivo_saida = fopen(nome_arquivo, "w");
-            if (!arquivo_saida)
+            if (!arquivo_saida) {
+                free(nome_arquivo);
                 return ERRO_ARQUIVO;
+            }
             imprime_general_information_file(classe, arquivo_saida);
             imprime_constant_pool_file(classe, arquivo_saida);
             imprime_fields_file(classe, arquivo_saida);
@@ -106,8 +108,10 @@ int verifica_impressao(ClassFile *classe, char opcao) {
             break;
         case 'x':// DEBUG
             arquivo_saida = fopen(nome_arquivo, "w");
-            if (!arquivo_saida)
+            if (!arquivo_saida) {
+                free(nome_arquivo);
                 return ERRO_ARQUIVO;
+            }
             imprime_general_information(classe);
             imprime_general_information_file(classe, arquivo_saida);
             imprime_constant_pool(classe);
