@@ -181,13 +181,11 @@ ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses)
 ClassFile *RecuperaClassePorNome(char *nome, ListaClasses **listadeclasses)
 {
     ListaClasses *lc1;
-    int index;
-    char *nomeThisClass;
     lc1 = *listadeclasses;
     while (lc1 != NULL)
     {
-        index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
-        nomeThisClass = dereferencia(index, lc1->dado);
+        int index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
+        char *nomeThisClass = dereferencia(index, lc1->dado);
         if (!strcmp(nome,nomeThisClass))
             return lc1->dado;
         lc1 = lc1->prox;

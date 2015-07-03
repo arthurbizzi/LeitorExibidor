@@ -748,10 +748,10 @@
 1435877005 source:c:\users\ceres\documents\github\leitorexibidor\classloader\carregamento.c
 	"carregamento.h"
 
-1435877005 source:c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.c
+1435883254 source:c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.c
 	"impressao.h"
 
-1435877651 source:c:\users\ceres\documents\github\leitorexibidor\heap\heap.c
+1435883709 source:c:\users\ceres\documents\github\leitorexibidor\heap\heap.c
 	"heap.h"
 
 1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\cast.c
@@ -792,7 +792,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.c
+1435883865 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.c
 	"others.h"
 
 1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\pop_dup_swap.c
@@ -809,7 +809,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435877012 source:c:\users\ceres\documents\github\leitorexibidor\main.c
+1435882468 source:c:\users\ceres\documents\github\leitorexibidor\main.c
 	"main.h"
 
 1435877768 source:c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.c

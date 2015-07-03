@@ -106,7 +106,7 @@ void i_tableswitch(Frame *frame)
 	u4 byte1, byte2, byte3, byte4;
 	u4 enderecotable;
 	u4 target, tableSize;
-	u4 i, offset;
+	u4 i;
 
 	index = (int32_t)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	enderecotable = frame->pc;
@@ -148,7 +148,7 @@ void i_tableswitch(Frame *frame)
 	if(index < low || index > high) {
 		target = enderecotable + defaultbyte;
 	} else {
-		offset = tableswitch[index - low];
+		u4 offset = tableswitch[index - low];
 		target = enderecotable + offset;
 	}
 	frame->pc = target;
@@ -303,7 +303,7 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     char *tipo = NULL, *name = NULL, *nomeclasse = NULL, *nome = NULL;
     u8 valoru8 = 0;
     u4 valoru4 = 0;
-    u2 index = 0, tipoindex = 0, nameindex = 0, fieldindex = 0, nomeclasseindex = 0, nomeindex = 0;
+    u2 index = 0, tipoindex = 0, nameindex = 0, fieldindex = 0, nomeclasseindex = 0;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     nomeclasseindex = frame->constant_pool[index - 1].info.Fieldref.class_index - 1;
     nomeclasseindex = frame->constant_pool[nomeclasseindex].info.Class.name_index - 1;
@@ -330,7 +330,7 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     field = recupera_field(nomeclasse, &listadefields);
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
-        nomeindex = classe->fields[fieldindex].name_index - 1;
+        u2 nomeindex = classe->fields[fieldindex].name_index - 1;
         nome = dereferencia_instrucao(nomeindex, classe->constant_pool);
         if (!strcmp(name, nome))
             break;
@@ -359,7 +359,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     staticField *field;
     char *tipo, *name, *nomeclasse, *nome;
     u8 valor;
-    u2 index, tipoindex, nameindex, fieldindex, nomeclasseindex, nomeindex;
+    u2 index, tipoindex, nameindex, fieldindex, nomeclasseindex;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     nomeclasseindex = frame->constant_pool[index - 1].info.Fieldref.class_index - 1;
     nomeclasseindex = frame->constant_pool[nomeclasseindex].info.Class.name_index - 1;
@@ -391,7 +391,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
 
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
-        nomeindex = classe->fields[fieldindex].name_index - 1;
+        u2 nomeindex = classe->fields[fieldindex].name_index - 1;
         nome = dereferencia_instrucao(nomeindex, classe->constant_pool);
         if (!strcmp(name, nome))
             break;
@@ -422,7 +422,7 @@ void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     char *tipo, *name, *nome;
     u8 valoru8;
     u4 valoru4;
-    u2 index, tipoindex, nameindex, fieldindex, nomeindex;
+    u2 index, tipoindex, nameindex, fieldindex;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     tipoindex = frame->constant_pool[index - 1].info.Fieldref.name_and_type_index - 1;
     nameindex = frame->constant_pool[tipoindex].info.NameAndType.name_index - 1;
@@ -434,7 +434,7 @@ void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 
     for (fieldindex = 0; fieldindex < obj->tamanhotipoField; fieldindex++)
     {
-        nomeindex = obj->classe->fields[fieldindex].name_index - 1;
+        u2 nomeindex = obj->classe->fields[fieldindex].name_index - 1;
         nome = dereferencia_instrucao(nomeindex, obj->classe->constant_pool);
         if (!strcmp(name, nome))
             break;
@@ -462,7 +462,7 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     Objeto *obj;
     char *tipo, *name, *nome;
     u8 valor;
-    u2 index, tipoindex, nameindex, fieldindex, nomeindex;
+    u2 index, tipoindex, nameindex, fieldindex;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     tipoindex = frame->constant_pool[index - 1].info.Fieldref.name_and_type_index - 1;
     nameindex = frame->constant_pool[tipoindex].info.NameAndType.name_index - 1;
@@ -478,7 +478,7 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     obj = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     for (fieldindex = 0; fieldindex < obj->classe->fields_count; fieldindex++)
     {
-        nomeindex = obj->classe->fields[fieldindex].name_index - 1;
+        u2 nomeindex = obj->classe->fields[fieldindex].name_index - 1;
         nome = dereferencia_instrucao(nomeindex, obj->classe->constant_pool);
         if (!strcmp(name, nome))
             break;
@@ -493,18 +493,13 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
 
 void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
-    int i = 0, j = 0;
-    tArray *array1 = NULL;
-    Frame *frame1 = NULL;
+    int i = 0;
     ClassFile *classe = NULL;
     float valorf = 0;
     char *nomeclasse = NULL, *nomemetodo = NULL, *metododesc = NULL, *nome = NULL, *nomedesc = NULL;
     u8 valoru8 = 0;
-    char* cpointer = NULL;
-    void* ppointer = NULL;
-    u4 numparam = 0, valoru4 = 0, *argumentos = NULL;
-    u2 index = 0, index1 = 0, classindex = 0, descriptorindex = 0, metodoindex = 0, length = 0;
-    u1 *bytes;
+    u4 valoru4 = 0, *argumentos = NULL;
+    u2 index = 0, classindex = 0, descriptorindex = 0, metodoindex = 0;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
     classindex = frame->constant_pool[classindex].info.Class.name_index - 1;
@@ -546,7 +541,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             //Array
             if (strstr(metododesc, "[C") != NULL)
             {
-                array1 = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+                tArray *array1 = (void*)(long)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
                 for (i = 0; i < array1->tamanho1; i++)
                 {
                     printf("%c", array1->info.tipoChar[i]);
@@ -574,14 +569,14 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         else if (strstr(metododesc, "Ljava/lang/String") != NULL)
         {
             valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-            cpointer = (void*)(long)valoru4;
+            char *cpointer = (void*)(long)valoru4;
             printf("%s", cpointer);
 
         }//Object
         else if (strstr(metododesc, "Ljava/lang/Object") != NULL)
         {
 			valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-            ppointer = (void*)(long)valoru4;
+            void *ppointer = (void*)(long)valoru4;
             printf("%p",ppointer);
         }
 
@@ -590,6 +585,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     }
     else
     {
+        u4 numparam = 0;
         classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
         if (classe == NULL)
         {
@@ -601,12 +597,15 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             carrega_classe(nomearquivo, classe);
             listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
             frame->heap->listaDeClasses = listadeclasses;
-            if (!executa_init(classe,pilhadeframes,frame->heap))
+            if (!executa_init(classe,pilhadeframes,frame->heap)) {
+                free(metododesc);
+                free(argumentos);
                 return;
+            }
         }
 
-        bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
-        length = frame->constant_pool[descriptorindex].info.Utf8.length;
+        u1 *bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
+        u2 length = frame->constant_pool[descriptorindex].info.Utf8.length;
 
         for (i = 0; i < length && bytes[i] != ')'; i++)
         {
@@ -640,7 +639,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         for(i = 0; i < classe->methods_count; i++) {
             index = classe->methods[i].name_index - 1;
             nome = dereferencia_instrucao(index, classe->constant_pool);
-            index1 = classe->methods[i].descriptor_index - 1;
+            u2 index1 = classe->methods[i].descriptor_index - 1;
             nomedesc = dereferencia_instrucao(index1, classe->constant_pool);
             if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
                 break;
@@ -665,8 +664,8 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             else
             {
                 prepara_metodo(&classe->methods[i], classe,&pilhadeframes, &heap);
-                frame1 = DesempilhaFrame(&pilhadeframes);
-                for (j = numparam; j >= 0; j--)
+                Frame *frame1 = DesempilhaFrame(&pilhadeframes);
+                for (int j = numparam; j >= 0; j--)
                 {
                     frame1->VetorVariaveisLocais[j] = argumentos[j];
                 }
@@ -689,8 +688,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 
 void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
-    int i = 0, j = 0;
-    Frame *frame1 = NULL;
+    int i = 0;
     ClassFile *classe = NULL;
     char *nomeclasse = NULL;
     u4 numparam = 0, *argumentos = NULL;
@@ -759,8 +757,8 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     else
     {
         prepara_metodo(&classe->methods[0], classe,&pilhadeframes, &heap);
-        frame1 = DesempilhaFrame(&pilhadeframes);
-        for (j = numparam; j >= 0; j--)
+        Frame *frame1 = DesempilhaFrame(&pilhadeframes);
+        for (int j = numparam; j >= 0; j--)
         {
             frame1->VetorVariaveisLocais[j] = argumentos[j];
         }
@@ -773,12 +771,11 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 
 void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, Heap *heap)
 {
-    int i = 0, j = 0;
-    Frame *frame1 = NULL;
+    int i = 0;
     ClassFile *classe = NULL;
     char *nomeclasse = NULL, *nomemetodo = NULL, *metododesc = NULL, *nome = NULL, *nomedesc = NULL;
     u4 numparam = 0, *argumentos = NULL;
-    u2 index = 0, index1 = 0, classindex = 0, descriptorindex = 0, metodoindex = 0, length = 0;
+    u2 index = 0, classindex = 0, descriptorindex = 0, metodoindex = 0, length = 0;
     u1 *bytes = NULL;
     index = (u4)indexbyte1 << 8 | (u4)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
@@ -835,7 +832,7 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     for(i = 0; i < classe->methods_count; i++) {
         index = classe->methods[i].name_index - 1;
         nome = dereferencia_instrucao(index, classe->constant_pool);
-        index1 = classe->methods[i].descriptor_index - 1;
+        u2 index1 = classe->methods[i].descriptor_index - 1;
         nomedesc = dereferencia_instrucao(index1, classe->constant_pool);
         if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
             break;
@@ -858,8 +855,8 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
         else
         {
             prepara_metodo(&classe->methods[i], classe, &pilhadeframes, &heap);
-            frame1 = DesempilhaFrame(&pilhadeframes);
-            for (j = (numparam - 1); j >= 0; j--)
+            Frame *frame1 = DesempilhaFrame(&pilhadeframes);
+            for (int j = (numparam - 1); j >= 0; j--)
             {
                 frame1->VetorVariaveisLocais[j] = argumentos[j];
             }
@@ -882,11 +879,10 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
 void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *listadeclasses, u1 indexbyte1, u1 indexbyte2, u1 contagem, u1 zero, Heap *heap)
 {
 
-    int i = 0, j = 0;
+    int i = 0;
     ClassFile *classe;
-    Frame *frame1;
     char *nome = NULL, *nomemetodo = NULL, *nomeclasse = NULL, *nomedesc = NULL, *metododesc = NULL;
-    u2 index = 0, index1 = 0, classeindex = 0, descriptorindex = 0;
+    u2 index = 0, classeindex = 0, descriptorindex = 0;
     u4 *argumentos;
     Objeto *obj = NULL;
     argumentos = (u4 *)malloc(sizeof(u4) * (contagem + 1));
@@ -913,15 +909,17 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
         carrega_classe(nomearquivo, classe);
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_init(classe,pilhadeframes,frame->heap))
+        if (!executa_init(classe,pilhadeframes,frame->heap)) {
+            free(argumentos);
             return;
+        }
     }
     metododesc = dereferencia_instrucao(descriptorindex, frame->constant_pool);
     nomemetodo = dereferencia_instrucao(index,frame->constant_pool);
     for(i = 0; i < classe->methods_count; i++) {
         index = classe->methods[i].name_index - 1;
         nome = dereferencia_instrucao(index, classe->constant_pool);
-        index1 = classe->methods[i].descriptor_index - 1;
+        u2 index1 = classe->methods[i].descriptor_index - 1;
         nomedesc = dereferencia_instrucao(index1, classe->constant_pool);
         if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
             break;
@@ -929,8 +927,8 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
     if (i != obj->classe->methods_count)
     {
         prepara_metodo(&obj->classe->methods[i], obj->classe, &pilhadeframes, &heap);
-        frame1 = DesempilhaFrame(&pilhadeframes);
-        for (j = contagem; j >= 0; j--)
+        Frame *frame1 = DesempilhaFrame(&pilhadeframes);
+        for (int j = contagem; j >= 0; j--)
         {
             frame1->VetorVariaveisLocais[j] = argumentos[j];
         }

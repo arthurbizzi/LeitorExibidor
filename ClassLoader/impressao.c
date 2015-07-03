@@ -157,11 +157,11 @@ void imprime_constant_pool(ClassFile *classe)
 
 void imprime_fields(ClassFile *classe)
 {
-    char *derreferencia = NULL, *derreferencia2 = NULL;
-    int index = 0;
     printf(">>>Fields<<<\n");
     for (int i = 0; i < classe->fields_count; i++)
     {
+        int index = 0;
+        char *derreferencia = NULL, *derreferencia2 = NULL;
         printf("[%d] ", i);
         for (int j = 0; j < classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.length; j++)
             printf("%c", classe->constant_pool[classe->fields[i].name_index - 1].info.Utf8.bytes[j]);
@@ -192,8 +192,8 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
     char *derreferencia = NULL;
     u8 l;
     char *tipoAtributo = NULL;
-    u2 index = attributeInfo->attribute_name_index - 1,index1;
-    int i,iterat;
+    u2 index = attributeInfo->attribute_name_index - 1;
+    int iterat;
     tipoAtributo = (char *) malloc((classe->constant_pool[index].info.Utf8.length+1) * sizeof(char));
     float fvalue;
     double dvalue;
@@ -213,8 +213,9 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
     {
         if (!strcmp(tipoAtributo, "ConstantValue"))
         {
+            int i;
+            u2 index1;
             index = attributeInfo->info.ConstantValue.constantvalue_index - 1;
-
             switch (classe->constant_pool[index].tag)
             {
             case CONSTANT_Long:
@@ -490,14 +491,14 @@ void imprime_attribute(attribute_info *attributeInfo, ClassFile *classe)
 
 void imprime_methods(ClassFile *classe)
 {
-    char *derreferencia = NULL;
-    int index = 0;
     printf("\n");
     printf(">>>Methods<<<\n");
     printf("Methods Count: \t%d\n", classe->methods_count);
 
     for (int i = 0; i < classe->methods_count; i++)
     {
+        int index = 0;
+        char *derreferencia = NULL;
         printf("[%d] ", i);
         for (int j = 0; j < classe->constant_pool[classe->methods[i].name_index - 1].info.Utf8.length; j++)
             printf("%c", classe->constant_pool[classe->methods[i].name_index - 1].info.Utf8.bytes[j]);
