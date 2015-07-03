@@ -152,6 +152,7 @@ void i_tableswitch(Frame *frame)
 		target = enderecotable + offset;
 	}
 	frame->pc = target;
+	free(tableswitch);
     return;
 }
 
@@ -214,6 +215,8 @@ void i_lookupswitch(Frame *frame)
 		target = defaultbyte + enderecolookup;
 	}
 	frame->pc = target;
+	free(match);
+	free(offset);
     return;
 }
 
@@ -343,7 +346,9 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
         valoru4 = (u4)field->valor[fieldindex];
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valoru4);
     }
-
+    free(tipo);
+    free(name);
+    free(nome);
     return;
 }
 
@@ -404,7 +409,9 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     }
 
     field->valor[fieldindex] = valor;
-
+    free(tipo);
+    free(name);
+    free(nome);
     return;
 }
 
@@ -443,7 +450,9 @@ void i_getfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
         valoru4 = (u4)obj->tipofield[fieldindex];
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valoru4);
     }
-
+    free(tipo);
+    free(name);
+    free(nome);
     return;
 }
 
@@ -476,7 +485,9 @@ void i_putfield(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     }
 
     obj->tipofield[fieldindex] = valor;
-
+    free(tipo);
+    free(name);
+    free(nome);
     return;
 }
 
@@ -665,10 +676,14 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         }
         else
         {
-            printf("metodo nÃ£o encontrado");
+            printf("metodo não encontrado");
         }
     }
-
+    free(nomemetodo);
+    free(metododesc);
+    free(nome);
+    free(nomedesc);
+    free(argumentos);
     return;
 }
 
@@ -752,7 +767,7 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         pilhadeframes = EmpilhaFrame(pilhadeframes, frame1);
         executa_metodo(&classe->methods[0], classe, pilhadeframes);
     }
-
+    free(argumentos);
     return;
 }
 
@@ -854,9 +869,13 @@ void i_invokestatic(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *li
     }
     else
     {
-        printf("metodo nÃ£o encontrado");
+        printf("metodo não encontrado");
     }
-
+    free(nomemetodo);
+    free(metododesc);
+    free(nome);
+    free(nomedesc);
+    free(argumentos);
     return;
 }
 
@@ -920,9 +939,13 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
     }
     else
     {
-        printf("metodo nÃ£o encontrado");
+        printf("metodo não encontrado");
     }
-
+    free(nome);
+    free(nomemetodo);
+    free(nomedesc);
+    free(metododesc);
+    free(argumentos);
     return;
 }
 
@@ -950,8 +973,10 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
         obj->classe = classe;
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_init(classe,frame->pilhaDeFrames,frame->heap))
+        if (!executa_init(classe,frame->pilhaDeFrames,frame->heap)) {
+            free(obj);
             return;
+        }
     }
     obj->tamanhotipoField = obj->classe->fields_count;
     obj->tipofield = (u8 *)malloc(sizeof(u8) * obj->tamanhotipoField);
@@ -1078,6 +1103,7 @@ void i_anewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     }
     referencia = (int)(long)a;
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &referencia);
+    free(tipo);
     return;
 }
 
@@ -1115,6 +1141,8 @@ void i_checkcast(Frame *frame, u1 indexbyte1, u1 indexbyte2)
         printf(" Erro: Objeto do tipo errado\n");
     }
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), (u4 *)obj);
+    free(nomeclasse);
+    free(nomeclasseobjeto);
     return;
 }
 
@@ -1141,6 +1169,8 @@ void i_instanceof(Frame *frame, u1 indexbyte1, u1 indexbyte2)
     {
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&valor);
     }
+    free(nomeclasse);
+    free(nomeclasseobjeto);
     return;
 }
 
@@ -1158,7 +1188,6 @@ void i_monitorexit(Frame *frame)
 
 void i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 constbyte2)
 {
-
 	int16_t valor;
 	u4 value = 0;
     u2 indexConcat = 0;
@@ -1167,55 +1196,49 @@ void i_wide(Frame *frame, u1 opcode, u1 index, u1 index2, u1 constbyte1, u1 cons
     {
         case 0x15:
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
-        break;
+            break;
         case 0x16:
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat + 1]));
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
-        break;
+            break;
         case 0x17:
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
-        break;
+            break;
         case 0x18:
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat + 1]));
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
-        break;
+            break;
         case 0x19:
             EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(frame->VetorVariaveisLocais[indexConcat]));
-        break;
+            break;
         case 0x36:
-			value=0;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
-        break;
+            break;
         case 0x37:
-			value=0;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat + 1] = value;
-        break;
+            break;
         case 0x38:
-			value=0;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
-        break;
+            break;
         case 0x39:
-			value=0;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat + 1] = value;
-        break;
+            break;
         case 0x3a:
-			value=0;
             value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
             frame->VetorVariaveisLocais[indexConcat] = value;
-        break;
+            break;
         case 0x84:
-
             valor = (int16_t)(constbyte1<<8) | (int16_t)(constbyte2);
             frame->VetorVariaveisLocais[indexConcat] += valor;
-        break;
+            break;
     }
     return;
 }
@@ -1289,6 +1312,7 @@ void i_multianewarray(Frame *frame, u1 indexbyte1, u1 indexbyte2, u1 dimensions)
     }
     referencia = (int)(long)a;
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &referencia);
+    free(tipo);
     return;
 }
 

@@ -5,19 +5,19 @@
 */
 #include "pilha_operandos.h"
 
-void InicializaPilhaDeOperandos(PilhaDeOperandos **pilhaOperandos)
-{
-    *pilhaOperandos = NULL;
-    return;
-}
+//void InicializaPilhaDeOperandos(PilhaDeOperandos **pilhaOperandos)
+//{
+//    *pilhaOperandos = NULL;
+//    return;
+//}
 
-u1 PilhaDeOperandosVazia(PilhaDeOperandos *pilhaOperandos)
-{
-    if (pilhaOperandos == NULL)
-        return 1;
-    else
-        return 0;
-}
+//u1 PilhaDeOperandosVazia(PilhaDeOperandos *pilhaOperandos)
+//{
+//    if (pilhaOperandos == NULL)
+//        return 1;
+//    else
+//        return 0;
+//}
 
 void EmpilhaOperando32bits(PilhaDeOperandos **pilhaOperandos, u4 *dado)
 {

@@ -43,13 +43,13 @@ void InicializaPilhaDeFrames(PilhaDeFrames **pilhaFrames)
     return;
 }
 
-u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame)
-{
-    if (pilhaFrame == NULL)
-        return 1;
-    else
-        return 0;
-}
+//u1 PilhaDeFramesVazia(PilhaDeFrames *pilhaFrame)
+//{
+//    if (pilhaFrame == NULL)
+//        return 1;
+//    else
+//        return 0;
+//}
 
 PilhaDeFrames* EmpilhaFrame(PilhaDeFrames *pilhaFrame, Frame *frame)
 {
@@ -88,15 +88,15 @@ void DestruirFrame(Frame *frame)
     free(frame);
 }
 
-void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames)
-{
-    PilhaDeFrames *lc1;
-    while (*pilhaFrames != NULL)
-    {
-        free((*pilhaFrames)->dado);
-        lc1 = *pilhaFrames;
-        *pilhaFrames = lc1->prox;
-        free(lc1);
-    }
-    return;
-}
+//void desalocaPilhaFrames(PilhaDeFrames **pilhaFrames)
+//{
+//    PilhaDeFrames *lc1;
+//    while (*pilhaFrames != NULL)
+//    {
+//        free((*pilhaFrames)->dado);
+//        lc1 = *pilhaFrames;
+//        *pilhaFrames = lc1->prox;
+//        free(lc1);
+//    }
+//    return;
+//}

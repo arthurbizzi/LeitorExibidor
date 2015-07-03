@@ -6,71 +6,71 @@
 
 #include "heap.h"
 
-void InicializaListaDeArrays(ListaArrays **listadearrays)
-{
-    *listadearrays = NULL;
-    return;
-}
+//void InicializaListaDeArrays(ListaArrays **listadearrays)
+//{
+//    *listadearrays = NULL;
+//    return;
+//}
 
-void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado)
-{
-    ListaArrays *la1;
-    la1 = (ListaArrays *)malloc(sizeof(ListaArrays));
-    la1->dado = dado;
-    la1->prox = *listadearrays;
-    *listadearrays = la1;
-    return;
-}
+//void InsereListaDeArrays(ListaArrays **listadearrays, tArray *dado)
+//{
+//    ListaArrays *la1;
+//    la1 = (ListaArrays *)malloc(sizeof(ListaArrays));
+//    la1->dado = dado;
+//    la1->prox = *listadearrays;
+//    *listadearrays = la1;
+//    return;
+//}
 
-void desalocaListaDeArrays(ListaArrays **listadearrays)
-{
-    ListaArrays *lc1;
-    ListaArrays *lc2;
-    while (*listadearrays != NULL)
-    {
-		lc2 = *listadearrays;
-        free(lc2->dado);
-        lc1 = *listadearrays;
-        *listadearrays = lc1->prox;
-        free(lc1);
-    }
-    return;
-}
+//void desalocaListaDeArrays(ListaArrays **listadearrays)
+//{
+//    ListaArrays *lc1;
+//    ListaArrays *lc2;
+//    while (*listadearrays != NULL)
+//    {
+//		lc2 = *listadearrays;
+//        free(lc2->dado);
+//        lc1 = *listadearrays;
+//        *listadearrays = lc1->prox;
+//        free(lc1);
+//    }
+//    return;
+//}
 
-void InicializaListaDeObjetos(ListaObjetos **listadeobjetos)
-{
-    *listadeobjetos = NULL;
-    return;
-}
+//void InicializaListaDeObjetos(ListaObjetos **listadeobjetos)
+//{
+//    *listadeobjetos = NULL;
+//    return;
+//}
 
-void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado)
-{
-    ListaObjetos *lo1;
-    lo1 = (ListaObjetos *)malloc(sizeof(ListaObjetos));
-    lo1->dado = dado;
-    lo1->prox = *listadeobjetos;
-    *listadeobjetos = lo1;
-    return;
-}
+//void InsereListaDeObjetos(ListaObjetos **listadeobjetos, Objeto *dado)
+//{
+//    ListaObjetos *lo1;
+//    lo1 = (ListaObjetos *)malloc(sizeof(ListaObjetos));
+//    lo1->dado = dado;
+//    lo1->prox = *listadeobjetos;
+//    *listadeobjetos = lo1;
+//    return;
+//}
 
-void desalocaListaDeObjetos(ListaObjetos **listadeobjetos)
-{
-    ListaObjetos *lo1;
-    while (*listadeobjetos != NULL)
-    {
-        free((*listadeobjetos)->dado);
-        lo1 = *listadeobjetos;
-        *listadeobjetos = lo1->prox;
-        free(lo1);
-    }
-    return;
-}
+//void desalocaListaDeObjetos(ListaObjetos **listadeobjetos)
+//{
+//    ListaObjetos *lo1;
+//    while (*listadeobjetos != NULL)
+//    {
+//        free((*listadeobjetos)->dado);
+//        lo1 = *listadeobjetos;
+//        *listadeobjetos = lo1->prox;
+//        free(lo1);
+//    }
+//    return;
+//}
 
-void InicializaListaDeClasses(ListaClasses **listadeclasses)
-{
-    *listadeclasses = NULL;
-    return;
-}
+//void InicializaListaDeClasses(ListaClasses **listadeclasses)
+//{
+//    *listadeclasses = NULL;
+//    return;
+//}
 
 ListaClasses* InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dado)
 {
@@ -104,11 +104,11 @@ void desalocaListaDeClasses(ListaClasses *listadeclasses)
     return;
 }
 
-void InicializaListaDeFields(ListaStaticField *listadefields)
-{
-    listadefields = NULL;
-    return;
-}
+//void InicializaListaDeFields(ListaStaticField *listadefields)
+//{
+//    listadefields = NULL;
+//    return;
+//}
 
 void InsereListaDeFields(ListaStaticField **listadefields, staticField *dado)
 {
@@ -145,22 +145,22 @@ void desalocaListaDeFields(ListaStaticField *listadefields)
     return;
 }
 
-u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
-{
-    ListaClasses *lc1;
-    int index;
-    char *nomeThisClass;
-    lc1 = *listadeclasses;
-    while (lc1 != NULL)
-    {
-        index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
-        nomeThisClass = dereferencia(index, lc1->dado);
-        if (!strcmp(nomedaclasse,nomeThisClass))
-            return 1;
-        lc1 = lc1->prox;
-    }
-    return 0;
-}
+//u1 ClasseCarregada(ListaClasses **listadeclasses, char *nomedaclasse)
+//{
+//    ListaClasses *lc1;
+//    int index;
+//    char *nomeThisClass;
+//    lc1 = *listadeclasses;
+//    while (lc1 != NULL)
+//    {
+//        index = lc1->dado->constant_pool[lc1->dado->this_class - 1].info.Class.name_index - 1;
+//        nomeThisClass = dereferencia(index, lc1->dado);
+//        if (!strcmp(nomedaclasse,nomeThisClass))
+//            return 1;
+//        lc1 = lc1->prox;
+//    }
+//    return 0;
+//}
 
 ClassFile *RecuperaIesimaClasse(int index, ListaClasses **listadeclasses)
 {

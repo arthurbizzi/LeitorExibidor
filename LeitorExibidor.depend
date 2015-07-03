@@ -634,15 +634,15 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435866573 source:c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
 	"../Instrucoes/bridge_arquivosinstrucoes.h"
 
-1435866586 c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\areametodos\area_metodos.h
 	"../main.h"
 	"../Pilha/pilha_frames.h"
 
-1435867734 c:\users\ceres\documents\github\leitorexibidor\main.h
+1435877012 c:\users\ceres\documents\github\leitorexibidor\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -656,33 +656,33 @@
 	"AreaMetodos/area_metodos.h"
 	"Instrucoes/bridge_arquivosinstrucoes.h"
 
-1435832489 c:\users\ceres\documents\github\leitorexibidor\heap\heap.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\heap\heap.h
 	"../ClassLoader/classloader.h"
 	"../ClassLoader/carregamento.h"
 
-1435800143 c:\users\ceres\documents\github\leitorexibidor\classloader\classloader.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\classloader\classloader.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdint.h>
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\classloader\carregamento.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\classloader\carregamento.h
 	"classloader.h"
 	"../main.h"
 
-1435800275 c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.h
 	<stdio.h>
 	"classloader.h"
 	"../main.h"
 
-1435867133 c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.h
 	"../Heap/heap.h"
 	"pilha_operandos.h"
 
-1435800782 c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_operandos.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_operandos.h
 	"../ClassLoader/classloader.h"
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\bridge_arquivosinstrucoes.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\bridge_arquivosinstrucoes.h
 	"cast.h"
 	"comparacao.h"
 	"const.h"
@@ -693,133 +693,133 @@
 	"store.h"
 	"load.h"
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\cast.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\cast.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\comparacao.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\comparacao.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\const.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\const.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\ifs.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\ifs.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\logico_aritimeticas.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\logico_aritimeticas.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435868182 c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.h
 	<math.h>
 	"../Pilha/pilha_frames.h"
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\pop_dup_swap.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\pop_dup_swap.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\store.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\store.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 c:\users\ceres\documents\github\leitorexibidor\instrucoes\load.h
+1435877005 c:\users\ceres\documents\github\leitorexibidor\instrucoes\load.h
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435799487 source:c:\users\ceres\documents\github\leitorexibidor\classloader\carregamento.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\classloader\carregamento.c
 	"carregamento.h"
 
-1435832489 source:c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\classloader\impressao.c
 	"impressao.h"
 
-1435832489 source:c:\users\ceres\documents\github\leitorexibidor\heap\heap.c
+1435877651 source:c:\users\ceres\documents\github\leitorexibidor\heap\heap.c
 	"heap.h"
 
-1435797535 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\cast.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\cast.c
 	"cast.h"
 
-1435797535 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\comparacao.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\comparacao.c
 	"comparacao.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\const.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\const.c
 	"const.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435832489 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\ifs.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\ifs.c
 	"ifs.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\load.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\load.c
 	"load.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435797535 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\logico_aritimeticas.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\logico_aritimeticas.c
 	"logico_aritimeticas.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435868123 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\others.c
 	"others.h"
 
-1435797535 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\pop_dup_swap.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\pop_dup_swap.c
 	"pop_dup_swap.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435836608 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\store.c
+1435877005 source:c:\users\ceres\documents\github\leitorexibidor\instrucoes\store.c
 	"store.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435867736 source:c:\users\ceres\documents\github\leitorexibidor\main.c
+1435877012 source:c:\users\ceres\documents\github\leitorexibidor\main.c
 	"main.h"
 
-1435867108 source:c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.c
+1435877768 source:c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_frames.c
 	"pilha_frames.h"
 	"../Heap/heap.h"
 
-1435797535 source:c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_operandos.c
+1435877652 source:c:\users\ceres\documents\github\leitorexibidor\pilha\pilha_operandos.c
 	"pilha_operandos.h"
 
-1435832489 source:c:\users\ceres\documents\github\leitorexibidor\classloader\classloader.c
+1435877442 source:c:\users\ceres\documents\github\leitorexibidor\classloader\classloader.c
 	"classloader.h"
 	"carregamento.h"
 
