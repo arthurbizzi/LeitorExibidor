@@ -1,84 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="Instrucoes\store.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Instrucoes\ifs.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1013" topLine="19" />
-		</Cursor>
-	</File>
-	<File name="Pilha\pilha_frames.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2381" topLine="79" />
-		</Cursor>
-	</File>
-	<File name="ClassLoader\carregamento.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8500" topLine="278" />
-		</Cursor>
-	</File>
-	<File name="Pilha\pilha_frames.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="622" topLine="11" />
-		</Cursor>
-	</File>
-	<File name="ClassLoader\carregamento.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="417" topLine="41" />
-		</Cursor>
-	</File>
-	<File name="Pilha\pilha_operandos.c" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1216" topLine="45" />
-		</Cursor>
-	</File>
-	<File name="ClassLoader\classloader.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="980" topLine="23" />
-		</Cursor>
-	</File>
-	<File name="Pilha\pilha_operandos.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="103" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ClassLoader\classloader.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7113" topLine="256" />
-		</Cursor>
-	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6647" topLine="147" />
-		</Cursor>
-	</File>
-	<File name="ClassLoader\impressao.c" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="81955" topLine="1660" />
-		</Cursor>
-	</File>
-	<File name="main.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1545" topLine="30" />
-		</Cursor>
-	</File>
-	<File name="ClassLoader\impressao.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="425" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Heap\heap.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4577" topLine="177" />
-		</Cursor>
-	</File>
-	<File name="Heap\heap.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="878" topLine="33" />
-		</Cursor>
-	</File>
-	<File name="AreaMetodos\area_metodos.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1068" topLine="17" />
+			<Cursor1 position="797" topLine="134" />
 		</Cursor>
 	</File>
 	<File name="Instrucoes\bridge_arquivosinstrucoes.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -86,9 +11,9 @@
 			<Cursor1 position="468" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="AreaMetodos\area_metodos.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Instrucoes\load.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="10862" topLine="296" />
+			<Cursor1 position="4149" topLine="140" />
 		</Cursor>
 	</File>
 	<File name="Instrucoes\cast.c" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
@@ -96,54 +21,24 @@
 			<Cursor1 position="3223" topLine="81" />
 		</Cursor>
 	</File>
-	<File name="Instrucoes\cast.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="339" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Instrucoes\comparacao.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="367" topLine="66" />
-		</Cursor>
-	</File>
-	<File name="Instrucoes\comparacao.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1586" topLine="33" />
-		</Cursor>
-	</File>
-	<File name="Instrucoes\const.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1832" topLine="38" />
-		</Cursor>
-	</File>
-	<File name="Instrucoes\const.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2954" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Instrucoes\ifs.c" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1431" topLine="46" />
-		</Cursor>
-	</File>
-	<File name="Instrucoes\ifs.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="797" topLine="134" />
-		</Cursor>
-	</File>
-	<File name="Instrucoes\load.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4149" topLine="140" />
-		</Cursor>
-	</File>
 	<File name="Instrucoes\load.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="377" topLine="237" />
 		</Cursor>
 	</File>
-	<File name="Instrucoes\logico_aritimeticas.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ClassLoader\impressao.c" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="61505" topLine="1050" />
+		</Cursor>
+	</File>
+	<File name="Instrucoes\logico_aritimeticas.c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="8797" topLine="268" />
+		</Cursor>
+	</File>
+	<File name="ClassLoader\impressao.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4393" topLine="111" />
 		</Cursor>
 	</File>
 	<File name="Instrucoes\logico_aritimeticas.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -151,14 +46,71 @@
 			<Cursor1 position="8107" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Instrucoes\others.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Heap\heap.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="36293" topLine="963" />
+			<Cursor1 position="878" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="Instrucoes\others.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10521" topLine="54" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="8" />
+			<Collapse line="13" />
+			<Collapse line="19" />
+			<Collapse line="41" />
+			<Collapse line="61" />
+			<Collapse line="78" />
+			<Collapse line="83" />
+			<Collapse line="89" />
+			<Collapse line="94" />
+			<Collapse line="151" />
+			<Collapse line="215" />
+			<Collapse line="229" />
+			<Collapse line="243" />
+			<Collapse line="257" />
+			<Collapse line="271" />
+			<Collapse line="285" />
+			<Collapse line="334" />
+			<Collapse line="382" />
+			<Collapse line="422" />
+			<Collapse line="456" />
+			<Collapse line="734" />
+			<Collapse line="828" />
+			<Collapse line="886" />
+			<Collapse line="922" />
+			<Collapse line="976" />
+			<Collapse line="1041" />
+			<Collapse line="1049" />
+			<Collapse line="1054" />
+			<Collapse line="1078" />
+			<Collapse line="1108" />
+			<Collapse line="1113" />
+			<Collapse line="1118" />
+			<Collapse line="1175" />
+			<Collapse line="1247" />
+			<Collapse line="1259" />
+			<Collapse line="1271" />
+			<Collapse line="1279" />
+			<Collapse line="1289" />
+			<Collapse line="1303" />
+		</Folding>
+	</File>
+	<File name="Instrucoes\const.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2954" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Instrucoes\others.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="9002" topLine="250" />
+			<Cursor1 position="4146" topLine="133" />
+		</Cursor>
+	</File>
+	<File name="Instrucoes\comparacao.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1586" topLine="33" />
 		</Cursor>
 	</File>
 	<File name="Instrucoes\pop_dup_swap.c" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -166,14 +118,114 @@
 			<Cursor1 position="380" topLine="12" />
 		</Cursor>
 	</File>
+	<File name="ClassLoader\classloader.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7113" topLine="256" />
+		</Cursor>
+	</File>
 	<File name="Instrucoes\pop_dup_swap.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1576" topLine="49" />
 		</Cursor>
 	</File>
-	<File name="Instrucoes\store.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="AreaMetodos\area_metodos.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3235" topLine="30" />
+		</Cursor>
+		<Folding>
+			<Collapse line="39" />
+			<Collapse line="63" />
+			<Collapse line="87" />
+			<Collapse line="99" />
+			<Collapse line="303" />
+			<Collapse line="487" />
+			<Collapse line="508" />
+			<Collapse line="529" />
+		</Folding>
+	</File>
+	<File name="Instrucoes\store.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5849" topLine="211" />
+		</Cursor>
+	</File>
+	<File name="AreaMetodos\area_metodos.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1068" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="Instrucoes\store.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1013" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="Heap\heap.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1880" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="Pilha\pilha_frames.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1773" topLine="48" />
+		</Cursor>
+	</File>
+	<File name="Pilha\pilha_frames.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1390" topLine="38" />
+		</Cursor>
+	</File>
+	<File name="Pilha\pilha_operandos.c" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1252" topLine="45" />
+		</Cursor>
+	</File>
+	<File name="Pilha\pilha_operandos.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="103" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4113" topLine="50" />
+		</Cursor>
+	</File>
+	<File name="main.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1545" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="Instrucoes\comparacao.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="367" topLine="66" />
+		</Cursor>
+	</File>
+	<File name="Instrucoes\cast.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="339" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ClassLoader\carregamento.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="417" topLine="41" />
+		</Cursor>
+	</File>
+	<File name="Instrucoes\const.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1832" topLine="38" />
+		</Cursor>
+	</File>
+	<File name="ClassLoader\classloader.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="537" topLine="5" />
+		</Cursor>
+	</File>
+	<File name="Instrucoes\ifs.c" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1431" topLine="46" />
+		</Cursor>
+	</File>
+	<File name="ClassLoader\carregamento.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1400" topLine="3" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

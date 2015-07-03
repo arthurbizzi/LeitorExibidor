@@ -68,4 +68,6 @@ u4 DesempilhaOperando32bits(PilhaDeOperandos **pilhaOperandos);
 */
 u8 DesempilhaOperando64bits(PilhaDeOperandos **pilhaOperandos);
 
+void ImprimePilhaOperandos(PilhaDeOperandos **pilhaOperandos, int modificador);
+
 #endif // PILHA_OPERANDOS_H

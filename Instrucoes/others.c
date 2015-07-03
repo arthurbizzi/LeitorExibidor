@@ -296,7 +296,7 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     u8 valoru8 = 0;
     u4 valoru4 = 0;
     u2 index = 0, tipoindex = 0, nameindex = 0, fieldindex = 0, nomeclasseindex = 0;
-    index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
+    index = (u2) indexbyte1 << 8 | (u2)indexbyte2;
     nomeclasseindex = frame->constant_pool[index - 1].info.Fieldref.class_index - 1;
     nomeclasseindex = frame->constant_pool[nomeclasseindex].info.Class.name_index - 1;
     tipoindex = frame->constant_pool[index - 1].info.Fieldref.name_and_type_index - 1;
@@ -306,7 +306,17 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     name = dereferencia_instrucao(nameindex, frame->constant_pool);
     nomeclasse = dereferencia_instrucao(nomeclasseindex, frame->constant_pool);
     classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
-    field = recupera_field(nomeclasse, &listadefields);
+    #warning GAMBIARRA SUPREMA
+    /*if(!classe) {
+        if(!strcmp(nomeclasse, "java/lang/System")) {
+            field = (staticField *) malloc(sizeof(staticField));
+            field->valor = (u8 *) malloc(sizeof(u8));
+
+        }
+    }*/
+    //else {
+        field = recupera_field(nomeclasse, &listadefields);
+    //}
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
         u2 nomeindex = classe->fields[fieldindex].name_index - 1;
@@ -318,11 +328,12 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     if (tipo[0] == 'J' || tipo[0] == 'D')
     {
         valoru8 = field->valor[fieldindex];
+        valoru8 = 0;
         EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valoru8);
     }
     else
     {
-        valoru4 = (u4)field->valor[fieldindex];
+        valoru4 = (u4) field->valor[fieldindex];
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valoru4);
     }
     free(tipo);

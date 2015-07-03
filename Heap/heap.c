@@ -198,7 +198,6 @@ Heap* InicializaHeap() {
     Heap* heap = (Heap *) malloc(sizeof(Heap));
 
     heap->listaDeArrays = NULL;
-    //heap->listaStaticField = listaStaticField;
     heap->listaStaticField = NULL;
     heap->listaDeClasses = NULL;
     heap->listaDeObjetos = NULL;
@@ -206,9 +205,7 @@ Heap* InicializaHeap() {
 }
 
 void desalocaHeap(Heap *heap) {
-    //desalocaListaDeArrays(&heap->listaDeAŝrrays);
     desalocaListaDeClasses((heap->listaDeClasses));
-    //desalocaListaDeObjetos(&heap->listaDeObjetos);
     desalocaListaDeFields((heap->listaStaticField));
     free(heap);
 }

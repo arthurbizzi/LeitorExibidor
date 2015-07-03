@@ -15,7 +15,7 @@ int primeira = 1;
 int carrega_classe(char *nome_completo, ClassFile *classe)
 {
     FILE *arq_classe;
-    char *caminho_arquivo;
+    char *caminho_arquivo, *caminho_arquivo_failsafe;
     if(primeira) {
         diretorio = recupera_nome_diretorio(nome_completo);
         nome_arquivo = recupera_nome_arquivo(nome_completo);
@@ -36,9 +36,16 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
     }
     if(!(arq_classe = fopen(caminho_arquivo, "rb")))
     {
-        printf("ERRO: arquivo \"%s\" nao existe em \"%s\".\n", nome_arquivo, diretorio);
-        free(caminho_arquivo);
-        return ERRO_ARQUIVO;
+        caminho_arquivo_failsafe = (char *) malloc((strlen(caminho_arquivo) + 7) * sizeof(char));
+        strcpy(caminho_arquivo_failsafe, caminho_arquivo);
+        strcat(caminho_arquivo_failsafe, ".class");
+        if(!(arq_classe = fopen(caminho_arquivo_failsafe, "rb"))) {
+            printf("ERRO: arquivo \"%s\" nao existe em \"%s\".\n", nome_arquivo, diretorio);
+            free(caminho_arquivo);
+            free(caminho_arquivo_failsafe);
+            return ERRO_ARQUIVO;
+        }
+        free(caminho_arquivo_failsafe);
     }
     /* Carregamento do Magic Number e da versao, juntamente com suas verificacoes */
     switch(carrega_header(arq_classe, classe))
