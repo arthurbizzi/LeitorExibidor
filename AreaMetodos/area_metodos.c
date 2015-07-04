@@ -23,18 +23,19 @@ method_info* recupera_metodo(ClassFile *classe, char *nome_metodo) {
 }
 
 int executa_init(ClassFile *classe, PilhaDeFrames *pilha_de_frames, Heap *heap) {
+    int status = 0;
     for(int i = 0; i < classe->methods_count; i++) {
-        u1 *nome;
+        char *nome;
         int index_nome = classe->methods[i].name_index - 1;
-        nome = (u1*) dereferencia(index_nome, classe);
-        if(!strcmp("<init>", (char *) nome)) {
+        nome = dereferencia(index_nome, classe);
+        if(!strcmp("<init>", nome) || !strcmp("<clinit>", nome)) {
             method_info *init = &classe->methods[i];
             prepara_metodo(init, classe, &pilha_de_frames, &heap);
             executa_metodo(init, classe, pilha_de_frames);
-            return 1;
+            status = 1;
         }
     }
-    return 0;
+    return status;
 }
 
 void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilha_de_frames, Heap **heap) {
