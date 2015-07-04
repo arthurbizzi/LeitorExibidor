@@ -356,19 +356,19 @@ void decodifica_geral(Frame *frame) {
             i_ret(frame, index);
             break;
         case 0xAC:
-            i_ireturn(&(frame->pilhaDeFrames));
+            i_ireturn(frame);
             break;
         case 0xAD:
-            i_lreturn(&(frame->pilhaDeFrames));
+            i_lreturn(frame);
             break;
         case 0xAE:
-            i_freturn(&(frame->pilhaDeFrames));
+            i_freturn(frame);
             break;
         case 0xAF:
-            i_dreturn(&(frame->pilhaDeFrames));
+            i_dreturn(frame);
             break;
         case 0xB0:
-            i_areturn(&(frame->pilhaDeFrames));
+            i_areturn(frame);
             break;
         case 0xB1:
             i_return(frame);
