@@ -334,6 +334,22 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
         }
     }
     field = recupera_field(nomeclasse, &listadefields);
+    if(!field) {
+        if (tipo[0] == 'J' || tipo[0] == 'D')
+        {
+            valoru8 = 0;
+            EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valoru8);
+        }
+        else
+        {
+            valoru4 = 0;
+            EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valoru4);
+        }
+        free(tipo);
+        free(name);
+        free(nome);
+        return;
+    }
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
         u2 nomeindex = classe->fields[fieldindex].name_index - 1;
@@ -587,11 +603,6 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
             carrega_classe(nomearquivo, classe);
             listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
             frame->heap->listaDeClasses = listadeclasses;
-            if (!executa_init(classe,pilhadeframes,frame->heap)) {
-                free(metododesc);
-                free(argumentos);
-                return;
-            }
         }
 
         u1 *bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
@@ -680,9 +691,9 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
 {
     int i = 0;
     ClassFile *classe = NULL;
-    char *nomeclasse = NULL;
+    char *nomeclasse = NULL, *nomemetodo = NULL, *nome, *nomedesc, *metododesc;
     u4 numparam = 0, *argumentos = NULL;
-    u2 index = 0, classindex = 0, descriptorindex = 0, length = 0;
+    u2 index = 0, classindex = 0, descriptorindex = 0, metodoindex = 0, length = 0;
     u1 *bytes = NULL;
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classindex = frame->constant_pool[index - 1].info.Methodref.class_index - 1;
@@ -699,11 +710,12 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         carrega_classe(nomearquivo, classe);
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_init(classe,pilhadeframes,frame->heap))
-            return;
     }
     descriptorindex = frame->constant_pool[index - 1].info.Methodref.name_and_type_index - 1;
+    metodoindex = frame->constant_pool[descriptorindex].info.NameAndType.name_index - 1;
     descriptorindex = frame->constant_pool[descriptorindex].info.NameAndType.descriptor_index - 1;
+    nomemetodo = dereferencia_instrucao(metodoindex, frame->constant_pool);
+    metododesc = dereferencia_instrucao(descriptorindex, frame->constant_pool);
     bytes = frame->constant_pool[descriptorindex].info.Utf8.bytes;
     length = frame->constant_pool[descriptorindex].info.Utf8.length;
 
@@ -731,8 +743,17 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     {
         argumentos[i] = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     }
-    #warning OLHAR ISSO AQUI, TA CHAMANDO UM CLINIT
-    if (classe->methods[0].access_flags & ACC_NATIVE)
+
+    for(i = 0; i < classe->methods_count; i++) {
+        index = classe->methods[i].name_index - 1;
+        nome = dereferencia_instrucao(index, classe->constant_pool);
+        u2 index1 = classe->methods[i].descriptor_index - 1;
+        nomedesc = dereferencia_instrucao(index1, classe->constant_pool);
+        if(!strcmp(nomemetodo, nome) && !strcmp(metododesc, nomedesc))
+            break;
+    }
+
+    if (classe->methods[i].access_flags & ACC_NATIVE)
     {
         u4 zerou4 = 0;
         u8 zerou8 = 0;
@@ -746,14 +767,14 @@ void i_invokespecial(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
     }
     else
     {
-        prepara_metodo(&classe->methods[0], classe,&pilhadeframes, &heap);
+        prepara_metodo(&classe->methods[i], classe,&pilhadeframes, &heap);
         Frame *frame1 = DesempilhaFrame(&pilhadeframes);
         for (int j = numparam; j >= 0; j--)
         {
             frame1->VetorVariaveisLocais[j] = argumentos[j];
         }
         pilhadeframes = EmpilhaFrame(pilhadeframes, frame1);
-        executa_metodo(&classe->methods[0], classe, pilhadeframes);
+        executa_metodo(&classe->methods[i], classe, pilhadeframes);
     }
     free(argumentos);
     return;
@@ -934,10 +955,6 @@ void i_new(Frame *frame, u1 indexbyte1, u1 indexbyte2, ListaClasses *listadeclas
         obj->classe = classe;
         listadeclasses = InsereListaDeClasses(&listadeclasses, classe);
         frame->heap->listaDeClasses = listadeclasses;
-        if (!executa_init(classe,frame->pilhaDeFrames,frame->heap)) {
-            free(obj);
-            return;
-        }
     }
     obj->tamanhotipoField = obj->classe->fields_count;
     obj->tipofield = (u8 *)malloc(sizeof(u8) * obj->tamanhotipoField);
