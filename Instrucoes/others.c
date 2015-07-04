@@ -608,8 +608,15 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         else if (strstr(metododesc, "Ljava/lang/String") != NULL)
         {
             valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-            //char *cpointer = dereferencia((u2) valoru4 - 1, frame->classe);
-            printf("%s", (char *)valoru4);
+            if (valoru4 != 0)
+            {
+                char *cpointer = dereferencia((u2) valoru4 - 1, frame->classe);
+                printf("%s", cpointer);
+            }
+            else
+            {
+                printf("%s", (char *)valoru4);
+            }
 
         }//Object
         else if (strstr(metododesc, "Ljava/lang/Object") != NULL)
