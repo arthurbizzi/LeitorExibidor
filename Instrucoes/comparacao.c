@@ -54,14 +54,14 @@ void i_fcmpg(Frame* frame){
 		result = -1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
-		result = 1;
+		result = -1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}
 }
 
 void i_dcmpl(Frame* frame){
-	u8 f2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u8 f1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u8 f2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 f1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
 	double value1,value2;
 	memcpy(&value1, &f1, sizeof(u8));
@@ -78,8 +78,8 @@ void i_dcmpl(Frame* frame){
 }
 
 void i_dcmpg(Frame* frame){
-	u8 f2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	u8 f1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u8 f2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 f1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
 	double value1, value2;
 	memcpy(&value1, &f1, sizeof(u8));
@@ -93,7 +93,7 @@ void i_dcmpg(Frame* frame){
 		result = -1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
-		result = 1;
+		result = -1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}
 }

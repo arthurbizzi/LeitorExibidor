@@ -13,7 +13,7 @@ void i_iload(Frame* frame,u1 index)
 void i_lload(Frame* frame,u1 index)
 {
 
-	u8 result = (((u8)frame->VetorVariaveisLocais[index]) << 32) |(frame->VetorVariaveisLocais[index+1]);
+	u8 result = (((u8)frame->VetorVariaveisLocais[index]) << 32) |(frame->VetorVariaveisLocais[index]);
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -88,7 +88,7 @@ void i_lload_3(Frame* frame)
 {
 
     u4 index = 3;
-u8 result = (((u8)frame->VetorVariaveisLocais[index]) << 32) |(frame->VetorVariaveisLocais[index+1]);
+	u8 result = (((u8)frame->VetorVariaveisLocais[index]) << 32) |(frame->VetorVariaveisLocais[index+1]);
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 
@@ -128,7 +128,11 @@ void i_dload_1(Frame* frame)
 {
 
     u4 index = 1;
-u8 result = (((u8)frame->VetorVariaveisLocais[index]) << 32) |(frame->VetorVariaveisLocais[index+1]);
+    u4 teste = frame->VetorVariaveisLocais[index];
+    u4 teste2 = frame->VetorVariaveisLocais[index+1];
+	u8 result = ((u8)teste) <<32 | teste2;
+	double value;
+	memcpy(&value,&result,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
 }
 

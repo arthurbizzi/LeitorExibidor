@@ -20,6 +20,7 @@ void i_ldc(Frame* frame,u1 index, cp_info* constantPool)
 {
     u1 tag = constantPool[index-1].tag;
     u4 dado;
+    float f;
     switch (tag)
     {
     case CONSTANT_Integer:  //Integer
@@ -27,6 +28,7 @@ void i_ldc(Frame* frame,u1 index, cp_info* constantPool)
         break;
     case CONSTANT_Float: //Float
     	dado =  constantPool[index-1].info.Float.bytes;
+    	memcpy(&f, &dado, sizeof(u4));
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&dado);
         break;
     case CONSTANT_String: //String, Need to see the correct reference to save it.
@@ -40,13 +42,16 @@ void i_ldc_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 {
 	u4 dado=0;
     u1 tag = constantPool[index-1].tag;
+    float f=0;
     switch (tag)
     {
     case CONSTANT_Integer: //Integer
         EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.Integer.bytes);
         break;
     case CONSTANT_Float: //Float
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.Float.bytes);
+        	dado = (constantPool[index-1].info.Float.bytes);
+        	memcpy(&f, &dado, sizeof(u4));
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&(constantPool[index-1].info.Float.bytes));
         break;
     case CONSTANT_String: //String, Need to see the correct reference to save it.
 		dado = constantPool[index-1].info.String.string_index;
@@ -60,16 +65,18 @@ void i_ldc2_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
 {
     u2 indexConcat = (index<<8) | index2;
     u1 tag = constantPool[indexConcat-1].tag;
-
+    u8 dado;
+	double d;
+	long l;
     switch(tag)
     {
     case CONSTANT_Long:
-		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[indexConcat-1].info.Long.low_bytes);
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[indexConcat-1].info.Long.high_bytes);
+		dado = ((u8)constantPool[indexConcat-1].info.Long.high_bytes <<32) | constantPool[indexConcat-1].info.Long.low_bytes;
+		EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&dado);
         break;
     case CONSTANT_Double:
-		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[indexConcat-1].info.Double.low_bytes);
-        EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[indexConcat-1].info.Double.high_bytes);
+       dado = ((u8)constantPool[indexConcat-1].info.Long.high_bytes <<32) | constantPool[indexConcat-1].info.Long.low_bytes;
+       EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&dado);
         break;
     }
 }

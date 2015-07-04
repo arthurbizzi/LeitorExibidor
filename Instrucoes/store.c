@@ -29,7 +29,6 @@ void i_fstore(Frame* frame, u1 index)
 
 void i_dstore(Frame* frame, u1 index)
 {
-
     u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     frame->VetorVariaveisLocais[index] = (value) >> 32;
     frame ->VetorVariaveisLocais[index+1] = (value) & 0x00000000FFFFFFFF;
