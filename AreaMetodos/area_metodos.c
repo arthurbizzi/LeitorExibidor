@@ -88,11 +88,11 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
 
 int executa_instrucoes(method_info *metodo, Frame *frame) {
     #warning DEBUG - REMOVER NO FINAL
-    //Instrucao mapa[0xCA];
-    //carrega_mnemonicos(mapa);
+    Instrucao mapa[0xCA];
+    carrega_mnemonicos(mapa);
     for( ;frame->pc < frame->codigo->info.CodeAttribute.code_length; frame->pc++) {
         opcode = frame->codigo->info.CodeAttribute.code[frame->pc];
-		//printf("\tInstrucao: %s\n", mapa[opcode].mnemonico);
+		printf("\tInstrucao: %s\n", mapa[opcode].mnemonico);
 		instrucao[opcode](frame);
     }
     return 1;
@@ -313,10 +313,7 @@ void decodifica_geral(Frame *frame) {
     switch(opcode) {
         case 0x10:
             index = frame->codigo->info.CodeAttribute.code[++frame->pc];
-            index2 = frame->codigo->info.CodeAttribute.code[++frame->pc];
-            index3 = frame->codigo->info.CodeAttribute.code[++frame->pc];
-            index4 = frame->codigo->info.CodeAttribute.code[++frame->pc];
-            nu4 = (u4) (index << 24 | index2 << 16 | index3 << 8 | index4);
+            nu4 = (u4) (index);
             i_bipush(frame, &nu4);
             break;
         case 0x11:
