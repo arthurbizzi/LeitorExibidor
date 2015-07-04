@@ -213,7 +213,7 @@ void i_lrem(Frame* frame){
 
     int64_t value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     int64_t value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	int64_t aux = value1/value2;
+	int64_t aux = value1%value2;
 	u8 result;
 	memcpy(&result,&aux,sizeof(u8));
     EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&result);
