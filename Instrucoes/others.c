@@ -66,8 +66,6 @@ void i_ldc2_w(Frame* frame,u1 index,u1 index2, cp_info* constantPool)
     u2 indexConcat = (index<<8) | index2;
     u1 tag = constantPool[indexConcat-1].tag;
     u8 dado;
-	double d;
-	long l;
     switch(tag)
     {
     case CONSTANT_Long:
