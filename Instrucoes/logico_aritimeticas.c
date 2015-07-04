@@ -265,60 +265,34 @@ void i_dneg(Frame* frame){
 
 void i_ishl(Frame* frame){
 
-	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	int32_t value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
-    u4 signal = value >> 31;
     value = (value << shifter);
-    if(signal == 0){
-		value &= 0x7FFFFFFF;
-    }else{
-    	value |= 0x80000000;
-    }
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void i_lshl(Frame* frame){
 
-	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	int64_t value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
-    u4 signal = value >> 63;
     value = (value << shifter);
-    if(signal == 0){
-		value &= 0x7FFFFFFFFFFFFFFF;
-    }else{
-    	value |= 0x800000000000000;
-    }
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&value);
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void i_ishr(Frame* frame){
 
-	u4 value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	int32_t value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
-    u4 signal = value >> 31;
-    value &= 0x7FFFFFFF;
     value = (value >> shifter);
-    if(signal == 0){
-		value &= 0x7FFFFFFF;
-    }else{
-    	value |= 0x80000000;
-    }
     EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void i_lshr(Frame* frame){
 
-	u8 value = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	int64_t value = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
     u4 shifter = DesempilhaOperando32bits(&(frame->pilhaDeOperandos)) & 0x1F;
-    u4 signal = value >> 63;
-    value &= 0x7FFFFFFFFFFFFFFF;
     value = (value >> shifter);
-    if(signal == 0){
-		value &= 0x7FFFFFFFFFFFFFFF;
-    }else{
-    	value |= 0x800000000000000;
-    }
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos),&value);
+    EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&value);
 }
 
 void i_iushr(Frame* frame){
