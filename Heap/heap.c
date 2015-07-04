@@ -86,22 +86,13 @@ ListaClasses* InsereListaDeClasses(ListaClasses **listadeclasses, ClassFile *dad
 
 void desalocaListaDeClasses(ListaClasses *listadeclasses)
 {
-    ListaClasses *ponteiroAuxiliar = listadeclasses;
-    if(ponteiroAuxiliar!=NULL)
-    {
-        ListaClasses* lc1 = ponteiroAuxiliar->prox;
-        ClassFile* classe = (ponteiroAuxiliar)->dado;
-        while (ponteiroAuxiliar != NULL)
-        {
-            free(classe);
-            lc1 = ponteiroAuxiliar->prox;
-            free(ponteiroAuxiliar);
-            ponteiroAuxiliar = lc1;
-            if(ponteiroAuxiliar!=NULL)
-                classe = ponteiroAuxiliar->dado;
-        }
+    ListaClasses* p = listadeclasses;
+    while (p != NULL) {
+        ListaClasses* t = p->prox;
+        free(p->dado);
+        //free(p);
+        p = t;
     }
-    return;
 }
 
 //void InicializaListaDeFields(ListaStaticField *listadefields)

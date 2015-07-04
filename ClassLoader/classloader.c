@@ -15,7 +15,7 @@ int primeira = 1;
 int carrega_classe(char *nome_completo, ClassFile *classe)
 {
     FILE *arq_classe;
-    char *caminho_arquivo, *caminho_arquivo_failsafe;
+    char *caminho_arquivo;
     if(primeira) {
         diretorio = recupera_nome_diretorio(nome_completo);
         nome_arquivo = recupera_nome_arquivo(nome_completo);
@@ -36,7 +36,7 @@ int carrega_classe(char *nome_completo, ClassFile *classe)
     }
     if(!(arq_classe = fopen(caminho_arquivo, "rb")))
     {
-        caminho_arquivo_failsafe = (char *) malloc((strlen(caminho_arquivo) + 7) * sizeof(char));
+        char *caminho_arquivo_failsafe = (char *) malloc((strlen(caminho_arquivo) + 7) * sizeof(char));
         strcpy(caminho_arquivo_failsafe, caminho_arquivo);
         strcat(caminho_arquivo_failsafe, ".class");
         if(!(arq_classe = fopen(caminho_arquivo_failsafe, "rb"))) {

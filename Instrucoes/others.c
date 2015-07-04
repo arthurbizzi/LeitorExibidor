@@ -28,12 +28,10 @@ void i_ldc(Frame* frame,u1 index, cp_info* constantPool)
     case CONSTANT_Float: //Float
     	dado =  constantPool[index-1].info.Float.bytes;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&dado);
-        //EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.Float.bytes);
         break;
     case CONSTANT_String: //String, Need to see the correct reference to save it.
 		dado =  constantPool[index-1].info.String.string_index;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&dado);
-        //EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&constantPool[index-1].info.String.string_index);
         break;
     }
 }
@@ -307,16 +305,28 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     nomeclasse = dereferencia_instrucao(nomeclasseindex, frame->constant_pool);
     classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     #warning GAMBIARRA SUPREMA
-    /*if(!classe) {
+    if(!classe) {
         if(!strcmp(nomeclasse, "java/lang/System")) {
-            field = (staticField *) malloc(sizeof(staticField));
-            field->valor = (u8 *) malloc(sizeof(u8));
-
+            if (tipo[0] == 'J' || tipo[0] == 'D')
+            {
+                valoru8 = 0;
+                EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valoru8);
+            }
+            else
+            {
+                valoru4 = 0;
+                EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valoru4);
+            }
+            free(tipo);
+            free(name);
+            free(nome);
+            return;
         }
-    }*/
-    //else {
-        field = recupera_field(nomeclasse, &listadefields);
-    //}
+        else {
+            exit(-1);
+        }
+    }
+    field = recupera_field(nomeclasse, &listadefields);
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
         u2 nomeindex = classe->fields[fieldindex].name_index - 1;
@@ -328,7 +338,6 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     if (tipo[0] == 'J' || tipo[0] == 'D')
     {
         valoru8 = field->valor[fieldindex];
-        valoru8 = 0;
         EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valoru8);
     }
     else
@@ -362,7 +371,7 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     if (tipo[0] == 'J' || tipo[0] == 'D')
         valor = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
     else
-        valor = (u8)DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+        valor = (u8) DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 
     for (fieldindex = 0; fieldindex < classe->fields_count; fieldindex++)
     {
@@ -376,7 +385,8 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     if (field == NULL)
     {
         field = (staticField *)malloc(sizeof(staticField));
-        field->NomeClasse = nomeclasse;
+        strcpy(field->NomeClasse, nomeclasse);
+        //field->NomeClasse = nomeclasse;
         field->fieldCount = classe->fields_count;
         field->valor = (u8 *)malloc(sizeof(u8) * field->fieldCount);
         field->valor[fieldindex] = valor;
@@ -496,7 +506,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         else if (strstr(metododesc, "D") != NULL)
         {
             valoru8 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-            double value =0;
+            double value;
             memcpy(&value,&valoru8,sizeof(u8));
             printf("%f", value);
 
@@ -542,7 +552,7 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         else if (strstr(metododesc, "Ljava/lang/String") != NULL)
         {
             valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-            char *cpointer = (void*)(long)valoru4;
+            char *cpointer = dereferencia((u2) valoru4 - 1, frame->classe);
             printf("%s", cpointer);
 
         }//Object

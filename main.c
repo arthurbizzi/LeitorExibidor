@@ -162,7 +162,6 @@ int executa_programa(ClassFile *classe) {
 
 	if(heap != NULL)
 		desalocaHeap(heap);
-
 	if(pilha_de_frames != NULL)
         free(pilha_de_frames);
 

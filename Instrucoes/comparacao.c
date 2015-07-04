@@ -6,9 +6,8 @@
 
 
 void i_lcmp(Frame* frame){
-
-	u8 value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	u8 value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	int64_t value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	int64_t value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
@@ -22,10 +21,12 @@ void i_lcmp(Frame* frame){
 }
 
 void i_fcmpl(Frame* frame){
-
-	float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 f2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 f1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
+	float value1, value2;
+	memcpy(&value1, &f1, sizeof(u4));
+	memcpy(&value2, &f2, sizeof(u4));
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else if(value1 < value2){
@@ -38,10 +39,12 @@ void i_fcmpl(Frame* frame){
 }
 
 void i_fcmpg(Frame* frame){
-
-	float value2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-	float value1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 f2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u4 f1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
+	float value1, value2;
+	memcpy(&value1, &f1, sizeof(u4));
+	memcpy(&value2, &f2, sizeof(u4));
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else if(value1 < value2){
@@ -57,10 +60,12 @@ void i_fcmpg(Frame* frame){
 }
 
 void i_dcmpl(Frame* frame){
-
-	double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 f2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u8 f1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
+	double value1, value2;
+	memcpy(&value1, &f1, sizeof(u8));
+	memcpy(&value2, &f2, sizeof(u8));
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else if(value1 < value2){
@@ -73,10 +78,12 @@ void i_dcmpl(Frame* frame){
 }
 
 void i_dcmpg(Frame* frame){
-
-	double value2 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-	double value1 = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
+	u8 f2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
+	u8 f1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
+	double value1, value2;
+	memcpy(&value1, &f1, sizeof(u8));
+	memcpy(&value2, &f2, sizeof(u8));
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else if(value1 < value2){
