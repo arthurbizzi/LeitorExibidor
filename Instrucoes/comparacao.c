@@ -11,7 +11,7 @@ void i_lcmp(Frame* frame){
 	u4 result = 0;
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
-	}else if(value1 < value2){
+	}else if(value1 > value2){
 		result = 1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
@@ -29,7 +29,7 @@ void i_fcmpl(Frame* frame){
 	memcpy(&value2, &f2, sizeof(u4));
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
-	}else if(value1 < value2){
+	}else if(value1 > value2){
 		result = 1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
@@ -47,14 +47,14 @@ void i_fcmpg(Frame* frame){
 	memcpy(&value2, &f2, sizeof(u4));
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
-	}else if(value1 < value2){
+	}else if(value1 > value2){
 		result = 1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
-	}else if(value1 > value2){
+	}else if(value1 < value2){
 		result = -1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
-		result = 1;
+		result = 0;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}
 }
@@ -63,12 +63,12 @@ void i_dcmpl(Frame* frame){
 	u8 f2 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u8 f1 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
 	u4 result = 0;
-	double value1, value2;
+	double value1,value2;
 	memcpy(&value1, &f1, sizeof(u8));
 	memcpy(&value2, &f2, sizeof(u8));
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
-	}else if(value1 < value2){
+	}else if(value1 > value2){
 		result = 1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
@@ -86,14 +86,14 @@ void i_dcmpg(Frame* frame){
 	memcpy(&value2, &f2, sizeof(u8));
 	if(value1 == value2){
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
-	}else if(value1 < value2){
+	}else if(value1 > value2){
 		result = 1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
-	}else if(value1 > value2){
+	}else if(value1 < value2){
 		result = -1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
-		result = 1;
+		result = 0;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}
 }
