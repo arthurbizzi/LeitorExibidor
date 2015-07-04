@@ -54,7 +54,7 @@ void i_fcmpg(Frame* frame){
 		result = -1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
-		result = 0;
+		result = 1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}
 }
@@ -93,7 +93,7 @@ void i_dcmpg(Frame* frame){
 		result = -1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}else{
-		result = 0;
+		result = 1;
 		EmpilhaOperando32bits(&(frame->pilhaDeOperandos),&result);
 	}
 }
