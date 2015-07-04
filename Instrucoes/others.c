@@ -344,7 +344,6 @@ void i_getstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     name = dereferencia_instrucao(nameindex, frame->constant_pool);
     nomeclasse = dereferencia_instrucao(nomeclasseindex, frame->constant_pool);
     classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
-    #warning GAMBIARRA SUPREMA
     if(!classe) {
         if(!strcmp(nomeclasse, "java/lang/System")) {
             if (tipo[0] == 'J' || tipo[0] == 'D')
@@ -926,7 +925,6 @@ void i_invokeinterface(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses 
     index = (u2)indexbyte1 << 8 | (u2)indexbyte2;
     classeindex = index;
     nomeclasse = dereferencia_instrucao(classeindex, frame->constant_pool);
-    #warning Vejam se isso faz sentido
     obj->classe = RecuperaClassePorNome(nomeclasse, &listadeclasses);
     for (i = contagem; i >= 0; i--)
     {

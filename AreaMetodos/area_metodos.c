@@ -64,7 +64,7 @@ void prepara_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames **pilh
 
 int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_de_frames) {
     int fim = 0;
-    #warning DEBUG - REMOVER NO FINAL
+    #warning DEBUG - Metodo atual
     //int index_nome = metodo->name_index - 1;
     //char *nome = dereferencia(index_nome, classe);
     //printf("Metodo: %s\n", nome);
@@ -87,12 +87,12 @@ int executa_metodo(method_info *metodo, ClassFile *classe, PilhaDeFrames *pilha_
 }
 
 int executa_instrucoes(method_info *metodo, Frame *frame) {
-    #warning DEBUG - REMOVER NO FINAL
-    Instrucao mapa[0xCA];
-    carrega_mnemonicos(mapa);
+    #warning DEBUG - Instrucao atual
+    //Instrucao mapa[0xCA];
+    //carrega_mnemonicos(mapa);
     for( ;frame->pc < frame->codigo->info.CodeAttribute.code_length; frame->pc++) {
         opcode = frame->codigo->info.CodeAttribute.code[frame->pc];
-		printf("\tInstrucao: %s\n", mapa[opcode].mnemonico);
+		//printf("\tInstrucao: %s\n", mapa[opcode].mnemonico);
 		instrucao[opcode](frame);
     }
     return 1;
@@ -305,7 +305,7 @@ void carrega_instrucoes() {
 void decodifica_geral(Frame *frame) {
     u4 nu4 = 0;
     u2 nu2 = 0;
-    u1 index = 0, index2 = 0, index3 = 0, index4 = 0, inc = 0, type = 0, constbyte1 = 0, constbyte2 = 0;
+    u1 index = 0, index2 = 0, inc = 0, type = 0, constbyte1 = 0, constbyte2 = 0;
     u1 branch1 = 0, branch2 = 0, branch3 = 0, branch4 = 0, dimensions = 0;
     cp_info *constant_pool = frame->constant_pool;
     int contagem = 0, zero = 0, opcode1 = 0;
