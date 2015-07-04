@@ -311,7 +311,7 @@
 1434861921 source:c:\users\ceres\documents\github\leitorexibidor\leitorexibidor\heap\lista_arrays_objetos_classes.c
 	"lista_arrays_objetos_classes.h"
 
-1435987186 source:e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.c
+1435990738 source:e:\guilherme\area\gui\sb\leitorexibidor\areametodos\area_metodos.c
 	"area_metodos.h"
 	"../Instrucoes/bridge_arquivosinstrucoes.h"
 
@@ -395,7 +395,7 @@
 	"../ClassLoader/classloader.h"
 	<math.h>
 
-1435985366 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\logico_aritimeticas.c
+1435987346 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\logico_aritimeticas.c
 	"logico_aritimeticas.h"
 	"../Pilha/pilha_operandos.h"
 	"../Pilha/pilha_frames.h"
@@ -441,10 +441,10 @@
 1435985366 source:e:\guilherme\area\gui\sb\leitorexibidor\pilha\pilha_operandos.c
 	"pilha_operandos.h"
 
-1435985366 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
+1435990509 source:e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.c
 	"others.h"
 
-1435985366 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.h
+1435990735 e:\guilherme\area\gui\sb\leitorexibidor\instrucoes\others.h
 	<math.h>
 	"../Pilha/pilha_frames.h"
 

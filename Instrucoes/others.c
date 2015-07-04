@@ -217,72 +217,107 @@ void i_lookupswitch(Frame *frame)
     return;
 }
 
-void i_ireturn(PilhaDeFrames **pilhadeframes)
+void i_ireturn(Frame *frame)
 {
-    Frame *frame;
+    Frame *frame1;
     u4 valor;
-    frame = DesempilhaFrame(pilhadeframes);
     valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    DestruirFrame(frame);
-    frame = DesempilhaFrame(pilhadeframes);
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
-    *pilhadeframes = EmpilhaFrame(*pilhadeframes, frame);
+    frame1 = frame;
+    if (frame->pilhaDeFrames != NULL)
+    {
+        frame = DesempilhaFrame(&frame->pilhaDeFrames);
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
+        frame->pilhaDeFrames = EmpilhaFrame(frame->pilhaDeFrames, frame);
+        DestruirFrame(frame1);
+    }
+    else
+    {
+        frame->pc = frame->codigo->info.CodeAttribute.code_length;
+    }
 
     return;
 }
 
-void i_lreturn(PilhaDeFrames **pilhadeframes)
+void i_lreturn(Frame *frame)
 {
-    Frame *frame;
+    Frame *frame1;
     u8 valor;
-    frame = DesempilhaFrame(pilhadeframes);
     valor = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    DestruirFrame(frame);
-    frame = DesempilhaFrame(pilhadeframes);
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valor);
-	*pilhadeframes = EmpilhaFrame(*pilhadeframes, frame);
+    frame1 = frame;
+    if (frame->pilhaDeFrames != NULL)
+    {
+        frame = DesempilhaFrame(&frame->pilhaDeFrames);
+        EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valor);
+        frame->pilhaDeFrames = EmpilhaFrame(frame->pilhaDeFrames, frame);
+        DestruirFrame(frame1);
+    }
+    else
+    {
+        frame->pc = frame->codigo->info.CodeAttribute.code_length;
+    }
 
     return;
 }
 
-void i_freturn(PilhaDeFrames **pilhadeframes)
+void i_freturn(Frame *frame)
 {
-    Frame *frame;
+    Frame *frame1;
     u4 valor;
-    frame = DesempilhaFrame(pilhadeframes);
     valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    DestruirFrame(frame);
-    frame = DesempilhaFrame(pilhadeframes);
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
-    *pilhadeframes = EmpilhaFrame(*pilhadeframes, frame);
+    frame1 = frame;
+    if (frame->pilhaDeFrames != NULL)
+    {
+        frame = DesempilhaFrame(&frame->pilhaDeFrames);
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
+        frame->pilhaDeFrames = EmpilhaFrame(frame->pilhaDeFrames, frame);
+        DestruirFrame(frame1);
+    }
+    else
+    {
+        frame->pc = frame->codigo->info.CodeAttribute.code_length;
+    }
 
     return;
 }
 
-void i_dreturn(PilhaDeFrames **pilhadeframes)
+void i_dreturn(Frame* frame)
 {
-    Frame *frame;
+    Frame *frame1;
     u8 valor;
-    frame = DesempilhaFrame(pilhadeframes);
     valor = DesempilhaOperando64bits(&(frame->pilhaDeOperandos));
-    DestruirFrame(frame);
-    frame = DesempilhaFrame(pilhadeframes);
-    EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valor);
-    *pilhadeframes = EmpilhaFrame(*pilhadeframes, frame);
+    frame1 = frame;
+    if (frame->pilhaDeFrames != NULL)
+    {
+        frame = DesempilhaFrame(&frame->pilhaDeFrames);
+        EmpilhaOperando64bits(&(frame->pilhaDeOperandos), &valor);
+        frame->pilhaDeFrames = EmpilhaFrame(frame->pilhaDeFrames, frame);
+        DestruirFrame(frame1);
+    }
+    else
+    {
+        frame->pc = frame->codigo->info.CodeAttribute.code_length;
+    }
 
     return;
 }
 
-void i_areturn(PilhaDeFrames **pilhadeframes)
+void i_areturn(Frame* frame)
 {
-    Frame *frame;
+    Frame *frame1;
     u4 valor;
-    frame = DesempilhaFrame(pilhadeframes);
     valor = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-    DestruirFrame(frame);
-    frame = DesempilhaFrame(pilhadeframes);
-    EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
-    *pilhadeframes = EmpilhaFrame(*pilhadeframes, frame);
+    frame1 = frame;
+    if (frame->pilhaDeFrames != NULL)
+    {
+        frame = DesempilhaFrame(&frame->pilhaDeFrames);
+        EmpilhaOperando32bits(&(frame->pilhaDeOperandos), &valor);
+        frame->pilhaDeFrames = EmpilhaFrame(frame->pilhaDeFrames, frame);
+        DestruirFrame(frame1);
+    }
+    else
+    {
+        frame->pc = frame->codigo->info.CodeAttribute.code_length;
+    }
 
     return;
 }
@@ -408,8 +443,8 @@ void i_putstatic(Frame *frame, ListaStaticField *listadefields, ListaClasses *li
     if (field == NULL)
     {
         field = (staticField *)malloc(sizeof(staticField));
+        field->NomeClasse = (char *)malloc(sizeof(char) * (strlen(nomeclasse) + 1));
         strcpy(field->NomeClasse, nomeclasse);
-        //field->NomeClasse = nomeclasse;
         field->fieldCount = classe->fields_count;
         field->valor = (u8 *)malloc(sizeof(u8) * field->fieldCount);
         field->valor[fieldindex] = valor;
@@ -575,8 +610,8 @@ void i_invokevirtual(Frame *frame, PilhaDeFrames *pilhadeframes, ListaClasses *l
         else if (strstr(metododesc, "Ljava/lang/String") != NULL)
         {
             valoru4 = DesempilhaOperando32bits(&(frame->pilhaDeOperandos));
-            char *cpointer = dereferencia((u2) valoru4 - 1, frame->classe);
-            printf("%s", cpointer);
+            //char *cpointer = dereferencia((u2) valoru4 - 1, frame->classe);
+            printf("%s", (char *)valoru4);
 
         }//Object
         else if (strstr(metododesc, "Ljava/lang/Object") != NULL)
