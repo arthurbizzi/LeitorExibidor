@@ -23,6 +23,15 @@
 *    A chamada sem argumentos pedira ao usuario os dados necessarios para rodar o programa.
 */
 
+/**
+* For the brave souls who get this far: You are the chosen ones,
+* the valiant knights of programming who toil away, without rest,
+* fixing our most awful code. To you, true saviors, kings of men,
+* I say this: never gonna give you up, never gonna let you down,
+* never gonna run around and desert you. Never gonna make you cry,
+* never gonna say goodbye. Never gonna tell a lie and hurt you.
+*/
+
 #include "main.h"
 
 int main(int argc, char **argv) {
@@ -131,6 +140,16 @@ int verifica_impressao(ClassFile *classe, char opcao) {
     return SUCESSO;
 }
 
+// 
+// Dear maintainer:
+// 
+// Once you are done trying to 'optimize' this routine,
+// and have realized what a terrible mistake that was,
+// please increment the following counter as a warning
+// to the next guy:
+// 
+// total_hours_wasted_here = 112 (latest maintainer: HighGen)
+//
 int executa_programa(ClassFile *classe) {
     PilhaDeFrames *pilha_de_frames = NULL; /// Pilha de frames do programa
     ListaClasses *lista_de_classes = NULL; /// Lista de classes carregadas no programa
